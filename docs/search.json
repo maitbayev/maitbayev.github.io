@@ -7,24 +7,24 @@
     "text": "About this blog"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "posts/denoising-diffusion-probabilistic-models/index.html",
+    "href": "posts/denoising-diffusion-probabilistic-models/index.html",
+    "title": "Denoising Diffusion Probabilistic Models",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "My notes for the “Denoising Diffusion Probabilistic Models” paper.\n\n\n\nWe have latent variables \\(\\mathbf{x_1},\\mathbf{x_2}, ..., \\mathbf{x_T}\\) of the same dimensionality as the image \\(\\mathbf{x_0}\\). The forward process or diffusion process is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule \\(\\beta_1, ..., \\beta_T\\):\n\\[\n\\mathbf{\nq(x_t|x_{t-1})= \\mathcal{N} (x_t; \\sqrt{1-\\beta_t}x_{t-1}, \\beta_{t}I),\n\\quad\nq(x_{1:T}|x_0)= \\prod_{t=1}^T{q(x_t|x_{t-1})}\n}\n\\]\nThe above equation means that we start with our data \\(\\mathbf{x_0}\\), then we sample a noise with the mean \\(\\mathbf{x_0}\\) scaled by \\(\\mathbf{\\sqrt{1-\\beta_1}}\\) and the variance \\(\\mathbf{\\beta_1}\\). Finally, we repeat this process \\(\\mathbf{T}\\) times and arrive at pure standard Gaussian noise when small enough \\(\\mathbf{\\beta}\\) and big enough \\(\\mathbf{T}\\) values are used. This process is fixed and not learned, unlike variational auto-encoder models."
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "posts/denoising-diffusion-probabilistic-models/index.html#background",
+    "href": "posts/denoising-diffusion-probabilistic-models/index.html#background",
+    "title": "Denoising Diffusion Probabilistic Models",
     "section": "",
-    "text": "This is a post with executable code."
+    "text": "We have latent variables \\(\\mathbf{x_1},\\mathbf{x_2}, ..., \\mathbf{x_T}\\) of the same dimensionality as the image \\(\\mathbf{x_0}\\). The forward process or diffusion process is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule \\(\\beta_1, ..., \\beta_T\\):\n\\[\n\\mathbf{\nq(x_t|x_{t-1})= \\mathcal{N} (x_t; \\sqrt{1-\\beta_t}x_{t-1}, \\beta_{t}I),\n\\quad\nq(x_{1:T}|x_0)= \\prod_{t=1}^T{q(x_t|x_{t-1})}\n}\n\\]\nThe above equation means that we start with our data \\(\\mathbf{x_0}\\), then we sample a noise with the mean \\(\\mathbf{x_0}\\) scaled by \\(\\mathbf{\\sqrt{1-\\beta_1}}\\) and the variance \\(\\mathbf{\\beta_1}\\). Finally, we repeat this process \\(\\mathbf{T}\\) times and arrive at pure standard Gaussian noise when small enough \\(\\mathbf{\\beta}\\) and big enough \\(\\mathbf{T}\\) values are used. This process is fixed and not learned, unlike variational auto-encoder models."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Madiyar’s Page",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJul 15, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJul 12, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Denoising Diffusion Probabilistic Models\n\n\n\n\n\n\ndiffusion\n\n\npaper\n\n\n\n\n\n\n\n\n\nJul 15, 2024\n\n\nMadiyar Aitbayev\n\n\n\n\n\n\nNo matching items"
   }
 ]

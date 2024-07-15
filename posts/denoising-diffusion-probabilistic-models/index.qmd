@@ -1,0 +1,27 @@
+---
+title: "Denoising Diffusion Probabilistic Models"
+author: "Madiyar Aitbayev"
+date: "2024-07-15"
+categories: [diffusion, paper]
+image: "image.jpg"
+---
+
+# Notes for "Denoising Diffusion Probabilistic Models"
+
+My notes for the ["Denoising Diffusion Probabilistic Models"](https://arxiv.org/pdf/2006.11239) paper.
+
+## Background
+
+![](figure2.jpg){width="490"}
+
+We have latent variables $\mathbf{x_1},\mathbf{x_2}, ..., \mathbf{x_T}$ of the same dimensionality as the image $\mathbf{x_0}$. The *forward process* or *diffusion process* is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule $\beta_1, ..., \beta_T$:
+
+$$
+\mathbf{
+q(x_t|x_{t-1})= \mathcal{N} (x_t; \sqrt{1-\beta_t}x_{t-1}, \beta_{t}I),
+\quad 
+q(x_{1:T}|x_0)= \prod_{t=1}^T{q(x_t|x_{t-1})}
+}
+$$
+
+The above equation means that we start with our data $\mathbf{x_0}$, then we sample a noise with the mean $\mathbf{x_0}$ scaled by $\mathbf{\sqrt{1-\beta_1}}$ and the variance $\mathbf{\beta_1}$. Finally, we repeat this process $\mathbf{T}$ times and arrive at pure standard Gaussian noise when small enough $\mathbf{\beta}$ and big enough $\mathbf{T}$ values are used. This process is fixed and not learned, unlike variational auto-encoder models.

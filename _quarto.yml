@@ -6,11 +6,11 @@ website:
   title: "Madiyar's Page"
   navbar:
     right:
-      - about.qmd
+      # - about.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/maitbayev
+      - icon: telegram
+        href: https://t.me/swemanml
 format:
   html:
     theme: cosmo

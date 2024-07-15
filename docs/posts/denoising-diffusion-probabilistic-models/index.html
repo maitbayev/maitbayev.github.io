@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Tristan O’Malley">
-<meta name="dcterms.date" content="2024-07-12">
+<meta name="author" content="Madiyar Aitbayev">
+<meta name="dcterms.date" content="2024-07-15">
 
-<title>Welcome To My Blog – Madiyar’s Page</title>
+<title>Denoising Diffusion Probabilistic Models – Madiyar’s Page</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -90,17 +119,13 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/maitbayev"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://t.me/swemanml"> <i class="bi bi-telegram" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -115,9 +140,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Welcome To My Blog</h1>
+      <h1 class="title">Denoising Diffusion Probabilistic Models</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">news</div>
+                <div class="quarto-category">diffusion</div>
+                <div class="quarto-category">paper</div>
               </div>
                   </div>
   </div>
@@ -128,14 +154,14 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Tristan O’Malley </p>
+               <p>Madiyar Aitbayev </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 12, 2024</p>
+        <p class="date">July 15, 2024</p>
       </div>
     </div>
     
@@ -154,11 +180,25 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This is the first post in a Quarto blog. Welcome!</p>
-<p><img src="thumbnail.jpg" class="img-fluid"></p>
-<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+<section id="notes-for-denoising-diffusion-probabilistic-models" class="level1">
+<h1>Notes for “Denoising Diffusion Probabilistic Models”</h1>
+<p>My notes for the <a href="https://arxiv.org/pdf/2006.11239">“Denoising Diffusion Probabilistic Models”</a> paper.</p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p><img src="figure2.jpg" class="img-fluid" width="490"></p>
+<p>We have latent variables <span class="math inline">\(\mathbf{x_1},\mathbf{x_2}, ..., \mathbf{x_T}\)</span> of the same dimensionality as the image <span class="math inline">\(\mathbf{x_0}\)</span>. The <em>forward process</em> or <em>diffusion process</em> is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule <span class="math inline">\(\beta_1, ..., \beta_T\)</span>:</p>
+<p><span class="math display">\[
+\mathbf{
+q(x_t|x_{t-1})= \mathcal{N} (x_t; \sqrt{1-\beta_t}x_{t-1}, \beta_{t}I),
+\quad
+q(x_{1:T}|x_0)= \prod_{t=1}^T{q(x_t|x_{t-1})}
+}
+\]</span></p>
+<p>The above equation means that we start with our data <span class="math inline">\(\mathbf{x_0}\)</span>, then we sample a noise with the mean <span class="math inline">\(\mathbf{x_0}\)</span> scaled by <span class="math inline">\(\mathbf{\sqrt{1-\beta_1}}\)</span> and the variance <span class="math inline">\(\mathbf{\beta_1}\)</span>. Finally, we repeat this process <span class="math inline">\(\mathbf{T}\)</span> times and arrive at pure standard Gaussian noise when small enough <span class="math inline">\(\mathbf{\beta}\)</span> and big enough <span class="math inline">\(\mathbf{T}\)</span> values are used. This process is fixed and not learned, unlike variational auto-encoder models.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
