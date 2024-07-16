@@ -233,15 +233,17 @@ Here we used the fact that <a href="https://en.wikipedia.org/wiki/Sum_of_normall
 </div>
 </div>
 </div>
+<p>We can view the forward process as transitioning from our real-life complex distribution (image) to a simpler standard Gaussian distribution.</p>
 </section>
 <section id="reverse-process" class="level3">
 <h3 class="anchored" data-anchor-id="reverse-process">Reverse Process</h3>
-<p>The <em>reverse process</em>is a <strong>learned</strong> Gaussian transition starting at a pure standard Gaussian noise <span class="math inline">\(p(\mathbf{x}_T)=\mathcal{N}(\mathbf{x}_T; \mathbf{0}, \mathbf{I})\)</span>, then:</p>
+<p>The <em>reverse process</em> is a <strong>learned</strong> Gaussian transition starting at a pure standard Gaussian noise <span class="math inline">\(p(\mathbf{x}_T)=\mathcal{N}(\mathbf{x}_T; \mathbf{0}, \mathbf{I})\)</span>, then:</p>
 <p><span class="math display">\[
 p_{\theta}(\mathbf{x_{t-1}|x_t}) = \mathcal{N}(\mathbf{x_{t-1}}; \mathbf{\mu_\theta(x_t, t), \Sigma_\theta(x_t, t)})
 \quad p_\theta(\mathbf{x}_{0:T}) = p(\mathbf{x}_T)\prod_{t=1}^T{q(\mathbf{x_t|x_{t-1}})}
 \]</span></p>
 <p>The above means that we start with a pure noise <span class="math inline">\(\mathbf{x}_T\)</span>, then we gradually remove noises by sampling from learned means <span class="math inline">\(\mu_\theta(\mathbf{x_t; t})\)</span> and variances <span class="math inline">\(\mathbf{\Sigma_\theta(x_t, t)}\)</span> parameterized by <span class="math inline">\(\mathbf{\theta}\)</span>.</p>
+<p>We can view the reverse process as transitioning from a simple standard Gaussian distribution to our real-life complex distribution inferred from the dataset. All possible images are reachable from the final standard Gaussian noise; however, fewer and fewer images will be reachable as we go in reverse.</p>
 
 
 </section>
