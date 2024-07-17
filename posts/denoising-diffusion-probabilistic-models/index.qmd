@@ -3,7 +3,7 @@ title: "Denoising Diffusion Probabilistic Models"
 author: "Madiyar Aitbayev"
 date: "2024-07-15"
 categories: [diffusion, paper]
-image: "image.jpg"
+image: "images/image.jpg"
 ---
 
 # Notes for "Denoising Diffusion Probabilistic Models"
@@ -12,7 +12,7 @@ My notes for the ["Denoising Diffusion Probabilistic Models"](https://arxiv.org/
 
 ## Background
 
-![](figure2.jpg){width="490"}
+![](images/figure2.jpg){width="490"}
 
 ### Forward Process
 
@@ -70,7 +70,9 @@ $$
 
 The above means that we start with a pure noise $\mathbf{x}_T$, then we gradually remove noises by sampling from learned means $\mu_\theta(\mathbf{x_t; t})$ and variances $\mathbf{\Sigma_\theta(x_t, t)}$ parameterized by $\mathbf{\theta}$.
 
-We can view the reverse process as transitioning from a simple standard Gaussian distribution to our real-life complex distribution inferred from the dataset. All possible images are reachable from the final standard Gaussian noise; however, fewer and fewer images will be reachable as we go in reverse.
+We can view the reverse process as transitioning from a simple standard Gaussian distribution to our real-life complex distribution inferred from the dataset. All possible images are reachable from the final standard Gaussian noise; however, fewer and fewer images will be reachable as we go in reverse. See the images below for reachable images from $\mathbf{x}_{1000}$, $\mathbf{x}_{750}$, $\mathbf{x}_{500}$, $\mathbf{x}_{250}$, $\mathbf{x}_{0}$
+
+![](images/figure3.jpg)
 
 ### Loss
 
@@ -86,7 +88,7 @@ $$
 \right]
 $$
 
-:::: {.callout-note collapse="true"}
+::: {.callout-note collapse="true"}
 ## Proof
 
 **Proof 1: Using Jenson's Inequality**
@@ -152,4 +154,6 @@ D_{KL}(q(\mathbf{x_{1:T}}|\mathbf{x_0}) || p_\theta(\mathbf{x_{1:T}|x_0}))\\
 $$
 
 The KL divergence is always non-negative, hence the lower bound approximation
-::::
+:::
+
+The forward process variances $\beta_t$ are hyperparameters. The reverse process $p_\theta(\mathbf{x_{t-1} | x_t})$ is Gaussian, when the forward process is Gaussian and $\beta_t$ are small.

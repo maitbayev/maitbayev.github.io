@@ -185,7 +185,7 @@ window.Quarto = {
 <p>My notes for the <a href="https://arxiv.org/pdf/2006.11239">“Denoising Diffusion Probabilistic Models”</a> paper.</p>
 <section id="background" class="level2">
 <h2 class="anchored" data-anchor-id="background">Background</h2>
-<p><img src="figure2.jpg" class="img-fluid" width="490"></p>
+<p><img src="images/figure2.jpg" class="img-fluid" width="490"></p>
 <section id="forward-process" class="level3">
 <h3 class="anchored" data-anchor-id="forward-process">Forward Process</h3>
 <p>We have latent variables <span class="math inline">\(\mathbf{x_1},\mathbf{x_2}, ..., \mathbf{x_T}\)</span> of the same dimensionality as the image <span class="math inline">\(\mathbf{x_0}\)</span>. The f<em>orward process</em> or <em>diffusion process</em> is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule <span class="math inline">\(\beta_1, ..., \beta_T\)</span>:</p>
@@ -243,7 +243,8 @@ p_{\theta}(\mathbf{x_{t-1}|x_t}) = \mathcal{N}(\mathbf{x_{t-1}}; \mathbf{\mu_\th
 \quad p_\theta(\mathbf{x}_{0:T}) = p(\mathbf{x}_T)\prod_{t=1}^T{p_\theta(\mathbf{x_{t-1}|x_t})}
 \]</span></p>
 <p>The above means that we start with a pure noise <span class="math inline">\(\mathbf{x}_T\)</span>, then we gradually remove noises by sampling from learned means <span class="math inline">\(\mu_\theta(\mathbf{x_t; t})\)</span> and variances <span class="math inline">\(\mathbf{\Sigma_\theta(x_t, t)}\)</span> parameterized by <span class="math inline">\(\mathbf{\theta}\)</span>.</p>
-<p>We can view the reverse process as transitioning from a simple standard Gaussian distribution to our real-life complex distribution inferred from the dataset. All possible images are reachable from the final standard Gaussian noise; however, fewer and fewer images will be reachable as we go in reverse.</p>
+<p>We can view the reverse process as transitioning from a simple standard Gaussian distribution to our real-life complex distribution inferred from the dataset. All possible images are reachable from the final standard Gaussian noise; however, fewer and fewer images will be reachable as we go in reverse. See the images below for reachable images from <span class="math inline">\(\mathbf{x}_{1000}\)</span>, <span class="math inline">\(\mathbf{x}_{750}\)</span>, <span class="math inline">\(\mathbf{x}_{500}\)</span>, <span class="math inline">\(\mathbf{x}_{250}\)</span>, <span class="math inline">\(\mathbf{x}_{0}\)</span></p>
+<p><img src="images/figure3.jpg" class="img-fluid"></p>
 </section>
 <section id="loss" class="level3">
 <h3 class="anchored" data-anchor-id="loss">Loss</h3>
@@ -331,6 +332,7 @@ D_{KL}(q(\mathbf{x_{1:T}}|\mathbf{x_0}) || p_\theta(\mathbf{x_{1:T}|x_0}))\\
 </div>
 </div>
 </div>
+<p>The forward process variances <span class="math inline">\(\beta_t\)</span> are hyperparameters. The reverse process <span class="math inline">\(p_\theta(\mathbf{x_{t-1} | x_t})\)</span> is Gaussian, when the forward process is Gaussian and <span class="math inline">\(\beta_t\)</span> are small.</p>
 
 
 </section>
