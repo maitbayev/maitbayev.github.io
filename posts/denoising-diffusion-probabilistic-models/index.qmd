@@ -26,7 +26,7 @@ q(x_{1:T}|x_0)= \prod_{t=1}^T{q(x_t|x_{t-1})}
 }
 $$
 
-The above equation means that we start with our data $\mathbf{x_0}$, then we sample a noisy version of our image $\mathbf{x_1}$ with the mean $\mathbf{x_0}$ scaled by $\mathbf{\sqrt{1-\beta_1}}$ and the variance $\mathbf{\beta_1}$. Finally, we repeat this process $\mathbf{T}$ times and arrive at pure standard Gaussian noise when small enough $\mathbf{\beta}$ and large enough $\mathbf{T}$ values are used. This process is fixed and not learned, unlike variational auto-encoder models.
+The above equation means that we start with our data $\mathbf{x_0}$, then we sample a noisy version of our image $\mathbf{x_1}$ with the mean $\mathbf{x_0}$ scaled by $\mathbf{\sqrt{1-\beta_1}}$ and the variance $\mathbf{\beta_1}$. Finally, we repeat this process $\mathbf{T}$ times and arrive at pure standard Gaussian noise when small enough $\mathbf{\beta}$ and large enough $\mathbf{T}$ values are used. This process is fixed and not learned, unlike variational auto-encoder (VAE) models.
 
 A nice benefit from the forward process is that we can sample $\mathbf{x_t}$ at any timestep $\mathbf{t}$ in closed form without simulating the forward process steps $\mathbf{t}$ times. Let $\mathbf{\alpha_t=1-\beta_t}$ and $\mathbf{ \bar{\alpha}_t = \prod_{i=1}^t\alpha_i }$ :
 
@@ -65,9 +65,93 @@ The *reverse process* is a **learned** Gaussian transition starting at a pure st
 
 $$
 p_{\theta}(\mathbf{x_{t-1}|x_t}) = \mathcal{N}(\mathbf{x_{t-1}}; \mathbf{\mu_\theta(x_t, t), \Sigma_\theta(x_t, t)}) 
-\quad p_\theta(\mathbf{x}_{0:T}) = p(\mathbf{x}_T)\prod_{t=1}^T{q(\mathbf{x_t|x_{t-1}})}
+\quad p_\theta(\mathbf{x}_{0:T}) = p(\mathbf{x}_T)\prod_{t=1}^T{p_\theta(\mathbf{x_{t-1}|x_t})}
 $$
 
 The above means that we start with a pure noise $\mathbf{x}_T$, then we gradually remove noises by sampling from learned means $\mu_\theta(\mathbf{x_t; t})$ and variances $\mathbf{\Sigma_\theta(x_t, t)}$ parameterized by $\mathbf{\theta}$.
 
 We can view the reverse process as transitioning from a simple standard Gaussian distribution to our real-life complex distribution inferred from the dataset. All possible images are reachable from the final standard Gaussian noise; however, fewer and fewer images will be reachable as we go in reverse.
+
+### Loss
+
+Training is performed by optimizing the variational lower bound (or the evidence lower bound) similar to the VAE:
+
+$$
+\mathbb{E}[-\log p_\theta(\mathbf{x}_0)] \le 
+\mathbb{E}_q\left[-\log 
+  \frac{p_\theta(\mathbf{x_{0:T}})}{q(\mathbf{x_{1:T}}|\mathbf{x_0})}
+\right]=
+\mathbb{E}\left[
+-\log p(\mathbf{x_T}) - \sum_{t\ge1}\log{\frac{p_\theta(\mathbf{x_{t-1}|x_t})}{q(\mathbf{x_{t}|x_{t-1}})}}
+\right]
+$$
+
+:::: {.callout-note collapse="true"}
+## Proof
+
+**Proof 1: Using Jenson's Inequality**
+
+$$
+\mathbf {
+\begin{aligned}
+\log p_\theta(\mathbf{x})&=log\int{p_\theta(\mathbf{x_{0:T}})d\mathbf{x_{1:T}}}\\
+&=log\int{ \frac {p_\theta(\mathbf{x_{0:T}}) q(\mathbf{x_{1:T}}|\mathbf{x_0}) } {q(\mathbf{x_{1:T}}|\mathbf{x_0})} d\mathbf{x_{1:T}} }\\
+&=\log \mathbb{E}_{q(\mathbf{x_{1:T}}|\mathbf{x_0})}\left[ 
+  \frac{p_\theta(\mathbf{x_{0:T}})}{q(\mathbf{x_{1:T}}|\mathbf{x_0})}
+\right]\\
+&\ge \mathbb{E}_{q(\mathbf{x_{1:T}}|\mathbf{x_0})}\left[  \log
+  \frac{p_\theta(\mathbf{x_{0:T}})}{q(\mathbf{x_{1:T}}|\mathbf{x_0})}
+\right]\\
+\end{aligned}
+}
+$$
+
+**Proof 2: Using KL Divergence**
+
+::: {.callout-note collapse="true"}
+$$
+\mathbf {
+\begin{aligned}
+\log p(\mathbf{x_0})&=\log p(\mathbf{x_0}) \int { 
+  q(\mathbf{x_{1:T}}|\mathbf{x_0})  d\mathbf{x_{1:T}}
+} \\
+&= \int { 
+  q(\mathbf{x_{1:T}}|\mathbf{x_0}) (\log p(\mathbf{x_0})) d\mathbf{x_{1:T}}
+} \\
+&= \mathbb{E}_{q(\mathbf{x_{1:T}}|\mathbf{x_0})} \left[
+\log p(\mathbf{x_0})
+\right]\\
+&=  \mathbb{E}_{q(\mathbf{x_{1:T}}|\mathbf{x_0})} \left[
+\log
+\frac{q(\mathbf{x_{0:T}})}{q(\mathbf{x_{1:T}}|\mathbf{x_0})}
+\right]\\
+&=  \mathbb{E}_{q(\mathbf{x_{1:T}}|\mathbf{x_0})} \left[
+\log
+\frac{ q(\mathbf{x_{0:T}}) p_\theta(\mathbf{x_{0:T}}) }{ q(\mathbf{x_{1:T}}|\mathbf{x_0}) p_\theta(\mathbf{x_{0:T}})}
+\right]\\
+&=\mathbb{E}_{q(\mathbf{x_{1:T}}|\mathbf{x_0})} \left[
+\log
+\frac{ p_\theta(\mathbf{x_{0:T}}) }{ q(\mathbf{x_{1:T}}|\mathbf{x_0})}
+\right]
++
+ \mathbb{E}_{q(\mathbf{x_{1:T}}|\mathbf{x_0})} \left[
+\log
+\frac{ q(\mathbf{x_{1:T}|x_0})p(\mathbf{x_0}) }{ p_\theta(\mathbf{x_{1:T}|x_0})p(\mathbf{x_0}) }
+\right]\\
+&=\mathbb{E}_{q(\mathbf{x_{1:T}}|\mathbf{x_0})} \left[
+\log
+\frac{ p_\theta(\mathbf{x_{0:T}}) }{ q(\mathbf{x_{1:T}}|\mathbf{x_0})}
+\right]
++
+D_{KL}(q(\mathbf{x_{1:T}}|\mathbf{x_0}) || p_\theta(\mathbf{x_{1:T}|x_0}))\\
+&\ge \mathbb{E}_{q(\mathbf{x_{1:T}}|\mathbf{x_0})} \left[
+\log
+\frac{ p_\theta(\mathbf{x_{0:T}}) }{ q(\mathbf{x_{1:T}}|\mathbf{x_0})}
+\right]
+\end{aligned}
+}
+$$
+:::
+
+The KL divergence is always non-negative, hence the lower bound approximation
+::::
