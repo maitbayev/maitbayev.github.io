@@ -108,7 +108,6 @@ $$
 
 **Proof 2: Using KL Divergence**
 
-::: {.callout-note collapse="true"}
 $$
 \mathbf {
 \begin{aligned}
@@ -151,7 +150,6 @@ D_{KL}(q(\mathbf{x_{1:T}}|\mathbf{x_0}) || p_\theta(\mathbf{x_{1:T}|x_0}))\\
 \end{aligned}
 }
 $$
-:::
 
 The KL divergence is always non-negative, hence the lower bound approximation
 ::::
