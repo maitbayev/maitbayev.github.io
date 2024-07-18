@@ -83,7 +83,7 @@ $$
 \mathbb{E}_q\left[-\log 
   \frac{p_\theta(\mathbf{x_{0:T}})}{q(\mathbf{x_{1:T}}|\mathbf{x_0})}
 \right]=
-\mathbb{E}\left[
+\mathbb{E_q}\left[
 -\log p(\mathbf{x_T}) - \sum_{t\ge1}\log{\frac{p_\theta(\mathbf{x_{t-1}|x_t})}{q(\mathbf{x_{t}|x_{t-1}})}}
 \right]
 $$
@@ -157,3 +157,49 @@ The KL divergence is always non-negative, hence the lower bound approximation
 :::
 
 The forward process variances $\beta_t$ are hyperparameters. The reverse process $p_\theta(\mathbf{x_{t-1} | x_t})$ is Gaussian, when the forward process is Gaussian and $\beta_t$ are small.
+
+Efficient training is possible by optimizing random terms of the loss, however it requires two random variables for each term, $\mathbf{x_{t-1}}$ and $\mathbf{x_{t}}$, which introduces high variance Monte Carlo estimates. We can reduce the variance:
+
+$$
+E_q \left[
+D_{KL}(q(\mathbf{x_t|x_0}||p(\mathbf{x_T}))
++ 
+\sum_{t\gt1}{D_{KL}(q(\mathbf{x_{t-1}|x_t,x_0})||p_\theta(\mathbf{x_{t-1}|x_t}))}
+-
+\log p_\theta(\mathbf{x_0|x_1})
+\right]
+$$
+
+::: {.callout-note collapse="true"}
+## Proof from Appendix A
+
+TODO
+:::
+
+The equation above is tractable when conditioned on $\mathbf{x_0}$:
+
+$$
+q(\mathbf{x_{t-1}|x_t, x_0})=\mathcal{N}(\mathbf{x_{t-1}; \mathbf{\tilde{\mu_t}(
+x_t, x_0), \tilde{\beta_t}}I})
+$$
+
+where:
+
+$$
+ \mathbf{\tilde{\mu_t}(
+x_t, x_0) = 
+\frac{ \sqrt{\bar{\alpha}_{t-1}} \beta_t }{ 1 - \bar{\alpha}_t}x_0
++
+\frac{ \sqrt{\alpha_t}(1-\bar{\alpha}_{t-1}) }{ 1 - \bar{\alpha}_t} x_t
+}
+$$
+
+and
+
+$$
+\tilde{\beta}_t=\frac{ 1-\bar{\alpha}_{t-1} }{1-\bar{\alpha}_t}\beta_t
+$$
+
+All KL divergences in the loss are comparisons between Gaussians, which can be calculated in closed form instead of Monte Carlo estimates.
+
+## Diffusion models and denoising autoencoders
