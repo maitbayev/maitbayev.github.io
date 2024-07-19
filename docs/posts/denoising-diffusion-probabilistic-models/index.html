@@ -336,7 +336,7 @@ D_{KL}(q(\mathbf{x_{1:T}}|\mathbf{x_0}) || p_\theta(\mathbf{x_{1:T}|x_0}))\\
 <p>Efficient training is possible by optimizing random terms of the loss, however it requires two random variables for each term, <span class="math inline">\(\mathbf{x_{t-1}}\)</span> and <span class="math inline">\(\mathbf{x_{t}}\)</span>, which introduces high variance Monte Carlo estimates. We can reduce the variance:</p>
 <p><span class="math display">\[
 E_q \left[
-D_{KL}(q(\mathbf{x_t|x_0}||p(\mathbf{x_T}))
+D_{KL}(q(\mathbf{x_T|x_0}||p(\mathbf{x_T}))
 +
 \sum_{t\gt1}{D_{KL}(q(\mathbf{x_{t-1}|x_t,x_0})||p_\theta(\mathbf{x_{t-1}|x_t}))}
 -
@@ -355,7 +355,43 @@ Proof from Appendix A
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO</p>
+<p><span class="math display">\[
+\begin{aligned}
+L &amp;= \mathbb{E}_{q( \mathbf{x_{1:T}|x0} )} \left[
+-\log \frac{p_\theta(\mathbf{x_{0:T}}) } { q(\mathbf{x_{1:T}|x_0}) }\\
+\right]\\
+&amp;=  \mathbb{E}_{q( \mathbf{x_{1:T}|x0} )} \left[
+-\log p(\mathbf{x_T})
+-
+\sum_{t\ge1}{\log \frac{ p_\theta(\mathbf{x_{t-1}|x_t}) } { q(\mathbf{x_t|x_{t-1}} ) } }
+\right]\\
+&amp;=  \mathbb{E}_{q( \mathbf{x_{1:T}|x0} )} \left[
+-\log p(\mathbf{x_T})
+-
+\sum_{t&gt;1}{\log \frac{ p_\theta(\mathbf{x_{t-1}|x_t}) } { q(\mathbf{x_t|x_{t-1}} ) } }
+- \log \frac{ p_\theta(\mathbf{x_{0}|x_1}) } { q(\mathbf{x_1|x_0} ) }
+\right]\\
+&amp;=  -\mathbb{E}_{q( \mathbf{x_{1:T}|x0} )} \left[
+-\log p(\mathbf{x_T})
+-
+\sum_{t&gt;1}{\log \frac{ p_\theta(\mathbf{x_{t-1}|x_t}) } { q(\mathbf{x_{t-1}|x_t, x_0} ) } }
+\cdot \frac{q(\mathbf{x_{t-1}|x_0}) }{ q(\mathbf{x_t|x_0}) }
+- \log \frac{ p_\theta(\mathbf{x_{0}|x_1}) } { q(\mathbf{x_1|x_0} ) }
+\right]\\
+&amp;=  -\mathbb{E}_{q( \mathbf{x_{1:T}|x0} )} \left[
+-\log \frac{ p(\mathbf{x_T}) }{q(\mathbf{x_T|x_0})}
+-
+\sum_{t&gt;1}{\log \frac{ p_\theta(\mathbf{x_{t-1}|x_t}) } { q(\mathbf{x_{t-1}|x_t, x_0} ) } }
+- \log p_\theta(\mathbf{x_{0}|x_1})
+\right]\\
+&amp;=  \mathbb{E}_{q( \mathbf{x_{1:T}|x0} )} \left[
+D_{KL}(q(\mathbf{x_T|x_0} || p(\mathbf{x}_T))
++
+\sum_{t&gt;1}{ D_{KL}( q(\mathbf{x_{t-1}|x_t, x_0})||p_\theta(\mathbf{x_{t-1}|x_t})  )  }
+- \log p_\theta(\mathbf{x_{0}|x_1})
+\right]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
