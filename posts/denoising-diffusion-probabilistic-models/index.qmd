@@ -246,7 +246,7 @@ The forward process variances $\beta_{t}$ are constants (hyperparameters), thus 
 
 We now discuss $p_\theta( \mathbf{x_{t-1}|x_t} ) = \mathcal{N}( \mathbf{x_{t-1}; \mu_\theta(x_t, t), \sum_\theta(x_t, t )} )$ . First, we set $\sum_\theta( \mathbf{x_t, t} ) = \sigma_t^2\mathbf{I}$ to untrained constant. Experimentally, $\sigma_t^2=\beta_t$ and $\sigma_t^2=\tilde{\beta}_t=\frac{1-\tilde{\alpha}_{t-1}}{1-\tilde{\alpha}_t}\beta_t$ had similar results.
 
-Second, the mean is parameterized by the following analysis of $\mathbf{L_t}$ . With $p_\theta(\mathbf{x_{t-1} | x_t} )=\mathcal{N}( \mathbf{x_{t-1} ; \mu_\theta(x_t;t), \sigma_t^2I } )$ :
+Second, the mean is parameterized by the following analysis of $\mathbf{L_t}$, where $p_\theta(\mathbf{x_{t-1} | x_t} )=\mathcal{N}( \mathbf{x_{t-1} ; \mu_\theta(x_t;t), \sigma_t^2I } )$ :
 
 $$
 L_{t-1}=\mathbb{E}_q \left[
@@ -262,7 +262,7 @@ $$
 
 where C is a constant that does not depend on $\mathbf{\theta}$. The variance terms disappeared since they are the same between the forward and reverse processes. Hence, the most straightforward parameterization of $\mathbf{\mu_\theta}$ is a model that predicts $\mathbf{\tilde{\mu}_t}$.
 
-However, we can expand the equation above further by the reparameterizing $\mathbf{x_t(x_0, \epsilon)=\sqrt{\bar{\alpha}_t}x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon}$ $$
+However, we can expand the equation above further by reparameterizing $\mathbf{x_t(x_0, \epsilon)=\sqrt{\bar{\alpha}_t}x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon}$ $$
 \begin{aligned}
 L_{t-1}-C&=E_{\mathbf{x_0}, \epsilon} \left[
 \frac{1}{2\sigma_t^2}\Vert
