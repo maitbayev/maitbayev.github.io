@@ -238,4 +238,112 @@ $$
 
 All KL divergences in the loss are comparisons between Gaussians, which can be calculated in closed form instead of Monte Carlo estimates.
 
-## Diffusion models and denoising autoencoders
+## Diffusion Models and Denoising Autoencoders
+
+### Reverse Process and $\mathbf{L_{1:T-1}}$
+
+The forward process variances $\beta_{t}$ are constants (hyperparameters), thus $L_t$ is a constant during training and can be ignored.
+
+We now discuss $p_\theta( \mathbf{x_{t-1}|x_t} ) = \mathcal{N}( \mathbf{x_{t-1}; \mu_\theta(x_t, t), \sum_\theta(x_t, t )} )$ . First, we set $\sum_\theta( \mathbf{x_t, t} ) = \sigma_t^2\mathbf{I}$ to untrained constant. Experimentally, $\sigma_t^2=\beta_t$ and $\sigma_t^2=\tilde{\beta}_t=\frac{1-\tilde{\alpha}_{t-1}}{1-\tilde{\alpha}_t}\beta_t$ had similar results.
+
+Second, the mean is parameterized by the following analysis of $\mathbf{L_t}$ . With $p_\theta(\mathbf{x_{t-1} | x_t} )=\mathcal{N}( \mathbf{x_{t-1} ; \mu_\theta(x_t;t), \sigma_t^2I } )$ :
+
+$$
+L_{t-1}=\mathbb{E}_q \left[
+\frac{1}{2\sigma_t^2}\Vert
+\mathbf{
+\tilde{\mu}_t(x_t, x_0) - \mu_\theta(x_t, t)
+} 
+\Vert^2
+\right]
++
+C
+$$
+
+where C is a constant that does not depend on $\mathbf{\theta}$. The variance terms disappeared since they are the same between the forward and reverse processes. Hence, the most straightforward parameterization of $\mathbf{\mu_\theta}$ is a model that predicts $\mathbf{\tilde{\mu}_t}$.
+
+However, we can expand the equation above further by the reparameterizing $\mathbf{x_t(x_0, \epsilon)=\sqrt{\bar{\alpha}_t}x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon}$ $$
+\begin{aligned}
+L_{t-1}-C&=E_{\mathbf{x_0}, \epsilon} \left[
+\frac{1}{2\sigma_t^2}\Vert
+\mathbf{\tilde{\mu_t}\left(
+  x_t(
+    x_0, \epsilon), 
+    \frac{1}{ \sqrt{\bar{\alpha}_t} }(x_t(x_0, \epsilon) - \sqrt{1-\bar{\alpha}_t}\epsilon)
+\right)}
+-
+\mathbf{
+\mu_\theta(x_t(x_0, \epsilon), t)
+\Vert^2
+}
+\right]\\
+&=E_{\mathbf{x_0}, \epsilon} \left[
+\mathbf{
+\frac{1}{2\sigma_t^2}\Vert
+\frac{1}{\sqrt{\alpha_t}} \left(
+x_t(x_0, \epsilon)-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon
+\right)
+-
+\mu_\theta(x_t(x_0, \epsilon), t)
+\Vert^2
+}
+\right]\\ 
+\end{aligned}
+$$
+
+The above equation reveals that $\mathbf{\mu_\theta}$ must predict $\mathbf{ \frac{1}{\sqrt{\alpha_t}}\left(x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon \right) }$ given $\mathbf{x_t}$. We may choose the following parameterization:
+
+$$
+\mathbf {
+\mu_\theta(x_t, t)=\tilde{\mu}_t\left(
+x_t,
+\frac{1}{\sqrt{\bar{a}_t}}(x_t-\sqrt{1-\alpha_t}\epsilon_\theta(x_t))
+\right)
+=\frac{1}{\sqrt{\alpha_t}} \left(
+x_t-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_\theta(x_t, t)
+\right)
+}
+$$
+
+Where $\mathbf{\epsilon_\theta}$ is a function approximator to predict $\mathbf{\epsilon}$ from $\mathbf{x_t}$. We choose the above parameterization because it is in the same form as $\mathbf{\tilde{\mu}(x_t, x_0)}$.
+
+To sample $\mathbf{x_{t-1} \sim p_\theta(x_{t-1}|x_t)}$ is to compute $\mathbf{x_{t-1}}=\frac{1}{\sqrt{\alpha_t}}\left( \mathbf{x_t} - \frac{\beta_t}{\sqrt{1-\tilde{\alpha}_t}}\mathbf{\epsilon}_\theta(x_t, t) \right) + \sigma_t\mathbf{z}$ , where $\mathbf{z} \sim \mathcal{N}(0, I)$ . Furthermore, the loss simplifies to:
+
+$$
+E_{\mathbf{x_0}, \epsilon} \left[
+\mathbf{
+\frac{\beta_t^2}{2\sigma_t^2\alpha_t(1-\bar{\alpha}_t)}
+\Vert
+\epsilon
+-
+\epsilon_\theta(
+\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon, t
+)
+\Vert^2
+}
+\right]
+$$
+
+To summarize, we can train the reverse process mean function approximator $\mathbf{\mu_\theta}$ to predict $\mathbf{\mu_t}$, or we can train $\epsilon_\theta$ to predict $\epsilon$.
+
+![](images/figure4.jpg)
+
+### Simplified Training Objective
+
+It is simpler to implement to train on the following variant of the lower variational bound, which is a **weighted variational bound**:
+
+$$
+E_{\mathbf{x_0}, \epsilon} \left[
+\mathbf{
+\Vert
+\epsilon
+-
+\epsilon_\theta(
+\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon, t
+)
+\Vert^2
+}
+\right]
+$$
+
+This also leads to better sample quality, since it down-weights loss terms corresponding to small **t** so that the network can focus on more difficult denoising tasks at larger **t** terms.

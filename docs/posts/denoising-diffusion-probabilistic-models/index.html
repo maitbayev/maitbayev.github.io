@@ -417,9 +417,103 @@ x_t, x_0) =
 </section>
 </section>
 <section id="diffusion-models-and-denoising-autoencoders" class="level2">
-<h2 class="anchored" data-anchor-id="diffusion-models-and-denoising-autoencoders">Diffusion models and denoising autoencoders</h2>
+<h2 class="anchored" data-anchor-id="diffusion-models-and-denoising-autoencoders">Diffusion Models and Denoising Autoencoders</h2>
+<section id="reverse-process-and-mathbfl_1t-1" class="level3">
+<h3 class="anchored" data-anchor-id="reverse-process-and-mathbfl_1t-1">Reverse Process and <span class="math inline">\(\mathbf{L_{1:T-1}}\)</span></h3>
+<p>The forward process variances <span class="math inline">\(\beta_{t}\)</span> are constants (hyperparameters), thus <span class="math inline">\(L_t\)</span> is a constant during training and can be ignored.</p>
+<p>We now discuss <span class="math inline">\(p_\theta( \mathbf{x_{t-1}|x_t} ) = \mathcal{N}( \mathbf{x_{t-1}; \mu_\theta(x_t, t), \sum_\theta(x_t, t )} )\)</span> . First, we set <span class="math inline">\(\sum_\theta( \mathbf{x_t, t} ) = \sigma_t^2\mathbf{I}\)</span> to untrained constant. Experimentally, <span class="math inline">\(\sigma_t^2=\beta_t\)</span> and <span class="math inline">\(\sigma_t^2=\tilde{\beta}_t=\frac{1-\tilde{\alpha}_{t-1}}{1-\tilde{\alpha}_t}\beta_t\)</span> had similar results.</p>
+<p>Second, the mean is parameterized by the following analysis of <span class="math inline">\(\mathbf{L_t}\)</span> . With <span class="math inline">\(p_\theta(\mathbf{x_{t-1} | x_t} )=\mathcal{N}( \mathbf{x_{t-1} ; \mu_\theta(x_t;t), \sigma_t^2I } )\)</span> :</p>
+<p><span class="math display">\[
+L_{t-1}=\mathbb{E}_q \left[
+\frac{1}{2\sigma_t^2}\Vert
+\mathbf{
+\tilde{\mu}_t(x_t, x_0) - \mu_\theta(x_t, t)
+}
+\Vert^2
+\right]
++
+C
+\]</span></p>
+<p>where C is a constant that does not depend on <span class="math inline">\(\mathbf{\theta}\)</span>. The variance terms disappeared since they are the same between the forward and reverse processes. Hence, the most straightforward parameterization of <span class="math inline">\(\mathbf{\mu_\theta}\)</span> is a model that predicts <span class="math inline">\(\mathbf{\tilde{\mu}_t}\)</span>.</p>
+<p>However, we can expand the equation above further by the reparameterizing <span class="math inline">\(\mathbf{x_t(x_0, \epsilon)=\sqrt{\bar{\alpha}_t}x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon}\)</span> <span class="math display">\[
+\begin{aligned}
+L_{t-1}-C&amp;=E_{\mathbf{x_0}, \epsilon} \left[
+\frac{1}{2\sigma_t^2}\Vert
+\mathbf{\tilde{\mu_t}\left(
+  x_t(
+    x_0, \epsilon),
+    \frac{1}{ \sqrt{\bar{\alpha}_t} }(x_t(x_0, \epsilon) - \sqrt{1-\bar{\alpha}_t}\epsilon)
+\right)}
+-
+\mathbf{
+\mu_\theta(x_t(x_0, \epsilon), t)
+\Vert^2
+}
+\right]\\
+&amp;=E_{\mathbf{x_0}, \epsilon} \left[
+\mathbf{
+\frac{1}{2\sigma_t^2}\Vert
+\frac{1}{\sqrt{\alpha_t}} \left(
+x_t(x_0, \epsilon)-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon
+\right)
+-
+\mu_\theta(x_t(x_0, \epsilon), t)
+\Vert^2
+}
+\right]\\
+\end{aligned}
+\]</span></p>
+<p>The above equation reveals that <span class="math inline">\(\mathbf{\mu_\theta}\)</span> must predict <span class="math inline">\(\mathbf{ \frac{1}{\sqrt{\alpha_t}}\left(x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon \right) }\)</span> given <span class="math inline">\(\mathbf{x_t}\)</span>. We may choose the following parameterization:</p>
+<p><span class="math display">\[
+\mathbf {
+\mu_\theta(x_t, t)=\tilde{\mu}_t\left(
+x_t,
+\frac{1}{\sqrt{\bar{a}_t}}(x_t-\sqrt{1-\alpha_t}\epsilon_\theta(x_t))
+\right)
+=\frac{1}{\sqrt{\alpha_t}} \left(
+x_t-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_\theta(x_t, t)
+\right)
+}
+\]</span></p>
+<p>Where <span class="math inline">\(\mathbf{\epsilon_\theta}\)</span> is a function approximator to predict <span class="math inline">\(\mathbf{\epsilon}\)</span> from <span class="math inline">\(\mathbf{x_t}\)</span>. We choose the above parameterization because it is in the same form as <span class="math inline">\(\mathbf{\tilde{\mu}(x_t, x_0)}\)</span>.</p>
+<p>To sample <span class="math inline">\(\mathbf{x_{t-1} \sim p_\theta(x_{t-1}|x_t)}\)</span> is to compute <span class="math inline">\(\mathbf{x_{t-1}}=\frac{1}{\sqrt{\alpha_t}}\left( \mathbf{x_t} - \frac{\beta_t}{\sqrt{1-\tilde{\alpha}_t}}\mathbf{\epsilon}_\theta(x_t, t) \right) + \sigma_t\mathbf{z}\)</span> , where <span class="math inline">\(\mathbf{z} \sim \mathcal{N}(0, I)\)</span> . Furthermore, the loss simplifies to:</p>
+<p><span class="math display">\[
+E_{\mathbf{x_0}, \epsilon} \left[
+\mathbf{
+\frac{\beta_t^2}{2\sigma_t^2\alpha_t(1-\bar{\alpha}_t)}
+\Vert
+\epsilon
+-
+\epsilon_\theta(
+\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon, t
+)
+\Vert^2
+}
+\right]
+\]</span></p>
+<p>To summarize, we can train the reverse process mean function approximator <span class="math inline">\(\mathbf{\mu_\theta}\)</span> to predict <span class="math inline">\(\mathbf{\mu_t}\)</span>, or we can train <span class="math inline">\(\epsilon_\theta\)</span> to predict <span class="math inline">\(\epsilon\)</span>.</p>
+<p><img src="images/figure4.jpg" class="img-fluid"></p>
+</section>
+<section id="simplified-training-objective" class="level3">
+<h3 class="anchored" data-anchor-id="simplified-training-objective">Simplified Training Objective</h3>
+<p>It is simpler to implement to train on the following variant of the lower variational bound, which is a <strong>weighted variational bound</strong>:</p>
+<p><span class="math display">\[
+E_{\mathbf{x_0}, \epsilon} \left[
+\mathbf{
+\Vert
+\epsilon
+-
+\epsilon_\theta(
+\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon, t
+)
+\Vert^2
+}
+\right]
+\]</span></p>
+<p>This also leads to better sample quality, since it down-weights loss terms corresponding to small <strong>t</strong> so that the network can focus on more difficult denoising tasks at larger <strong>t</strong> terms.</p>
 
 
+</section>
 </section>
 </section>
 
