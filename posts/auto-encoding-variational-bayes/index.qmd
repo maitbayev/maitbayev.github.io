@@ -169,5 +169,5 @@ In the above equation , only the reconstruction error $E_{q_\phi(\mathbf{z|x[i]}
 ::: {.callout-note collapse="True"}
 ## Proof
 
-TODO: for now see the [KL divergence between two multivariate normal distributions ](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions)
+TODO: for now see the [KL divergence between two multivariate normal distributions](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions)
 :::
