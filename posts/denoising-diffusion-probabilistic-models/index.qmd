@@ -8,7 +8,7 @@ image: "images/image.jpg"
 
 # Notes for "Denoising Diffusion Probabilistic Models"
 
-My notes for the ["Denoising Diffusion Probabilistic Models"](https://arxiv.org/pdf/2006.11239) paper.
+My notes for the ["Denoising Diffusion Probabilistic Models"](https://arxiv.org/pdf/2006.11239) paper. Feel free to ask questions on [my telegram channel](https://t.me/swemanml)
 
 ## Background
 
