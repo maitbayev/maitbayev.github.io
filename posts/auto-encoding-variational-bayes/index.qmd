@@ -136,7 +136,7 @@ q_\phi(z|x)=\mathcal{N}(z; \mu, \sigma^2) = \mu+\sigma\cdot\epsilon
 }
 $$
 
-where $\mathbf{ \epsilon \sim \mathcal{N}(\epsilon; 0, I) }$
+where $\mathbf{ \epsilon \sim \mathcal{N}(\epsilon; 0, I) }$ and we can choose $g_\phi(\epsilon, x)=\mu(x) + \sigma(x) \cdot \epsilon$
 
 Therefore, by the reparameterization trick, sampling from an arbitrary Gaussian distribution can be performed by sampling from a standard Gaussian, scaling and shifting the result by the target mean and the deviation, which is deterministic and differentiable.
 
@@ -163,3 +163,11 @@ $$
 \log p_\theta(\mathbf{x}[i] | \mathbf{z}[i][l])
 }
 $$
+
+In the above equation , only the reconstruction error $E_{q_\phi(\mathbf{z|x[i]})} \left[ \log p_\theta(\mathbf{x[i]|z})\right]$ requires estimation by sampling, since the KL-divergence term is integrated analytically.
+
+::: {.callout-note collapse="True"}
+## Proof
+
+TODO: for now see the [KL divergence between two multivariate normal distributions ](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions)
+:::

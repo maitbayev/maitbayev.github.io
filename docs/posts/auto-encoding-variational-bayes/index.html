@@ -318,7 +318,7 @@ Proof
 q_\phi(z|x)=\mathcal{N}(z; \mu, \sigma^2) = \mu+\sigma\cdot\epsilon
 }
 \]</span></p>
-<p>where <span class="math inline">\(\mathbf{ \epsilon \sim \mathcal{N}(\epsilon; 0, I) }\)</span></p>
+<p>where <span class="math inline">\(\mathbf{ \epsilon \sim \mathcal{N}(\epsilon; 0, I) }\)</span> and we can choose <span class="math inline">\(g_\phi(\epsilon, x)=\mu(x) + \sigma(x) \cdot \epsilon\)</span></p>
 <p>Therefore, by the reparameterization trick, sampling from an arbitrary Gaussian distribution can be performed by sampling from a standard Gaussian, scaling and shifting the result by the target mean and the deviation, which is deterministic and differentiable.</p>
 </section>
 </section>
@@ -342,6 +342,23 @@ q_\phi(z|x)=\mathcal{N}(z; \mu, \sigma^2) = \mu+\sigma\cdot\epsilon
 \log p_\theta(\mathbf{x}[i] | \mathbf{z}[i][l])
 }
 \]</span></p>
+<p>In the above equation , only the reconstruction error <span class="math inline">\(E_{q_\phi(\mathbf{z|x[i]})} \left[ \log p_\theta(\mathbf{x[i]|z})\right]\)</span> requires estimation by sampling, since the KL-divergence term is integrated analytically.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>TODO: for now see the <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions">KL divergence between two multivariate normal distributions</a></p>
+</div>
+</div>
+</div>
 
 
 </section>
