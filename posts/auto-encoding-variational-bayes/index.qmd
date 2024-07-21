@@ -76,8 +76,7 @@ p(\mathbf{x})=\frac{p(\mathbf{x,z})}{p(\mathbf{z|x})}
 $$
 :::
 
-The first term is the KL-divergence between the approximate and the true posterior. Since the KL-divergence is non-negative, the second term is called (**variational) lower bound.**
-Ideally, we would like to minimize the both terms. However, it is enough to optimize the lower bound w.r.t both parameters θand φ**.** Minimizing the lower bound will minimize the KL-divergence as well, since they sum up to a constant value.
+The first term is the KL-divergence between the approximate and the true posterior. Since the KL-divergence is non-negative, the second term is called (**variational) lower bound.** Ideally, we would like to minimize the both terms. However, it is enough to optimize the lower bound w.r.t both parameters θand φ**.** Minimizing the lower bound will minimize the KL-divergence as well, since they sum up to a constant value.
 
 **The variational lower bound,** also called as th**e evidence lower bound (**ELBO) can be also rewritten as:
 
@@ -140,3 +139,27 @@ $$
 where $\mathbf{ \epsilon \sim \mathcal{N}(\epsilon; 0, I) }$
 
 Therefore, by the reparameterization trick, sampling from an arbitrary Gaussian distribution can be performed by sampling from a standard Gaussian, scaling and shifting the result by the target mean and the deviation, which is deterministic and differentiable.
+
+## Variational Auto-Encoder
+
+We use a neural network for the probabilistic encoder $\mathbf{ q_\phi(z|x)}$ and where the parameters $\phi$ and $\theta$ are optimized jointly. We also assume that:
+
+-   $p_\theta(\mathbf{z})=\mathcal{N}(\mathbf{z; 0, I})$ - the prior over the latent variables is a standard Gaussian
+
+-   $p_\theta(\mathbf{x|z})$ is a multivariate Gaussian (in case of real-valued data) or Bernoulli (in case of binary data)
+
+-   $q_\phi(\mathbf{z|x})$ is approximately Gaussian with an approximately diagonal covariance: $\log q_\phi(\mathbf{z|x[i]})=\log \mathcal{N}(\mathbf{z; \mu[i], \sigma[i]^2I})$
+
+We use the reparameterization trick to sample from the posterior using $\mathbf{z[i, l]}=g_\phi( \mathbf{x[i], \epsilon[l]} )=\mathbf{\mu[i]+\sigma[i]\cdot \epsilon[l]}$. In this model both $\mathbf{p_\theta(z)}$ and $q_\phi(\mathbf{z|x})$ are Gaussian; hence we compute the KL divergence in a closed form without estimation:
+
+$$
+\mathcal{L}(\mathbf{\theta, \phi, x[i]}) 
+\simeq 
+\frac{1}{2}\sum_{j=1}^J{\left(
+1+\log(\sigma[i][j]^2) - \mu[i][j]^2 - \sigma[i][j]^2
+\right)}
++
+\frac{1}{L}\sum_{l=1}^L{
+\log p_\theta(\mathbf{x}[i] | \mathbf{z}[i][l])
+}
+$$

@@ -320,9 +320,30 @@ q_\phi(z|x)=\mathcal{N}(z; \mu, \sigma^2) = \mu+\sigma\cdot\epsilon
 \]</span></p>
 <p>where <span class="math inline">\(\mathbf{ \epsilon \sim \mathcal{N}(\epsilon; 0, I) }\)</span></p>
 <p>Therefore, by the reparameterization trick, sampling from an arbitrary Gaussian distribution can be performed by sampling from a standard Gaussian, scaling and shifting the result by the target mean and the deviation, which is deterministic and differentiable.</p>
-
-
 </section>
+</section>
+<section id="variational-auto-encoder" class="level2">
+<h2 class="anchored" data-anchor-id="variational-auto-encoder">Variational Auto-Encoder</h2>
+<p>We use a neural network for the probabilistic encoder <span class="math inline">\(\mathbf{ q_\phi(z|x)}\)</span> and where the parameters <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\theta\)</span> are optimized jointly. We also assume that:</p>
+<ul>
+<li><p><span class="math inline">\(p_\theta(\mathbf{z})=\mathcal{N}(\mathbf{z; 0, I})\)</span> - the prior over the latent variables is a standard Gaussian</p></li>
+<li><p><span class="math inline">\(p_\theta(\mathbf{x|z})\)</span> is a multivariate Gaussian (in case of real-valued data) or Bernoulli (in case of binary data)</p></li>
+<li><p><span class="math inline">\(q_\phi(\mathbf{z|x})\)</span> is approximately Gaussian with an approximately diagonal covariance: <span class="math inline">\(\log q_\phi(\mathbf{z|x[i]})=\log \mathcal{N}(\mathbf{z; \mu[i], \sigma[i]^2I})\)</span></p></li>
+</ul>
+<p>We use the reparameterization trick to sample from the posterior using <span class="math inline">\(\mathbf{z[i, l]}=g_\phi( \mathbf{x[i], \epsilon[l]} )=\mathbf{\mu[i]+\sigma[i]\cdot \epsilon[l]}\)</span>. In this model both <span class="math inline">\(\mathbf{p_\theta(z)}\)</span> and <span class="math inline">\(q_\phi(\mathbf{z|x})\)</span> are Gaussian; hence we compute the KL divergence in a closed form without estimation:</p>
+<p><span class="math display">\[
+\mathcal{L}(\mathbf{\theta, \phi, x[i]})
+\simeq
+\frac{1}{2}\sum_{j=1}^J{\left(
+1+\log(\sigma[i][j]^2) - \mu[i][j]^2 - \sigma[i][j]^2
+\right)}
++
+\frac{1}{L}\sum_{l=1}^L{
+\log p_\theta(\mathbf{x}[i] | \mathbf{z}[i][l])
+}
+\]</span></p>
+
+
 </section>
 </section>
 
