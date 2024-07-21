@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/auto-encoding-variational-bayes/index.html",
       "/posts/denoising-diffusion-probabilistic-models/index.html"
     ]
   }

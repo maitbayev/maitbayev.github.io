@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Madiyar Aitbayev">
+<meta name="dcterms.date" content="2024-07-21">
 
-<title>Madiyar’s Page</title>
+<title>Auto-Encoding Variational Bayes Notes – Madiyar’s Page</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -128,17 +99,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Madiyar’s Page</span>
     </a>
   </div>
@@ -168,119 +139,194 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Madiyar’s Page</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Auto-Encoding Variational Bayes Notes</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">diffusion</div>
+                <div class="quarto-category">paper</div>
+                <div class="quarto-category">autoencoder</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Madiyar Aitbayev </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 21, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="autoencoder">autoencoder <span class="quarto-category-count">(1)</span></div><div class="category" data-category="diffusion">diffusion <span class="quarto-category-count">(2)</span></div><div class="category" data-category="paper">paper <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="notes-for-auto-encoding-variational-bayes" class="level1">
+<h1>Notes for “Auto-Encoding Variational Bayes”</h1>
+<p>My notes for the <a href="https://arxiv.org/pdf/1312.6114">“Auto-Encoding Variational Bayes”</a> paper. Feel free to ask questions on <a href="https://t.me/swemanml">my telegram channel</a></p>
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">Method</h2>
+<section id="problem-scenario" class="level3">
+<h3 class="anchored" data-anchor-id="problem-scenario">Problem scenario</h3>
+<p>Let us consider some independently and identically distributed (i.i.d) dataset <span class="math inline">\(\mathbf{X}=\{\mathbf{x[1]}, \mathbf{x[2]}, ..., \mathbf{x[N]}\}\)</span>. We assume that the data involves an unobserved random variable <span class="math inline">\(\mathbf{z}\)</span>. Then, the process consists of two steps:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\mathbf{z[i]}\)</span> is generated from some prior distribution <span class="math inline">\(\mathbf{p_{\theta*}(z)}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{x[i]}\)</span> is generated from some conditional distribution <span class="math inline">\(\mathbf{p_{\theta*}(x|z)}\)</span></p></li>
+</ol>
+<p>Unfortunately, the true parameters <span class="math inline">\(\mathbf{ \theta* }\)</span> and the latent variables <span class="math inline">\(\mathbf{z[i]}\)</span> are unknown to us. Additionally, <span class="math inline">\(\mathbf{p_\theta(z|x)}\)</span> is intractable, so we approximate it with <span class="math inline">\(\mathbf{ q_\phi(z|x) }\)</span>. The model <span class="math inline">\(\mathbf{ q_\phi(z|x) }\)</span> is a probabilistic encoder model parameterized by <span class="math inline">\(\phi\)</span> . Similarly, <span class="math inline">\(\mathbf{p_\theta(x|z)}\)</span> is a probabilistic decoder model parameterized by <span class="math inline">\(\mathbf{\theta}\)</span>.</p>
+</section>
+<section id="the-variational-lower-bound" class="level3">
+<h3 class="anchored" data-anchor-id="the-variational-lower-bound">The variational lower bound</h3>
+<p>Ideally, we would like to optimize the marginal likelihoods of the dataset <strong>X</strong>:</p>
+<p><span class="math display">\[
+\mathbf{
+\log p_\theta(x[1], \cdots,x[N])=\sum_{i=1}^N{\log p_\theta(x[i])}
+}
+\]</span></p>
+<p>Where each term can be rewritten as:</p>
+<p><span class="math display">\[
+\mathbf{
+\log p_\theta(x[i]) = D_{KL}(q_\phi(z|x[i])||p_\theta(z|x[i])) + \mathcal{L}(\theta, \phi, x[i])
+}
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{aligned}
+\log p_\theta(\mathbf{x})
+&amp;= \log p_\theta(\mathbf{x})\int{ \mathbf{q_\phi(z|x)}d\mathbf{z}}
+\qquad \text{(Multiplying by 1)}\\
+&amp;= \int{\log p_\theta(\mathbf{x}) \mathbf{q_\phi(z|x)}d\mathbf{z}}\\
+&amp;= \mathbb{E}_{\mathbf{q_\phi(z|x)}} \left[
+\log p_\theta(\mathbf{x})
+\right] \qquad \text{(Definition of Expectation)}\\
+&amp;= \mathbb{E}_{\mathbf{q_\phi(z|x)}} \left[
+\log \frac{p_\theta(\mathbf{x, z})}{p_\theta(\mathbf{z|x})}
+\right] \qquad \text{(The chain rule of probability)} \\
+&amp;= \mathbb{E}_{\mathbf{q_\phi(z|x)}} \left[
+\log \frac{p_\theta(\mathbf{x, z})}{p_\theta(\mathbf{z|x})}
+\cdot \frac{\mathbf{q_\phi(z|x)}}{\mathbf{q_\phi(z|x)}}
+\right]\\
+&amp;= \mathbb{E}_{\mathbf{q_\phi(z|x)}} \left[
+\log \frac{ \mathbf{q_\phi(z|x)} }{ p_\theta(\mathbf{z|x}) }
+\right] + \mathbb{E}_{\mathbf{q_\phi(z|x)}} \left[
+\log \frac{ p_\theta(\mathbf{x, z}) }{ \mathbf{q_\phi(z|x)} }
+\right]\\
+&amp;= D_{KL}( \mathbf{q_\phi(z|x)} || p_\theta(\mathbf{z|x}) )
++ \mathcal{L}(\theta, \phi, \mathbf{x})
+\end{aligned}
+\]</span></p>
+<p>We used the chain rule of probability:</p>
+<p><span class="math display">\[
+p(\mathbf{x})=\frac{p(\mathbf{x,z})}{p(\mathbf{z|x})}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>The first term is the KL-divergence between the approximate and the true posterior. Since the KL-divergence is non-negative, the second term is called (<strong>variational) lower bound.</strong> Ideally, we would like to minimize the both terms. However, it is enough to optimize the lower bound w.r.t both parameters θand φ<strong>.</strong> Minimizing the lower bound will minimize the KL-divergence as well, since they sum up to a constant value.</p>
+<p><strong>The variational lower bound,</strong> also called as th<strong>e evidence lower bound (</strong>ELBO) can be also rewritten as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\log p_\theta(\mathbf{x[i]}) &amp;\ge \mathcal{L}(\theta, \phi; \mathbf{x[i]})\\
+&amp;= \mathbb{E}_{q_\phi(\mathbf{z|x[i]})} \left[
+-\log q_\phi(\mathbf{z|x[i]}) + \log p_\theta(\mathbf{x[i], z})
+\right]\\
+&amp;= -D_{KL}(q_\phi(\mathbf{z|x[i]})||p_\theta(\mathbf{z}))
++
+\mathbb{E}_{q_\phi(\mathbf{z|x[i]})} \left[
+\log p_\theta(\mathbf{x[i]|z})
+\right]
+\end{aligned}
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{L}(\theta, \phi; \mathbf{x})
+&amp;=\mathbb{E}_{\mathbf{q_\phi(z|x)}} \left[
+\log \frac{ p_\theta(\mathbf{x, z}) }{ \mathbf{q_\phi(z|x)} }
+\right]\\
+&amp;= \mathbb{E}_{\mathbf{q_\phi(z|x)}} \left[
+\log \frac{ p_\theta(\mathbf{x|z})p_\theta(\mathbf{z}) }{ \mathbf{q_\phi(z|x)} }
+\right]\\
+&amp;=
+\mathbb{E}_{\mathbf{q_\phi(z|x)}} \left[
+\log \frac{ p_\theta(\mathbf{z}) }{ \mathbf{q_\phi(z|x)} }
+\right]
++
+\mathbb{E}_{\mathbf{q_\phi(z|x)}} \left[
+\log  p_\theta(\mathbf{x|z})
+\right]\\
+&amp;=
+-D_{KL}(q_\phi(\mathbf{z|x})||p_\theta(\mathbf{z}))
++
+\mathbb{E}_{q_\phi(\mathbf{z|x})} \left[
+\log p_\theta(\mathbf{x|z})
+\right]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-reparameterization-trick" class="level3">
+<h3 class="anchored" data-anchor-id="the-reparameterization-trick">The reparameterization trick</h3>
+<p>The sampling from <span class="math inline">\(\mathbf{q_\phi(z|x)}\)</span> is a stochastic process which is not differentiable w.r.t. <span class="math inline">\(\phi\)</span>. We can use an alternative method for generating sample from <span class="math inline">\(\mathbf{q_\phi(z|x)}\)</span>, i.e., the reparameterization trick. We can often express the random variable <strong>z</strong> as a deterministic variable <span class="math inline">\(\mathbf{z=g_\phi(\epsilon, x)}\)</span>, where <span class="math inline">\(\epsilon\)</span> is an independent variable and <span class="math inline">\(\mathbf{g_\phi}\)</span> is a function parameterized by <span class="math inline">\(\phi\)</span>.</p>
+<p>The <span class="math inline">\(\mathbf{q_\phi(z|x)}\)</span> is commonly chosen to model a multivariate Gaussian with diagonal covariance, and the prior often is a standard Gaussian distribution:</p>
+<p><span class="math display">\[
+\mathbf{
+q_\phi(z|x)=\mathcal{N}(z; \mu, \sigma^2) = \mu+\sigma\cdot\epsilon
+}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{ \epsilon \sim \mathcal{N}(\epsilon; 0, I) }\)</span></p>
+<p>Therefore, by the reparameterization trick, sampling from an arbitrary Gaussian distribution can be performed by sampling from a standard Gaussian, scaling and shifting the result by the target mean and the deviation, which is deterministic and differentiable.</p>
 
 
+</section>
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="diffusion,paper,autoencoder" data-listing-date-sort="1721516400000" data-listing-file-modified-sort="1721571107532" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="479">
-<div class="thumbnail">
-<p><a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external"></a></p><a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/auto-encoding-variational-bayes/images/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external">Auto-Encoding Variational Bayes Notes</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('diffusion'); return false;">
-diffusion
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('paper'); return false;">
-paper
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('autoencoder'); return false;">
-autoencoder
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external">My notes for the “Auto-Encoding Variational Bayes” paper. Feel free to ask questions on my telegram channel</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external">
-<div class="listing-date">
-Jul 21, 2024
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="diffusion,paper" data-listing-date-sort="1720998000000" data-listing-file-modified-sort="1721556444118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1064">
-<div class="thumbnail">
-<p><a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external"></a></p><a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/denoising-diffusion-probabilistic-models/images/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external">Denoising Diffusion Probabilistic Models</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('diffusion'); return false;">
-diffusion
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('paper'); return false;">
-paper
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external">My notes for the “Denoising Diffusion Probabilistic Models” paper. Feel free to ask questions on my telegram channel</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external">
-<div class="listing-date">
-Jul 15, 2024
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
