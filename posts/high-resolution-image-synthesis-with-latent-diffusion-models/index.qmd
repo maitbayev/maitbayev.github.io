@@ -1,0 +1,11 @@
+---
+title: "WIP: High-Resolution Image Synthesis with Latent Diffusion Models Notes"
+author: "Madiyar Aitbayev"
+date: "2024-07-22"
+categories: [stable, diffusion, paper]
+image: "images/image.jpg"
+---
+
+# Notes for "High-Resolution Image Synthesis with Latent Diffusion Models"
+
+My notes for the ["High-Resolution Image Synthesis with Latent Diffusion Models"](https://arxiv.org/pdf/2112.10752) paper. Feel free to ask questions on [my telegram channel](https://t.me/swemanml)

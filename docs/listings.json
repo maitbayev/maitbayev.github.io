@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html",
       "/posts/auto-encoding-variational-bayes/index.html",
       "/posts/denoising-diffusion-probabilistic-models/index.html"
     ]
