@@ -401,7 +401,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 </div>
 <p>In Lasso Regression, we’re looking for <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_2\)</span> within the diamond that has the lowest loss, which is marked with the red point in the figure above. The global minima without any constraint is marked with “x”.</p>
 <p>The same visualization but with the L2 constraint t=5, i.e., <span class="math inline">\(\beta_1^2+\beta_2^2 \le 5^2\)</span>:</p>
-<div id="1d94122b-e005-4fb7-954c-00b424de6af7" class="cell" data-execution_count="21">
+<div id="1d94122b-e005-4fb7-954c-00b424de6af7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot3d(Reg.L2, t<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -412,7 +412,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 </div>
 </div>
 <p>The corresponding 2D visualizations similar to the figure given by the Elements of Statistical Learning book:</p>
-<div id="137f4e2a-1089-4378-b1fd-6c9048145602" class="cell" data-execution_count="13">
+<div id="137f4e2a-1089-4378-b1fd-6c9048145602" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>code for plot2d</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss_contour(ax):</span>
@@ -456,7 +456,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="f86d42f0-b328-4e6d-b36d-093fbe6ee066" class="cell" data-scrolled="true" data-execution_count="14">
+<div id="f86d42f0-b328-4e6d-b36d-093fbe6ee066" class="cell" data-scrolled="true" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot2d([Reg.L1, Reg.L2], t<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -470,7 +470,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <section id="explanation" class="level3">
 <h3 class="anchored" data-anchor-id="explanation">Explanation</h3>
 <p>In both cases (L1, L2), we’re looking for a contour that just touches the constraint region. For example, if we have the case below:</p>
-<div id="68b0dd14-9a66-407d-8e63-2cc159e3382a" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="15">
+<div id="68b0dd14-9a66-407d-8e63-2cc159e3382a" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="7">
 <details class="code-fold">
 <summary>code for plot_reg_and_circle</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_reg_and_circle(reg: Reg, t: <span class="bu">float</span>, cx: <span class="bu">float</span>, cy: <span class="bu">float</span>, radius: <span class="bu">float</span>):</span>
@@ -483,7 +483,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="a2d824d3-7d59-4b62-ae3d-55181c169527" class="cell" data-execution_count="16">
+<div id="a2d824d3-7d59-4b62-ae3d-55181c169527" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_reg_and_circle(Reg.L1, t<span class="op">=</span><span class="dv">7</span>, cx<span class="op">=</span><span class="dv">5</span>, cy<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -494,7 +494,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 </div>
 </div>
 <p>Then it is more optimal to reduce the constraint region (i.e., the diamond) until they just touch in a single point as shown below. Note that a contour has the same loss along its points.</p>
-<div id="3fc2a0e8-cd8f-4373-8346-80f203ee3e2a" class="cell" data-execution_count="17">
+<div id="3fc2a0e8-cd8f-4373-8346-80f203ee3e2a" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_reg_and_circle(Reg.L1, t<span class="op">=</span>(np.sqrt(<span class="dv">50</span>)<span class="op">-</span><span class="dv">4</span>) <span class="op">*</span> np.sqrt(<span class="dv">2</span>), cx<span class="op">=</span><span class="dv">5</span>, cy<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -506,7 +506,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 </div>
 <p>In which case does the Lasso pick the corner of the diamond versus any other point on the boundaries? To simplify our problem, let’s fix a specific circle among the contours: a circle with a fixed radius <span class="math inline">\(r\)</span>. Now, we want to come up with a formula that gives the probability of a random tangent circle with radius <span class="math inline">\(r\)</span> touching our diamond at the corners vs at other points.</p>
 <p>The above problem becomes much simpler with a visualization:</p>
-<div id="736a454d-ad4b-46fd-832a-e8533f063996" class="cell" data-execution_count="18">
+<div id="736a454d-ad4b-46fd-832a-e8533f063996" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>code for animate_l1_tangent_circles</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> l1_tangent_circle_locations(t: <span class="bu">float</span>, radius: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[np.array]:</span>
@@ -578,10 +578,10 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="55ee58c2-c141-4c3d-8ff1-fc8dc46ad220" class="cell" data-execution_count="19">
+<div id="55ee58c2-c141-4c3d-8ff1-fc8dc46ad220" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_l1_tangent_circles(t<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAArJdtZGF0AAACrwYF//+r
 3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE2NCByMzEwOCAzMWUxOWY5IC0gSC4yNjQvTVBF
@@ -1394,9 +1394,9 @@ AAAAAAAAACxpbHN0AAAAJKl0b28AAAAcZGF0YQAAAAEAAAAATGF2ZjYxLjEuMTAw
 </div>
 </div>
 <p>The above animation illustrates all tangent circle trajectories. The circle is green when it touches the diamond at the corner, and it is blue when it touches at other points. The sum of the lengths of all blue (touching at other points) trajectories is given by <span class="math inline">\(4\times \sqrt{2}\times t\)</span>, while the sum of the lengths of all green (touching at the corners) trajectories is given by <span class="math inline">\(2\pi \times r\)</span>, where <code>t</code> is the constraint and <code>r</code> is the radius of the circle. This means that it is likely to touch at the corners when <code>t</code> is sufficiently small or <code>r</code> is sufficiently high. We illustrate one of the such cases below:</p>
-<div id="6baa7f75-89c4-4604-b9b1-5484bf3e3a58" class="cell" data-execution_count="22">
+<div id="6baa7f75-89c4-4604-b9b1-5484bf3e3a58" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_l1_tangent_circles(t<span class="op">=</span><span class="dv">3</span>, radius<span class="op">=</span><span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAA11dtZGF0AAACrwYF//+r
 3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE2NCByMzEwOCAzMWUxOWY5IC0gSC4yNjQvTVBF
