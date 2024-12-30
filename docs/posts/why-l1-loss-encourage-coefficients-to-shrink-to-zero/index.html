@@ -507,11 +507,11 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 </div>
 </div>
 </div>
-<p>When does the Lasso pick the corner of the diamond over any other point on the edges? To simplify our problem, let’s fix a specific circle among the contours: a circle with a fixed radius <span class="math inline">\(r\)</span>. Now, we want to come up with a formula that gives the probability of a random tangent circle with radius <span class="math inline">\(r\)</span> touching our diamond at the corners over any other points.</p>
+<p>When does the Lasso pick the corner of the diamond over any other point on the edges? To simplify our problem, let’s fix a specific circle among the contours: a circle with a fixed radius <span class="math inline">\(r\)</span>. Now, we want to come up with a formula that gives the probability of a random tangent circle with radius <span class="math inline">\(r\)</span> touching our diamond at the corners versus at any other points.</p>
 <p>The above problem becomes much simpler with a visualization:</p>
 <div id="736a454d-ad4b-46fd-832a-e8533f063996" class="cell" data-execution_count="10">
 <details class="code-fold">
-<summary>code for animate_l1_tangent_circles</summary>
+<summary>code for html5_video_l1_tangent_circles</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> l1_tangent_circle_locations(t: <span class="bu">float</span>, radius: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[np.array]:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_corner(v):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">min</span>(<span class="bu">abs</span>(v[<span class="dv">0</span>]), <span class="bu">abs</span>(v[<span class="dv">1</span>])) <span class="op">&lt;=</span> radius <span class="op">/</span> np.sqrt(<span class="dv">2</span>) <span class="op">+</span> <span class="fl">1e-3</span></span>
@@ -574,11 +574,12 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    ani <span class="op">=</span> animation.FuncAnimation(fig, func<span class="op">=</span>update, frames<span class="op">=</span><span class="bu">range</span>(<span class="dv">0</span>, num_frames, <span class="dv">2</span>), interval<span class="op">=</span><span class="dv">30</span>)</span>
 <span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ani</span>
 <span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> html5_video_l1_tangent_circles(t: <span class="bu">float</span>, radius: <span class="bu">float</span>):</span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>    ani <span class="op">=</span> animate_l1_tangent_circles(t<span class="op">=</span>t, radius<span class="op">=</span>radius)</span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>    html<span class="op">=</span>ani.to_html5_video()</span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>    plt.close()</span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> html5_video_l1_tangent_circles(t: <span class="bu">float</span>, radius: <span class="bu">float</span>):</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>    ani <span class="op">=</span> animate_l1_tangent_circles(t<span class="op">=</span>t, radius<span class="op">=</span>radius)</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>    html <span class="op">=</span> ani.to_html5_video()</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>    plt.close()</span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="55ee58c2-c141-4c3d-8ff1-fc8dc46ad220" class="cell" data-execution_count="11">
