@@ -472,7 +472,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 </section>
 <section id="explanation" class="level3">
 <h3 class="anchored" data-anchor-id="explanation">Explanation</h3>
-<p>In both cases (L1, L2), we’re looking for a contour that just touches the constraint region. For example, if we have the case below:</p>
+<p>In both cases (L1, L2), we’re looking for a contour that just touches the constraint region. For example, when we have the following case:</p>
 <div id="68b0dd14-9a66-407d-8e63-2cc159e3382a" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="7">
 <details class="code-fold">
 <summary>code for plot_reg_and_circle</summary>
@@ -507,7 +507,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 </div>
 </div>
 </div>
-<p>In which case does the Lasso pick the corner of the diamond versus any other point on the boundaries? To simplify our problem, let’s fix a specific circle among the contours: a circle with a fixed radius <span class="math inline">\(r\)</span>. Now, we want to come up with a formula that gives the probability of a random tangent circle with radius <span class="math inline">\(r\)</span> touching our diamond at the corners vs at other points.</p>
+<p>When does the Lasso pick the corner of the diamond over any other point on the edges? To simplify our problem, let’s fix a specific circle among the contours: a circle with a fixed radius <span class="math inline">\(r\)</span>. Now, we want to come up with a formula that gives the probability of a random tangent circle with radius <span class="math inline">\(r\)</span> touching our diamond at the corners over any other points.</p>
 <p>The above problem becomes much simpler with a visualization:</p>
 <div id="736a454d-ad4b-46fd-832a-e8533f063996" class="cell" data-execution_count="10">
 <details class="code-fold">
@@ -1396,7 +1396,7 @@ AAAAAAAAACxpbHN0AAAAJKl0b28AAAAcZGF0YQAAAAEAAAAATGF2ZjYxLjEuMTAw
 </video>
 </div>
 </div>
-<p>The animation above illustrates all tangent circle trajectories. The circle is green when it touches the diamond at the corner, and it is blue when it touches at other points. The total length of all blue (touching at other points) trajectories is given by <span class="math inline">\(4\times \sqrt{2}\times t\)</span>, while the total length of all green (touching at the corners) trajectories is given by <span class="math inline">\(2\pi \times r\)</span>, where <code>t</code> is the constraint and <code>r</code> is the radius of the circle. This means that it is likely to touch at the corners when <code>t</code> is sufficiently small or <code>r</code> is sufficiently high. We illustrate one of the such cases below:</p>
+<p>The animation above illustrates all tangent circle trajectories. The circle is green when it touches the diamond at the corners, and it is blue when it touches at other points. The total length of all blue (touching at other points) trajectories is given by <span class="math inline">\(4\times \sqrt{2}\times t\)</span>, while the total length of all green (touching at the corners) trajectories is given by <span class="math inline">\(2\pi \times r\)</span>, where <code>t</code> is the constraint and <code>r</code> is the radius of the circle. This means that it is likely to touch at the corners when <code>t</code> is sufficiently small or <code>r</code> is sufficiently high. We illustrate one of the such cases below:</p>
 <div id="6baa7f75-89c4-4604-b9b1-5484bf3e3a58" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_l1_tangent_circles(t<span class="op">=</span><span class="dv">3</span>, radius<span class="op">=</span><span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
