@@ -2,7 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/why-l1-encourage-coefficients-to-shrink-to-zero/index.html",
+      "/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html",
       "/posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html",
       "/posts/auto-encoding-variational-bayes/index.html",
       "/posts/denoising-diffusion-probabilistic-models/index.html"
