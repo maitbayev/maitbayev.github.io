@@ -1,6 +1,6 @@
 ---
 title: "About"
-image: profile.jpg
+# image: profile.jpg
 about:
   template: jolla
   links:
@@ -13,4 +13,4 @@ about:
 
 ---
 
-About this blog
+Engineer at Snap Inc, ex-Google.

@@ -6,7 +6,7 @@ website:
   title: "Madiyar's Page"
   navbar:
     right:
-      # - about.qmd
+      - about.qmd
       - icon: github
         href: https://github.com/maitbayev
       - icon: telegram
