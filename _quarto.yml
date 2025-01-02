@@ -6,6 +6,7 @@ website:
   title: "Madiyar's Page"
   site-url: https://maitbayev.github.io
   description: "Madiyar's Page"
+  google-analytics: "G-XDL07RCJG6"
   navbar:
     right:
       - about.qmd
