@@ -4,9 +4,13 @@ project:
 
 website:
   title: "Madiyar's Page"
+  site-url: https://maitbayev.github.io
+  description: "Madiyar's Page"
   navbar:
     right:
       - about.qmd
+      - icon: rss
+        href: index.xml
       - icon: github
         href: https://github.com/maitbayev
       - icon: telegram

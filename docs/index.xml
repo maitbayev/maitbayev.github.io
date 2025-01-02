@@ -1,230 +1,21 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Madiyar Aitbayev">
-<meta name="dcterms.date" content="2024-12-27">
-
-<title>Why does L1 regularization encourage coefficients to shrink to zero? – Madiyar’s Page</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
-</head>
-
-<body class="nav-fixed fullcontent">
-
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Madiyar’s Page</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/maitbayev"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://t.me/swemanml"> <i class="bi bi-telegram" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Why does L1 regularization encourage coefficients to shrink to zero?</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">basics</div>
-                <div class="quarto-category">loss</div>
-                <div class="quarto-category">l1</div>
-                <div class="quarto-category">l2</div>
-                <div class="quarto-category">lasso</div>
-                <div class="quarto-category">ridge</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Madiyar Aitbayev </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">December 27, 2024</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Madiyar&#39;s Page</title>
+<link>https://maitbayev.github.io/</link>
+<atom:link href="https://maitbayev.github.io/index.xml" rel="self" type="application/rss+xml"/>
+<description>Madiyar&#39;s Page</description>
+<generator>quarto-1.5.54</generator>
+<lastBuildDate>Fri, 27 Dec 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Why does L1 regularization encourage coefficients to shrink to zero?</title>
+  <dc:creator>Madiyar Aitbayev</dc:creator>
+  <link>https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/</link>
+  <description><![CDATA[ 
 
 
 
@@ -243,42 +34,20 @@ window.Quarto = {
 <section id="the-lasso" class="level3">
 <h3 class="anchored" data-anchor-id="the-lasso">The Lasso</h3>
 <p>The lasso regression is a linear regression model that shrinks the coefficients by imposing a constraint on their magnitude. Namely, it constrains the sum of absolute values of the coefficients:</p>
-<p><span class="math display">\[
-\begin{align}
-  \hat{\beta}^{lasso} = \underset{\beta}{argmin} &amp; \sum_{i=1}^N \left( y_i-\beta_0-\sum_{j=1}^p{x_{ij}\beta_j} \right)^2\\
-   \text{ subject to } &amp; \sum_{j=1}^p|\beta_j| \le t
-\end{align}
-\]</span></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%5Chat%7B%5Cbeta%7D%5E%7Blasso%7D%20=%20%5Cunderset%7B%5Cbeta%7D%7Bargmin%7D%20&amp;%20%5Csum_%7Bi=1%7D%5EN%20%5Cleft(%20y_i-%5Cbeta_0-%5Csum_%7Bj=1%7D%5Ep%7Bx_%7Bij%7D%5Cbeta_j%7D%20%5Cright)%5E2%5C%5C%0A%20%20%20%5Ctext%7B%20subject%20to%20%7D%20&amp;%20%5Csum_%7Bj=1%7D%5Ep%7C%5Cbeta_j%7C%20%5Cle%20t%0A%5Cend%7Balign%7D%0A"></p>
 <p>The above equation is the same equation (3.51) from “The Elements of Statistical Learning” (ESL) book by Hastie, Tibshirani, and Friedman.</p>
 <p>We can also write the lasso in the equivalent Lagrangian form (3.52), which penalizes the sum of the absolute values of the coefficients:</p>
-<p><span class="math display">\[
-\hat{\beta}^{lasso} = \underset{\beta}{argmin}
-\left\{
-    \frac{1}{2}\sum_{i=1}^N \left( y_i-\beta_0-\sum_{j=1}^p{x_{ij}\beta_j} \right)^2
-    +\lambda\sum_{j=1}^p|\beta_j|
-\right\}
-\]</span></p>
-<p>The equations (3.51) and (3.52) are equivalent under the correct <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(t\)</span> hyperparameters. The latter equation (3.52) is more preferred in ML.</p>
-<p>Making <span class="math inline">\(t\)</span> sufficiently small will shrink some of the coefficients to be exactly zero, which we will give geometric intuition later. Thus, the lasso could be used for feature selection, i.e., for identifying less important features.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Chat%7B%5Cbeta%7D%5E%7Blasso%7D%20=%20%5Cunderset%7B%5Cbeta%7D%7Bargmin%7D%0A%5Cleft%5C%7B%0A%20%20%20%20%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi=1%7D%5EN%20%5Cleft(%20y_i-%5Cbeta_0-%5Csum_%7Bj=1%7D%5Ep%7Bx_%7Bij%7D%5Cbeta_j%7D%20%5Cright)%5E2%0A%20%20%20%20+%5Clambda%5Csum_%7Bj=1%7D%5Ep%7C%5Cbeta_j%7C%0A%5Cright%5C%7D%0A"></p>
+<p>The equations (3.51) and (3.52) are equivalent under the correct <img src="https://latex.codecogs.com/png.latex?%5Clambda"> and <img src="https://latex.codecogs.com/png.latex?t"> hyperparameters. The latter equation (3.52) is more preferred in ML.</p>
+<p>Making <img src="https://latex.codecogs.com/png.latex?t"> sufficiently small will shrink some of the coefficients to be exactly zero, which we will give geometric intuition later. Thus, the lasso could be used for feature selection, i.e., for identifying less important features.</p>
 </section>
 <section id="the-ridge" class="level3">
 <h3 class="anchored" data-anchor-id="the-ridge">The Ridge</h3>
 <p>The ridge regression is similar to the lasso except it penalizes the sum-of-squares of the coefficients (3.41):</p>
-<p><span class="math display">\[
-\hat{\beta}^{ridge} = \underset{\beta}{argmin}
-\left\{
-    \frac{1}{2}\sum_{i=1}^N \left( y_i-\beta_0-\sum_{j=1}^p{x_{ij}\beta_j} \right)^2
-    +\lambda\sum_{j=1}^p\beta_j^2
-\right\}
-\]</span></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Chat%7B%5Cbeta%7D%5E%7Bridge%7D%20=%20%5Cunderset%7B%5Cbeta%7D%7Bargmin%7D%0A%5Cleft%5C%7B%0A%20%20%20%20%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi=1%7D%5EN%20%5Cleft(%20y_i-%5Cbeta_0-%5Csum_%7Bj=1%7D%5Ep%7Bx_%7Bij%7D%5Cbeta_j%7D%20%5Cright)%5E2%0A%20%20%20%20+%5Clambda%5Csum_%7Bj=1%7D%5Ep%5Cbeta_j%5E2%0A%5Cright%5C%7D%0A"></p>
 <p>An equivalent way to write the ridge problem is (3.42):</p>
-<p><span class="math display">\[
-\begin{align}
-  \hat{\beta}^{ridge} = \underset{\beta}{argmin} &amp; \sum_{i=1}^N \left( y_i-\beta_0-\sum_{j=1}^p{x_{ij}\beta_j} \right)^2\\
-   \text{ subject to } &amp; \sum_{j=1}^p\beta_j^2 \le t
-\end{align}
-\]</span></p>
-<p>The ridge regression will shrink the coefficient towards zero when <span class="math inline">\(t\)</span> is sufficiently small; however, the coefficients might not be exactly zero.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%5Chat%7B%5Cbeta%7D%5E%7Bridge%7D%20=%20%5Cunderset%7B%5Cbeta%7D%7Bargmin%7D%20&amp;%20%5Csum_%7Bi=1%7D%5EN%20%5Cleft(%20y_i-%5Cbeta_0-%5Csum_%7Bj=1%7D%5Ep%7Bx_%7Bij%7D%5Cbeta_j%7D%20%5Cright)%5E2%5C%5C%0A%20%20%20%5Ctext%7B%20subject%20to%20%7D%20&amp;%20%5Csum_%7Bj=1%7D%5Ep%5Cbeta_j%5E2%20%5Cle%20t%0A%5Cend%7Balign%7D%0A"></p>
+<p>The ridge regression will shrink the coefficient towards zero when <img src="https://latex.codecogs.com/png.latex?t"> is sufficiently small; however, the coefficients might not be exactly zero.</p>
 </section>
 </section>
 <section id="ridge-vs-lasso" class="level2">
@@ -289,11 +58,11 @@ window.Quarto = {
 <p>Another explanation is given by the amazing The Elements of Statistical Learning book:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/c3cc4461-96b0-4679-9ed4-502e07f77705-1-2a379c1d-06a0-433b-85c1-05d8fc574fe3.png" class="img-fluid figure-img"></p>
+<p><img src="https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index_files/figure-html/c3cc4461-96b0-4679-9ed4-502e07f77705-1-2a379c1d-06a0-433b-85c1-05d8fc574fe3.png" class="img-fluid figure-img"></p>
 <figcaption>Figure 3.11</figcaption>
 </figure>
 </div>
-<p>The constraint region for L2 is the disk <span class="math inline">\(\beta_1^2+\beta_2^2 \le t\)</span> (right figure), while it is the diamond <span class="math inline">\(|\beta_1|+|\beta_2| \le t\)</span> for L1 (left figure). Both methods find the first intersection point between the elliptical contours (loss) and the constrained region. The corners of the diamond have one parameter equal to zero. The diamond becomes a rhomboid in higher dimensional space, and has many corners; there are many more opportunities to intersect at the corners.</p>
+<p>The constraint region for L2 is the disk <img src="https://latex.codecogs.com/png.latex?%5Cbeta_1%5E2+%5Cbeta_2%5E2%20%5Cle%20t"> (right figure), while it is the diamond <img src="https://latex.codecogs.com/png.latex?%7C%5Cbeta_1%7C+%7C%5Cbeta_2%7C%20%5Cle%20t"> for L1 (left figure). Both methods find the first intersection point between the elliptical contours (loss) and the constrained region. The corners of the diamond have one parameter equal to zero. The diamond becomes a rhomboid in higher dimensional space, and has many corners; there are many more opportunities to intersect at the corners.</p>
 <p>There are cool algebraic explanations as well, for example, given here <a href="https://www.reddit.com/r/MachineLearning/comments/1771jhl/d_how_does_l1_regularization_able_to_drive_a/">https://www.reddit.com/r/MachineLearning/…</a>.</p>
 <p>The explanations given by the book and other places are well-contained, but I could not fully grasp what’s so special about the corners w.r.t the other points on the edges. There are only 4 corners and unlimited points on the edges, so shouldn’t the probability to touch the other points be higher?</p>
 </section>
@@ -303,123 +72,542 @@ window.Quarto = {
 <section id="setup" class="level3">
 <h3 class="anchored" data-anchor-id="setup">Setup</h3>
 <p>We will use a simple loss function that illustrates circle contours instead of elliptical ones.:</p>
-<p><span class="math display">\[
-Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 100
-\]</span></p>
-<p>Once we understand the intution for circles, it is easy to extend to other contours such as elliptical ones. We will use <span class="math inline">\(c_x=15\)</span> and <span class="math inline">\(c_y=5\)</span> most of the time.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0ALoss(%5Cbeta_1,%5Cbeta_2%20%7C%20c_x,%20c_y)=2%7B(%5Cbeta_1%20-%20c_x)%7D%5E2%20+%202%7B(%5Cbeta_2%20-%20c_y)%7D%5E2%20+%20100%0A"></p>
+<p>Once we understand the intution for circles, it is easy to extend to other contours such as elliptical ones. We will use <img src="https://latex.codecogs.com/png.latex?c_x=15"> and <img src="https://latex.codecogs.com/png.latex?c_y=5"> most of the time.</p>
 <div id="73f5c18b-2e70-4e85-a345-a0ad3ea503aa" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>code for loss setup and helper functions</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mpl_toolkits.mplot3d.art3d <span class="im">as</span> art3d</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> animation</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Circle, Polygon</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss(b0, b1, cx, cy, scale<span class="op">=</span><span class="fl">2.0</span>, bias<span class="op">=</span><span class="dv">100</span>):</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> scale <span class="op">*</span> (b0 <span class="op">-</span> cx) <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> scale <span class="op">*</span> (b1 <span class="op">-</span> cy) <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> bias</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Reg(Enum):</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    L1 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    L2 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_reg_shape(reg: Reg, t: <span class="bu">float</span>, color<span class="op">=</span><span class="st">"k"</span>):</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> reg <span class="op">==</span> Reg.L1:</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> Polygon(xy<span class="op">=</span>[(t, <span class="dv">0</span>), (<span class="dv">0</span>, t), (<span class="op">-</span>t, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="op">-</span>t)], color<span class="op">=</span>color, fill<span class="op">=</span><span class="va">False</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> Circle(xy<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>), radius<span class="op">=</span>t, color<span class="op">=</span>color, fill<span class="op">=</span><span class="va">False</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> argmin_within_constraint(reg: Reg, t: <span class="bu">float</span>):</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    beta0 <span class="op">=</span> np.linspace(<span class="op">*</span>beta_range, <span class="dv">100</span>)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    beta1 <span class="op">=</span> np.linspace(<span class="op">*</span>beta_range, <span class="dv">100</span>)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    B0, B1 <span class="op">=</span> np.meshgrid(beta0, beta1)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> loss(B0, B1, cx<span class="op">=</span>cx, cy<span class="op">=</span>cy)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> reg <span class="op">==</span> Reg.L1:</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        mask <span class="op">=</span> np.<span class="bu">abs</span>(B0) <span class="op">+</span> np.<span class="bu">abs</span>(B1) <span class="op">&lt;=</span> t</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        mask <span class="op">=</span> B0 <span class="op">*</span> B0 <span class="op">+</span> B1 <span class="op">*</span> B1 <span class="op">&lt;=</span> t <span class="op">*</span> t</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    index <span class="op">=</span> np.argmin(Z[mask])</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> B0[mask][index], B1[mask][index]</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>beta_range <span class="op">=</span> <span class="op">-</span><span class="dv">20</span>, <span class="dv">20</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>cx, cy <span class="op">=</span> <span class="dv">15</span>, <span class="dv">5</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>vmax <span class="op">=</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> enum <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Enum</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> mpl_toolkits.mplot3d.art3d <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> art3d</span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-5"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> matplotlib <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> animation</span>
+<span id="cb1-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> matplotlib <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb1-7"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> matplotlib.patches <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Circle, Polygon</span>
+<span id="cb1-8"></span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> loss(b0, b1, cx, cy, scale<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.0</span>, bias<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>):</span>
+<span id="cb1-11">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> scale <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (b0 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> cx) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> scale <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (b1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> cy) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> bias</span>
+<span id="cb1-12"></span>
+<span id="cb1-13"></span>
+<span id="cb1-14"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> Reg(Enum):</span>
+<span id="cb1-15">    L1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb1-16">    L2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb1-17"></span>
+<span id="cb1-18"></span>
+<span id="cb1-19"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> make_reg_shape(reg: Reg, t: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"k"</span>):</span>
+<span id="cb1-20">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> reg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> Reg.L1:</span>
+<span id="cb1-21">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> Polygon(xy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[(t, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, t), (<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>t, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>t)], color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>color, fill<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'--'</span>)</span>
+<span id="cb1-22">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb1-23">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> Circle(xy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), radius<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>t, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>color, fill<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'--'</span>)</span>
+<span id="cb1-24"></span>
+<span id="cb1-25"></span>
+<span id="cb1-26"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> argmin_within_constraint(reg: Reg, t: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>):</span>
+<span id="cb1-27">    beta0 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb1-28">    beta1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb1-29">    B0, B1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.meshgrid(beta0, beta1)</span>
+<span id="cb1-30">    Z <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> loss(B0, B1, cx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cx, cy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cy)</span>
+<span id="cb1-31">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> reg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> Reg.L1:</span>
+<span id="cb1-32">        mask <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(B0) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> np.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(B1) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> t</span>
+<span id="cb1-33">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb1-34">        mask <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> B0 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> B0 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> B1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> B1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> t</span>
+<span id="cb1-35">    index <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.argmin(Z[mask])</span>
+<span id="cb1-36">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> B0[mask][index], B1[mask][index]</span>
+<span id="cb1-37"></span>
+<span id="cb1-38"></span>
+<span id="cb1-39">beta_range <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span></span>
+<span id="cb1-40">cx, cy <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span></span>
+<span id="cb1-41">vmax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span></span></code></pre></div>
 </details>
 </div>
 <div id="f734e558-d263-4eb4-8e00-c84566b2dc92" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>code for plot3d</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> base_fig3():</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a figure and a 3D Axes</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"$</span><span class="ch">\\</span><span class="st">beta_1$"</span>, labelpad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"$</span><span class="ch">\\</span><span class="st">beta_2$"</span>, labelpad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    ax.set_zlim(<span class="dv">0</span>, <span class="dv">500</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, pad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, pad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="op">*</span>beta_range)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="op">*</span>beta_range)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># draw axes</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    ax.plot(beta_range, [<span class="dv">0</span>, <span class="dv">0</span>], color<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    ax.plot([<span class="dv">0</span>, <span class="dv">0</span>], beta_range, color<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig, ax</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot3d(reg: Reg, t<span class="op">=</span><span class="dv">3</span>):</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> base_fig3()</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># surface</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    beta0 <span class="op">=</span> np.linspace(<span class="op">*</span>beta_range, <span class="dv">100</span>)</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    beta1 <span class="op">=</span> np.linspace(<span class="op">*</span>beta_range, <span class="dv">100</span>)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    B0, B1 <span class="op">=</span> np.meshgrid(beta0, beta1)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> loss(B0, B1, cx<span class="op">=</span>cx, cy<span class="op">=</span>cy)</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    ax.plot_surface(B0, B1, Z, alpha<span class="op">=</span><span class="fl">0.7</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, vmax<span class="op">=</span>vmax)</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># contours</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    ax.plot([cx], [cy], marker<span class="op">=</span><span class="st">'x'</span>, markersize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    ax.contour(B0, B1, Z, levels<span class="op">=</span><span class="dv">50</span>, linewidths<span class="op">=</span><span class="fl">.5</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, zdir<span class="op">=</span><span class="st">'z'</span>, offset<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span>vmax)</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># minima within regularization shape</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    mx, my <span class="op">=</span> argmin_within_constraint(reg, t)</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    ax.plot([mx], [my], marker<span class="op">=</span><span class="st">'.'</span>, markersize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># regularization contraints</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    reg_shape <span class="op">=</span> make_reg_shape(reg, t, color<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(reg_shape)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    art3d.pathpatch_2d_to_3d(reg_shape, z<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    ax.view_init(elev<span class="op">=</span><span class="dv">39</span>, azim<span class="op">=-</span><span class="dv">106</span>)</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> base_fig3():</span>
+<span id="cb2-2">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create a figure and a 3D Axes</span></span>
+<span id="cb2-3">    fig <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span>
+<span id="cb2-4">    ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> fig.add_subplot(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">111</span>, projection<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'3d'</span>)</span>
+<span id="cb2-5">    ax.set_xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"$</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">beta_1$"</span>, labelpad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb2-6">    ax.set_ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"$</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">beta_2$"</span>, labelpad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb2-7">    ax.set_zlim(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span>)</span>
+<span id="cb2-8">    ax.tick_params(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'x'</span>, pad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb2-9">    ax.tick_params(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'y'</span>, pad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb2-10">    ax.set_xlim(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range)</span>
+<span id="cb2-11">    ax.set_ylim(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range)</span>
+<span id="cb2-12">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># draw axes</span></span>
+<span id="cb2-13">    ax.plot(beta_range, [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'k'</span>)</span>
+<span id="cb2-14">    ax.plot([<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], beta_range, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'k'</span>)</span>
+<span id="cb2-15">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> fig, ax</span>
+<span id="cb2-16"></span>
+<span id="cb2-17"></span>
+<span id="cb2-18"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> plot3d(reg: Reg, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>):</span>
+<span id="cb2-19">    fig, ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> base_fig3()</span>
+<span id="cb2-20"></span>
+<span id="cb2-21">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># surface</span></span>
+<span id="cb2-22">    beta0 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb2-23">    beta1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb2-24">    B0, B1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.meshgrid(beta0, beta1)</span>
+<span id="cb2-25">    Z <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> loss(B0, B1, cx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cx, cy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cy)</span>
+<span id="cb2-26">    ax.plot_surface(B0, B1, Z, alpha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>, cmap<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'coolwarm'</span>, vmax<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>vmax)</span>
+<span id="cb2-27"></span>
+<span id="cb2-28">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># contours</span></span>
+<span id="cb2-29">    ax.plot([cx], [cy], marker<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'x'</span>, markersize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'black'</span>)</span>
+<span id="cb2-30">    ax.contour(B0, B1, Z, levels<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, linewidths<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span>, cmap<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'coolwarm'</span>, zdir<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'z'</span>, offset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, vmax<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>vmax)</span>
+<span id="cb2-31">    </span>
+<span id="cb2-32">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># minima within regularization shape</span></span>
+<span id="cb2-33">    mx, my <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> argmin_within_constraint(reg, t)</span>
+<span id="cb2-34">    ax.plot([mx], [my], marker<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'.'</span>, markersize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'r'</span>)</span>
+<span id="cb2-35"></span>
+<span id="cb2-36">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># regularization contraints</span></span>
+<span id="cb2-37">    reg_shape <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> make_reg_shape(reg, t, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)</span>
+<span id="cb2-38">    ax.add_patch(reg_shape)</span>
+<span id="cb2-39">    art3d.pathpatch_2d_to_3d(reg_shape, z<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb2-40"></span>
+<span id="cb2-41">    ax.view_init(elev<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">39</span>, azim<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">106</span>)</span>
+<span id="cb2-42">    plt.tight_layout()</span>
+<span id="cb2-43">    plt.show()</span></code></pre></div>
 </details>
 </div>
-<p>Let’s visualize our loss <span class="math inline">\(2{(\beta_1 - 15)}^2 + 2{(\beta_2 - 5)}^2 + 100\)</span> with the L1 constaint <span class="math inline">\(t=5\)</span>, i.e., <span class="math inline">\(|\beta_1| + |\beta_2| \le 5\)</span> in 3D:</p>
+<p>Let’s visualize our loss <img src="https://latex.codecogs.com/png.latex?2%7B(%5Cbeta_1%20-%2015)%7D%5E2%20+%202%7B(%5Cbeta_2%20-%205)%7D%5E2%20+%20100"> with the L1 constaint <img src="https://latex.codecogs.com/png.latex?t=5">, i.e., <img src="https://latex.codecogs.com/png.latex?%7C%5Cbeta_1%7C%20+%20%7C%5Cbeta_2%7C%20%5Cle%205"> in 3D:</p>
 <div id="89759d16-a4fd-41e6-bbf2-ec803757e639" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot3d(Reg.L1, t<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">plot3d(Reg.L1, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>In Lasso Regression, we’re looking for <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_2\)</span> within the diamond that has the lowest loss, which is marked with the red point in the figure above. The global minima without any constraint is marked with “x”.</p>
-<p>The same visualization but with the L2 constraint t=5, i.e., <span class="math inline">\(\beta_1^2+\beta_2^2 \le 5^2\)</span>:</p>
+<p>In Lasso Regression, we’re looking for <img src="https://latex.codecogs.com/png.latex?%5Cbeta_1"> and <img src="https://latex.codecogs.com/png.latex?%5Cbeta_2"> within the diamond that has the lowest loss, which is marked with the red point in the figure above. The global minima without any constraint is marked with “x”.</p>
+<p>The same visualization but with the L2 constraint t=5, i.e., <img src="https://latex.codecogs.com/png.latex?%5Cbeta_1%5E2+%5Cbeta_2%5E2%20%5Cle%205%5E2">:</p>
 <div id="1d94122b-e005-4fb7-954c-00b424de6af7" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot3d(Reg.L2, t<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">plot3d(Reg.L2, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -428,53 +616,230 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <div id="137f4e2a-1089-4378-b1fd-6c9048145602" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>code for plot2d</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss_contour(ax):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    beta0 <span class="op">=</span> np.linspace(<span class="op">*</span>beta_range, <span class="dv">100</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    beta1 <span class="op">=</span> np.linspace(<span class="op">*</span>beta_range, <span class="dv">100</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    B0, B1 <span class="op">=</span> np.meshgrid(beta0, beta1)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> loss(B0, B1, cx<span class="op">=</span>cx, cy<span class="op">=</span>cy)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    ax.contour(B0, B1, Z, levels<span class="op">=</span><span class="dv">50</span>, linewidths<span class="op">=</span><span class="fl">.5</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, vmax<span class="op">=</span>vmax)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># draw the global minima</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    ax.plot([cx], [cy], marker<span class="op">=</span><span class="st">'x'</span>, markersize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ax2d_init(ax):</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    ax.set_aspect(<span class="st">'equal'</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"$</span><span class="ch">\\</span><span class="st">beta_1$"</span>, labelpad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"$</span><span class="ch">\\</span><span class="st">beta_2$"</span>, labelpad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, pad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, pad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="op">*</span>beta_range)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="op">*</span>beta_range)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># draw axes</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    ax.axhline(y<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    ax.axvline(x<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot2d(regs: [Reg], t: <span class="bu">float</span>):</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span> <span class="op">*</span> <span class="bu">len</span>(regs), <span class="dv">4</span>))</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    axes <span class="op">=</span> fig.subplots(<span class="dv">1</span>, <span class="bu">len</span>(regs))</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        ax2d_init(ax)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> reg, ax <span class="kw">in</span> <span class="bu">zip</span>(regs, axes):</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># draw the regularization safe region</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        ax.add_patch(make_reg_shape(reg<span class="op">=</span>reg, t<span class="op">=</span>t))</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        loss_contour(ax)</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># draw minima within constraint</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        mx, my <span class="op">=</span> argmin_within_constraint(reg, t)</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        ax.plot([mx], [my], marker<span class="op">=</span><span class="st">'.'</span>, markersize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> loss_contour(ax):</span>
+<span id="cb5-2">    beta0 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb5-3">    beta1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb5-4">    B0, B1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.meshgrid(beta0, beta1)</span>
+<span id="cb5-5">    Z <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> loss(B0, B1, cx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cx, cy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cy)</span>
+<span id="cb5-6"></span>
+<span id="cb5-7">    ax.contour(B0, B1, Z, levels<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, linewidths<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span>, cmap<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'coolwarm'</span>, vmax<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>vmax)</span>
+<span id="cb5-8">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># draw the global minima</span></span>
+<span id="cb5-9">    ax.plot([cx], [cy], marker<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'x'</span>, markersize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'black'</span>)</span>
+<span id="cb5-10"></span>
+<span id="cb5-11"></span>
+<span id="cb5-12"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> ax2d_init(ax):</span>
+<span id="cb5-13">    ax.set_aspect(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'equal'</span>)</span>
+<span id="cb5-14">    ax.set_xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"$</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">beta_1$"</span>, labelpad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb5-15">    ax.set_ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"$</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">beta_2$"</span>, labelpad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb5-16">    ax.tick_params(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'x'</span>, pad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb5-17">    ax.tick_params(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'y'</span>, pad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb5-18">    ax.set_xlim(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range)</span>
+<span id="cb5-19">    ax.set_ylim(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>beta_range)</span>
+<span id="cb5-20"></span>
+<span id="cb5-21">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># draw axes</span></span>
+<span id="cb5-22">    ax.axhline(y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'k'</span>)</span>
+<span id="cb5-23">    ax.axvline(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'k'</span>)</span>
+<span id="cb5-24"></span>
+<span id="cb5-25"></span>
+<span id="cb5-26"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> plot2d(regs: [Reg], t: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>):</span>
+<span id="cb5-27">    fig <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(regs), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>))</span>
+<span id="cb5-28">    axes <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> fig.subplots(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(regs))</span>
+<span id="cb5-29">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> ax <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> axes:</span>
+<span id="cb5-30">        ax2d_init(ax)</span>
+<span id="cb5-31">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> reg, ax <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">zip</span>(regs, axes):</span>
+<span id="cb5-32">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># draw the regularization safe region</span></span>
+<span id="cb5-33">        ax.add_patch(make_reg_shape(reg<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>reg, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>t))</span>
+<span id="cb5-34">        loss_contour(ax)</span>
+<span id="cb5-35">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># draw minima within constraint</span></span>
+<span id="cb5-36">        mx, my <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> argmin_within_constraint(reg, t)</span>
+<span id="cb5-37">        ax.plot([mx], [my], marker<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'.'</span>, markersize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'r'</span>)</span>
+<span id="cb5-38">    plt.tight_layout()</span>
+<span id="cb5-39">    plt.show()</span></code></pre></div>
 </details>
 </div>
 <div id="f86d42f0-b328-4e6d-b36d-093fbe6ee066" class="cell" data-scrolled="true" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot2d([Reg.L1, Reg.L2], t<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">plot2d([Reg.L1, Reg.L2], t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -486,125 +851,596 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <div id="68b0dd14-9a66-407d-8e63-2cc159e3382a" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>code for plot_reg_and_circle</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_reg_and_circle(reg: Reg, t: <span class="bu">float</span>, cx: <span class="bu">float</span>, cy: <span class="bu">float</span>, radius: <span class="bu">float</span>):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    ax2d_init(ax)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(Circle(xy<span class="op">=</span>(cx, cy), radius<span class="op">=</span>radius, color<span class="op">=</span><span class="st">'b'</span>, fill<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(make_reg_shape(reg, t<span class="op">=</span>t))</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> plot_reg_and_circle(reg: Reg, t: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>, cx: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>, cy: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>, radius: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>):</span>
+<span id="cb7-2">    fig <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>))</span>
+<span id="cb7-3">    ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> fig.add_subplot()</span>
+<span id="cb7-4">    ax2d_init(ax)</span>
+<span id="cb7-5">    ax.add_patch(Circle(xy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(cx, cy), radius<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>radius, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'b'</span>, fill<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>))</span>
+<span id="cb7-6">    ax.add_patch(make_reg_shape(reg, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>t))</span>
+<span id="cb7-7">    plt.tight_layout()</span>
+<span id="cb7-8">    plt.show()</span></code></pre></div>
 </details>
 </div>
 <div id="a2d824d3-7d59-4b62-ae3d-55181c169527" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_reg_and_circle(Reg.L1, t<span class="op">=</span><span class="dv">7</span>, cx<span class="op">=</span><span class="dv">5</span>, cy<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">plot_reg_and_circle(Reg.L1, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>, cx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, cy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, radius<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Then it is more optimal to reduce the constraint region (i.e., the diamond) until they touch in a single point as shown below. Note that a contour has the same loss along its points.</p>
 <div id="3fc2a0e8-cd8f-4373-8346-80f203ee3e2a" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_reg_and_circle(Reg.L1, t<span class="op">=</span>(np.sqrt(<span class="dv">50</span>)<span class="op">-</span><span class="dv">4</span>) <span class="op">*</span> np.sqrt(<span class="dv">2</span>), cx<span class="op">=</span><span class="dv">5</span>, cy<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">plot_reg_and_circle(Reg.L1, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(np.sqrt(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.sqrt(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>), cx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, cy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, radius<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>When does the Lasso pick the corner of the diamond over any other point on the edges? To simplify our problem, let’s fix a specific circle among the contours: a circle with a fixed radius <span class="math inline">\(r\)</span>. Now, we want to come up with a formula that gives the probability of a random tangent circle with radius <span class="math inline">\(r\)</span> touching our diamond at the corners versus at any other points.</p>
+<p>When does the Lasso pick the corner of the diamond over any other point on the edges? To simplify our problem, let’s fix a specific circle among the contours: a circle with a fixed radius <img src="https://latex.codecogs.com/png.latex?r">. Now, we want to come up with a formula that gives the probability of a random tangent circle with radius <img src="https://latex.codecogs.com/png.latex?r"> touching our diamond at the corners versus at any other points.</p>
 <p>The above problem becomes much simpler with a visualization:</p>
 <div id="dc8c09ed-6cea-4a39-873b-194e3079409e" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>code for html5_video_l1_tangent_circles</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> l1_tangent_circle_locations(t: <span class="bu">float</span>, radius: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[np.array]:</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_corner(v):</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">min</span>(<span class="bu">abs</span>(v[<span class="dv">0</span>]), <span class="bu">abs</span>(v[<span class="dv">1</span>])) <span class="op">&lt;=</span> radius <span class="op">/</span> np.sqrt(<span class="dv">2</span>) <span class="op">+</span> <span class="fl">1e-3</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    vertices <span class="op">=</span> make_reg_shape(Reg.L1, t<span class="op">=</span>t <span class="op">+</span> np.sqrt(<span class="dv">2</span>) <span class="op">*</span> radius).get_path().interpolated(<span class="dv">50</span>).vertices</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    vertices <span class="op">=</span> vertices.tolist()</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> is_corner(vertices[<span class="op">-</span><span class="dv">1</span>]):</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        vertices.insert(<span class="dv">0</span>, vertices.pop())</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    vertices.reverse()</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> []</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        should_be_corner <span class="op">=</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        group <span class="op">=</span> []</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="bu">len</span>(vertices) <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> is_corner(vertices[<span class="op">-</span><span class="dv">1</span>]) <span class="op">==</span> should_be_corner:</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            v <span class="op">=</span> vertices.pop()</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> should_be_corner:</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">abs</span>(v[<span class="dv">0</span>]) <span class="op">&lt;=</span> <span class="bu">abs</span>(v[<span class="dv">1</span>]):</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                    corner <span class="op">=</span> [<span class="dv">0</span>, np.sign(v[<span class="dv">1</span>]) <span class="op">*</span> t]</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                    corner <span class="op">=</span> [np.sign(v[<span class="dv">0</span>]) <span class="op">*</span> t, <span class="dv">0</span>]</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>                vec <span class="op">=</span> np.array(v) <span class="op">-</span> np.array(corner)</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>                vec <span class="op">=</span> (vec <span class="op">/</span> np.linalg.norm(vec)) <span class="op">*</span> radius</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>                group.append(corner <span class="op">+</span> vec)</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>                group.append(v)</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        locations.append(np.array(group))</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> locations</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> l2_tangent_circle_locations(t: <span class="bu">float</span>, radius: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[np.array]:</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    angles <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">200</span>)</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    vertices <span class="op">=</span> np.column_stack([np.cos(angles), np.sin(angles)]) <span class="op">*</span> (t <span class="op">+</span> radius) </span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [vertices]</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> animate_tangent_circle_trajectories(reg: Reg, t: <span class="bu">float</span>, radius: <span class="bu">float</span>):</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">4</span>))</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot()</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    ax2d_init(ax)</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> reg <span class="op">==</span> Reg.L1:</span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>        diamond <span class="op">=</span> make_reg_shape(Reg.L1, t<span class="op">=</span>t)</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>        circle_locations <span class="op">=</span> l1_tangent_circle_locations(t, radius)</span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>        plots <span class="op">=</span> []</span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, locations <span class="kw">in</span> <span class="bu">enumerate</span>(circle_locations):</span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>            color <span class="op">=</span> <span class="st">'g'</span> <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">'b'</span></span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>            plots.append(ax.plot([], [], color<span class="op">=</span>color, linewidth<span class="op">=</span><span class="dv">2</span>)[<span class="dv">0</span>])</span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>        circle_locations <span class="op">=</span> l2_tangent_circle_locations(t, radius)</span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>        plots <span class="op">=</span> [ax.plot([], [], color<span class="op">=</span><span class="st">'b'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)[<span class="dv">0</span>]]</span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>    circle <span class="op">=</span> Circle(xy<span class="op">=</span>(t <span class="op">+</span> radius, <span class="dv">0</span>), radius<span class="op">=</span>radius, color<span class="op">=</span><span class="st">'g'</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(circle)</span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(make_reg_shape(reg, t<span class="op">=</span>t))</span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update(frame):</span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>        remaining <span class="op">=</span> frame</span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> plot, locations <span class="kw">in</span> <span class="bu">zip</span>(plots, circle_locations):</span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>            need <span class="op">=</span> <span class="bu">min</span>(remaining, <span class="bu">len</span>(locations))</span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>            remaining <span class="op">-=</span> need</span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>            plot.set_xdata(locations[:need, <span class="dv">0</span>])</span>
-<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>            plot.set_ydata(locations[:need, <span class="dv">1</span>])</span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> remaining <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> need <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>                last <span class="op">=</span> locations[need <span class="op">-</span> <span class="dv">1</span>]</span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>                circle.set_center(last)</span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>                circle.set_color(plot.get_color())</span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>    num_frames <span class="op">=</span> np.<span class="bu">sum</span>([<span class="bu">len</span>(l) <span class="cf">for</span> l <span class="kw">in</span> circle_locations])</span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>    ani <span class="op">=</span> animation.FuncAnimation(fig, func<span class="op">=</span>update, frames<span class="op">=</span><span class="bu">range</span>(<span class="dv">0</span>, num_frames, <span class="dv">2</span>), interval<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ani</span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> html5_video_tangent_circle_trajectories(reg: Reg, t: <span class="bu">float</span>, radius: <span class="bu">float</span>):</span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>    ani <span class="op">=</span> animate_tangent_circle_trajectories(reg, t<span class="op">=</span>t, radius<span class="op">=</span>radius)</span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>    html <span class="op">=</span> ani.to_html5_video()</span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>    plt.close()</span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> l1_tangent_circle_locations(t: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>, radius: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>[np.array]:</span>
+<span id="cb10-2">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> is_corner(v):</span>
+<span id="cb10-3">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">min</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(v[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]), <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(v[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>])) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> radius <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> np.sqrt(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1e-3</span></span>
+<span id="cb10-4"></span>
+<span id="cb10-5">    vertices <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> make_reg_shape(Reg.L1, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> np.sqrt(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> radius).get_path().interpolated(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>).vertices</span>
+<span id="cb10-6">    vertices <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vertices.tolist()</span>
+<span id="cb10-7">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> is_corner(vertices[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]):</span>
+<span id="cb10-8">        vertices.insert(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, vertices.pop())</span>
+<span id="cb10-9">    vertices.reverse()</span>
+<span id="cb10-10">    locations <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-11">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>):</span>
+<span id="cb10-12">        should_be_corner <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb10-13">        group <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-14">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(vertices) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> is_corner(vertices[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> should_be_corner:</span>
+<span id="cb10-15">            v <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vertices.pop()</span>
+<span id="cb10-16">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> should_be_corner:</span>
+<span id="cb10-17">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(v[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(v[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]):</span>
+<span id="cb10-18">                    corner <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, np.sign(v[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> t]</span>
+<span id="cb10-19">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb10-20">                    corner <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [np.sign(v[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> t, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span>
+<span id="cb10-21"></span>
+<span id="cb10-22">                vec <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.array(v) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> np.array(corner)</span>
+<span id="cb10-23">                vec <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (vec <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> np.linalg.norm(vec)) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> radius</span>
+<span id="cb10-24">                group.append(corner <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> vec)</span>
+<span id="cb10-25">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb10-26">                group.append(v)</span>
+<span id="cb10-27">        locations.append(np.array(group))</span>
+<span id="cb10-28">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> locations</span>
+<span id="cb10-29"></span>
+<span id="cb10-30"></span>
+<span id="cb10-31"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> l2_tangent_circle_locations(t: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>, radius: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>[np.array]:</span>
+<span id="cb10-32">    angles <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.pi, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>)</span>
+<span id="cb10-33">    vertices <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.column_stack([np.cos(angles), np.sin(angles)]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> radius) </span>
+<span id="cb10-34">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> [vertices]</span>
+<span id="cb10-35"></span>
+<span id="cb10-36"></span>
+<span id="cb10-37"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> animate_tangent_circle_trajectories(reg: Reg, t: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>, radius: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>):</span>
+<span id="cb10-38">    fig <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>))</span>
+<span id="cb10-39">    ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> fig.add_subplot()</span>
+<span id="cb10-40">    ax2d_init(ax)</span>
+<span id="cb10-41">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> reg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> Reg.L1:</span>
+<span id="cb10-42">        diamond <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> make_reg_shape(Reg.L1, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>t)</span>
+<span id="cb10-43">        circle_locations <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> l1_tangent_circle_locations(t, radius)</span>
+<span id="cb10-44">        plots <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-45">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, locations <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(circle_locations):</span>
+<span id="cb10-46">            color <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'g'</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'b'</span></span>
+<span id="cb10-47">            plots.append(ax.plot([], [], color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>color, linewidth<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>])</span>
+<span id="cb10-48">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb10-49">        circle_locations <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> l2_tangent_circle_locations(t, radius)</span>
+<span id="cb10-50">        plots <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [ax.plot([], [], color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'b'</span>, linewidth<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]]</span>
+<span id="cb10-51">    </span>
+<span id="cb10-52">    circle <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Circle(xy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> radius, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), radius<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>radius, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'g'</span>, fill<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb10-53">    ax.add_patch(circle)</span>
+<span id="cb10-54">    ax.add_patch(make_reg_shape(reg, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>t))</span>
+<span id="cb10-55"></span>
+<span id="cb10-56">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> update(frame):</span>
+<span id="cb10-57">        remaining <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> frame</span>
+<span id="cb10-58">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> plot, locations <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">zip</span>(plots, circle_locations):</span>
+<span id="cb10-59">            need <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">min</span>(remaining, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(locations))</span>
+<span id="cb10-60">            remaining <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-=</span> need</span>
+<span id="cb10-61">            plot.set_xdata(locations[:need, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>])</span>
+<span id="cb10-62">            plot.set_ydata(locations[:need, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>])</span>
+<span id="cb10-63">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> remaining <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> need <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb10-64">                last <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> locations[need <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]</span>
+<span id="cb10-65">                circle.set_center(last)</span>
+<span id="cb10-66">                circle.set_color(plot.get_color())</span>
+<span id="cb10-67"></span>
+<span id="cb10-68">    num_frames <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>([<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(l) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> l <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> circle_locations])</span>
+<span id="cb10-69">    plt.tight_layout()</span>
+<span id="cb10-70">    ani <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> animation.FuncAnimation(fig, func<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>update, frames<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, num_frames, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>), interval<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>)</span>
+<span id="cb10-71">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> ani</span>
+<span id="cb10-72"></span>
+<span id="cb10-73"></span>
+<span id="cb10-74"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> html5_video_tangent_circle_trajectories(reg: Reg, t: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>, radius: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>):</span>
+<span id="cb10-75">    ani <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> animate_tangent_circle_trajectories(reg, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>t, radius<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>radius)</span>
+<span id="cb10-76">    html <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> ani.to_html5_video()</span>
+<span id="cb10-77">    plt.close()</span>
+<span id="cb10-78">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> html</span></code></pre></div>
 </details>
 </div>
 <div id="55ee58c2-c141-4c3d-8ff1-fc8dc46ad220" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> HTML</span>
+<span id="cb11-2">HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, radius<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAArJdtZGF0AAACrwYF//+r
@@ -1417,9 +2253,17 @@ AAAAAAAAACxpbHN0AAAAJKl0b28AAAAcZGF0YQAAAAEAAAAATGF2ZjYxLjEuMTAw
 </video>
 </div>
 </div>
-<p>The animation above illustrates all tangent circle trajectories. The circle is green when it touches the diamond at the corners, and it is blue when it touches at other points. The total length of all blue (touching at other points) trajectories is given by <span class="math inline">\(4\times \sqrt{2}\times t\)</span>, while the total length of all green (touching at the corners) trajectories is given by <span class="math inline">\(2\pi \times r\)</span>, where <code>t</code> is the constraint and <code>r</code> is the radius of the circle. This means that it is likely to touch at the corners when <code>t</code> is sufficiently small or <code>r</code> is sufficiently high. We illustrate one of the such cases below:</p>
+<p>The animation above illustrates all tangent circle trajectories. The circle is green when it touches the diamond at the corners, and it is blue when it touches at other points. The total length of all blue (touching at other points) trajectories is given by <img src="https://latex.codecogs.com/png.latex?4%5Ctimes%20%5Csqrt%7B2%7D%5Ctimes%20t">, while the total length of all green (touching at the corners) trajectories is given by <img src="https://latex.codecogs.com/png.latex?2%5Cpi%20%5Ctimes%20r">, where <code>t</code> is the constraint and <code>r</code> is the radius of the circle. This means that it is likely to touch at the corners when <code>t</code> is sufficiently small or <code>r</code> is sufficiently high. We illustrate one of the such cases below:</p>
 <div id="6baa7f75-89c4-4604-b9b1-5484bf3e3a58" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op">=</span><span class="dv">3</span>, radius<span class="op">=</span><span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, radius<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAA11dtZGF0AAACrwYF//+r
@@ -2424,9 +3268,17 @@ cHBsAAAAAAAAAAAAAAAALGlsc3QAAAAkqXRvbwAAABxkYXRhAAAAAQAAAABMYXZmNjEuMS4xMDA=
 </video>
 </div>
 </div>
-<p>In Ridge (L2), we don’t have special points like corners, and all points along the disk have the same probability of touching a random tangent circle with radius <span class="math inline">\(r\)</span>:</p>
+<p>In Ridge (L2), we don’t have special points like corners, and all points along the disk have the same probability of touching a random tangent circle with radius <img src="https://latex.codecogs.com/png.latex?r">:</p>
 <div id="de004256" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_tangent_circle_trajectories(Reg.L2, t<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">HTML(html5_video_tangent_circle_trajectories(Reg.L2, t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, radius<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAAvjVtZGF0AAACrwYF//+r
@@ -3329,430 +4181,297 @@ dmY2MS4xLjEwMA==
 </section>
 </section>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/maitbayev\.github\.io");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
-      });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
+ ]]></description>
+  <category>basics</category>
+  <category>loss</category>
+  <category>l1</category>
+  <category>l2</category>
+  <category>lasso</category>
+  <category>ridge</category>
+  <guid>https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/</guid>
+  <pubDate>Fri, 27 Dec 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/images/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>WIP: High-Resolution Image Synthesis with Latent Diffusion Models Notes</title>
+  <dc:creator>Madiyar Aitbayev</dc:creator>
+  <link>https://maitbayev.github.io/posts/high-resolution-image-synthesis-with-latent-diffusion-models/</link>
+  <description><![CDATA[ 
 
 
 
 
-</body></html>
+
+<section id="notes-for-high-resolution-image-synthesis-with-latent-diffusion-models" class="level1">
+<h1>Notes for “High-Resolution Image Synthesis with Latent Diffusion Models”</h1>
+<p>My notes for the <a href="https://arxiv.org/pdf/2112.10752">“High-Resolution Image Synthesis with Latent Diffusion Models”</a> paper. Feel free to ask questions on <a href="https://t.me/swemanml">my telegram channel</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>stable</category>
+  <category>diffusion</category>
+  <category>paper</category>
+  <guid>https://maitbayev.github.io/posts/high-resolution-image-synthesis-with-latent-diffusion-models/</guid>
+  <pubDate>Sun, 21 Jul 2024 23:00:00 GMT</pubDate>
+  <media:content url="https://maitbayev.github.io/posts/high-resolution-image-synthesis-with-latent-diffusion-models/images/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Auto-Encoding Variational Bayes Notes</title>
+  <dc:creator>Madiyar Aitbayev</dc:creator>
+  <link>https://maitbayev.github.io/posts/auto-encoding-variational-bayes/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="notes-for-auto-encoding-variational-bayes" class="level1">
+<h1>Notes for “Auto-Encoding Variational Bayes”</h1>
+<p>My notes for the <a href="https://arxiv.org/pdf/1312.6114">“Auto-Encoding Variational Bayes”</a> paper. Feel free to ask questions on <a href="https://t.me/swemanml">my telegram channel</a></p>
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">Method</h2>
+<section id="problem-scenario" class="level3">
+<h3 class="anchored" data-anchor-id="problem-scenario">Problem scenario</h3>
+<p>Let us consider some independently and identically distributed (i.i.d) dataset <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BX%7D=%5C%7B%5Cmathbf%7Bx%5B1%5D%7D,%20%5Cmathbf%7Bx%5B2%5D%7D,%20...,%20%5Cmathbf%7Bx%5BN%5D%7D%5C%7D">. We assume that the data involves an unobserved random variable <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bz%7D">. Then, the process consists of two steps:</p>
+<ol type="1">
+<li><p><img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bz%5Bi%5D%7D"> is generated from some prior distribution <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bp_%7B%5Ctheta*%7D(z)%7D"></p></li>
+<li><p><img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx%5Bi%5D%7D"> is generated from some conditional distribution <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bp_%7B%5Ctheta*%7D(x%7Cz)%7D"></p></li>
+</ol>
+<p>Unfortunately, the true parameters <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%20%5Ctheta*%20%7D"> and the latent variables <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bz%5Bi%5D%7D"> are unknown to us. Additionally, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bp_%5Ctheta(z%7Cx)%7D"> is intractable, so we approximate it with <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%20q_%5Cphi(z%7Cx)%20%7D">. The model <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%20q_%5Cphi(z%7Cx)%20%7D"> is a probabilistic encoder model parameterized by <img src="https://latex.codecogs.com/png.latex?%5Cphi"> . Similarly, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bp_%5Ctheta(x%7Cz)%7D"> is a probabilistic decoder model parameterized by <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctheta%7D">.</p>
+</section>
+<section id="the-variational-lower-bound" class="level3">
+<h3 class="anchored" data-anchor-id="the-variational-lower-bound">The variational lower bound</h3>
+<p>Ideally, we would like to optimize the marginal likelihoods of the dataset <strong>X</strong>:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7B%0A%5Clog%20p_%5Ctheta(x%5B1%5D,%20%5Ccdots,x%5BN%5D)=%5Csum_%7Bi=1%7D%5EN%7B%5Clog%20p_%5Ctheta(x%5Bi%5D)%7D%0A%7D%0A"></p>
+<p>Where each term can be rewritten as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7B%0A%5Clog%20p_%5Ctheta(x%5Bi%5D)%20=%20D_%7BKL%7D(q_%5Cphi(z%7Cx%5Bi%5D)%7C%7Cp_%5Ctheta(z%7Cx%5Bi%5D))%20+%20%5Cmathcal%7BL%7D(%5Ctheta,%20%5Cphi,%20x%5Bi%5D)%0A%7D%0A"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%7D)%0A&amp;=%20%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%7D)%5Cint%7B%20%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7Dd%5Cmathbf%7Bz%7D%7D%0A%5Cqquad%20%5Ctext%7B(Multiplying%20by%201)%7D%5C%5C%0A&amp;=%20%5Cint%7B%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%7D)%20%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7Dd%5Cmathbf%7Bz%7D%7D%5C%5C%0A&amp;=%20%5Cmathbb%7BE%7D_%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%20%5Cleft%5B%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%7D)%0A%5Cright%5D%20%5Cqquad%20%5Ctext%7B(Definition%20of%20Expectation)%7D%5C%5C%0A&amp;=%20%5Cmathbb%7BE%7D_%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%20%5Cleft%5B%0A%5Clog%20%5Cfrac%7Bp_%5Ctheta(%5Cmathbf%7Bx,%20z%7D)%7D%7Bp_%5Ctheta(%5Cmathbf%7Bz%7Cx%7D)%7D%0A%5Cright%5D%20%5Cqquad%20%5Ctext%7B(The%20chain%20rule%20of%20probability)%7D%20%5C%5C%0A&amp;=%20%5Cmathbb%7BE%7D_%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%20%5Cleft%5B%0A%5Clog%20%5Cfrac%7Bp_%5Ctheta(%5Cmathbf%7Bx,%20z%7D)%7D%7Bp_%5Ctheta(%5Cmathbf%7Bz%7Cx%7D)%7D%0A%5Ccdot%20%5Cfrac%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%0A%5Cright%5D%5C%5C%0A&amp;=%20%5Cmathbb%7BE%7D_%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%20%5Cleft%5B%0A%5Clog%20%5Cfrac%7B%20%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%20%7D%7B%20p_%5Ctheta(%5Cmathbf%7Bz%7Cx%7D)%20%7D%0A%5Cright%5D%20+%20%5Cmathbb%7BE%7D_%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%20%5Cleft%5B%0A%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx,%20z%7D)%20%7D%7B%20%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%20%7D%0A%5Cright%5D%5C%5C%0A&amp;=%20D_%7BKL%7D(%20%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%20%7C%7C%20p_%5Ctheta(%5Cmathbf%7Bz%7Cx%7D)%20)%0A+%20%5Cmathcal%7BL%7D(%5Ctheta,%20%5Cphi,%20%5Cmathbf%7Bx%7D)%0A%5Cend%7Baligned%7D%0A"></p>
+<p>We used the chain rule of probability:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ap(%5Cmathbf%7Bx%7D)=%5Cfrac%7Bp(%5Cmathbf%7Bx,z%7D)%7D%7Bp(%5Cmathbf%7Bz%7Cx%7D)%7D%0A"></p>
+</div>
+</div>
+</div>
+<p>The first term is the KL-divergence between the approximate and the true posterior. Since the KL-divergence is non-negative, the second term is called (<strong>variational) lower bound.</strong> Ideally, we would like to minimize the both terms. However, it is enough to optimize the lower bound w.r.t both parameters θand φ<strong>.</strong> Minimizing the lower bound will minimize the KL-divergence as well, since they sum up to a constant value.</p>
+<p><strong>The variational lower bound,</strong> also called as th<strong>e evidence lower bound (</strong>ELBO) can be also rewritten as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%5Bi%5D%7D)%20&amp;%5Cge%20%5Cmathcal%7BL%7D(%5Ctheta,%20%5Cphi;%20%5Cmathbf%7Bx%5Bi%5D%7D)%5C%5C%0A&amp;=%20%5Cmathbb%7BE%7D_%7Bq_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)%7D%20%5Cleft%5B%0A-%5Clog%20q_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)%20+%20%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%5Bi%5D,%20z%7D)%0A%5Cright%5D%5C%5C%0A&amp;=%20-D_%7BKL%7D(q_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)%7C%7Cp_%5Ctheta(%5Cmathbf%7Bz%7D))%0A+%0A%5Cmathbb%7BE%7D_%7Bq_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)%7D%20%5Cleft%5B%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%5Bi%5D%7Cz%7D)%0A%5Cright%5D%0A%5Cend%7Baligned%7D%0A"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Cmathcal%7BL%7D(%5Ctheta,%20%5Cphi;%20%5Cmathbf%7Bx%7D)%0A&amp;=%5Cmathbb%7BE%7D_%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%20%5Cleft%5B%0A%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx,%20z%7D)%20%7D%7B%20%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%20%7D%0A%5Cright%5D%5C%5C%0A&amp;=%20%5Cmathbb%7BE%7D_%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%20%5Cleft%5B%0A%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx%7Cz%7D)p_%5Ctheta(%5Cmathbf%7Bz%7D)%20%7D%7B%20%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%20%7D%0A%5Cright%5D%5C%5C%0A&amp;=%0A%5Cmathbb%7BE%7D_%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%20%5Cleft%5B%0A%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bz%7D)%20%7D%7B%20%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%20%7D%0A%5Cright%5D%0A+%0A%5Cmathbb%7BE%7D_%7B%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D%7D%20%5Cleft%5B%0A%5Clog%20%20p_%5Ctheta(%5Cmathbf%7Bx%7Cz%7D)%0A%5Cright%5D%5C%5C%0A&amp;=%0A-D_%7BKL%7D(q_%5Cphi(%5Cmathbf%7Bz%7Cx%7D)%7C%7Cp_%5Ctheta(%5Cmathbf%7Bz%7D))%0A+%0A%5Cmathbb%7BE%7D_%7Bq_%5Cphi(%5Cmathbf%7Bz%7Cx%7D)%7D%20%5Cleft%5B%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%7Cz%7D)%0A%5Cright%5D%0A%5Cend%7Baligned%7D%0A"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-reparameterization-trick" class="level3">
+<h3 class="anchored" data-anchor-id="the-reparameterization-trick">The reparameterization trick</h3>
+<p>The sampling from <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D"> is a stochastic process which is not differentiable w.r.t. <img src="https://latex.codecogs.com/png.latex?%5Cphi">. We can use an alternative method for generating sample from <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D">, i.e., the reparameterization trick. We can often express the random variable <strong>z</strong> as a deterministic variable <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bz=g_%5Cphi(%5Cepsilon,%20x)%7D">, where <img src="https://latex.codecogs.com/png.latex?%5Cepsilon"> is an independent variable and <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bg_%5Cphi%7D"> is a function parameterized by <img src="https://latex.codecogs.com/png.latex?%5Cphi">.</p>
+<p>The <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bq_%5Cphi(z%7Cx)%7D"> is commonly chosen to model a multivariate Gaussian with diagonal covariance, and the prior often is a standard Gaussian distribution:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7B%0Aq_%5Cphi(z%7Cx)=%5Cmathcal%7BN%7D(z;%20%5Cmu,%20%5Csigma%5E2)%20=%20%5Cmu+%5Csigma%5Ccdot%5Cepsilon%0A%7D%0A"></p>
+<p>where <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%20%5Cepsilon%20%5Csim%20%5Cmathcal%7BN%7D(%5Cepsilon;%200,%20I)%20%7D"> and we can choose <img src="https://latex.codecogs.com/png.latex?g_%5Cphi(%5Cepsilon,%20x)=%5Cmu(x)%20+%20%5Csigma(x)%20%5Ccdot%20%5Cepsilon"></p>
+<p>Therefore, by the reparameterization trick, sampling from an arbitrary Gaussian distribution can be performed by sampling from a standard Gaussian, scaling and shifting the result by the target mean and the deviation, which is deterministic and differentiable.</p>
+</section>
+</section>
+<section id="variational-auto-encoder" class="level2">
+<h2 class="anchored" data-anchor-id="variational-auto-encoder">Variational Auto-Encoder</h2>
+<p>We use a neural network for the probabilistic encoder <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%20q_%5Cphi(z%7Cx)%7D"> and where the parameters <img src="https://latex.codecogs.com/png.latex?%5Cphi"> and <img src="https://latex.codecogs.com/png.latex?%5Ctheta"> are optimized jointly. We also assume that:</p>
+<ul>
+<li><p><img src="https://latex.codecogs.com/png.latex?p_%5Ctheta(%5Cmathbf%7Bz%7D)=%5Cmathcal%7BN%7D(%5Cmathbf%7Bz;%200,%20I%7D)"> - the prior over the latent variables is a standard Gaussian</p></li>
+<li><p><img src="https://latex.codecogs.com/png.latex?p_%5Ctheta(%5Cmathbf%7Bx%7Cz%7D)"> is a multivariate Gaussian (in case of real-valued data) or Bernoulli (in case of binary data)</p></li>
+<li><p><img src="https://latex.codecogs.com/png.latex?q_%5Cphi(%5Cmathbf%7Bz%7Cx%7D)"> is approximately Gaussian with an approximately diagonal covariance: <img src="https://latex.codecogs.com/png.latex?%5Clog%20q_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)=%5Clog%20%5Cmathcal%7BN%7D(%5Cmathbf%7Bz;%20%5Cmu%5Bi%5D,%20%5Csigma%5Bi%5D%5E2I%7D)"></p></li>
+</ul>
+<p>We use the reparameterization trick to sample from the posterior using <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bz%5Bi,%20l%5D%7D=g_%5Cphi(%20%5Cmathbf%7Bx%5Bi%5D,%20%5Cepsilon%5Bl%5D%7D%20)=%5Cmathbf%7B%5Cmu%5Bi%5D+%5Csigma%5Bi%5D%5Ccdot%20%5Cepsilon%5Bl%5D%7D">. In this model both <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bp_%5Ctheta(z)%7D"> and <img src="https://latex.codecogs.com/png.latex?q_%5Cphi(%5Cmathbf%7Bz%7Cx%7D)"> are Gaussian; hence we compute the KL divergence in a closed form without estimation:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathcal%7BL%7D(%5Cmathbf%7B%5Ctheta,%20%5Cphi,%20x%5Bi%5D%7D)%0A%5Csimeq%0A%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bj=1%7D%5EJ%7B%5Cleft(%0A1+%5Clog(%5Csigma%5Bi%5D%5Bj%5D%5E2)%20-%20%5Cmu%5Bi%5D%5Bj%5D%5E2%20-%20%5Csigma%5Bi%5D%5Bj%5D%5E2%0A%5Cright)%7D%0A+%0A%5Cfrac%7B1%7D%7BL%7D%5Csum_%7Bl=1%7D%5EL%7B%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%7D%5Bi%5D%20%7C%20%5Cmathbf%7Bz%7D%5Bi%5D%5Bl%5D)%0A%7D%0A"></p>
+<p>In the above equation , only the reconstruction error <img src="https://latex.codecogs.com/png.latex?E_%7Bq_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)%7D%20%5Cleft%5B%20%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%5Bi%5D%7Cz%7D)%5Cright%5D"> requires estimation by sampling, since the KL-divergence term is integrated analytically.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>TODO: for now see the <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions">KL divergence between two multivariate normal distributions</a></p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>diffusion</category>
+  <category>paper</category>
+  <category>autoencoder</category>
+  <guid>https://maitbayev.github.io/posts/auto-encoding-variational-bayes/</guid>
+  <pubDate>Sat, 20 Jul 2024 23:00:00 GMT</pubDate>
+  <media:content url="https://maitbayev.github.io/posts/auto-encoding-variational-bayes/images/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Denoising Diffusion Probabilistic Models</title>
+  <dc:creator>Madiyar Aitbayev</dc:creator>
+  <link>https://maitbayev.github.io/posts/denoising-diffusion-probabilistic-models/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="notes-for-denoising-diffusion-probabilistic-models" class="level1">
+<h1>Notes for “Denoising Diffusion Probabilistic Models”</h1>
+<p>My notes for the <a href="https://arxiv.org/pdf/2006.11239">“Denoising Diffusion Probabilistic Models”</a> paper. Feel free to ask questions on <a href="https://t.me/swemanml">my telegram channel</a></p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p><img src="https://maitbayev.github.io/posts/denoising-diffusion-probabilistic-models/images/figure2.jpg" class="img-fluid" width="490"></p>
+<section id="forward-process" class="level3">
+<h3 class="anchored" data-anchor-id="forward-process">Forward Process</h3>
+<p>We have latent variables <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_1%7D,%5Cmathbf%7Bx_2%7D,%20...,%20%5Cmathbf%7Bx_T%7D"> of the same dimensionality as the image <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_0%7D">. The f<em>orward process</em> or <em>diffusion process</em> is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule <img src="https://latex.codecogs.com/png.latex?%5Cbeta_1,%20...,%20%5Cbeta_T">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7B%0Aq(x_t%7Cx_%7Bt-1%7D)=%20%5Cmathcal%7BN%7D%20(x_t;%20%5Csqrt%7B1-%5Cbeta_t%7Dx_%7Bt-1%7D,%20%5Cbeta_%7Bt%7DI),%0A%5Cquad%0Aq(x_%7B1:T%7D%7Cx_0)=%20%5Cprod_%7Bt=1%7D%5ET%7Bq(x_t%7Cx_%7Bt-1%7D)%7D%0A%7D%0A"></p>
+<p>The above equation means that we start with our data <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_0%7D">, then we sample a noisy version of our image <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_1%7D"> with the mean <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_0%7D"> scaled by <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Csqrt%7B1-%5Cbeta_1%7D%7D"> and the variance <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Cbeta_1%7D">. Finally, we repeat this process <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BT%7D"> times and arrive at pure standard Gaussian noise when small enough <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Cbeta%7D"> and large enough <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BT%7D"> values are used. This process is fixed and not learned, unlike variational auto-encoder (VAE) models.</p>
+<p>A nice benefit from the forward process is that we can sample <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_t%7D"> at any timestep <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bt%7D"> in closed form without simulating the forward process steps <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bt%7D"> times. Let <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Calpha_t=1-%5Cbeta_t%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%20%5Cbar%7B%5Calpha%7D_t%20=%20%5Cprod_%7Bi=1%7D%5Et%5Calpha_i%20%7D"> :</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%20%7B%0Aq(x_t%7Cx_0)%20=%20%5Cmathcal%7BN%7D(x_t;%20%5Csqrt%7B%5Cbar%7B%5Calpha_t%7D%7Dx_0,%20(1-%5Cbar%7B%5Calpha%7D_t)I)%0A%7D%0A"></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose we have access to random noise variables <img src="https://latex.codecogs.com/png.latex?%5C%7B%5Cmathbf%7B%5Cepsilon_t%5E*%7D,%20%5Cmathbf%7B%5Cepsilon_t%7D%5C%7D_%7Bt=0%7D%5ET%20%5Csim%20%5Cmathcal%7BN%7D(%5Cmathbf%7B%5Cepsilon_;%200,%20I%7D)">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%20%7B%0A%5Cbegin%7Baligned%7D%0Ax_t&amp;=%5Csqrt%7B%5Calpha_t%7Dx_%7Bt-1%7D%20+%20%5Csqrt%7B1-%5Calpha_t%7D%5Cepsilon%5E*_%7Bt-1%7D%5C%5C%0A&amp;=%20%5Csqrt%7B%5Calpha_t%7D(%5Csqrt%7B%5Calpha_%7Bt-1%7D%7Dx_%7Bt-2%7D%20+%20%5Csqrt%7B1-%5Calpha_%7Bt-1%7D%7D%5Cepsilon%5E*_%7Bt-2%7D)%20+%20%5Csqrt%7B1-%5Calpha_t%7D%5Cepsilon%5E*_%7Bt-1%7D%5C%5C%0A&amp;=%20%5Csqrt%7B%5Calpha_t%20%5Calpha_%7Bt-1%7D%7Dx_%7Bt-2%7D%20+%5Csqrt%7B1-%5Calpha_t%20%5Calpha_%7Bt-1%7D%7D%5Cepsilon_%7Bt-2%7D%5C%5C%0A&amp;=%20%5Ccdots%5C%5C%0A&amp;=%20%5Csqrt%7B%5Cprod_%7Bt=1%7D%5Et%7B%5Calpha_i%7D%7Dx_0%20+%20%5Csqrt%7B1-%5Cprod_%7Bt=1%7D%5Et%7B%5Calpha_i%7D%7D%5Cepsilon_0%5C%5C%0A&amp;=%20%5Csqrt%7B%5Cbar%7B%5Calpha_t%7D%7Dx_0%20+%20%5Csqrt%7B1-%5Cbar%7B%5Calpha_t%7D%7D%5Cepsilon_0%5C%5C%0A&amp;%5Csim%20%5Cmathcal%7BN%7D(x_t;%20%5Csqrt%7B%5Cbar%7B%5Calpha_t%7D%7Dx_0,%20(1-%5Cbar%7B%5Calpha%7D_t)I)%5C%5C%0A%5Cend%7Baligned%7D%0A%7D%0A"><br>
+Here we used the fact that <a href="https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables">the sum of two independent Gaussian random variables</a> remains a Gaussian with mean being sum of two means, and variance being the sum of two variances.</p>
+</div>
+</div>
+</div>
+<p>We can view the forward process as transitioning from our real-life complex distribution (image) to a simpler standard Gaussian distribution.</p>
+</section>
+<section id="reverse-process" class="level3">
+<h3 class="anchored" data-anchor-id="reverse-process">Reverse Process</h3>
+<p>The <em>reverse process</em> is a <strong>learned</strong> Gaussian transition starting at a pure standard Gaussian noise <img src="https://latex.codecogs.com/png.latex?p(%5Cmathbf%7Bx%7D_T)=%5Cmathcal%7BN%7D(%5Cmathbf%7Bx%7D_T;%20%5Cmathbf%7B0%7D,%20%5Cmathbf%7BI%7D)">, then:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ap_%7B%5Ctheta%7D(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D)%20=%20%5Cmathcal%7BN%7D(%5Cmathbf%7Bx_%7Bt-1%7D%7D;%20%5Cmathbf%7B%5Cmu_%5Ctheta(x_t,%20t),%20%5CSigma_%5Ctheta(x_t,%20t)%7D)%0A%5Cquad%20p_%5Ctheta(%5Cmathbf%7Bx%7D_%7B0:T%7D)%20=%20p(%5Cmathbf%7Bx%7D_T)%5Cprod_%7Bt=1%7D%5ET%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D)%7D%0A"></p>
+<p>The above means that we start with a pure noise <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx%7D_T">, then we gradually remove noises by sampling from learned means <img src="https://latex.codecogs.com/png.latex?%5Cmu_%5Ctheta(%5Cmathbf%7Bx_t;%20t%7D)"> and variances <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5CSigma_%5Ctheta(x_t,%20t)%7D"> parameterized by <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctheta%7D">.</p>
+<p>We can view the reverse process as transitioning from a simple standard Gaussian distribution to our real-life complex distribution inferred from the dataset. All possible images are reachable from the final standard Gaussian noise; however, fewer and fewer images will be reachable as we go in reverse. See the images below for reachable images from <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx%7D_%7B1000%7D">, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx%7D_%7B750%7D">, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx%7D_%7B500%7D">, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx%7D_%7B250%7D">, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx%7D_%7B0%7D"></p>
+<p><img src="https://maitbayev.github.io/posts/denoising-diffusion-probabilistic-models/images/figure3.jpg" class="img-fluid"></p>
+</section>
+<section id="loss" class="level3">
+<h3 class="anchored" data-anchor-id="loss">Loss</h3>
+<p>Training is performed by optimizing the variational lower bound (or the evidence lower bound) similar to the VAE:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BE%7D%5B-%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%7D_0)%5D%20%5Cle%0A%5Cmathbb%7BE%7D_q%5Cleft%5B-%5Clog%0A%20%20%5Cfrac%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%7D%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%0A%5Cright%5D=%0A%5Cmathbb%7BE_q%7D%5Cleft%5B%0A-%5Clog%20p(%5Cmathbf%7Bx_T%7D)%20-%20%5Csum_%7Bt%5Cge1%7D%5Clog%7B%5Cfrac%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D)%7D%7Bq(%5Cmathbf%7Bx_%7Bt%7D%7Cx_%7Bt-1%7D%7D)%7D%7D%0A%5Cright%5D%0A"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Proof 1: Using Jenson’s Inequality</strong></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%20%7B%0A%5Cbegin%7Baligned%7D%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%7D)&amp;=log%5Cint%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)d%5Cmathbf%7Bx_%7B1:T%7D%7D%7D%5C%5C%0A&amp;=log%5Cint%7B%20%5Cfrac%20%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%20q(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%20%7D%20%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%20d%5Cmathbf%7Bx_%7B1:T%7D%7D%20%7D%5C%5C%0A&amp;=%5Clog%20%5Cmathbb%7BE%7D_%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%5Cleft%5B%0A%20%20%5Cfrac%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%7D%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%0A%5Cright%5D%5C%5C%0A&amp;%5Cge%20%5Cmathbb%7BE%7D_%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%5Cleft%5B%20%20%5Clog%0A%20%20%5Cfrac%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%7D%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%0A%5Cright%5D%5C%5C%0A%5Cend%7Baligned%7D%0A%7D%0A"></p>
+<p><strong>Proof 2: Using KL Divergence</strong></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%20%7B%0A%5Cbegin%7Baligned%7D%0A%5Clog%20p(%5Cmathbf%7Bx_0%7D)&amp;=%5Clog%20p(%5Cmathbf%7Bx_0%7D)%20%5Cint%20%7B%0A%20%20q(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%20%20d%5Cmathbf%7Bx_%7B1:T%7D%7D%0A%7D%20%5C%5C%0A&amp;=%20%5Cint%20%7B%0A%20%20q(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%20(%5Clog%20p(%5Cmathbf%7Bx_0%7D))%20d%5Cmathbf%7Bx_%7B1:T%7D%7D%0A%7D%20%5C%5C%0A&amp;=%20%5Cmathbb%7BE%7D_%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%20%5Cleft%5B%0A%5Clog%20p(%5Cmathbf%7Bx_0%7D)%0A%5Cright%5D%5C%5C%0A&amp;=%20%20%5Cmathbb%7BE%7D_%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%20%5Cleft%5B%0A%5Clog%0A%5Cfrac%7Bq(%5Cmathbf%7Bx_%7B0:T%7D%7D)%7D%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%0A%5Cright%5D%5C%5C%0A&amp;=%20%20%5Cmathbb%7BE%7D_%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%20%5Cleft%5B%0A%5Clog%0A%5Cfrac%7B%20q(%5Cmathbf%7Bx_%7B0:T%7D%7D)%20p_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%20%7D%7B%20q(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%20p_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%7D%0A%5Cright%5D%5C%5C%0A&amp;=%5Cmathbb%7BE%7D_%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%20%5Cleft%5B%0A%5Clog%0A%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%20%7D%7B%20q(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%0A%5Cright%5D%0A+%0A%5Cmathbb%7BE%7D_%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%20%5Cleft%5B%0A%5Clog%0A%5Cfrac%7B%20q(%5Cmathbf%7Bx_%7B1:T%7D%7Cx_0%7D)p(%5Cmathbf%7Bx_0%7D)%20%7D%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7B1:T%7D%7Cx_0%7D)p(%5Cmathbf%7Bx_0%7D)%20%7D%0A%5Cright%5D%5C%5C%0A&amp;=%5Cmathbb%7BE%7D_%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%20%5Cleft%5B%0A%5Clog%0A%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%20%7D%7B%20q(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%0A%5Cright%5D%0A+%0AD_%7BKL%7D(q(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%20%7C%7C%20p_%5Ctheta(%5Cmathbf%7Bx_%7B1:T%7D%7Cx_0%7D))%5C%5C%0A&amp;%5Cge%20%5Cmathbb%7BE%7D_%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%20%5Cleft%5B%0A%5Clog%0A%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%20%7D%7B%20q(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%0A%5Cright%5D%0A%5Cend%7Baligned%7D%0A%7D%0A"></p>
+<p>The KL divergence is always non-negative, hence the lower bound approximation</p>
+</div>
+</div>
+</div>
+<p>The forward process variances <img src="https://latex.codecogs.com/png.latex?%5Cbeta_t"> are hyperparameters. The reverse process <img src="https://latex.codecogs.com/png.latex?p_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%20%7C%20x_t%7D)"> is Gaussian, when the forward process is Gaussian and <img src="https://latex.codecogs.com/png.latex?%5Cbeta_t"> are small.</p>
+<p>Efficient training is possible by optimizing random terms of the loss, however it requires two random variables for each term, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_%7Bt-1%7D%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_%7Bt%7D%7D">, which introduces high variance Monte Carlo estimates. We can reduce the variance:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AE_q%20%5Cleft%5B%0AD_%7BKL%7D(q(%5Cmathbf%7Bx_T%7Cx_0%7D%7C%7Cp(%5Cmathbf%7Bx_T%7D))%0A+%0A%5Csum_%7Bt%5Cgt1%7D%7BD_%7BKL%7D(q(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t,x_0%7D)%7C%7Cp_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D))%7D%0A-%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx_0%7Cx_1%7D)%0A%5Cright%5D%0A"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof from Appendix A
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0AL%20&amp;=%20%5Cmathbb%7BE%7D_%7Bq(%20%5Cmathbf%7Bx_%7B1:T%7D%7Cx0%7D%20)%7D%20%5Cleft%5B%0A-%5Clog%20%5Cfrac%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%20%7D%20%7B%20q(%5Cmathbf%7Bx_%7B1:T%7D%7Cx_0%7D)%20%7D%5C%5C%0A%5Cright%5D%5C%5C%0A&amp;=%20%20%5Cmathbb%7BE%7D_%7Bq(%20%5Cmathbf%7Bx_%7B1:T%7D%7Cx0%7D%20)%7D%20%5Cleft%5B%0A-%5Clog%20p(%5Cmathbf%7Bx_T%7D)%0A-%0A%5Csum_%7Bt%5Cge1%7D%7B%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D)%20%7D%20%7B%20q(%5Cmathbf%7Bx_t%7Cx_%7Bt-1%7D%7D%20)%20%7D%20%7D%0A%5Cright%5D%5C%5C%0A&amp;=%20%20%5Cmathbb%7BE%7D_%7Bq(%20%5Cmathbf%7Bx_%7B1:T%7D%7Cx0%7D%20)%7D%20%5Cleft%5B%0A-%5Clog%20p(%5Cmathbf%7Bx_T%7D)%0A-%0A%5Csum_%7Bt%3E1%7D%7B%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D)%20%7D%20%7B%20q(%5Cmathbf%7Bx_t%7Cx_%7Bt-1%7D%7D%20)%20%7D%20%7D%0A-%20%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7B0%7D%7Cx_1%7D)%20%7D%20%7B%20q(%5Cmathbf%7Bx_1%7Cx_0%7D%20)%20%7D%0A%5Cright%5D%5C%5C%0A&amp;=%20%20-%5Cmathbb%7BE%7D_%7Bq(%20%5Cmathbf%7Bx_%7B1:T%7D%7Cx0%7D%20)%7D%20%5Cleft%5B%0A-%5Clog%20p(%5Cmathbf%7Bx_T%7D)%0A-%0A%5Csum_%7Bt%3E1%7D%7B%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D)%20%7D%20%7B%20q(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t,%20x_0%7D%20)%20%7D%20%7D%0A%5Ccdot%20%5Cfrac%7Bq(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_0%7D)%20%7D%7B%20q(%5Cmathbf%7Bx_t%7Cx_0%7D)%20%7D%0A-%20%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7B0%7D%7Cx_1%7D)%20%7D%20%7B%20q(%5Cmathbf%7Bx_1%7Cx_0%7D%20)%20%7D%0A%5Cright%5D%5C%5C%0A&amp;=%20%20-%5Cmathbb%7BE%7D_%7Bq(%20%5Cmathbf%7Bx_%7B1:T%7D%7Cx0%7D%20)%7D%20%5Cleft%5B%0A-%5Clog%20%5Cfrac%7B%20p(%5Cmathbf%7Bx_T%7D)%20%7D%7Bq(%5Cmathbf%7Bx_T%7Cx_0%7D)%7D%0A-%0A%5Csum_%7Bt%3E1%7D%7B%5Clog%20%5Cfrac%7B%20p_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D)%20%7D%20%7B%20q(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t,%20x_0%7D%20)%20%7D%20%7D%0A-%20%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx_%7B0%7D%7Cx_1%7D)%0A%5Cright%5D%5C%5C%0A&amp;=%20%20%5Cmathbb%7BE%7D_%7Bq(%20%5Cmathbf%7Bx_%7B1:T%7D%7Cx0%7D%20)%7D%20%5Cleft%5B%0AD_%7BKL%7D(q(%5Cmathbf%7Bx_T%7Cx_0%7D%20%7C%7C%20p(%5Cmathbf%7Bx%7D_T))%0A+%0A%5Csum_%7Bt%3E1%7D%7B%20D_%7BKL%7D(%20q(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t,%20x_0%7D)%7C%7Cp_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D)%20%20)%20%20%7D%0A-%20%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx_%7B0%7D%7Cx_1%7D)%0A%5Cright%5D%0A%5Cend%7Baligned%7D%0A"></p>
+</div>
+</div>
+</div>
+<p>The equation above is tractable when conditioned on <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_0%7D">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Aq(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t,%20x_0%7D)=%5Cmathcal%7BN%7D(%5Cmathbf%7Bx_%7Bt-1%7D;%20%5Cmathbf%7B%5Ctilde%7B%5Cmu_t%7D(%0Ax_t,%20x_0),%20%5Ctilde%7B%5Cbeta_t%7D%7DI%7D)%0A"></p>
+<p>where:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7B%5Ctilde%7B%5Cmu_t%7D(%0Ax_t,%20x_0)%20=%0A%5Cfrac%7B%20%5Csqrt%7B%5Cbar%7B%5Calpha%7D_%7Bt-1%7D%7D%20%5Cbeta_t%20%7D%7B%201%20-%20%5Cbar%7B%5Calpha%7D_t%7Dx_0%0A+%0A%5Cfrac%7B%20%5Csqrt%7B%5Calpha_t%7D(1-%5Cbar%7B%5Calpha%7D_%7Bt-1%7D)%20%7D%7B%201%20-%20%5Cbar%7B%5Calpha%7D_t%7D%20x_t%0A%7D%0A"></p>
+<p>and</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctilde%7B%5Cbeta%7D_t=%5Cfrac%7B%201-%5Cbar%7B%5Calpha%7D_%7Bt-1%7D%20%7D%7B1-%5Cbar%7B%5Calpha%7D_t%7D%5Cbeta_t%0A"></p>
+<p>All KL divergences in the loss are comparisons between Gaussians, which can be calculated in closed form instead of Monte Carlo estimates.</p>
+</section>
+</section>
+<section id="diffusion-models-and-denoising-autoencoders" class="level2">
+<h2 class="anchored" data-anchor-id="diffusion-models-and-denoising-autoencoders">Diffusion Models and Denoising Autoencoders</h2>
+<section id="reverse-process-and-mathbfl_1t-1" class="level3">
+<h3 class="anchored" data-anchor-id="reverse-process-and-mathbfl_1t-1">Reverse Process and <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BL_%7B1:T-1%7D%7D"></h3>
+<p>The forward process variances <img src="https://latex.codecogs.com/png.latex?%5Cbeta_%7Bt%7D"> are constants (hyperparameters), thus <img src="https://latex.codecogs.com/png.latex?L_t"> is a constant during training and can be ignored.</p>
+<p>We now discuss <img src="https://latex.codecogs.com/png.latex?p_%5Ctheta(%20%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D%20)%20=%20%5Cmathcal%7BN%7D(%20%5Cmathbf%7Bx_%7Bt-1%7D;%20%5Cmu_%5Ctheta(x_t,%20t),%20%5Csum_%5Ctheta(x_t,%20t%20)%7D%20)"> . First, we set <img src="https://latex.codecogs.com/png.latex?%5Csum_%5Ctheta(%20%5Cmathbf%7Bx_t,%20t%7D%20)%20=%20%5Csigma_t%5E2%5Cmathbf%7BI%7D"> to untrained constant. Experimentally, <img src="https://latex.codecogs.com/png.latex?%5Csigma_t%5E2=%5Cbeta_t"> and <img src="https://latex.codecogs.com/png.latex?%5Csigma_t%5E2=%5Ctilde%7B%5Cbeta%7D_t=%5Cfrac%7B1-%5Ctilde%7B%5Calpha%7D_%7Bt-1%7D%7D%7B1-%5Ctilde%7B%5Calpha%7D_t%7D%5Cbeta_t"> had similar results.</p>
+<p>Second, the mean is parameterized by the following analysis of <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BL_t%7D">, where <img src="https://latex.codecogs.com/png.latex?p_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%20%7C%20x_t%7D%20)=%5Cmathcal%7BN%7D(%20%5Cmathbf%7Bx_%7Bt-1%7D%20;%20%5Cmu_%5Ctheta(x_t;t),%20%5Csigma_t%5E2I%20%7D%20)"> :</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AL_%7Bt-1%7D=%5Cmathbb%7BE%7D_q%20%5Cleft%5B%0A%5Cfrac%7B1%7D%7B2%5Csigma_t%5E2%7D%5CVert%0A%5Cmathbf%7B%0A%5Ctilde%7B%5Cmu%7D_t(x_t,%20x_0)%20-%20%5Cmu_%5Ctheta(x_t,%20t)%0A%7D%0A%5CVert%5E2%0A%5Cright%5D%0A+%0AC%0A"></p>
+<p>where C is a constant that does not depend on <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctheta%7D">. The variance terms disappeared since they are the same between the forward and reverse processes. Hence, the most straightforward parameterization of <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Cmu_%5Ctheta%7D"> is a model that predicts <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctilde%7B%5Cmu%7D_t%7D">.</p>
+<p>However, we can expand the equation above further by reparameterizing <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_t(x_0,%20%5Cepsilon)=%5Csqrt%7B%5Cbar%7B%5Calpha%7D_t%7Dx_0%20+%20%5Csqrt%7B1-%5Cbar%7B%5Calpha%7D_t%7D%5Cepsilon%7D"> <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0AL_%7Bt-1%7D-C&amp;=E_%7B%5Cmathbf%7Bx_0%7D,%20%5Cepsilon%7D%20%5Cleft%5B%0A%5Cfrac%7B1%7D%7B2%5Csigma_t%5E2%7D%5CVert%0A%5Cmathbf%7B%5Ctilde%7B%5Cmu_t%7D%5Cleft(%0A%20%20x_t(%0A%20%20%20%20x_0,%20%5Cepsilon),%0A%20%20%20%20%5Cfrac%7B1%7D%7B%20%5Csqrt%7B%5Cbar%7B%5Calpha%7D_t%7D%20%7D(x_t(x_0,%20%5Cepsilon)%20-%20%5Csqrt%7B1-%5Cbar%7B%5Calpha%7D_t%7D%5Cepsilon)%0A%5Cright)%7D%0A-%0A%5Cmathbf%7B%0A%5Cmu_%5Ctheta(x_t(x_0,%20%5Cepsilon),%20t)%0A%5CVert%5E2%0A%7D%0A%5Cright%5D%5C%5C%0A&amp;=E_%7B%5Cmathbf%7Bx_0%7D,%20%5Cepsilon%7D%20%5Cleft%5B%0A%5Cmathbf%7B%0A%5Cfrac%7B1%7D%7B2%5Csigma_t%5E2%7D%5CVert%0A%5Cfrac%7B1%7D%7B%5Csqrt%7B%5Calpha_t%7D%7D%20%5Cleft(%0Ax_t(x_0,%20%5Cepsilon)-%5Cfrac%7B%5Cbeta_t%7D%7B%5Csqrt%7B1-%5Cbar%7B%5Calpha%7D_t%7D%7D%5Cepsilon%0A%5Cright)%0A-%0A%5Cmu_%5Ctheta(x_t(x_0,%20%5Cepsilon),%20t)%0A%5CVert%5E2%0A%7D%0A%5Cright%5D%5C%5C%0A%5Cend%7Baligned%7D%0A"></p>
+<p>The above equation reveals that <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Cmu_%5Ctheta%7D"> must predict <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%20%5Cfrac%7B1%7D%7B%5Csqrt%7B%5Calpha_t%7D%7D%5Cleft(x_t%20-%20%5Cfrac%7B%5Cbeta_t%7D%7B%5Csqrt%7B1-%5Cbar%7B%5Calpha%7D_t%7D%7D%5Cepsilon%20%5Cright)%20%7D"> given <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_t%7D">. We may choose the following parameterization:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%20%7B%0A%5Cmu_%5Ctheta(x_t,%20t)=%5Ctilde%7B%5Cmu%7D_t%5Cleft(%0Ax_t,%0A%5Cfrac%7B1%7D%7B%5Csqrt%7B%5Cbar%7Ba%7D_t%7D%7D(x_t-%5Csqrt%7B1-%5Calpha_t%7D%5Cepsilon_%5Ctheta(x_t))%0A%5Cright)%0A=%5Cfrac%7B1%7D%7B%5Csqrt%7B%5Calpha_t%7D%7D%20%5Cleft(%0Ax_t-%5Cfrac%7B%5Cbeta_t%7D%7B%5Csqrt%7B1-%5Cbar%7B%5Calpha%7D_t%7D%7D%5Cepsilon_%5Ctheta(x_t,%20t)%0A%5Cright)%0A%7D%0A"></p>
+<p>Where <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Cepsilon_%5Ctheta%7D"> is a function approximator to predict <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Cepsilon%7D"> from <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_t%7D">. We choose the above parameterization because it is in the same form as <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctilde%7B%5Cmu%7D(x_t,%20x_0)%7D">.</p>
+<p>To sample <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_%7Bt-1%7D%20%5Csim%20p_%5Ctheta(x_%7Bt-1%7D%7Cx_t)%7D"> is to compute <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_%7Bt-1%7D%7D=%5Cfrac%7B1%7D%7B%5Csqrt%7B%5Calpha_t%7D%7D%5Cleft(%20%5Cmathbf%7Bx_t%7D%20-%20%5Cfrac%7B%5Cbeta_t%7D%7B%5Csqrt%7B1-%5Ctilde%7B%5Calpha%7D_t%7D%7D%5Cmathbf%7B%5Cepsilon%7D_%5Ctheta(x_t,%20t)%20%5Cright)%20+%20%5Csigma_t%5Cmathbf%7Bz%7D"> , where <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bz%7D%20%5Csim%20%5Cmathcal%7BN%7D(0,%20I)"> . Furthermore, the loss simplifies to:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AE_%7B%5Cmathbf%7Bx_0%7D,%20%5Cepsilon%7D%20%5Cleft%5B%0A%5Cmathbf%7B%0A%5Cfrac%7B%5Cbeta_t%5E2%7D%7B2%5Csigma_t%5E2%5Calpha_t(1-%5Cbar%7B%5Calpha%7D_t)%7D%0A%5CVert%0A%5Cepsilon%0A-%0A%5Cepsilon_%5Ctheta(%0A%5Csqrt%7B%5Cbar%7B%5Calpha%7D_t%7Dx_0+%5Csqrt%7B1-%5Cbar%7B%5Calpha%7D_t%7D%5Cepsilon,%20t%0A)%0A%5CVert%5E2%0A%7D%0A%5Cright%5D%0A"></p>
+<p>To summarize, we can train the reverse process mean function approximator <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Cmu_%5Ctheta%7D"> to predict <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Cmu_t%7D">, or we can train <img src="https://latex.codecogs.com/png.latex?%5Cepsilon_%5Ctheta"> to predict <img src="https://latex.codecogs.com/png.latex?%5Cepsilon">.</p>
+<p><img src="https://maitbayev.github.io/posts/denoising-diffusion-probabilistic-models/images/figure4.jpg" class="img-fluid"></p>
+</section>
+<section id="simplified-training-objective" class="level3">
+<h3 class="anchored" data-anchor-id="simplified-training-objective">Simplified Training Objective</h3>
+<p>It is simpler to implement to train on the following variant of the lower variational bound, which is a <strong>weighted variational bound</strong>:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AE_%7B%5Cmathbf%7Bx_0%7D,%20%5Cepsilon%7D%20%5Cleft%5B%0A%5Cmathbf%7B%0A%5CVert%0A%5Cepsilon%0A-%0A%5Cepsilon_%5Ctheta(%0A%5Csqrt%7B%5Cbar%7B%5Calpha%7D_t%7Dx_0+%5Csqrt%7B1-%5Cbar%7B%5Calpha%7D_t%7D%5Cepsilon,%20t%0A)%0A%5CVert%5E2%0A%7D%0A%5Cright%5D%0A"></p>
+<p>This also leads to better sample quality, since it down-weights loss terms corresponding to small <strong>t</strong> so that the network can focus on more difficult denoising tasks at larger <strong>t</strong> terms.</p>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>diffusion</category>
+  <category>paper</category>
+  <guid>https://maitbayev.github.io/posts/denoising-diffusion-probabilistic-models/</guid>
+  <pubDate>Sun, 14 Jul 2024 23:00:00 GMT</pubDate>
+  <media:content url="https://maitbayev.github.io/posts/denoising-diffusion-probabilistic-models/images/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+</channel>
+</rss>
