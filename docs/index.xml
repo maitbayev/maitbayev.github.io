@@ -31,7 +31,7 @@
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>The post contains collapsed code sections that are used to produce the visualizations. They’re optional, hence collapsed.</p>
-<div id="cell-4" class="cell" data-execution_count="16">
+<div id="cell-4" class="cell" data-execution_count="69">
 <details class="code-fold">
 <summary>code for fig_jensen_inequality</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -692,14 +692,40 @@ font-style: inherit;">1</span>),</span>
 <span id="cb1-84">        sliders<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>sliders,</span>
-<span id="cb1-85">    ))</span>
-<span id="cb1-86"></span>
-<span id="cb1-87"></span>
-<span id="cb1-88"><span class="kw" style="color: #003B4F;
+<span id="cb1-85">        legend<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>(</span>
+<span id="cb1-86">            yanchor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"top"</span>,</span>
+<span id="cb1-87">            xanchor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"right"</span>,</span>
+<span id="cb1-88">            x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb1-89">            y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb1-90">        ),</span>
+<span id="cb1-91">    ))</span>
+<span id="cb1-92"></span>
+<span id="cb1-93"></span>
+<span id="cb1-94"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> sample_parabola(x):</span>
-<span id="cb1-89">    <span class="cf" style="color: #003B4F;
+<span id="cb1-95">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="fl" style="color: #AD0000;
@@ -719,7 +745,7 @@ background-color: null;
 font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">15</span></span>
-<span id="cb1-90"></span></code></pre></div>
+<span id="cb1-96"></span></code></pre></div>
 </details>
 </div>
 </section>
@@ -727,7 +753,7 @@ font-style: inherit;">15</span></span>
 <h2 class="anchored" data-anchor-id="convex-function">Convex Function</h2>
 <p>A function is a <strong>convex function</strong> when the line segment joining any two points on the graph of the function lies above or on the graph. In the simplest term, a convex function is shaped like a cup <img src="https://latex.codecogs.com/png.latex?%5Ccup"> and a <strong>concave function</strong> is shaped like a cap <img src="https://latex.codecogs.com/png.latex?%5Ccap">. If <code>f</code> is convex, then <code>-f</code> is concave.</p>
 <p>A visualization from <a href="https://en.wikipedia.org/wiki/Convex_function">Wikipedia</a>:</p>
-<div id="cell-6" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="61">
+<div id="cell-6" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="70">
 <details class="code-fold">
 <summary>display image from Wikipedia</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
@@ -745,7 +771,7 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">600</span>)</span></code></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="70">
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg" width="600">
 </div>
 </div>
@@ -759,7 +785,7 @@ font-style: inherit;">600</span>)</span></code></pre></div>
 </section>
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
-<div id="cell-10" class="cell" data-execution_count="62">
+<div id="cell-10" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">fig_jensen_inequality(</span>
 <span id="cb3-2">    f<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -786,7 +812,7 @@ font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_62.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_71.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>An interactive visualization of a convex function <img src="https://latex.codecogs.com/png.latex?f(x)=0.15(x%20-%2015)%5E2%20+%2015">. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2)">, where <img src="https://latex.codecogs.com/png.latex?%5Clambda_2=1-%5Clambda_1">.</p>
@@ -823,7 +849,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <section id="triangle" class="level4">
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with <img src="https://latex.codecogs.com/png.latex?n=3"> case, i.e.:</p>
-<div id="cell-16" class="cell" data-execution_count="68">
+<div id="cell-16" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">fig_jensen_inequality(</span>
 <span id="cb4-2">    f<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -852,7 +878,7 @@ font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_68.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_72.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>A similar interactive visualization as before. You can use the slider to try different values of <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1,%20%5Clambda_2,%20%5Clambda_3)"> where <img src="https://latex.codecogs.com/png.latex?%5Clambda_1+%5Clambda_2+%5Clambda_3=1">.</p>

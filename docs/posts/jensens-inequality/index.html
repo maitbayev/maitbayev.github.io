@@ -249,7 +249,7 @@ window.Quarto = {
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>The post contains collapsed code sections that are used to produce the visualizations. They’re optional, hence collapsed.</p>
-<div id="cell-4" class="cell" data-execution_count="16">
+<div id="cell-4" class="cell" data-execution_count="69">
 <details class="code-fold">
 <summary>code for fig_jensen_inequality</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
@@ -336,12 +336,18 @@ window.Quarto = {
 <span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>        xaxis<span class="op">=</span><span class="bu">dict</span>(fixedrange<span class="op">=</span><span class="va">True</span>),</span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>        yaxis<span class="op">=</span><span class="bu">dict</span>(fixedrange<span class="op">=</span><span class="va">True</span>, scaleanchor<span class="op">=</span><span class="st">"x"</span>, scaleratio<span class="op">=</span><span class="dv">1</span>),</span>
 <span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>        sliders<span class="op">=</span>sliders,</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sample_parabola(x):</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.15</span> <span class="op">*</span> (x <span class="op">-</span> <span class="dv">15</span>) <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">15</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>        legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>            yanchor<span class="op">=</span><span class="st">"top"</span>,</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>            xanchor<span class="op">=</span><span class="st">"right"</span>,</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sample_parabola(x):</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.15</span> <span class="op">*</span> (x <span class="op">-</span> <span class="dv">15</span>) <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">15</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -349,13 +355,13 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="convex-function">Convex Function</h2>
 <p>A function is a <strong>convex function</strong> when the line segment joining any two points on the graph of the function lies above or on the graph. In the simplest term, a convex function is shaped like a cup <span class="math inline">\(\cup\)</span> and a <strong>concave function</strong> is shaped like a cap <span class="math inline">\(\cap\)</span>. If <code>f</code> is convex, then <code>-f</code> is concave.</p>
 <p>A visualization from <a href="https://en.wikipedia.org/wiki/Convex_function">Wikipedia</a>:</p>
-<div id="cell-6" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="61">
+<div id="cell-6" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="70">
 <details class="code-fold">
 <summary>display image from Wikipedia</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Image(url<span class="op">=</span><span class="st">'https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg'</span>, width<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="70">
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg" width="600">
 </div>
 </div>
@@ -373,14 +379,14 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 </section>
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
-<div id="cell-10" class="cell" data-execution_count="62">
+<div id="cell-10" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig_jensen_inequality(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">22</span>]),</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>).show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_62.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_71.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>An interactive visualization of a convex function <span class="math inline">\(f(x)=0.15(x - 15)^2 + 15\)</span>. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2)\)</span>, where <span class="math inline">\(\lambda_2=1-\lambda_1\)</span>.</p>
@@ -425,14 +431,14 @@ f(\sum_{i=1}^n \lambda_i x_i) \le \sum_{i=1}^n \lambda_i f(x_i)
 <section id="triangle" class="level4">
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with <span class="math inline">\(n=3\)</span> case, i.e.:</p>
-<div id="cell-16" class="cell" data-execution_count="68">
+<div id="cell-16" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig_jensen_inequality(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">25</span>]),</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>).show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_68.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_72.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>A similar interactive visualization as before. You can use the slider to try different values of <span class="math inline">\((\lambda_1, \lambda_2, \lambda_3)\)</span> where <span class="math inline">\(\lambda_1+\lambda_2+\lambda_3=1\)</span>.</p>
