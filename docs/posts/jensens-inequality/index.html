@@ -350,7 +350,7 @@ window.Quarto = {
 </section>
 <section id="convex-function" class="level2">
 <h2 class="anchored" data-anchor-id="convex-function">Convex Function</h2>
-<p>A function is a <strong>convex function</strong> when the line segment joining any two points on the graph of the function lies above or on the graph. In the simplest term, a convex function is shaped like a cup <span class="math inline">\(\cup\)</span> and a <strong>concave function</strong> is shaped like a cap <span class="math inline">\(\cap\)</span>. If <code>f</code> is convex, then <code>-f</code> is concave.</p>
+<p>A function is a <strong>convex function</strong> when the line segment joining any two points on the graph of the function lies above or on the graph. In the simplest term, a convex function is shaped like <span class="math inline">\(\cup\)</span> and a <strong>concave function</strong> is shaped like <span class="math inline">\(\cap\)</span>. If <code>f</code> is convex, then <code>-f</code> is concave.</p>
 <p>A visualization from <a href="https://en.wikipedia.org/wiki/Convex_function">Wikipedia</a>:</p>
 <div id="cell-6" class="cell" data-execution_count="2">
 <details class="code-fold">
@@ -372,11 +372,10 @@ f(\lambda x_1 + (1-\lambda) x_2) \le \lambda f(x_1) + (1-\lambda) f(x_2)
 <p><span class="math display">\[
 f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 \]</span></p>
-<p>This definition formally describes the above visualization from Wikipedia, but where <span class="math inline">\(\lambda=t\)</span>.</p>
 </section>
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
-<div id="cell-10" class="cell" data-execution_count="3">
+<div id="cell-9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> fig_jensen_inequality(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
@@ -388,7 +387,7 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 </div>
 </div>
 <p>An interactive visualization of the convex function: <span class="math inline">\(f(x)=0.15(x - 15)^2 + 15\)</span>. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2)\)</span>, where <span class="math inline">\(\lambda_2=1-\lambda_1\)</span>.</p>
-<p>We have a line segment that connects two points on the parabola: <span class="math inline">\((x_1, f(x_1))\)</span> and <span class="math inline">\((x_2, f(x_2))\)</span>. We can sample any point along the line segment by <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, \lambda_1 f(x_1) + \lambda_2 f(x_2))\)</span>. For example:</p>
+<p>We have a line segment that joins <span class="math inline">\((x_1, f(x_1))\)</span> and <span class="math inline">\((x_2, f(x_2))\)</span>. We can sample any point along the line segment by <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, \lambda_1 f(x_1) + \lambda_2 f(x_2))\)</span>. For example:</p>
 <ul>
 <li>When <span class="math inline">\(\lambda_1=0\)</span>, we get the second point</li>
 <li>When <span class="math inline">\(\lambda_1=1\)</span>, we get the first point</li>
@@ -422,13 +421,12 @@ g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
 <li><a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality#Proofs">en.wikipedia.org/wiki/Jensen%27s_inequality#Proofs</a></li>
 <li><a href="https://brilliant.org/wiki/jensens-inequality/">brilliant.org/wiki/jensens-inequality</a></li>
 <li><a href="https://artofproblemsolving.com/wiki/index.php/Jensen%27s_Inequality">artofproblemsolving.com/wiki/…</a></li>
-<li>I will add more as I discover</li>
 </ul>
 <p>Here we describe a geometric intuition, which personally resonates more with me.</p>
 <section id="triangle" class="level4">
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with a triangle, i.e., <span class="math inline">\(n=3\)</span>:</p>
-<div id="cell-16" class="cell" data-execution_count="4">
+<div id="cell-15" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> fig_jensen_inequality(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
@@ -436,7 +434,7 @@ g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>fig.show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_6.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>As before, you can use the slider to try different values of <span class="math inline">\((\lambda_1, \lambda_2, \lambda_3)\)</span> where <span class="math inline">\(\lambda_1+\lambda_2+\lambda_3=1\)</span>.</p>
@@ -457,12 +455,12 @@ g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
 <p><span class="math display">\[
 (\lambda_1x_1+\lambda_2x_2+\lambda_3x_3, f(\lambda_1x_1+\lambda_2x_2+\lambda_3x_3))
 \]</span></p>
-<p>If we name this point as <strong>B</strong>, then it is not difficult to see that Jensen’s inequality is the same as <span class="math inline">\(B_y \le A_y\)</span> and we also have <span class="math inline">\(B_x=A_x\)</span>.</p>
+<p>If we name this point as <strong>B</strong>, then it is not difficult to see that Jensen’s inequality is the same as <span class="math inline">\(B_y \le A_y\)</span>.</p>
 </section>
 <section id="four-points-or-more" class="level4">
 <h4 class="anchored" data-anchor-id="four-points-or-more">Four Points or More</h4>
 <p>It is easy to generalize the above for <span class="math inline">\(n&gt;3\)</span>. I am adding it here for the sake of completeness:</p>
-<div id="cell-20" class="cell" data-execution_count="5">
+<div id="cell-19" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> fig_jensen_inequality(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
@@ -470,7 +468,7 @@ g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fig.show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_7.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>In the general case, the point <span class="math inline">\((\sum_{i=1}^n \lambda_ix_i, \sum_{i=1}^n \lambda_if(x_i))\)</span> describes a point inside or on the boundary of the convex hull enclosing the points: <span class="math inline">\((x_1, f(x_1)), (x_2, f(x_2)), \cdots, (x_n, f(x_n))\)</span>. The convex hull is always above or on the graph.</p>
