@@ -76,7 +76,7 @@ We can view the reverse process as transitioning from a simple standard Gaussian
 
 ### Loss
 
-Training is performed by optimizing the variational lower bound (or the evidence lower bound) similar to the VAE:
+Training is performed by optimizing the **variational lower bound** (or the evidence lower bound) similar to the VAE:
 
 $$
 \mathbb{E}[-\log p_\theta(\mathbf{x}_0)] \le 

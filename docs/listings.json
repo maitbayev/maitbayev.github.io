@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/jensens-inequality/index.html",
       "/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html",
       "/posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html",
       "/posts/auto-encoding-variational-bayes/index.html",
