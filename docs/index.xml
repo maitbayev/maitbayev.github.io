@@ -848,28 +848,24 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <li>and so on…</li>
 </ul>
 <p>This point is visualized with a black point above. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?A"></strong>.</p>
-<p>The point located at the intersection between the parabola and the dotted black line segment is described by: <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20f(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2))">. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?B"></strong>.</p>
-<p>Then, the definition above is just asserting that <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y"> and we also have <img src="https://latex.codecogs.com/png.latex?A_x%20=%20B_x">. Note that we are just showing a single line segment, but this statement should be true for any line segment joining two points on the graph.</p>
+<p>The point where the function graph intersects with the dotted line segment is described by: <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20f(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2))">. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?B"></strong>.</p>
+<p>Then, the definition above is just asserting that <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y"> and we also have <img src="https://latex.codecogs.com/png.latex?A_x%20=%20B_x">. Note that we are just showing a single line segment, but this statement should be true for all similar line segments.</p>
 </section>
 </section>
 <section id="jensens-inequality" class="level2">
 <h2 class="anchored" data-anchor-id="jensens-inequality">Jensen’s Inequality</h2>
-<p>Jensen’s inequality is a generalization of the convex function definition for more than 2 points.</p>
+<p>Jensen’s inequality is a generalization of the above convex function definition for more than 2 points.</p>
 <section id="definition-1" class="level3">
 <h3 class="anchored" data-anchor-id="definition-1">Definition</h3>
-<p>Assume we have a real-valued <strong>convex function</strong> <img src="https://latex.codecogs.com/png.latex?f"> and <img src="https://latex.codecogs.com/png.latex?x_1,%20x_2,%20%5Ccdots,%20x_n"> in its domain, and also positive weights <img src="https://latex.codecogs.com/png.latex?w_1,%20w_2,%20%5Ccdots,%20w_n">. Then Jensen’s inequality can be stated as:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0Af%5Cleft(%5Cfrac%7Bw_1x_1+w_2x_2+%5Ccdots+w_nx_n%7D%7Bw_1+w_2+%5Ccdots+w_n%7D%5Cright)%20%5Cle%20%5Cfrac%7Bw_1f(x_1)+w_2f(x_2)+%5Ccdots+w_nf(x_n)%7D%7Bw_1+w_2+%5Ccdots+w_n%7D%0A"></p>
-<p>The equation is flipped for a <strong>concave function</strong> g:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0Ag%5Cleft(%5Cfrac%7Bw_1x_1+w_2x_2+%5Ccdots+w_nx_n%7D%7Bw_1+w_2+%5Ccdots+w_n%7D%5Cright)%20%5Cge%20%5Cfrac%7Bw_1g(x_1)+w_2g(x_2)+%5Ccdots+w_ng(x_n)%7D%7Bw_1+w_2+%5Ccdots+w_n%7D%0A"></p>
-<p>Let’s simplify the inequality by normalizing <img src="https://latex.codecogs.com/png.latex?w_1,%20w_2,%20%5Ccdots,%20w_n">:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Clambda_i=%5Cfrac%7Bw_i%7D%7B%5Csum_%7Bk=1%7D%5En%20w_k%7D%20%5Ctext%7B%20where%20%7D%20i=1,%202,%20%5Ccdots,%20n%0A"></p>
-<p>where it is easy to see that <img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20=%201">. Then we have:</p>
+<p>Assume we have a <strong>convex function</strong> <img src="https://latex.codecogs.com/png.latex?f"> and <img src="https://latex.codecogs.com/png.latex?x_1,%20x_2,%20%5Ccdots,%20x_n"> in its domain, and also positive weights <img src="https://latex.codecogs.com/png.latex?%5Clambda_1,%20%5Clambda_2,%20%5Ccdots,%20%5Clambda_n"> where <img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20=%201">. Then Jensen’s inequality can be stated as:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Af(%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20x_i)%20%5Cle%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20f(x_i)%0A"></p>
-<p>Note that we have the same convex function definition when <img src="https://latex.codecogs.com/png.latex?n=2">.</p>
+<p>The equation is flipped for a <strong>concave function</strong> g:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ag(%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20x_i)%20%5Cge%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20g(x_i)%0A"></p>
+<p>Note that we have the same definition for convex function when <img src="https://latex.codecogs.com/png.latex?n=2">.</p>
 </section>
 <section id="geometric-intuition-1" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition-1">Geometric Intuition</h3>
-<p>A numerous proofs are already given by other posts. I encourage you to checkout the following resources:</p>
+<p>A numerous proofs are already available by other posts. I encourage you to checkout the following resources:</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality#Proofs">en.wikipedia.org/wiki/Jensen%27s_inequality#Proofs</a></li>
 <li><a href="https://brilliant.org/wiki/jensens-inequality/">brilliant.org/wiki/jensens-inequality</a></li>
@@ -879,7 +875,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <p>Here we describe a geometric intuition, which personally resonates more with me.</p>
 <section id="triangle" class="level4">
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
-<p>Let’s start with <img src="https://latex.codecogs.com/png.latex?n=3"> case, i.e.:</p>
+<p>Let’s start with a triangle, i.e., <img src="https://latex.codecogs.com/png.latex?n=3">:</p>
 <div id="cell-16" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">fig <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -923,11 +919,12 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <p>For example:</p>
 <ul>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_i=1"> where <img src="https://latex.codecogs.com/png.latex?i%20%5Cin%20%5C%7B1,%202,%203%5C%7D">, we get the point <img src="https://latex.codecogs.com/png.latex?(x_i,%20f(x_i))"></li>
-<li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=%5Clambda_2=%5Clambda_3=%5Cfrac%7B1%7D%7B3%7D">, we get the center of mass</li>
+<li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=%5Clambda_2=%5Clambda_3=%5Cfrac%7B1%7D%7B3%7D">, we get the center of mass of the triangle</li>
 <li>and so on…</li>
 </ul>
-<p>As usual, this point is visualized with a black point. Let’s name it as <strong>A</strong>. Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle. Just in case you’re already familiar.</p>
-<p>The point at the intersection between the parabola and the dotted line segment is described by: <img src="https://latex.codecogs.com/png.latex?%0A(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20f(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3))%0A"></p>
+<p>The black point in the visualization describes this point. Let’s name it as <strong>A</strong>. Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle. Just in case you’re already familiar.</p>
+<p>The point where the parabola meets the dotted line segment is described by:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20f(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3))%0A"></p>
 <p>If we name this point as <strong>B</strong>, then it is not difficult to see that Jensen’s inequality is the same as <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y"> and we also have <img src="https://latex.codecogs.com/png.latex?B_x=A_x">.</p>
 </section>
 <section id="four-points-or-more" class="level4">

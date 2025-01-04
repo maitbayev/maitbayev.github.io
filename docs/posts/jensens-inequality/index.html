@@ -396,36 +396,28 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 <li>and so on…</li>
 </ul>
 <p>This point is visualized with a black point above. Let’s name it as <strong><span class="math inline">\(A\)</span></strong>.</p>
-<p>The point located at the intersection between the parabola and the dotted black line segment is described by: <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, f(\lambda_1 x_1 + \lambda_2 x_2))\)</span>. Let’s name it as <strong><span class="math inline">\(B\)</span></strong>.</p>
-<p>Then, the definition above is just asserting that <span class="math inline">\(B_y \le A_y\)</span> and we also have <span class="math inline">\(A_x = B_x\)</span>. Note that we are just showing a single line segment, but this statement should be true for any line segment joining two points on the graph.</p>
+<p>The point where the function graph intersects with the dotted line segment is described by: <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, f(\lambda_1 x_1 + \lambda_2 x_2))\)</span>. Let’s name it as <strong><span class="math inline">\(B\)</span></strong>.</p>
+<p>Then, the definition above is just asserting that <span class="math inline">\(B_y \le A_y\)</span> and we also have <span class="math inline">\(A_x = B_x\)</span>. Note that we are just showing a single line segment, but this statement should be true for all similar line segments.</p>
 </section>
 </section>
 <section id="jensens-inequality" class="level2">
 <h2 class="anchored" data-anchor-id="jensens-inequality">Jensen’s Inequality</h2>
-<p>Jensen’s inequality is a generalization of the convex function definition for more than 2 points.</p>
+<p>Jensen’s inequality is a generalization of the above convex function definition for more than 2 points.</p>
 <section id="definition-1" class="level3">
 <h3 class="anchored" data-anchor-id="definition-1">Definition</h3>
-<p>Assume we have a real-valued <strong>convex function</strong> <span class="math inline">\(f\)</span> and <span class="math inline">\(x_1, x_2, \cdots, x_n\)</span> in its domain, and also positive weights <span class="math inline">\(w_1, w_2, \cdots, w_n\)</span>. Then Jensen’s inequality can be stated as:</p>
-<p><span class="math display">\[
-f\left(\frac{w_1x_1+w_2x_2+\cdots+w_nx_n}{w_1+w_2+\cdots+w_n}\right) \le \frac{w_1f(x_1)+w_2f(x_2)+\cdots+w_nf(x_n)}{w_1+w_2+\cdots+w_n}
-\]</span></p>
-<p>The equation is flipped for a <strong>concave function</strong> g:</p>
-<p><span class="math display">\[
-g\left(\frac{w_1x_1+w_2x_2+\cdots+w_nx_n}{w_1+w_2+\cdots+w_n}\right) \ge \frac{w_1g(x_1)+w_2g(x_2)+\cdots+w_ng(x_n)}{w_1+w_2+\cdots+w_n}
-\]</span></p>
-<p>Let’s simplify the inequality by normalizing <span class="math inline">\(w_1, w_2, \cdots, w_n\)</span>:</p>
-<p><span class="math display">\[
-\lambda_i=\frac{w_i}{\sum_{k=1}^n w_k} \text{ where } i=1, 2, \cdots, n
-\]</span></p>
-<p>where it is easy to see that <span class="math inline">\(\sum_{i=1}^n \lambda_i = 1\)</span>. Then we have:</p>
+<p>Assume we have a <strong>convex function</strong> <span class="math inline">\(f\)</span> and <span class="math inline">\(x_1, x_2, \cdots, x_n\)</span> in its domain, and also positive weights <span class="math inline">\(\lambda_1, \lambda_2, \cdots, \lambda_n\)</span> where <span class="math inline">\(\sum_{i=1}^n \lambda_i = 1\)</span>. Then Jensen’s inequality can be stated as:</p>
 <p><span class="math display">\[
 f(\sum_{i=1}^n \lambda_i x_i) \le \sum_{i=1}^n \lambda_i f(x_i)
 \]</span></p>
-<p>Note that we have the same convex function definition when <span class="math inline">\(n=2\)</span>.</p>
+<p>The equation is flipped for a <strong>concave function</strong> g:</p>
+<p><span class="math display">\[
+g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
+\]</span></p>
+<p>Note that we have the same definition for convex function when <span class="math inline">\(n=2\)</span>.</p>
 </section>
 <section id="geometric-intuition-1" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition-1">Geometric Intuition</h3>
-<p>A numerous proofs are already given by other posts. I encourage you to checkout the following resources:</p>
+<p>A numerous proofs are already available by other posts. I encourage you to checkout the following resources:</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality#Proofs">en.wikipedia.org/wiki/Jensen%27s_inequality#Proofs</a></li>
 <li><a href="https://brilliant.org/wiki/jensens-inequality/">brilliant.org/wiki/jensens-inequality</a></li>
@@ -435,7 +427,7 @@ f(\sum_{i=1}^n \lambda_i x_i) \le \sum_{i=1}^n \lambda_i f(x_i)
 <p>Here we describe a geometric intuition, which personally resonates more with me.</p>
 <section id="triangle" class="level4">
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
-<p>Let’s start with <span class="math inline">\(n=3\)</span> case, i.e.:</p>
+<p>Let’s start with a triangle, i.e., <span class="math inline">\(n=3\)</span>:</p>
 <div id="cell-16" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> fig_jensen_inequality(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
@@ -457,11 +449,12 @@ f(\sum_{i=1}^n \lambda_i x_i) \le \sum_{i=1}^n \lambda_i f(x_i)
 <p>For example:</p>
 <ul>
 <li>When <span class="math inline">\(\lambda_i=1\)</span> where <span class="math inline">\(i \in \{1, 2, 3\}\)</span>, we get the point <span class="math inline">\((x_i, f(x_i))\)</span></li>
-<li>When <span class="math inline">\(\lambda_1=\lambda_2=\lambda_3=\frac{1}{3}\)</span>, we get the center of mass</li>
+<li>When <span class="math inline">\(\lambda_1=\lambda_2=\lambda_3=\frac{1}{3}\)</span>, we get the center of mass of the triangle</li>
 <li>and so on…</li>
 </ul>
-<p>As usual, this point is visualized with a black point. Let’s name it as <strong>A</strong>. Note that (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2\)</span>, <span class="math inline">\(\lambda_3\)</span>) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle. Just in case you’re already familiar.</p>
-<p>The point at the intersection between the parabola and the dotted line segment is described by: <span class="math display">\[
+<p>The black point in the visualization describes this point. Let’s name it as <strong>A</strong>. Note that (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2\)</span>, <span class="math inline">\(\lambda_3\)</span>) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle. Just in case you’re already familiar.</p>
+<p>The point where the parabola meets the dotted line segment is described by:</p>
+<p><span class="math display">\[
 (\lambda_1x_1+\lambda_2x_2+\lambda_3x_3, f(\lambda_1x_1+\lambda_2x_2+\lambda_3x_3))
 \]</span></p>
 <p>If we name this point as <strong>B</strong>, then it is not difficult to see that Jensen’s inequality is the same as <span class="math inline">\(B_y \le A_y\)</span> and we also have <span class="math inline">\(B_x=A_x\)</span>.</p>
