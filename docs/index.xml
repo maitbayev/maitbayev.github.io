@@ -808,11 +808,11 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Clambda_i=%5Cfrac%7Bw_i%7D%7B%5Csum_%7Bk=1%7D%5En%20w_k%7D%20%5Ctext%7B%20where%20%7D%20i=1,%202,%20%5Ccdots,%20n%0A"></p>
 <p>where it is easy to see that <img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20=%201">. Then we have:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Af(%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20x_i)%20%5Cle%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20f(x_i)%0A"></p>
-<p>Note that now we have the convex function definition when <img src="https://latex.codecogs.com/png.latex?n=2">.</p>
+<p>Note that we have the same convex function definition when <img src="https://latex.codecogs.com/png.latex?n=2">.</p>
 </section>
 <section id="geometric-intuition-1" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition-1">Geometric Intuition</h3>
-<p>The proofs are already given by numerous other posts. I encourage you to checkout the following resources:</p>
+<p>A numerous proofs are already given by other posts. I encourage you to checkout the following resources:</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality#Proofs">en.wikipedia.org/wiki/Jensen%27s_inequality#Proofs</a></li>
 <li><a href="https://brilliant.org/wiki/jensens-inequality/">brilliant.org/wiki/jensens-inequality</a></li>
