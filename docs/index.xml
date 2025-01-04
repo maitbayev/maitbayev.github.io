@@ -840,8 +840,14 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 </div>
 </div>
 <p>An interactive visualization of the convex function: <img src="https://latex.codecogs.com/png.latex?f(x)=0.15(x%20-%2015)%5E2%20+%2015">. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2)">, where <img src="https://latex.codecogs.com/png.latex?%5Clambda_2=1-%5Clambda_1">.</p>
-<p>We have a line segment that connects two points on the parabola: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1))"> and <img src="https://latex.codecogs.com/png.latex?(x_2,%20f(x_2))">. We can sample any point along the line segment by <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20%5Clambda_1%20f(x_1)%20+%20%5Clambda_2%20f(x_2))">. For example: - When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=0">, we get the second point - When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=1"> we get the first point - And when <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=0.5">, we get the middle point of the line segment - and so on…</p>
-<p>This point is visualized with a black point above. Let’s name this point as <strong><img src="https://latex.codecogs.com/png.latex?A"></strong>.</p>
+<p>We have a line segment that connects two points on the parabola: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1))"> and <img src="https://latex.codecogs.com/png.latex?(x_2,%20f(x_2))">. We can sample any point along the line segment by <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20%5Clambda_1%20f(x_1)%20+%20%5Clambda_2%20f(x_2))">. For example:</p>
+<ul>
+<li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=0">, we get the second point</li>
+<li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=1">, we get the first point</li>
+<li>And when <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=0.5">, we get the middle point of the line segment</li>
+<li>and so on…</li>
+</ul>
+<p>This point is visualized with a black point above. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?A"></strong>.</p>
 <p>The point located at the intersection between the parabola and the dotted black line segment is described by: <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20f(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2))">. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?B"></strong>.</p>
 <p>Then, the definition above is just asserting that <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y"> and we also have <img src="https://latex.codecogs.com/png.latex?A_x%20=%20B_x">. Note that we are just showing a single line segment, but this statement should be true for any line segment joining two points on the graph.</p>
 </section>
@@ -851,7 +857,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <p>Jensen’s inequality is a generalization of the convex function definition for more than 2 points.</p>
 <section id="definition-1" class="level3">
 <h3 class="anchored" data-anchor-id="definition-1">Definition</h3>
-<p>Assume we have a real-valued <strong>convex function</strong> <img src="https://latex.codecogs.com/png.latex?f">, <img src="https://latex.codecogs.com/png.latex?x_1,%20x_2,%20%5Ccdots,%20x_n"> in its domain, and positive weights <img src="https://latex.codecogs.com/png.latex?w_1,%20w_2,%20%5Ccdots,%20w_n">. Then we have:</p>
+<p>Assume we have a real-valued <strong>convex function</strong> <img src="https://latex.codecogs.com/png.latex?f"> and <img src="https://latex.codecogs.com/png.latex?x_1,%20x_2,%20%5Ccdots,%20x_n"> in its domain, and also positive weights <img src="https://latex.codecogs.com/png.latex?w_1,%20w_2,%20%5Ccdots,%20w_n">. Then Jensen’s inequality can be stated as:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Af%5Cleft(%5Cfrac%7Bw_1x_1+w_2x_2+%5Ccdots+w_nx_n%7D%7Bw_1+w_2+%5Ccdots+w_n%7D%5Cright)%20%5Cle%20%5Cfrac%7Bw_1f(x_1)+w_2f(x_2)+%5Ccdots+w_nf(x_n)%7D%7Bw_1+w_2+%5Ccdots+w_n%7D%0A"></p>
 <p>The equation is flipped for a <strong>concave function</strong> g:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Ag%5Cleft(%5Cfrac%7Bw_1x_1+w_2x_2+%5Ccdots+w_nx_n%7D%7Bw_1+w_2+%5Ccdots+w_n%7D%5Cright)%20%5Cge%20%5Cfrac%7Bw_1g(x_1)+w_2g(x_2)+%5Ccdots+w_ng(x_n)%7D%7Bw_1+w_2+%5Ccdots+w_n%7D%0A"></p>
@@ -909,10 +915,17 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>A similar interactive visualization as before. You can use the slider to try different values of <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1,%20%5Clambda_2,%20%5Clambda_3)"> where <img src="https://latex.codecogs.com/png.latex?%5Clambda_1+%5Clambda_2+%5Clambda_3=1">.</p>
+<p>As before, you can use the slider to try different values of <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1,%20%5Clambda_2,%20%5Clambda_3)"> where <img src="https://latex.codecogs.com/png.latex?%5Clambda_1+%5Clambda_2+%5Clambda_3=1">.</p>
 <p>We have a triangle that connects the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20(x_3,%20f(x_3))">.</p>
 <p>In the <img src="https://latex.codecogs.com/png.latex?n=2"> case, we used <img src="https://latex.codecogs.com/png.latex?%5Clambda_1"> and <img src="https://latex.codecogs.com/png.latex?%5Clambda_2"> to sample any point along the line segment.</p>
-<p>In this <img src="https://latex.codecogs.com/png.latex?n=3"> case, it is very similar, but we can sample any point inside or on the boundaries of the triangle with: <img src="https://latex.codecogs.com/png.latex?%0A%5Cleft(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20%5Clambda_1f(x_1)+%5Clambda_2f(x_2)+%5Clambda_3f(x_3)%5Cright)%0A"> For example: - When <img src="https://latex.codecogs.com/png.latex?%5Clambda_i=1"> where <img src="https://latex.codecogs.com/png.latex?i%20%5Cin%20%5C%7B1,%202,%203%5C%7D">, we get the point <img src="https://latex.codecogs.com/png.latex?(x_i,%20f(x_i))"> - When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=%5Clambda_2=%5Clambda_3=%5Cfrac%7B1%7D%7B3%7D">, we get the center of mass of the triangle - and so on…</p>
+<p>In this <img src="https://latex.codecogs.com/png.latex?n=3"> case, it is very similar, but we can sample any point inside or on the boundaries of the triangle with:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20%5Clambda_1f(x_1)+%5Clambda_2f(x_2)+%5Clambda_3f(x_3)%5Cright)%0A"></p>
+<p>For example:</p>
+<ul>
+<li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_i=1"> where <img src="https://latex.codecogs.com/png.latex?i%20%5Cin%20%5C%7B1,%202,%203%5C%7D">, we get the point <img src="https://latex.codecogs.com/png.latex?(x_i,%20f(x_i))"></li>
+<li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=%5Clambda_2=%5Clambda_3=%5Cfrac%7B1%7D%7B3%7D">, we get the center of mass of the triangle</li>
+<li>and so on…</li>
+</ul>
 <p>As usual, this point is visualized with a black point above. Let’s name it as <strong>A</strong>. Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2"> and <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle in case you’re already familiar.</p>
 <p>The point at the intersection between the parabola and the dotted line segment is described by: <img src="https://latex.codecogs.com/png.latex?%0A(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20f(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3))%0A"></p>
 <p>If we name this point as <strong>B</strong>, then it is not difficult to see that Jensen’s inequality is the same as <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y"> and we also have <img src="https://latex.codecogs.com/png.latex?B_x=A_x">.</p>
@@ -957,7 +970,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>In the general case, the point <img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bi=1%7D%5En%20%5Clambda_ix_i,%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_if(x_i))"> describes a point inside or on the boundary of the convex hull enclosing the following points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20%5Ccdots,%20(x_n,%20f(x_n))">.</p>
+<p>In the general case, the point <img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bi=1%7D%5En%20%5Clambda_ix_i,%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_if(x_i))"> describes a point inside or on the boundary of the convex hull enclosing the following points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20%5Ccdots,%20(x_n,%20f(x_n))">. The convex hull is always above or on the graph.</p>
 </section>
 </section>
 </section>

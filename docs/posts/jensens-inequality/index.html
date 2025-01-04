@@ -388,8 +388,14 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 </div>
 </div>
 <p>An interactive visualization of the convex function: <span class="math inline">\(f(x)=0.15(x - 15)^2 + 15\)</span>. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2)\)</span>, where <span class="math inline">\(\lambda_2=1-\lambda_1\)</span>.</p>
-<p>We have a line segment that connects two points on the parabola: <span class="math inline">\((x_1, f(x_1))\)</span> and <span class="math inline">\((x_2, f(x_2))\)</span>. We can sample any point along the line segment by <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, \lambda_1 f(x_1) + \lambda_2 f(x_2))\)</span>. For example: - When <span class="math inline">\(\lambda_1=0\)</span>, we get the second point - When <span class="math inline">\(\lambda_1=1\)</span> we get the first point - And when <span class="math inline">\(\lambda_1=0.5\)</span>, we get the middle point of the line segment - and so on…</p>
-<p>This point is visualized with a black point above. Let’s name this point as <strong><span class="math inline">\(A\)</span></strong>.</p>
+<p>We have a line segment that connects two points on the parabola: <span class="math inline">\((x_1, f(x_1))\)</span> and <span class="math inline">\((x_2, f(x_2))\)</span>. We can sample any point along the line segment by <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, \lambda_1 f(x_1) + \lambda_2 f(x_2))\)</span>. For example:</p>
+<ul>
+<li>When <span class="math inline">\(\lambda_1=0\)</span>, we get the second point</li>
+<li>When <span class="math inline">\(\lambda_1=1\)</span>, we get the first point</li>
+<li>And when <span class="math inline">\(\lambda_1=0.5\)</span>, we get the middle point of the line segment</li>
+<li>and so on…</li>
+</ul>
+<p>This point is visualized with a black point above. Let’s name it as <strong><span class="math inline">\(A\)</span></strong>.</p>
 <p>The point located at the intersection between the parabola and the dotted black line segment is described by: <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, f(\lambda_1 x_1 + \lambda_2 x_2))\)</span>. Let’s name it as <strong><span class="math inline">\(B\)</span></strong>.</p>
 <p>Then, the definition above is just asserting that <span class="math inline">\(B_y \le A_y\)</span> and we also have <span class="math inline">\(A_x = B_x\)</span>. Note that we are just showing a single line segment, but this statement should be true for any line segment joining two points on the graph.</p>
 </section>
@@ -399,7 +405,7 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 <p>Jensen’s inequality is a generalization of the convex function definition for more than 2 points.</p>
 <section id="definition-1" class="level3">
 <h3 class="anchored" data-anchor-id="definition-1">Definition</h3>
-<p>Assume we have a real-valued <strong>convex function</strong> <span class="math inline">\(f\)</span>, <span class="math inline">\(x_1, x_2, \cdots, x_n\)</span> in its domain, and positive weights <span class="math inline">\(w_1, w_2, \cdots, w_n\)</span>. Then we have:</p>
+<p>Assume we have a real-valued <strong>convex function</strong> <span class="math inline">\(f\)</span> and <span class="math inline">\(x_1, x_2, \cdots, x_n\)</span> in its domain, and also positive weights <span class="math inline">\(w_1, w_2, \cdots, w_n\)</span>. Then Jensen’s inequality can be stated as:</p>
 <p><span class="math display">\[
 f\left(\frac{w_1x_1+w_2x_2+\cdots+w_nx_n}{w_1+w_2+\cdots+w_n}\right) \le \frac{w_1f(x_1)+w_2f(x_2)+\cdots+w_nf(x_n)}{w_1+w_2+\cdots+w_n}
 \]</span></p>
@@ -441,12 +447,19 @@ f(\sum_{i=1}^n \lambda_i x_i) \le \sum_{i=1}^n \lambda_i f(x_i)
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>A similar interactive visualization as before. You can use the slider to try different values of <span class="math inline">\((\lambda_1, \lambda_2, \lambda_3)\)</span> where <span class="math inline">\(\lambda_1+\lambda_2+\lambda_3=1\)</span>.</p>
+<p>As before, you can use the slider to try different values of <span class="math inline">\((\lambda_1, \lambda_2, \lambda_3)\)</span> where <span class="math inline">\(\lambda_1+\lambda_2+\lambda_3=1\)</span>.</p>
 <p>We have a triangle that connects the points: <span class="math inline">\((x_1, f(x_1)), (x_2, f(x_2)), (x_3, f(x_3))\)</span>.</p>
 <p>In the <span class="math inline">\(n=2\)</span> case, we used <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> to sample any point along the line segment.</p>
-<p>In this <span class="math inline">\(n=3\)</span> case, it is very similar, but we can sample any point inside or on the boundaries of the triangle with: <span class="math display">\[
+<p>In this <span class="math inline">\(n=3\)</span> case, it is very similar, but we can sample any point inside or on the boundaries of the triangle with:</p>
+<p><span class="math display">\[
 \left(\lambda_1x_1+\lambda_2x_2+\lambda_3x_3, \lambda_1f(x_1)+\lambda_2f(x_2)+\lambda_3f(x_3)\right)
-\]</span> For example: - When <span class="math inline">\(\lambda_i=1\)</span> where <span class="math inline">\(i \in \{1, 2, 3\}\)</span>, we get the point <span class="math inline">\((x_i, f(x_i))\)</span> - When <span class="math inline">\(\lambda_1=\lambda_2=\lambda_3=\frac{1}{3}\)</span>, we get the center of mass of the triangle - and so on…</p>
+\]</span></p>
+<p>For example:</p>
+<ul>
+<li>When <span class="math inline">\(\lambda_i=1\)</span> where <span class="math inline">\(i \in \{1, 2, 3\}\)</span>, we get the point <span class="math inline">\((x_i, f(x_i))\)</span></li>
+<li>When <span class="math inline">\(\lambda_1=\lambda_2=\lambda_3=\frac{1}{3}\)</span>, we get the center of mass of the triangle</li>
+<li>and so on…</li>
+</ul>
 <p>As usual, this point is visualized with a black point above. Let’s name it as <strong>A</strong>. Note that (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2\)</span> and <span class="math inline">\(\lambda_3\)</span>) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle in case you’re already familiar.</p>
 <p>The point at the intersection between the parabola and the dotted line segment is described by: <span class="math display">\[
 (\lambda_1x_1+\lambda_2x_2+\lambda_3x_3, f(\lambda_1x_1+\lambda_2x_2+\lambda_3x_3))
@@ -467,7 +480,7 @@ f(\sum_{i=1}^n \lambda_i x_i) \le \sum_{i=1}^n \lambda_i f(x_i)
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>In the general case, the point <span class="math inline">\((\sum_{i=1}^n \lambda_ix_i, \sum_{i=1}^n \lambda_if(x_i))\)</span> describes a point inside or on the boundary of the convex hull enclosing the following points: <span class="math inline">\((x_1, f(x_1)), (x_2, f(x_2)), \cdots, (x_n, f(x_n))\)</span>.</p>
+<p>In the general case, the point <span class="math inline">\((\sum_{i=1}^n \lambda_ix_i, \sum_{i=1}^n \lambda_if(x_i))\)</span> describes a point inside or on the boundary of the convex hull enclosing the following points: <span class="math inline">\((x_1, f(x_1)), (x_2, f(x_2)), \cdots, (x_n, f(x_n))\)</span>. The convex hull is always above or on the graph.</p>
 </section>
 </section>
 </section>
