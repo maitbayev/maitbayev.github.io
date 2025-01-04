@@ -249,7 +249,7 @@ window.Quarto = {
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>The post contains collapsed code sections that are used to produce the visualizations. They’re optional, hence collapsed.</p>
-<div id="cell-4" class="cell" data-execution_count="1">
+<div id="cell-4" class="cell">
 <details class="code-fold">
 <summary>code for fig_jensen_inequality</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
@@ -356,14 +356,14 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="convex-function">Convex Function</h2>
 <p>A function is a <strong>convex function</strong> when the line segment joining any two points on the graph of the function lies above or on the graph. In the simplest term, a convex function is shaped like a cup <span class="math inline">\(\cup\)</span> and a <strong>concave function</strong> is shaped like a cap <span class="math inline">\(\cap\)</span>. If <code>f</code> is convex, then <code>-f</code> is concave.</p>
 <p>A visualization from <a href="https://en.wikipedia.org/wiki/Convex_function">Wikipedia</a>:</p>
-<div id="cell-6" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="2">
+<div id="cell-6" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>display image from Wikipedia</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Image(url<span class="op">=</span><span class="st">'https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg'</span>, width<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Image(url<span class="op">=</span><span class="st">'https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg'</span>, height<span class="op">=</span><span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg" width="600">
+<div class="cell-output cell-output-display" data-execution_count="21">
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg" height="300">
 </div>
 </div>
 <section id="definition" class="level3">
@@ -380,15 +380,12 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 </section>
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
-<div id="cell-10" class="cell" data-execution_count="3">
+<div id="cell-11" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig_jensen_inequality(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">22</span>]),</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>).show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_3.html" frameborder="0" allowfullscreen=""></iframe>
-</div>
 </div>
 <p>An interactive visualization of a convex function <span class="math inline">\(f(x)=0.15(x - 15)^2 + 15\)</span>. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2)\)</span>, where <span class="math inline">\(\lambda_2=1-\lambda_1\)</span>.</p>
 <p>We have a line segment that connects two points on the parabola: <span class="math inline">\((x_1, f(x_1))\)</span> and <span class="math inline">\((x_2, f(x_2))\)</span>. We can sample any point along the line segment by <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, \lambda_1 f(x_1) + \lambda_2 f(x_2))\)</span>. When <span class="math inline">\(\lambda_1=0\)</span>, we get the second point; when <span class="math inline">\(\lambda_1=1\)</span> we get the first point; when <span class="math inline">\(\lambda_1=0.5\)</span>, we get the middle point of the line segment; and so on… This point is visualized with a black point above. Let’s name this point as <span class="math inline">\(A\)</span>.</p>
@@ -432,15 +429,12 @@ f(\sum_{i=1}^n \lambda_i x_i) \le \sum_{i=1}^n \lambda_i f(x_i)
 <section id="triangle" class="level4">
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with <span class="math inline">\(n=3\)</span> case, i.e.:</p>
-<div id="cell-16" class="cell" data-execution_count="4">
+<div id="cell-17" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig_jensen_inequality(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">25</span>]),</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>).show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
-</div>
 </div>
 <p>A similar interactive visualization as before. You can use the slider to try different values of <span class="math inline">\((\lambda_1, \lambda_2, \lambda_3)\)</span> where <span class="math inline">\(\lambda_1+\lambda_2+\lambda_3=1\)</span>.</p>
 <p>We have a triangle that connect the points: <span class="math inline">\((x_1, f(x_1)), (x_2, f(x_2)), (x_3, f(x_3))\)</span>. In the <span class="math inline">\(n=2\)</span> case, we used <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> to sample any point along the line segment. In this case, it is very similar, but we can sample any point inside the triangle by using <span class="math inline">\(\lambda_1, \lambda_2\)</span> and <span class="math inline">\(\lambda_3\)</span>. When <span class="math inline">\(\lambda_1=1\)</span>, we get the first point; when <span class="math inline">\(\lambda_3=1\)</span> we get the third point; when <span class="math inline">\(\lambda_1=1/3, \lambda_2=1/3, \lambda_3=1/3\)</span>, we get the center of mass of the triangle; and so on… As usual, this point is visualized with a black point above.</p>
