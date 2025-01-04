@@ -774,7 +774,7 @@ font-style: inherit;">15</span></span>
 <h2 class="anchored" data-anchor-id="convex-function">Convex Function</h2>
 <p>A function is a <strong>convex function</strong> when the line segment joining any two points on the graph of the function lies above or on the graph. In the simplest term, a convex function is shaped like a cup <img src="https://latex.codecogs.com/png.latex?%5Ccup"> and a <strong>concave function</strong> is shaped like a cap <img src="https://latex.codecogs.com/png.latex?%5Ccap">. If <code>f</code> is convex, then <code>-f</code> is concave.</p>
 <p>A visualization from <a href="https://en.wikipedia.org/wiki/Convex_function">Wikipedia</a>:</p>
-<div id="cell-6" class="cell" data-execution_count="22">
+<div id="cell-6" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>display image from Wikipedia</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
@@ -786,14 +786,14 @@ font-style: inherit;">import</span> Image</span>
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg'</span>, height<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg'</span>, width<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">300</span>)</span></code></pre></div>
+font-style: inherit;">400</span>)</span></code></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="22">
-<img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg" height="300">
+<div class="cell-output cell-output-display" data-execution_count="23">
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg" width="400">
 </div>
 </div>
 <section id="definition" class="level3">
