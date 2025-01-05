@@ -967,7 +967,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>In the general case, the point <img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bi=1%7D%5En%20%5Clambda_ix_i,%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_if(x_i))"> describes a point inside or on the boundary of the convex hull enclosing the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20%5Ccdots,%20(x_n,%20f(x_n))">. The convex hull is always above or on the graph. The convex hull may have any number of points, including a number approaching to infinity.</p>
+<p>In the general case, the point <img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bi=1%7D%5En%20%5Clambda_ix_i,%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_if(x_i))"> describes a point inside or on the boundary of the convex hull enclosing the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20%5Ccdots,%20(x_n,%20f(x_n))">. The <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> is always above or on the graph. The convex hull may have any number of points, including a number approaching to infinity.</p>
 </section>
 </section>
 </section>
