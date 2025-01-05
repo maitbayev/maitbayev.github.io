@@ -807,6 +807,8 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
 <div id="cell-9" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>plots jensen’s inequality for n=2</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">fig <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> fig_jensen_inequality(</span>
@@ -835,6 +837,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"iframe"</span>)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_3.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -877,6 +880,8 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with a triangle, i.e., <img src="https://latex.codecogs.com/png.latex?n=3">:</p>
 <div id="cell-15" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>plots jensen’s inequality for n=3</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">fig <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> fig_jensen_inequality(</span>
@@ -907,6 +912,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"iframe"</span>)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -931,6 +937,8 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="four-points-or-more">Four Points or More</h4>
 <p>It is easy to generalize for <img src="https://latex.codecogs.com/png.latex?n%3E3">. I am adding it here for the sake of completeness:</p>
 <div id="cell-19" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>plots jensen’s inequality for n=4</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">fig <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> fig_jensen_inequality(</span>
@@ -963,6 +971,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"iframe"</span>)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>

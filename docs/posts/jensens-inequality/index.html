@@ -377,12 +377,15 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
 <div id="cell-9" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>plots jensen’s inequality for n=2</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> fig_jensen_inequality(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">22</span>]),</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fig.show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_3.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -429,12 +432,15 @@ g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with a triangle, i.e., <span class="math inline">\(n=3\)</span>:</p>
 <div id="cell-15" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>plots jensen’s inequality for n=3</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> fig_jensen_inequality(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">25</span>]),</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>fig.show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -463,12 +469,15 @@ g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
 <h4 class="anchored" data-anchor-id="four-points-or-more">Four Points or More</h4>
 <p>It is easy to generalize for <span class="math inline">\(n&gt;3\)</span>. I am adding it here for the sake of completeness:</p>
 <div id="cell-19" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>plots jensen’s inequality for n=4</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> fig_jensen_inequality(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>sample_parabola,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    x_range<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>),</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">22</span>, <span class="dv">25</span>]),</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fig.show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
