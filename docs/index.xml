@@ -920,7 +920,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=%5Clambda_2=%5Clambda_3=%5Cfrac%7B1%7D%7B3%7D">, we get the center of mass of the triangle</li>
 </ul>
 <p>The black point in the visualization describes this point. Let’s name it as <strong>A</strong>.</p>
-<p>Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle. Just in case you’re already familiar with.</p>
+<p>Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle. You don’t need to know it in this post, just sharing in case you’re already familiar with it.</p>
 <p>The point where the parabola meets the dotted line segment is described by:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20f(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3))%0A"></p>
 <p>If we name this point as <strong>B</strong>, then it is not difficult to see that Jensen’s inequality is the same as <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y">.</p>
