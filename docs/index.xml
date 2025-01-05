@@ -862,8 +862,23 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <h3 class="anchored" data-anchor-id="definition-1">Definition</h3>
 <p>Assume we have a <strong>convex function</strong> <img src="https://latex.codecogs.com/png.latex?f"> and <img src="https://latex.codecogs.com/png.latex?x_1,%20x_2,%20%5Ccdots,%20x_n"> in <img src="https://latex.codecogs.com/png.latex?f">’s domain, and also positive weights <img src="https://latex.codecogs.com/png.latex?%5Clambda_1,%20%5Clambda_2,%20%5Ccdots,%20%5Clambda_n"> where <img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20=%201">. Then Jensen’s inequality can be stated as:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Af(%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20x_i)%20%5Cle%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20f(x_i)%0A"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Concave Function
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>The equation is flipped for a <strong>concave function</strong> g:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Ag(%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20x_i)%20%5Cge%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20g(x_i)%0A"></p>
+</div>
+</div>
+</div>
 <p>Note that we arrive at the same definition for convex function when <img src="https://latex.codecogs.com/png.latex?n=2">.</p>
 </section>
 <section id="geometric-intuition-1" class="level3">
@@ -928,7 +943,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=%5Clambda_2=%5Clambda_3=%5Cfrac%7B1%7D%7B3%7D">, we get the center of mass of the triangle</li>
 </ul>
 <p>The black point in the visualization describes this point. Let’s name it as <strong>A</strong>.</p>
-<p>Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle. You don’t need to know it in this post, just sharing in case you’re already familiar with it.</p>
+<p>Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a>. You don’t need to know it in this post, just sharing in case you’re already familiar with it.</p>
 <p>The point where the parabola meets the dotted line segment is described by:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20f(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3))%0A"></p>
 <p>If we name this point as <strong>B</strong>, then it is not difficult to see that Jensen’s inequality is the same as <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y">.</p>
@@ -983,7 +998,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <section id="applications" class="level2">
 <h2 class="anchored" data-anchor-id="applications">Applications</h2>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -992,7 +1007,7 @@ AM–GM inequality
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The <strong>arithmetic mean-geometric mean</strong> inequality (<a href="https://en.wikipedia.org/wiki/AM%E2%80%93GM_inequality">AM-GM inequality</a>) states that: <img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7Bx_1+x_2+%5Ccdots+x_n%7D%7Bn%7D%20%5Cge%20%5Csqrt%5Bn%5D%7Bx_1x_2%5Ccdots%20x_n%7D%0A"></p>
 <p>Let’s prove with Jensen’s inequality by rewriting the above with <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=%5Clambda_2=%5Ccdots=%5Clambda_n=%5Cfrac%7B1%7D%7Bn%7D">:</p>
