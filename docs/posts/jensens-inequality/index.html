@@ -473,16 +473,39 @@ g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>In the general case, the point <span class="math inline">\((\sum_{i=1}^n \lambda_ix_i, \sum_{i=1}^n \lambda_if(x_i))\)</span> describes a point inside or on the boundary of the convex hull enclosing the points: <span class="math inline">\((x_1, f(x_1)), (x_2, f(x_2)), \cdots, (x_n, f(x_n))\)</span>. The <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> is always above or on the graph. The convex hull may have any number of points, including a number approaching to infinity.</p>
+<p>In the general case, <span class="math inline">\((\sum_{i=1}^n \lambda_ix_i, \sum_{i=1}^n \lambda_if(x_i))\)</span> describes a point inside or on the boundary of the <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> enclosing the points: <span class="math inline">\((x_1, f(x_1)), (x_2, f(x_2)), \cdots, (x_n, f(x_n))\)</span>. The convex hull is always above or on the graph. The convex hull may have any number of points, including a number approaching infinity, which can closely approximate the convex function on some interval.</p>
 </section>
 </section>
 </section>
 <section id="applications" class="level2">
 <h2 class="anchored" data-anchor-id="applications">Applications</h2>
-<section id="amgm-inequality" class="level3">
-<h3 class="anchored" data-anchor-id="amgm-inequality">AM–GM inequality</h3>
-<p>TODO: see for now https://en.wikipedia.org/wiki/AM%E2%80%93GM_inequality</p>
-</section>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+AM–GM inequality
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <strong>arithmetic mean-geometric mean</strong> inequality (<a href="https://en.wikipedia.org/wiki/AM%E2%80%93GM_inequality">AM-GM inequality</a>) states that: <span class="math display">\[
+\frac{x_1+x_2+\cdots+x_n}{n} \ge \sqrt[n]{x_1x_2\cdots x_n}
+\]</span></p>
+<p>Let’s prove with Jensen’s inequality by rewriting the above with <span class="math inline">\(\lambda_1=\lambda_2=\cdots=\lambda_n=\frac{1}{n}\)</span>:</p>
+<p><span class="math display">\[
+\sum_{i=1}^n \lambda_i x_i \ge \prod_{i=1}^n x_i^{\lambda_i}
+\]</span></p>
+<p>Since <code>log</code> is a concave and monotonic function, we can apply <code>log</code> to both sides.</p>
+<p><span class="math display">\[
+\log(\sum_{i=1}^n \lambda_i x_i) \ge \log(\prod_{i=1}^n x_i^{\lambda_i}) = \sum_{i=1}^n \lambda_i \log(x_i)
+\]</span></p>
+<p>The above equation is valid due to Jensen’s inequality. Note that the same proof works for the weighted version since the proof does not rely on the fact that <span class="math inline">\(\lambda_i=\frac{1}{n}\)</span> for all <span class="math inline">\(i=1,2,\cdots,n\)</span>.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="the-end" class="level2">
 <h2 class="anchored" data-anchor-id="the-end">The End</h2>
