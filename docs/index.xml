@@ -839,7 +839,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 </div>
 </div>
 <p>An interactive visualization of the convex function: <img src="https://latex.codecogs.com/png.latex?f(x)=0.15(x%20-%2015)%5E2%20+%2015">. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2)">, where <img src="https://latex.codecogs.com/png.latex?%5Clambda_2=1-%5Clambda_1">.</p>
-<p>We have a line segment that joins <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1))"> and <img src="https://latex.codecogs.com/png.latex?(x_2,%20f(x_2))">. We can sample any point along the line segment by <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20%5Clambda_1%20f(x_1)%20+%20%5Clambda_2%20f(x_2))">. For example:</p>
+<p>We have a line segment that joins <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1))"> and <img src="https://latex.codecogs.com/png.latex?(x_2,%20f(x_2))">. We can sample any point along the line segment with <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20%5Clambda_1%20f(x_1)%20+%20%5Clambda_2%20f(x_2))">. For example:</p>
 <ul>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=1">, we get the first point</li>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=0">, we get the second point</li>
@@ -856,7 +856,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <p>Jensen’s inequality is a generalization of the above convex function definition for more than 2 points.</p>
 <section id="definition-1" class="level3">
 <h3 class="anchored" data-anchor-id="definition-1">Definition</h3>
-<p>Assume we have a <strong>convex function</strong> <img src="https://latex.codecogs.com/png.latex?f"> and <img src="https://latex.codecogs.com/png.latex?x_1,%20x_2,%20%5Ccdots,%20x_n"> in its domain, and also positive weights <img src="https://latex.codecogs.com/png.latex?%5Clambda_1,%20%5Clambda_2,%20%5Ccdots,%20%5Clambda_n"> where <img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20=%201">. Then Jensen’s inequality can be stated as:</p>
+<p>Assume we have a <strong>convex function</strong> <img src="https://latex.codecogs.com/png.latex?f"> and <img src="https://latex.codecogs.com/png.latex?x_1,%20x_2,%20%5Ccdots,%20x_n"> in <img src="https://latex.codecogs.com/png.latex?f">’s domain, and also positive weights <img src="https://latex.codecogs.com/png.latex?%5Clambda_1,%20%5Clambda_2,%20%5Ccdots,%20%5Clambda_n"> where <img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20=%201">. Then Jensen’s inequality can be stated as:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Af(%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20x_i)%20%5Cle%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20f(x_i)%0A"></p>
 <p>The equation is flipped for a <strong>concave function</strong> g:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Ag(%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20x_i)%20%5Cge%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20g(x_i)%0A"></p>
@@ -870,7 +870,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <li><a href="https://brilliant.org/wiki/jensens-inequality/">brilliant.org/wiki/jensens-inequality</a></li>
 <li><a href="https://artofproblemsolving.com/wiki/index.php/Jensen%27s_Inequality">artofproblemsolving.com/wiki/…</a></li>
 </ul>
-<p>Here we describe a geometric intuition, which resonates more with me.</p>
+<p>Here I describe a geometric intuition, which resonates more with me.</p>
 <section id="triangle" class="level4">
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with a triangle, i.e., <img src="https://latex.codecogs.com/png.latex?n=3">:</p>
@@ -912,7 +912,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <p>As before, you can use the slider to try different values of <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1,%20%5Clambda_2,%20%5Clambda_3)"> where <img src="https://latex.codecogs.com/png.latex?%5Clambda_1+%5Clambda_2+%5Clambda_3=1">.</p>
 <p>We have a triangle that connects the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20(x_3,%20f(x_3))">.</p>
 <p>In the <img src="https://latex.codecogs.com/png.latex?n=2"> case, we used <img src="https://latex.codecogs.com/png.latex?%5Clambda_1"> and <img src="https://latex.codecogs.com/png.latex?%5Clambda_2"> to sample a point along the line segment.</p>
-<p>In this <img src="https://latex.codecogs.com/png.latex?n=3"> case, it is very similar, but we can sample any point inside or on the boundaries of the triangle with:</p>
+<p>In this <img src="https://latex.codecogs.com/png.latex?n=3"> case, it is similar, but we can sample any point inside or on the boundaries of the triangle with:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20%5Clambda_1f(x_1)+%5Clambda_2f(x_2)+%5Clambda_3f(x_3)%5Cright)%0A"></p>
 <p>For example:</p>
 <ul>
@@ -920,14 +920,14 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=%5Clambda_2=%5Clambda_3=%5Cfrac%7B1%7D%7B3%7D">, we get the center of mass of the triangle</li>
 </ul>
 <p>The black point in the visualization describes this point. Let’s name it as <strong>A</strong>.</p>
-<p>Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle. Just in case you’re already familiar.</p>
+<p>Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a> w.r.t the triangle. Just in case you’re already familiar with.</p>
 <p>The point where the parabola meets the dotted line segment is described by:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20f(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3))%0A"></p>
 <p>If we name this point as <strong>B</strong>, then it is not difficult to see that Jensen’s inequality is the same as <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y">.</p>
 </section>
 <section id="four-points-or-more" class="level4">
 <h4 class="anchored" data-anchor-id="four-points-or-more">Four Points or More</h4>
-<p>It is easy to generalize the above for <img src="https://latex.codecogs.com/png.latex?n%3E3">. I am adding it here for the sake of completeness:</p>
+<p>It is easy to generalize for <img src="https://latex.codecogs.com/png.latex?n%3E3">. I am adding it here for the sake of completeness:</p>
 <div id="cell-19" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">fig <span class="op" style="color: #5E5E5E;
 background-color: null;
