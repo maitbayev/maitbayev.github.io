@@ -91,7 +91,7 @@ $$
 ::: {.callout-note collapse="true"}
 ## Proof
 
-**Proof 1: Using Jenson's Inequality**
+**Proof 1: Using Jensen's Inequality**
 
 $$
 \mathbf {
