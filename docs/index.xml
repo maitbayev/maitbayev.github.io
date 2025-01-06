@@ -168,7 +168,7 @@ font-style: inherit;">1</span>)</span>
 <span id="cb1-18"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">def</span> fig_jensen_inequality(f, x_range: np.array, x: np.array, show_hull_point_legend: <span class="bu" style="color: null;
+font-style: inherit;">def</span> fig_jensen_inequality(f, x_range: np.array, x: np.array, showlegend: <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">bool</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -442,25 +442,9 @@ background-color: null;
 font-style: inherit;">1</span>]],</span>
 <span id="cb1-53">            mode<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span><span class="ss" style="color: #20794D;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">f"markers</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'+text'</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> show_hull_point_legend <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">''</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>,</span>
+font-style: inherit;">"markers+text"</span>,</span>
 <span id="cb1-54">            text<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
@@ -516,36 +500,33 @@ background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1001</span>,</span>
-<span id="cb1-59">            showlegend<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>show_hull_point_legend,</span>
-<span id="cb1-60">        ),</span>
-<span id="cb1-61">        go.Scatter(</span>
-<span id="cb1-62">            x<span class="op" style="color: #5E5E5E;
+<span id="cb1-59">        ),</span>
+<span id="cb1-60">        go.Scatter(</span>
+<span id="cb1-61">            x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[hull_points[active_index][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>], hull_points[active_index][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]],</span>
-<span id="cb1-63">            y<span class="op" style="color: #5E5E5E;
+<span id="cb1-62">            y<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[f(hull_points[active_index][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]), hull_points[active_index][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]],</span>
-<span id="cb1-64">            mode<span class="op" style="color: #5E5E5E;
+<span id="cb1-63">            mode<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"lines"</span>,</span>
-<span id="cb1-65">            textposition<span class="op" style="color: #5E5E5E;
+<span id="cb1-64">            textposition<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bottom center"</span>,</span>
-<span id="cb1-66">            hovertemplate<span class="op" style="color: #5E5E5E;
+<span id="cb1-65">            hovertemplate<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -558,7 +539,7 @@ background-color: null;
 font-style: inherit;">{y:.2f}</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">)&lt;extra&gt;&lt;/extra&gt;"</span>,</span>
-<span id="cb1-67">            line<span class="op" style="color: #5E5E5E;
+<span id="cb1-66">            line<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>{<span class="st" style="color: #20794D;
 background-color: null;
@@ -573,19 +554,19 @@ background-color: null;
 font-style: inherit;">"width"</span>: <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>},</span>
-<span id="cb1-68">            showlegend<span class="op" style="color: #5E5E5E;
+<span id="cb1-67">            showlegend<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">False</span></span>
-<span id="cb1-69">        ),</span>
-<span id="cb1-70">        go.Scatter(</span>
-<span id="cb1-71">            name<span class="op" style="color: #5E5E5E;
+<span id="cb1-68">        ),</span>
+<span id="cb1-69">        go.Scatter(</span>
+<span id="cb1-70">            name<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"$(x_i, f(x_i))$"</span>,</span>
-<span id="cb1-72">            x<span class="op" style="color: #5E5E5E;
+<span id="cb1-71">            x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>points[:, <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -594,19 +575,19 @@ background-color: null;
 font-style: inherit;">=</span>points[:, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>],</span>
-<span id="cb1-73">            mode<span class="op" style="color: #5E5E5E;
+<span id="cb1-72">            mode<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"markers+text"</span>,</span>
-<span id="cb1-74">            marker<span class="op" style="color: #5E5E5E;
+<span id="cb1-73">            marker<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>{<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"size"</span>: <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">20</span>},</span>
-<span id="cb1-75">            text<span class="op" style="color: #5E5E5E;
+<span id="cb1-74">            text<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="ss" style="color: #20794D;
 background-color: null;
@@ -637,12 +618,12 @@ background-color: null;
 font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)],</span>
-<span id="cb1-76">            textposition<span class="op" style="color: #5E5E5E;
+<span id="cb1-75">            textposition<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"top center"</span>,</span>
-<span id="cb1-77">            hovertemplate<span class="op" style="color: #5E5E5E;
+<span id="cb1-76">            hovertemplate<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -655,15 +636,15 @@ background-color: null;
 font-style: inherit;">{y:.2f}</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">)&lt;extra&gt;&lt;/extra&gt;"</span></span>
-<span id="cb1-78">        ),</span>
-<span id="cb1-79"></span>
-<span id="cb1-80">    ], layout<span class="op" style="color: #5E5E5E;
+<span id="cb1-77">        ),</span>
+<span id="cb1-78"></span>
+<span id="cb1-79">    ], layout<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>go.Layout(</span>
-<span id="cb1-81">        title<span class="op" style="color: #5E5E5E;
+<span id="cb1-80">        title<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>titles[active_index],</span>
-<span id="cb1-82">        xaxis<span class="op" style="color: #5E5E5E;
+<span id="cb1-81">        xaxis<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="bu" style="color: null;
 background-color: null;
@@ -672,7 +653,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span>),</span>
-<span id="cb1-83">        yaxis<span class="op" style="color: #5E5E5E;
+<span id="cb1-82">        yaxis<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="bu" style="color: null;
 background-color: null;
@@ -689,36 +670,36 @@ background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>),</span>
-<span id="cb1-84">        sliders<span class="op" style="color: #5E5E5E;
+<span id="cb1-83">        sliders<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>sliders,</span>
-<span id="cb1-85">        legend<span class="op" style="color: #5E5E5E;
+<span id="cb1-84">        legend<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">dict</span>(</span>
-<span id="cb1-86">            yanchor<span class="op" style="color: #5E5E5E;
+<span id="cb1-85">            yanchor<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"top"</span>,</span>
-<span id="cb1-87">            xanchor<span class="op" style="color: #5E5E5E;
+<span id="cb1-86">            xanchor<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"right"</span>,</span>
-<span id="cb1-88">            x<span class="op" style="color: #5E5E5E;
+<span id="cb1-87">            x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>,</span>
-<span id="cb1-89">            y<span class="op" style="color: #5E5E5E;
+<span id="cb1-88">            y<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb1-90">        ),</span>
-<span id="cb1-91">        margin<span class="op" style="color: #5E5E5E;
+<span id="cb1-89">        ),</span>
+<span id="cb1-90">        margin<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="bu" style="color: null;
 background-color: null;
@@ -738,7 +719,10 @@ font-style: inherit;">50</span>, b<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">50</span>)</span>
+font-style: inherit;">50</span>),</span>
+<span id="cb1-91">        showlegend<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>showlegend</span>
 <span id="cb1-92">    ))</span>
 <span id="cb1-93"></span>
 <span id="cb1-94"></span>
@@ -806,7 +790,7 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </section>
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
-<div id="cell-9" class="cell" data-execution_count="3">
+<div id="cell-9" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>plots jensen’s inequality for n=2</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">fig <span class="op" style="color: #5E5E5E;
@@ -831,15 +815,20 @@ background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">22</span>]),</span>
-<span id="cb3-5">)</span>
-<span id="cb3-6">fig.show(renderer<span class="op" style="color: #5E5E5E;
+<span id="cb3-5">    showlegend<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span></span>
+<span id="cb3-6">)</span>
+<span id="cb3-7">fig.show(renderer<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_3.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_6.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>An interactive visualization of the convex function: <img src="https://latex.codecogs.com/png.latex?f(x)=0.15(x%20-%2015)%5E2%20+%2015">. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2)">, where <img src="https://latex.codecogs.com/png.latex?%5Clambda_2=1-%5Clambda_1">.</p>
@@ -921,8 +910,13 @@ background-color: null;
 font-style: inherit;">13</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">25</span>]),</span>
-<span id="cb4-5">)</span>
-<span id="cb4-6">fig.show(renderer<span class="op" style="color: #5E5E5E;
+<span id="cb4-5">    showlegend<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span></span>
+<span id="cb4-6">)</span>
+<span id="cb4-7">fig.show(renderer<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -979,8 +973,13 @@ background-color: null;
 font-style: inherit;">22</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">25</span>]),</span>
-<span id="cb5-5">)</span>
-<span id="cb5-6">fig.show(renderer<span class="op" style="color: #5E5E5E;
+<span id="cb5-5">    showlegend<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span></span>
+<span id="cb5-6">)</span>
+<span id="cb5-7">fig.show(renderer<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
