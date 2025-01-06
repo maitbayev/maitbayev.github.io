@@ -934,8 +934,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 </div>
 <p>As before, you can use the slider to try different values of <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1,%20%5Clambda_2,%20%5Clambda_3)"> where <img src="https://latex.codecogs.com/png.latex?%5Clambda_1+%5Clambda_2+%5Clambda_3=1">.</p>
 <p>We have a triangle that connects the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20(x_3,%20f(x_3))">.</p>
-<p>In the <img src="https://latex.codecogs.com/png.latex?n=2"> case, we used <img src="https://latex.codecogs.com/png.latex?%5Clambda_1"> and <img src="https://latex.codecogs.com/png.latex?%5Clambda_2"> to sample a point along the line segment.</p>
-<p>In this <img src="https://latex.codecogs.com/png.latex?n=3"> case, it is similar, but we can sample any point inside or on the boundaries of the triangle with:</p>
+<p>In the <img src="https://latex.codecogs.com/png.latex?n=2"> case, we used <img src="https://latex.codecogs.com/png.latex?%5Clambda_1"> and <img src="https://latex.codecogs.com/png.latex?%5Clambda_2"> to sample a point along the line segment. In this case, it is similar, but we can sample any point inside or on the boundaries of the triangle with:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20%5Clambda_1f(x_1)+%5Clambda_2f(x_2)+%5Clambda_3f(x_3)%5Cright)%0A"></p>
 <p>For example:</p>
 <ul>
@@ -991,7 +990,14 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>In the general case, <img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bi=1%7D%5En%20%5Clambda_ix_i,%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_if(x_i))"> describes a point inside or on the boundary of the <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> enclosing the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20%5Ccdots,%20(x_n,%20f(x_n))">. The convex hull is always above or on the graph. The convex hull may have any number of points, including a number approaching infinity, which can closely approximate the convex function on some interval.</p>
+<p>In the general case, <img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bi=1%7D%5En%20%5Clambda_ix_i,%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_if(x_i))"> describes a point inside or on the boundary of the <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> enclosing the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20%5Ccdots,%20(x_n,%20f(x_n))">. The convex hull is always above or on the graph.</p>
+<p>A few closing notes:</p>
+<ul>
+<li>The convex hull may have any number of points, including n → ∞</li>
+<li>We closely approximate the convex function in some interval with the convex hull as n approaches infinity</li>
+<li>The convexity definitions for functions and polygons are the same once we have enough points, i.e., n → ∞</li>
+<li>Jensen’s inequality is useful in a probability theory setting, since <img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20=%201">, including the continuous form with n → ∞.</li>
+</ul>
 </section>
 </section>
 </section>
