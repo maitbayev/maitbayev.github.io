@@ -37,26 +37,31 @@
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> itertools</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="im" style="color: #00769E;
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> typing <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Optional</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">as</span> np</span>
-<span id="cb1-4"><span class="im" style="color: #00769E;
+<span id="cb1-5"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> plotly.graph_objects <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">as</span> go</span>
-<span id="cb1-5"></span>
 <span id="cb1-6"></span>
-<span id="cb1-7"><span class="kw" style="color: #003B4F;
+<span id="cb1-7"></span>
+<span id="cb1-8"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> alpha_profiles(n: <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">int</span>):</span>
-<span id="cb1-8">    <span class="cf" style="color: #003B4F;
+<span id="cb1-9">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> n <span class="op" style="color: #5E5E5E;
@@ -64,7 +69,7 @@ background-color: null;
 font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>:</span>
-<span id="cb1-9">        space <span class="op" style="color: #5E5E5E;
+<span id="cb1-10">        space <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.linspace(<span class="fl" style="color: #AD0000;
 background-color: null;
@@ -73,7 +78,7 @@ background-color: null;
 font-style: inherit;">0.99</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">100</span>)</span>
-<span id="cb1-10">        <span class="cf" style="color: #003B4F;
+<span id="cb1-11">        <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> np.column_stack((space, <span class="fl" style="color: #AD0000;
@@ -81,7 +86,7 @@ background-color: null;
 font-style: inherit;">1.0</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> space))</span>
-<span id="cb1-11">    space <span class="op" style="color: #5E5E5E;
+<span id="cb1-12">    space <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.linspace(<span class="fl" style="color: #AD0000;
 background-color: null;
@@ -104,7 +109,7 @@ background-color: null;
 font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>))</span>
-<span id="cb1-12">    space_prod <span class="op" style="color: #5E5E5E;
+<span id="cb1-13">    space_prod <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> itertools.product(<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -121,12 +126,12 @@ background-color: null;
 font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)])</span>
-<span id="cb1-13">    profiles <span class="op" style="color: #5E5E5E;
+<span id="cb1-14">    profiles <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.array(<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(space_prod))</span>
-<span id="cb1-14">    profiles <span class="op" style="color: #5E5E5E;
+<span id="cb1-15">    profiles <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> profiles[np.<span class="bu" style="color: null;
 background-color: null;
@@ -139,7 +144,7 @@ background-color: null;
 font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1.0</span>]</span>
-<span id="cb1-15">    <span class="cf" style="color: #003B4F;
+<span id="cb1-16">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> np.concatenate([profiles, <span class="dv" style="color: #AD0000;
@@ -163,36 +168,47 @@ background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span>
-<span id="cb1-16"></span>
 <span id="cb1-17"></span>
-<span id="cb1-18"><span class="kw" style="color: #003B4F;
+<span id="cb1-18"></span>
+<span id="cb1-19"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">def</span> fig_jensen_inequality(f, x_range: np.array, x: np.array, showlegend: <span class="bu" style="color: null;
+font-style: inherit;">def</span> fig_jensen_inequality(f, x_range: <span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">bool</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">list</span>, x: np.array, y_range: Optional[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>] <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">True</span>):</span>
-<span id="cb1-19">    points <span class="op" style="color: #5E5E5E;
+font-style: inherit;">None</span>):</span>
+<span id="cb1-20">    x_linspace <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(x_range[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], x_range[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>], <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb1-21">    points <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.column_stack([x, f(x)])</span>
-<span id="cb1-20">    n <span class="op" style="color: #5E5E5E;
+<span id="cb1-22">    n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(points)</span>
-<span id="cb1-21">    steps <span class="op" style="color: #5E5E5E;
+<span id="cb1-23">    steps <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
-<span id="cb1-22">    hull_points <span class="op" style="color: #5E5E5E;
+<span id="cb1-24">    hull_points <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
-<span id="cb1-23">    titles <span class="op" style="color: #5E5E5E;
+<span id="cb1-25">    titles <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
-<span id="cb1-24">    <span class="cf" style="color: #003B4F;
+<span id="cb1-26">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> index, alphas <span class="kw" style="color: #003B4F;
@@ -201,7 +217,7 @@ font-weight: bold;
 font-style: inherit;">in</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">enumerate</span>(alpha_profiles(n)):</span>
-<span id="cb1-25">        hp <span class="op" style="color: #5E5E5E;
+<span id="cb1-27">        hp <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.average(points, weights<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -210,8 +226,8 @@ background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>)</span>
-<span id="cb1-26">        hull_points.append(hp)</span>
-<span id="cb1-27">        title <span class="op" style="color: #5E5E5E;
+<span id="cb1-28">        hull_points.append(hp)</span>
+<span id="cb1-29">        title <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -250,7 +266,7 @@ font-weight: bold;
 font-style: inherit;">in</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">enumerate</span>(alphas)])</span>
-<span id="cb1-28">        title <span class="op" style="color: #5E5E5E;
+<span id="cb1-30">        title <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
 background-color: null;
@@ -261,8 +277,8 @@ background-color: null;
 font-style: inherit;">}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">$"</span></span>
-<span id="cb1-29">        titles.append(title)</span>
-<span id="cb1-30">        step <span class="op" style="color: #5E5E5E;
+<span id="cb1-31">        titles.append(title)</span>
+<span id="cb1-32">        step <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
@@ -275,36 +291,42 @@ background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"update"</span>,</span>
-<span id="cb1-31">                    args<span class="op" style="color: #5E5E5E;
+<span id="cb1-33">                    args<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[{</span>
-<span id="cb1-32">                        <span class="st" style="color: #20794D;
+<span id="cb1-34">                        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"x"</span>: [[hp[<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0</span>]], [hp[<span class="dv" style="color: #AD0000;
-background-color: null;
 font-style: inherit;">0</span>], hp[<span class="dv" style="color: #AD0000;
 background-color: null;
+font-style: inherit;">0</span>]], [hp[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]], [hp[<span class="dv" style="color: #AD0000;
+background-color: null;
 font-style: inherit;">0</span>]]],</span>
-<span id="cb1-33">                        <span class="st" style="color: #20794D;
+<span id="cb1-35">                        <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"y"</span>: [[hp[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>]], [f(hp[<span class="dv" style="color: #AD0000;
+font-style: inherit;">"y"</span>: [[f(hp[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]), hp[<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1</span>]]],</span>
-<span id="cb1-34">                    }, {<span class="st" style="color: #20794D;
+font-style: inherit;">1</span>]], [hp[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]], [f(hp[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>])]],</span>
+<span id="cb1-36">                    }, {<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"title"</span>: title}, [<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span>]])</span>
-<span id="cb1-35">        steps.append(step)</span>
-<span id="cb1-36">    active_index <span class="op" style="color: #5E5E5E;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>]])</span>
+<span id="cb1-37">        steps.append(step)</span>
+<span id="cb1-38">    active_index <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
@@ -313,7 +335,7 @@ background-color: null;
 font-style: inherit;">//</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span></span>
-<span id="cb1-37">    sliders <span class="op" style="color: #5E5E5E;
+<span id="cb1-39">    sliders <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="bu" style="color: null;
 background-color: null;
@@ -328,29 +350,29 @@ background-color: null;
 font-style: inherit;">2</span>, steps<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>steps)]</span>
-<span id="cb1-38">    <span class="cf" style="color: #003B4F;
+<span id="cb1-40">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> go.Figure(data<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[</span>
-<span id="cb1-39">        go.Scatter(</span>
-<span id="cb1-40">            name<span class="op" style="color: #5E5E5E;
+<span id="cb1-41">        go.Scatter(</span>
+<span id="cb1-42">            name<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"f"</span>, x<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>x_range, y<span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span>x_linspace, y<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>f(x_range), hoverinfo<span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span>f(x_linspace), hoverinfo<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"none"</span></span>
-<span id="cb1-41">        ),</span>
-<span id="cb1-42">        go.Scatter(</span>
-<span id="cb1-43">            name<span class="op" style="color: #5E5E5E;
+<span id="cb1-43">        ),</span>
+<span id="cb1-44">        go.Scatter(</span>
+<span id="cb1-45">            name<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -363,7 +385,7 @@ background-color: null;
 font-style: inherit;">0</span>][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]),</span>
-<span id="cb1-44">            y<span class="op" style="color: #5E5E5E;
+<span id="cb1-46">            y<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>np.append(points[:, <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -372,7 +394,7 @@ background-color: null;
 font-style: inherit;">0</span>][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]),</span>
-<span id="cb1-45">            fillcolor<span class="op" style="color: #5E5E5E;
+<span id="cb1-47">            fillcolor<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -385,7 +407,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"lines"</span>,</span>
-<span id="cb1-46">            line<span class="op" style="color: #5E5E5E;
+<span id="cb1-48">            line<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="bu" style="color: null;
 background-color: null;
@@ -398,54 +420,93 @@ background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"none"</span>,</span>
-<span id="cb1-47">            showlegend<span class="op" style="color: #5E5E5E;
+<span id="cb1-49">            showlegend<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>points.shape[<span class="dv" style="color: #AD0000;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+font-style: inherit;">False</span></span>
+<span id="cb1-50">        ),</span>
+<span id="cb1-51">        go.Scatter(</span>
+<span id="cb1-52">            x<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">=</span>[hull_points[active_index][<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span></span>
-<span id="cb1-48">        ),</span>
-<span id="cb1-49">        go.Scatter(</span>
-<span id="cb1-50">            name<span class="op" style="color: #5E5E5E;
+font-style: inherit;">0</span>], hull_points[active_index][<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]],</span>
+<span id="cb1-53">            y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[f(hull_points[active_index][<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]), hull_points[active_index][<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]],</span>
+<span id="cb1-54">            mode<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"$(</span><span class="ch" style="color: #20794D;
+font-style: inherit;">"lines"</span>,</span>
+<span id="cb1-55">            textposition<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">sum </span><span class="ch" style="color: #20794D;
+font-style: inherit;">"bottom center"</span>,</span>
+<span id="cb1-56">            hovertemplate<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">lambda_i x_i, </span><span class="ch" style="color: #20794D;
+font-style: inherit;">"(%</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+font-style: inherit;">{x:.2f}</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">sum </span><span class="ch" style="color: #20794D;
+font-style: inherit;">, %</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+font-style: inherit;">{y:.2f}</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">lambda_i f(x_i))$"</span>,</span>
-<span id="cb1-51">            x<span class="op" style="color: #5E5E5E;
+font-style: inherit;">)&lt;extra&gt;&lt;/extra&gt;"</span>,</span>
+<span id="cb1-57">            line<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>{<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"color"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dash"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dot"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"width"</span>: <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>},</span>
+<span id="cb1-58">            showlegend<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span></span>
+<span id="cb1-59">        ),</span>
+<span id="cb1-60">        go.Scatter(</span>
+<span id="cb1-61">            name<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A"</span>,</span>
+<span id="cb1-62">            x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[hull_points[active_index][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]],</span>
-<span id="cb1-52">            y<span class="op" style="color: #5E5E5E;
+<span id="cb1-63">            y<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[hull_points[active_index][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]],</span>
-<span id="cb1-53">            mode<span class="op" style="color: #5E5E5E;
+<span id="cb1-64">            mode<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
+font-style: inherit;">=</span><span class="ss" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"markers+text"</span>,</span>
-<span id="cb1-54">            text<span class="op" style="color: #5E5E5E;
+font-style: inherit;">f"markers+text"</span>,</span>
+<span id="cb1-65">            text<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
 background-color: null;
@@ -466,12 +527,12 @@ background-color: null;
 font-style: inherit;">\\</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">lambda_i f(x_i))$"</span>],</span>
-<span id="cb1-55">            textposition<span class="op" style="color: #5E5E5E;
+<span id="cb1-66">            textposition<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"top center"</span>,</span>
-<span id="cb1-56">            hovertemplate<span class="op" style="color: #5E5E5E;
+<span id="cb1-67">            hovertemplate<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -484,7 +545,7 @@ background-color: null;
 font-style: inherit;">{y:.2f}</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">)&lt;extra&gt;&lt;/extra&gt;"</span>,</span>
-<span id="cb1-57">            marker<span class="op" style="color: #5E5E5E;
+<span id="cb1-68">            marker<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>{<span class="st" style="color: #20794D;
 background-color: null;
@@ -495,38 +556,39 @@ background-color: null;
 font-style: inherit;">"color"</span>: <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"black"</span>},</span>
-<span id="cb1-58">            legendrank<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1001</span>,</span>
-<span id="cb1-59">        ),</span>
-<span id="cb1-60">        go.Scatter(</span>
-<span id="cb1-61">            x<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>[hull_points[active_index][<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>], hull_points[active_index][<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>]],</span>
-<span id="cb1-62">            y<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>[f(hull_points[active_index][<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>]), hull_points[active_index][<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>]],</span>
-<span id="cb1-63">            mode<span class="op" style="color: #5E5E5E;
+<span id="cb1-69">        ),</span>
+<span id="cb1-70">        go.Scatter(</span>
+<span id="cb1-71">            name<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"lines"</span>,</span>
-<span id="cb1-64">            textposition<span class="op" style="color: #5E5E5E;
+font-style: inherit;">"B"</span>,</span>
+<span id="cb1-72">            x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[hull_points[active_index][<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]],</span>
+<span id="cb1-73">            y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[f(hull_points[active_index][<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>])],</span>
+<span id="cb1-74">            mode<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"markers"</span>,</span>
+<span id="cb1-75">            text<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"B"</span>],</span>
+<span id="cb1-76">            textposition<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bottom center"</span>,</span>
-<span id="cb1-65">            hovertemplate<span class="op" style="color: #5E5E5E;
+<span id="cb1-77">            hovertemplate<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -539,34 +601,25 @@ background-color: null;
 font-style: inherit;">{y:.2f}</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">)&lt;extra&gt;&lt;/extra&gt;"</span>,</span>
-<span id="cb1-66">            line<span class="op" style="color: #5E5E5E;
+<span id="cb1-78">            marker<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>{<span class="st" style="color: #20794D;
 background-color: null;
+font-style: inherit;">"size"</span>: <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="st" style="color: #20794D;
+background-color: null;
 font-style: inherit;">"color"</span>: <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"black"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dash"</span>: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dot"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"width"</span>: <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>},</span>
-<span id="cb1-67">            showlegend<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">False</span></span>
-<span id="cb1-68">        ),</span>
-<span id="cb1-69">        go.Scatter(</span>
-<span id="cb1-70">            name<span class="op" style="color: #5E5E5E;
+font-style: inherit;">"#00CC96"</span>},</span>
+<span id="cb1-79">        ),</span>
+<span id="cb1-80">        go.Scatter(</span>
+<span id="cb1-81">            name<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"$(x_i, f(x_i))$"</span>,</span>
-<span id="cb1-71">            x<span class="op" style="color: #5E5E5E;
+<span id="cb1-82">            x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>points[:, <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -575,19 +628,30 @@ background-color: null;
 font-style: inherit;">=</span>points[:, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>],</span>
-<span id="cb1-72">            mode<span class="op" style="color: #5E5E5E;
+<span id="cb1-83">            mode<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"markers+text"</span>,</span>
-<span id="cb1-73">            marker<span class="op" style="color: #5E5E5E;
+<span id="cb1-84">            marker<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>{<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"size"</span>: <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">20</span>},</span>
-<span id="cb1-74">            text<span class="op" style="color: #5E5E5E;
+font-style: inherit;">20</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"color"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#ffa15a"</span>},</span>
+<span id="cb1-85">            line<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>{<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"color"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rgba(239, 85, 59, 0.2)"</span>},</span>
+<span id="cb1-86">            text<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="ss" style="color: #20794D;
 background-color: null;
@@ -618,12 +682,12 @@ background-color: null;
 font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)],</span>
-<span id="cb1-75">            textposition<span class="op" style="color: #5E5E5E;
+<span id="cb1-87">            textposition<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"top center"</span>,</span>
-<span id="cb1-76">            hovertemplate<span class="op" style="color: #5E5E5E;
+<span id="cb1-88">            hovertemplate<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -635,16 +699,20 @@ font-style: inherit;">, %</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">{y:.2f}</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">)&lt;extra&gt;&lt;/extra&gt;"</span></span>
-<span id="cb1-77">        ),</span>
-<span id="cb1-78"></span>
-<span id="cb1-79">    ], layout<span class="op" style="color: #5E5E5E;
+font-style: inherit;">)&lt;extra&gt;&lt;/extra&gt;"</span>,</span>
+<span id="cb1-89">            showlegend<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>,</span>
+<span id="cb1-90">        ),</span>
+<span id="cb1-91">    ], layout<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>go.Layout(</span>
-<span id="cb1-80">        title<span class="op" style="color: #5E5E5E;
+<span id="cb1-92">        title<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>titles[active_index],</span>
-<span id="cb1-81">        xaxis<span class="op" style="color: #5E5E5E;
+<span id="cb1-93">        xaxis<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="bu" style="color: null;
 background-color: null;
@@ -652,8 +720,12 @@ font-style: inherit;">dict</span>(fixedrange<span class="op" style="color: #5E5E
 background-color: null;
 font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">True</span>),</span>
-<span id="cb1-82">        yaxis<span class="op" style="color: #5E5E5E;
+font-style: inherit;">True</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>x_range),</span>
+<span id="cb1-94">        yaxis<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="bu" style="color: null;
 background-color: null;
@@ -669,37 +741,41 @@ font-style: inherit;">"x"</span>, scaleratio<span class="op" style="color: #5E5E
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1</span>),</span>
-<span id="cb1-83">        sliders<span class="op" style="color: #5E5E5E;
+font-style: inherit;">1</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>y_range),</span>
+<span id="cb1-95">        sliders<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>sliders,</span>
-<span id="cb1-84">        legend<span class="op" style="color: #5E5E5E;
+<span id="cb1-96">        legend<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">dict</span>(</span>
-<span id="cb1-85">            yanchor<span class="op" style="color: #5E5E5E;
+<span id="cb1-97">            yanchor<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"top"</span>,</span>
-<span id="cb1-86">            xanchor<span class="op" style="color: #5E5E5E;
+<span id="cb1-98">            xanchor<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"right"</span>,</span>
-<span id="cb1-87">            x<span class="op" style="color: #5E5E5E;
+<span id="cb1-99">            x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>,</span>
-<span id="cb1-88">            y<span class="op" style="color: #5E5E5E;
+<span id="cb1-100">            y<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb1-89">        ),</span>
-<span id="cb1-90">        margin<span class="op" style="color: #5E5E5E;
+<span id="cb1-101">        ),</span>
+<span id="cb1-102">        margin<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="bu" style="color: null;
 background-color: null;
@@ -715,22 +791,19 @@ font-style: inherit;">5</span>, t<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">50</span>, b<span class="op" style="color: #5E5E5E;
+font-style: inherit;">20</span>, b<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">50</span>),</span>
-<span id="cb1-91">        showlegend<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>showlegend</span>
-<span id="cb1-92">    ))</span>
-<span id="cb1-93"></span>
-<span id="cb1-94"></span>
-<span id="cb1-95"><span class="kw" style="color: #003B4F;
+font-style: inherit;">20</span>)</span>
+<span id="cb1-103">    ))</span>
+<span id="cb1-104"></span>
+<span id="cb1-105"></span>
+<span id="cb1-106"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> sample_parabola(x):</span>
-<span id="cb1-96">    <span class="cf" style="color: #003B4F;
+<span id="cb1-107">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="fl" style="color: #AD0000;
@@ -750,7 +823,48 @@ background-color: null;
 font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">15</span></span>
-<span id="cb1-97"></span></code></pre></div>
+<span id="cb1-108"></span></code></pre></div>
+</details>
+</div>
+<div id="cell-5" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>code for show_sample_jensen_inequality</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> show_sample_jensen_inequality(x: np.array):</span>
+<span id="cb2-2">    fig <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> fig_jensen_inequality(</span>
+<span id="cb2-3">        f<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>sample_parabola,</span>
+<span id="cb2-4">        x_range<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>],</span>
+<span id="cb2-5">        x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>x,</span>
+<span id="cb2-6">        y_range<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">48</span>]</span>
+<span id="cb2-7">    )</span>
+<span id="cb2-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> fig.show(renderer<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 </details>
 </div>
 </section>
@@ -758,15 +872,15 @@ font-style: inherit;">15</span></span>
 <h2 class="anchored" data-anchor-id="convex-function">Convex Function</h2>
 <p>A function is a <strong>convex function</strong> when the line segment joining any two points on the function graph lies above or on the graph. In the simplest term, a convex function is shaped like <img src="https://latex.codecogs.com/png.latex?%5Ccup"> and a <strong>concave function</strong> is shaped like <img src="https://latex.codecogs.com/png.latex?%5Ccap">. If <code>f</code> is convex, then <code>-f</code> is concave.</p>
 <p>A visualization from <a href="https://en.wikipedia.org/wiki/Convex_function">Wikipedia</a>:</p>
-<div id="cell-6" class="cell" data-execution_count="2">
+<div id="cell-7" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>display image from Wikipedia</summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> Image</span>
-<span id="cb2-2">Image(url<span class="op" style="color: #5E5E5E;
+<span id="cb3-2">Image(url<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -776,7 +890,7 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">400</span>)</span></code></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg" width="400">
 </div>
 </div>
@@ -790,45 +904,16 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </section>
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
-<div id="cell-9" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>plots jensen’s inequality for n=2</summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">fig <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> fig_jensen_inequality(</span>
-<span id="cb3-2">    f<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>sample_parabola,</span>
-<span id="cb3-3">    x_range<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>np.linspace(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>),</span>
-<span id="cb3-4">    x<span class="op" style="color: #5E5E5E;
+<div id="cell-10" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>np.array([<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">22</span>]),</span>
-<span id="cb3-5">    showlegend<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">False</span></span>
-<span id="cb3-6">)</span>
-<span id="cb3-7">fig.show(renderer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"iframe"</span>)</span></code></pre></div>
-</details>
+font-style: inherit;">22</span>]))</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_6.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>An interactive visualization of the convex function: <img src="https://latex.codecogs.com/png.latex?f(x)=0.15(x%20-%2015)%5E2%20+%2015">. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2)">, where <img src="https://latex.codecogs.com/png.latex?%5Clambda_2=1-%5Clambda_1">.</p>
@@ -840,7 +925,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <li>and so on… Try the slider above!</li>
 </ul>
 <p>This point is visualized with a black point above. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?A"></strong>.</p>
-<p>The point where the function graph intersects with the dotted line segment is described by: <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20f(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2))">. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?B"></strong>.</p>
+<p>The point where the function graph intersects with the dotted line segment is described by: <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20f(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2))">. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?B"></strong> (the light green point).</p>
 <p>Then, the definition above is just asserting that <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y"> and we also have <img src="https://latex.codecogs.com/png.latex?A_x%20=%20B_x">. Note that we are only showing a single line segment, but this statement should be true for all similar line segments.</p>
 </section>
 </section>
@@ -883,47 +968,18 @@ Concave Function
 <section id="triangle" class="level4">
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with a triangle, i.e., <img src="https://latex.codecogs.com/png.latex?n=3">:</p>
-<div id="cell-15" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>plots jensen’s inequality for n=3</summary>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">fig <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> fig_jensen_inequality(</span>
-<span id="cb4-2">    f<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>sample_parabola,</span>
-<span id="cb4-3">    x_range<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>np.linspace(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>),</span>
-<span id="cb4-4">    x<span class="op" style="color: #5E5E5E;
+<div id="cell-16" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>np.array([<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">13</span>, <span class="dv" style="color: #AD0000;
+font-style: inherit;">12</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">25</span>]),</span>
-<span id="cb4-5">    showlegend<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">False</span></span>
-<span id="cb4-6">)</span>
-<span id="cb4-7">fig.show(renderer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"iframe"</span>)</span></code></pre></div>
-</details>
+font-style: inherit;">27</span>]))</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>As before, you can use the slider to try different values of <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1,%20%5Clambda_2,%20%5Clambda_3)"> where <img src="https://latex.codecogs.com/png.latex?%5Clambda_1+%5Clambda_2+%5Clambda_3=1">.</p>
@@ -939,30 +995,13 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <p>Note that (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_3">) describes the <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">barycentric coordinate system</a>. You don’t need to know it in this post, just sharing in case you’re already familiar with it.</p>
 <p>The point where the parabola meets the dotted line segment is described by:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20f(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3))%0A"></p>
-<p>If we name this point as <strong>B</strong>, then it is not difficult to see that Jensen’s inequality is the same as <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y">.</p>
+<p>If we name this point as <strong>B</strong> (the light green point), then it is not difficult to see that Jensen’s inequality is the same as <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y">.</p>
 </section>
 <section id="four-points-or-more" class="level4">
 <h4 class="anchored" data-anchor-id="four-points-or-more">Four Points or More</h4>
 <p>It is easy to generalize for <img src="https://latex.codecogs.com/png.latex?n%3E3">. I am adding it here for the sake of completeness:</p>
-<div id="cell-19" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>plots jensen’s inequality for n=4</summary>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">fig <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> fig_jensen_inequality(</span>
-<span id="cb5-2">    f<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>sample_parabola,</span>
-<span id="cb5-3">    x_range<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>np.linspace(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>),</span>
-<span id="cb5-4">    x<span class="op" style="color: #5E5E5E;
+<div id="cell-20" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>np.array([<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -972,21 +1011,9 @@ font-style: inherit;">13</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">22</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">25</span>]),</span>
-<span id="cb5-5">    showlegend<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">False</span></span>
-<span id="cb5-6">)</span>
-<span id="cb5-7">fig.show(renderer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"iframe"</span>)</span></code></pre></div>
-</details>
+font-style: inherit;">25</span>]))</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_6.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p>In the general case, <img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bi=1%7D%5En%20%5Clambda_ix_i,%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_if(x_i))"> describes a point inside or on the boundary of the <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> enclosing the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20%5Ccdots,%20(x_n,%20f(x_n))">. The convex hull is always above or on the graph.</p>
