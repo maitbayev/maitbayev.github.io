@@ -795,7 +795,7 @@ font-style: inherit;">60</span>, b<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">40</span>)</span>
+font-style: inherit;">20</span>)</span>
 <span id="cb1-103">    ))</span>
 <span id="cb1-104"></span>
 <span id="cb1-105"></span>
@@ -922,7 +922,7 @@ font-style: inherit;">22</span>]))</span></code></pre></div>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=1">, we get the first point</li>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=0">, we get the second point</li>
 <li>And when <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=0.5">, we get the middle point of the line segment</li>
-<li>and so on… Try the slider above!</li>
+<li>and so on… Try the slider above and notice how <img src="https://latex.codecogs.com/png.latex?%5Clambda_1"> and <img src="https://latex.codecogs.com/png.latex?%5Clambda_2"> are changing!</li>
 </ul>
 <p>This point is visualized with a black point above. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?A"></strong>.</p>
 <p>The point where the function graph intersects with the dotted line segment is described by: <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20f(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2))">. Let’s name it as <strong><img src="https://latex.codecogs.com/png.latex?B"></strong> (the light green point).</p>
