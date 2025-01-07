@@ -987,7 +987,7 @@ font-style: inherit;">27</span>]))</span></code></pre></div>
 <p>We have a triangle that connects the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20(x_3,%20f(x_3))">.</p>
 <p>In the <img src="https://latex.codecogs.com/png.latex?n=2"> case, we used <img src="https://latex.codecogs.com/png.latex?%5Clambda_1"> and <img src="https://latex.codecogs.com/png.latex?%5Clambda_2"> to sample a point along the line segment. In this case, it is similar, but we can sample any point inside or on the boundaries of the triangle with:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft(%5Clambda_1x_1+%5Clambda_2x_2+%5Clambda_3x_3,%20%5Clambda_1f(x_1)+%5Clambda_2f(x_2)+%5Clambda_3f(x_3)%5Cright)%0A"></p>
-<p>For example:</p>
+<p>where <img src="https://latex.codecogs.com/png.latex?%5Clambda_1+%5Clambda_2+%5Clambda_3=1">. For example:</p>
 <ul>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_i=1"> where <img src="https://latex.codecogs.com/png.latex?i%20%5Cin%20%5C%7B1,%202,%203%5C%7D">, we get the point <img src="https://latex.codecogs.com/png.latex?(x_i,%20f(x_i))"></li>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=%5Clambda_2=%5Clambda_3=%5Cfrac%7B1%7D%7B3%7D">, we get the center of mass of the triangle</li>
