@@ -413,7 +413,7 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 </div>
 </div>
 <p>An interactive visualization of the convex function: <span class="math inline">\(f(x)=0.15(x - 15)^2 + 15\)</span>. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2)\)</span>, where <span class="math inline">\(\lambda_2=1-\lambda_1\)</span>.</p>
-<p>We have a line segment that joins <span class="math inline">\((x_1, f(x_1))\)</span> and <span class="math inline">\((x_2, f(x_2))\)</span>. We can sample any point along the line segment with <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, \lambda_1 f(x_1) + \lambda_2 f(x_2))\)</span>. For example:</p>
+<p>We have a line segment that joins <span class="math inline">\((x_1, f(x_1))\)</span> and <span class="math inline">\((x_2, f(x_2))\)</span>. We can sample any point along the line segment with <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, \lambda_1 f(x_1) + \lambda_2 f(x_2))\)</span> where <span class="math inline">\(0 \le \lambda_1 \le 1\)</span> and <span class="math inline">\(\lambda_2 = 1 - \lambda_1\)</span>. For example:</p>
 <ul>
 <li>When <span class="math inline">\(\lambda_1=1\)</span>, we get the first point</li>
 <li>When <span class="math inline">\(\lambda_1=0\)</span>, we get the second point</li>

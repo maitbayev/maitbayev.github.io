@@ -918,7 +918,7 @@ font-style: inherit;">22</span>]))</span></code></pre></div>
 </div>
 </div>
 <p>An interactive visualization of the convex function: <img src="https://latex.codecogs.com/png.latex?f(x)=0.15(x%20-%2015)%5E2%20+%2015">. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<img src="https://latex.codecogs.com/png.latex?%5Clambda_1">, <img src="https://latex.codecogs.com/png.latex?%5Clambda_2)">, where <img src="https://latex.codecogs.com/png.latex?%5Clambda_2=1-%5Clambda_1">.</p>
-<p>We have a line segment that joins <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1))"> and <img src="https://latex.codecogs.com/png.latex?(x_2,%20f(x_2))">. We can sample any point along the line segment with <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20%5Clambda_1%20f(x_1)%20+%20%5Clambda_2%20f(x_2))">. For example:</p>
+<p>We have a line segment that joins <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1))"> and <img src="https://latex.codecogs.com/png.latex?(x_2,%20f(x_2))">. We can sample any point along the line segment with <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20%5Clambda_1%20f(x_1)%20+%20%5Clambda_2%20f(x_2))"> where <img src="https://latex.codecogs.com/png.latex?0%20%5Cle%20%5Clambda_1%20%5Cle%201"> and <img src="https://latex.codecogs.com/png.latex?%5Clambda_2%20=%201%20-%20%5Clambda_1">. For example:</p>
 <ul>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=1">, we get the first point</li>
 <li>When <img src="https://latex.codecogs.com/png.latex?%5Clambda_1=0">, we get the second point</li>
