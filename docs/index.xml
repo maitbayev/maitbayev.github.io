@@ -896,10 +896,11 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 <section id="definition" class="level3">
 <h3 class="anchored" data-anchor-id="definition">Definition</h3>
-<p>A function is called <strong>convex</strong> if the following holds:</p>
+<p>A function <img src="https://latex.codecogs.com/png.latex?f:%20X%20%5Crightarrow%20%5Cmathbb%7BR%7D"> is called <strong>convex</strong> if the following holds:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Af(%5Clambda%20x_1%20+%20(1-%5Clambda)%20x_2)%20%5Cle%20%5Clambda%20f(x_1)%20+%20(1-%5Clambda)%20f(x_2)%0A"></p>
 <p>and <strong>concave</strong> when:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Af(%5Clambda%20x_1%20+%20(1-%5Clambda)%20x_2)%20%5Cge%20%5Clambda%20f(x_1)%20+%20(1-%5Clambda)%20f(x_2)%0A"></p>
+<p>for all <img src="https://latex.codecogs.com/png.latex?0%20%5Cle%20%5Clambda%20%5Cle%201"> and for all <img src="https://latex.codecogs.com/png.latex?x_1,%20x_2%20%5Cin%20X">.</p>
 <p>We will give geometric intuition for this definition in the next section.</p>
 </section>
 <section id="geometric-intuition" class="level3">
@@ -926,7 +927,7 @@ font-style: inherit;">22</span>]))</span></code></pre></div>
 </ul>
 <p>This point is visualized with a black point above. Let’s name it as <strong>A</strong>.</p>
 <p>The light green point where the function graph intersects with the dotted line segment is represented by: <img src="https://latex.codecogs.com/png.latex?(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2,%20f(%5Clambda_1%20x_1%20+%20%5Clambda_2%20x_2))">. Let’s name it as <strong>B</strong>.</p>
-<p>Then, the definition above is just asserting that <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y"> and we also have <img src="https://latex.codecogs.com/png.latex?A_x%20=%20B_x">. Note that we are only showing a single line segment, but this statement should be true for all similar line segments.</p>
+<p>Then, the definition above is just asserting that <img src="https://latex.codecogs.com/png.latex?B_y%20%5Cle%20A_y"> and we also have <img src="https://latex.codecogs.com/png.latex?A_x%20=%20B_x">. Note that we are only showing a single line segment, but this statement should be true for all similar line segments and for all <img src="https://latex.codecogs.com/png.latex?0%20%5Cle%20%5Clambda_1%20%5Cle%201"> where <img src="https://latex.codecogs.com/png.latex?%5Clambda_2%20=%201%20-%20%5Clambda_1">.</p>
 </section>
 </section>
 <section id="jensens-inequality" class="level2">
