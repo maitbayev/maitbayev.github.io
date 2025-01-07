@@ -412,7 +412,7 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>An interactive visualization of the convex function: <span class="math inline">\(f(x)=0.15(x - 15)^2 + 15\)</span>. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2)\)</span>, where <span class="math inline">\(\lambda_2=1-\lambda_1\)</span>.</p>
+<p>An interactive visualization of the convex function: <span class="math inline">\(f(x)=0.15(x - 15)^2 + 15\)</span>. We will use the same parabola during this post unless stated otherwise. You can use the slider to try different values of (<span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2)\)</span>, where <span class="math inline">\(\lambda_1=\lambda\)</span> (from the definition) and <span class="math inline">\(\lambda_2=1-\lambda\)</span>.</p>
 <p>We have a line segment that joins <span class="math inline">\((x_1, f(x_1))\)</span> and <span class="math inline">\((x_2, f(x_2))\)</span>. We can sample any point along the line segment with <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, \lambda_1 f(x_1) + \lambda_2 f(x_2))\)</span> where <span class="math inline">\(0 \le \lambda_1 \le 1\)</span> and <span class="math inline">\(\lambda_2 = 1 - \lambda_1\)</span>. For example:</p>
 <ul>
 <li>When <span class="math inline">\(\lambda_1=1\)</span>, we get the first point</li>
@@ -422,7 +422,7 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 </ul>
 <p>This point is visualized with a black point above. Let’s name it as <strong>A</strong>.</p>
 <p>The light green point where the function graph intersects with the dotted line segment is represented by: <span class="math inline">\((\lambda_1 x_1 + \lambda_2 x_2, f(\lambda_1 x_1 + \lambda_2 x_2))\)</span>. Let’s name it as <strong>B</strong>.</p>
-<p>Then, the definition above is just asserting that <span class="math inline">\(B_y \le A_y\)</span> and we also have <span class="math inline">\(A_x = B_x\)</span>. Note that we are only showing a single line segment, but this statement should be true for all similar line segments and for all <span class="math inline">\(0 \le \lambda_1 \le 1\)</span> where <span class="math inline">\(\lambda_2 = 1 - \lambda_1\)</span>.</p>
+<p>Then, the definition above is just asserting that <span class="math inline">\(B_y \le A_y\)</span> and we also have <span class="math inline">\(A_x = B_x\)</span>. Note that we are only showing a single line segment, but this statement should be true for all similar line segments and for all <span class="math inline">\(0 \le \lambda_1 \le 1\)</span>.</p>
 </section>
 </section>
 <section id="jensens-inequality" class="level2">
