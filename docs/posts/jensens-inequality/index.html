@@ -366,11 +366,11 @@ window.Quarto = {
 <div id="cell-5" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>code for show_sample_jensen_inequality</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_sample_jensen_inequality(x: np.array):</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_sample_jensen_inequality(x: <span class="bu">list</span>):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> fig_jensen_inequality(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        f<span class="op">=</span>sample_parabola,</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        x_range<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">30</span>],</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>x,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>np.array(x),</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        y_range<span class="op">=</span>[<span class="dv">12</span>, <span class="dv">48</span>]</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig.show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -407,7 +407,7 @@ f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
 <div id="cell-10" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>show_sample_jensen_inequality(x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">22</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>show_sample_jensen_inequality(x<span class="op">=</span>[<span class="dv">2</span>, <span class="dv">22</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -469,7 +469,7 @@ g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with a triangle, i.e., <span class="math inline">\(n=3\)</span>:</p>
 <div id="cell-16" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>show_sample_jensen_inequality(x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">12</span>, <span class="dv">27</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>show_sample_jensen_inequality(x<span class="op">=</span>[<span class="dv">2</span>, <span class="dv">12</span>, <span class="dv">27</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -497,12 +497,12 @@ g(\sum_{i=1}^n \lambda_i x_i) \ge \sum_{i=1}^n \lambda_i g(x_i)
 <h4 class="anchored" data-anchor-id="four-points-or-more">Four Points or More</h4>
 <p>It is easy to generalize for <span class="math inline">\(n&gt;3\)</span>. I am adding it here for the sake of completeness:</p>
 <div id="cell-20" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>show_sample_jensen_inequality(x<span class="op">=</span>np.array([<span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">22</span>, <span class="dv">25</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>show_sample_jensen_inequality(x<span class="op">=</span>[<span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">22</span>, <span class="dv">25</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_6.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>In the general case, <span class="math inline">\((\sum_{i=1}^n \lambda_ix_i, \sum_{i=1}^n \lambda_if(x_i))\)</span> describes a point inside or on the boundary of the <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> enclosing the points: <span class="math inline">\((x_1, f(x_1)), (x_2, f(x_2)), \cdots, (x_n, f(x_n))\)</span>. The convex hull is always above or on the graph.</p>
+<p>In the general case, <span class="math inline">\((\sum_{i=1}^n \lambda_ix_i, \sum_{i=1}^n \lambda_if(x_i))\)</span> describes a point inside or on the boundary of the <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> enclosing the points: <span class="math inline">\((x_1, f(x_1)), (x_2, f(x_2)), \cdots, (x_n, f(x_n))\)</span>. The convex hull is always above or on the convex function graph, which is why Jensen’s inequality holds true.</p>
 <p>A few closing notes:</p>
 <ul>
 <li>The convex hull may have any number of points, including n → ∞</li>

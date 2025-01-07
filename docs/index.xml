@@ -832,7 +832,9 @@ font-style: inherit;">15</span></span>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">def</span> show_sample_jensen_inequality(x: np.array):</span>
+font-style: inherit;">def</span> show_sample_jensen_inequality(x: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>):</span>
 <span id="cb2-2">    fig <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> fig_jensen_inequality(</span>
@@ -848,7 +850,7 @@ background-color: null;
 font-style: inherit;">30</span>],</span>
 <span id="cb2-5">        x<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>x,</span>
+font-style: inherit;">=</span>np.array(x),</span>
 <span id="cb2-6">        y_range<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
@@ -908,11 +910,11 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 <div id="cell-10" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>np.array([<span class="dv" style="color: #AD0000;
+font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">22</span>]))</span></code></pre></div>
+font-style: inherit;">22</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -972,13 +974,13 @@ Concave Function
 <div id="cell-16" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>np.array([<span class="dv" style="color: #AD0000;
+font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">12</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">27</span>]))</span></code></pre></div>
+font-style: inherit;">27</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -1004,7 +1006,7 @@ font-style: inherit;">27</span>]))</span></code></pre></div>
 <div id="cell-20" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>np.array([<span class="dv" style="color: #AD0000;
+font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -1012,12 +1014,12 @@ font-style: inherit;">13</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">22</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">25</span>]))</span></code></pre></div>
+font-style: inherit;">25</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_6.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>In the general case, <img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bi=1%7D%5En%20%5Clambda_ix_i,%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_if(x_i))"> describes a point inside or on the boundary of the <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> enclosing the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20%5Ccdots,%20(x_n,%20f(x_n))">. The convex hull is always above or on the graph.</p>
+<p>In the general case, <img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bi=1%7D%5En%20%5Clambda_ix_i,%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_if(x_i))"> describes a point inside or on the boundary of the <a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> enclosing the points: <img src="https://latex.codecogs.com/png.latex?(x_1,%20f(x_1)),%20(x_2,%20f(x_2)),%20%5Ccdots,%20(x_n,%20f(x_n))">. The convex hull is always above or on the convex function graph, which is why Jensen’s inequality holds true.</p>
 <p>A few closing notes:</p>
 <ul>
 <li>The convex hull may have any number of points, including n → ∞</li>
