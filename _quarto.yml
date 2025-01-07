@@ -12,6 +12,8 @@ website:
       - about.qmd
       - icon: rss
         href: index.xml
+      - icon: twitter-x 
+        href: https://x.com/aitbayev
       - icon: github
         href: https://github.com/maitbayev
       - icon: telegram
