@@ -10,6 +10,9 @@ about:
     - icon: github
       text: Github
       href: https://github.com/maitbayev
+    - icon: twitter-x
+      text: "x.com"
+      href: https://x.com/aitbayev
 
 ---
 
