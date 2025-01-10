@@ -1,0 +1,12 @@
+{
+  "hash": "14cbe81c315ab87b58b90c4650e8f9df",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Dot Product\"\nauthor: \"Madiyar Aitbayev\"\ndate: \"2024-07-21\"\ncategories: [math]\nimage: \"images/image.jpg\"\neditor:\n  render-on-save: true\n---\n\n\n# Dot Product\n\nMy notes for the [\"Auto-Encoding Variational Bayes\"](https://arxiv.org/pdf/1312.6114) paper. Feel free to ask questions on [my telegram channel](https://t.me/swemanml)\n\n\n```{ojs}\n//| echo: false\nJXG = await require('https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js')\n```\n\n```{ojs}\n//| echo: false\n\nfunction board_div(name, width=600) {\n  return html`<div \n    id=${name} \n    style='max-width:${width}px; aspect-ratio: 1; \n            margin-inline: auto'>\n  </div>` \n}\n```\n\n```{ojs}\nfunction make_board(name) {\n  return JXG.JSXGraph.initBoard(name, {\n    boundingbox: [5, 5, 5, -5],\n    showCopyright: false,\n    showNavigation: false,\n    axis: true,\n    defaultAxes: {\n      x: {\n        ticks: {\n          minorTicks: 0,       \n        }\n      },\n      y: {\n        ticks: {\n          minorTicks: 0,\n        }\n      }\n    },\n  });\n}\n```\n\n```{ojs}\n{\n  return board_div(\"board1\")\n}\n```\n\n::: {#967a9f0a .cell execution_count=1}\n``` {.python .cell-code}\nprint(\"Hello World\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello World\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

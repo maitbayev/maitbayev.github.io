@@ -1,0 +1,260 @@
+---
+title: "Dot Product Intuition"
+author: "Madiyar Aitbayev"
+date: "2025-01-10"
+categories: [math]
+image: "images/image.jpg"
+draft: true
+draft-mode: "unlinked"
+---
+
+# Dot Product Intuition
+
+## Introduction
+
+The **dot product** (or **scalar product**) is a simple yet powerful operation that is used in many places in Machine Learning and other fields. In this post, I will explain the geometric intuition behind the dot product. You need to have a basic grasp of trigonometry to follow this post.
+
+Feel free to ask questions on [my telegram channel](https://t.me/swemanml)
+
+## Recap
+
+More beginner friendly explanations are available in the following resources:
+
+-   https://en.wikipedia.org/wiki/Dot_product
+-   https://brilliant.org/wiki/dot-product-definition
+-   https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/
+
+Feel free to checkout the above or other resources first.
+
+Assume we have two vectors $\textbf{a}=[a_1, a_2, \cdots, a_n]$ and $\textbf{b} = [b_1, b_2, \cdots, b_n]$, then there are two definitions of the dot product: **algebraic** and **geometric**.
+
+### Algebraic definition
+
+The dot product of $\textbf{a}$ and $\textbf{b}$ is:
+
+$$
+\textbf{a} \cdot \textbf{b} = \sum_{i=1}^n{a_ib_i} = a_1b_1+a_2b_2+\cdots+a_nb_n
+$$
+
+### Geometric definition
+
+The dot product of $\textbf{a}$ and $\textbf{b}$ is: $$
+\textbf{a} \cdot \textbf{b} = \|\mathbf{a}\|\|\mathbf{b}\|\cos \theta
+$$
+
+where $\theta$ is the angle between **a** and **b** and $\|\textbf{a}\|$ is the magnitude of a vector **a**. 
+ 
+The geometric definition gives us a few useful properties:
+
+- The dot product is zero when **a** and **b** are orthogonal, since $\cos(90 \degree) = 0$
+- The dot product is positive for acute angles and negative for obtuse, e.g., $\cos(45\degree)$ or $\cos(89\degree)$ are positive but $\cos(180\degree), \cos(91\degree)$ are negative.
+- We can find the angle between vectors by $\theta = \arccos(\frac{\textbf{a} \cdot \textbf{b}}{\|\mathbf{a}\|\|\mathbf{b}\|})$. A picture from Wikipedia:
+
+![Source Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/76/Inner-product-angle.svg){width=300}
+
+## Equivalence?
+
+Wait, how can the algebraic and geometric definitions be the same? How is $cos( \theta)$ related to such a straightforward sum of components? These were the questions I asked when I first encountered the dot product. I accepted the fact and moved on with my life until today. I will try to understand myself and also explain by interactive visualizations. 
+
+```{ojs}
+//| echo: false
+JXG = await require('https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js')
+```
+
+```{ojs}
+//| echo: false
+
+function board_div(name, width=500) {
+  return html`<div 
+    id=${name} 
+    style='max-width:${width}px; aspect-ratio: 1; 
+            margin-inline: auto'>
+  </div>` 
+}
+```
+
+```{ojs}
+//| echo: false
+
+function make_board(name, extend=5.5) {
+  return JXG.JSXGraph.initBoard(name, {
+    boundingbox: [-extend, extend, extend, -extend],
+    showCopyright: false,
+    showNavigation: false,
+    axis: true,
+    grid: false,
+    defaultAxes: {
+      x: {
+        ticks: {
+          insertTicks: false,
+          minorTicks: 0,   
+          majorHeight: 5,
+          ticksDistance: 1,
+          strokeOpacity: 0.8,
+          strokeColor: '#000000',
+          strokeWidth: 1 
+        }
+      },
+      y: {
+        ticks: {
+          insertTicks: false,
+          minorTicks: 0,
+          majorHeight: 5,
+          strokeOpacity: 0.8,
+          strokeColor: '#000000',
+          strokeWidth: 1 
+        }
+      }
+    },
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+
+function make_board1() {
+  function vec_length(a)  {
+    return Math.sqrt(a[0] * a[0] + a[1] * a[1]);
+  }
+  function vec_unit(a) {
+    const len = vec_length(a);
+    return vec_scale(a, 1 / len);
+  }
+  function vec_scale(a, scalar) {
+    return [a[0] * scalar, a[1] * scalar];
+  }
+  function vec_dot(a, b) {
+    return a[0] * b[0] + a[1] * b[1];
+  }
+  function vec_cross(a, b) {
+    return a[0] * b[1] - a[1] * b[0];
+  }
+  function vec_mid(a, b) {
+    return vec_scale(vec_add(a, b), 0.5);
+  }
+
+  function vec_rot90(v) {
+    return [-v[1], v[0]];
+  }
+  function vec_add(a, b) {
+    return [a[0] + b[0], a[1] + b[1]];
+  }
+
+  function calcP(a, b) {
+    const unit_b = vec_unit(b);
+    return vec_scale(unit_b, vec_dot(a, unit_b));
+  }
+  function calcUnder(p, a, delta=0.15) {
+    var n = vec_scale(vec_rot90(p), delta / vec_length(p));
+    if (vec_cross(a, p) < 0) {
+      n = vec_scale(n, -1);
+    }
+    return [n, vec_add(p, n)];
+  }
+  const a = [2.5, 2];
+  const b = [1, 0];
+  const p = [a[0], 0];
+  var board = make_board("board1", 3.5);
+  const pointa = board.create("point", a, {
+    fixed: false,
+    name: "a",
+    color: "blue"
+  })
+  const pointb = board.create("point", b, {
+    fixed: true,
+    name: "b",
+    color: "red"
+  })
+  const linea = board.create("line", [[0, 0], pointa], {
+    fixed: true,
+    straightFirst:false, 
+    straightLast:false, 
+    lastArrow:true,
+    strokeColor: "blue",
+    strokeWidth: 2
+  });
+  const lineb = board.create("line", [[0, 0], pointb], {
+    fixed: true,
+    straightFirst:false, 
+    straightLast:false, 
+    lastArrow:true,
+    strokeColor: "red",
+    strokeWidth: 2
+  });
+
+  const pointp = board.create("point", [function() {
+    return calcP([pointa.X(), pointa.Y()], [pointb.X(), pointb.Y()])[0];
+  }, function() {
+    return calcP([pointa.X(), pointa.Y()], [pointb.X(), pointb.Y()])[1];
+  }], {
+    fixed: true,
+    name: "p",
+    fillColor: "black",
+    strokeColor: "black",
+    size: 5,
+  })
+  const lineap = board.create("line", [pointa, pointp], {
+    fixed: true,
+    straightFirst:false, 
+    straightLast:false, 
+    dash: 2,
+    strokeColor: "black",
+    strokeWidth: 1
+  })
+  const rightAngle = board.create("nonreflexangle", [pointa, pointp, pointb], {
+    name: "",
+    strokeColor: "black",
+    strokeWidth: 0.7,
+    fillColor: "#00000000",
+    radius: 0.3
+  });
+  const alphaAngle = board.create("angle", [pointb, [0, 0], pointa], {
+    name: "θ"
+  });
+  const lineGreen = board.create("line", [function() {
+    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()])[0];
+  }, function() {
+    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()])[1];
+  }], {
+    fixed: true,
+    name: "Hell",
+    straightFirst:false, 
+    straightLast:false, 
+    strokeColor: "green",
+    dash: 1,
+    strokeWidth: 2,
+    label:{offsets:[-1,1]}
+  });
+  const slider = board.create('slider', [[-1, -2], [1, -2], [0, 0, 360]], {
+    name: "Rotate",
+    snapWidth: 1
+  });
+  const text = board.create('text', [function() {
+    const s = calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.4);
+    return vec_mid(s[0], s[1])[0];
+  }, function() {
+    const s = calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.4);
+    return vec_mid(s[0], s[1])[1];
+  }, '||a|| cos(θ)'], {
+    anchorX: "middle",
+    anchorY: "middle",
+    fontSize: 19,
+  })
+  const rot = board.create('transform', [function(){return slider.Value() / 180 * Math.PI;}, [0, 0]], {type:'rotate'});
+  rot.bindTo([pointb, pointa]);
+}
+```
+
+```{ojs}
+//| echo: false
+board_div("board1")
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+{
+  make_board1()
+}
+```
