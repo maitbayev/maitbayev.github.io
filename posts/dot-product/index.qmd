@@ -1,14 +1,12 @@
 ---
-title: "WIP: Dot Product Intuition"
+title: "Dot Product Intuition"
 author: "Madiyar Aitbayev"
-date: "2025-01-10"
+date: "2025-01-11"
 categories: [math]
 image: "images/image.jpg"
-draft: true
-draft-mode: "unlinked"
 ---
 
-# WIP: Dot Product Intuition
+# Dot Product Intuition
 
 ## Introduction
 
@@ -63,6 +61,8 @@ Let's first simplify the problem as much as possible. Once we build up an intuit
 
 ### Two dimensions
 
+#### Simplified version
+
 First, we will only consider the $n=2$ case. Assume that we have 2D vectors: $\textbf{a}=[a_x, a_y]$ and $\textbf{b}=[b_x, b_y]$ with the dot product:
 
 $$
@@ -71,7 +71,7 @@ $$
 
 where $\|\textbf{a}\|=\sqrt{a_x^2+a_y^2}$ is the length of the vector. We also have:
 
-- $\textbf{a} = [a_x, a_y] = \left[\|\textbf{a}\|\cos\alpha, \| \textbf{a}\|\sin \alpha \right]$ from the [polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates), where $\alpha$ is the polar angle.
+- $a_x = \|\textbf{a}\|\cos\alpha$ and $a_y=\| \textbf{a}\|\sin \alpha$ from the [polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates), where $\alpha$ is the polar angle.
 - $\| k\textbf{a} \| = k\|\textbf{a}\|$, where $k$ is a real number
 
 Second, scaling either $\textbf{a}$ or $\textbf{b}$ by a real number $k$ does not invalidate the dot product equivalence. Let's say we scale $\textbf{b}$ by $k$, then:
@@ -80,7 +80,7 @@ $$
 \textbf{a} \cdot (k \textbf{b}) = a_x(kb_x)+a_y(kb_y)=\|\textbf{a}\|(k\|\textbf{b}\|)\cos \theta
 $$
 
-With the above, let's simplify the explanation further by constraining $\|\textbf{b}\| = 1$. If the equivalence holds for $\|\textbf{b}\| = 1$, then it holds for any $\|k\textbf{b}\|$.
+With the above, we can simplify the explanation further by constraining $\|\textbf{b}\| = 1$. If the equivalence holds for $\|\textbf{b}\| = 1$, then it holds for any $\|k\textbf{b}\|$.
 
 ```{ojs}
 //| echo: false
@@ -356,7 +356,7 @@ board_div("board2", 300)
 board2 = make_board("board2", /*showSlider=*/false, /*sliderValue=*/30, /*showP=*/false)
 ```
 
-Now, we have a simplifed version of the problem: an arbitrary vector $\textbf{a}=[a_x, a_y]$ and a fixed vector $\textbf{b}=[1, 0]$. Let's check if the definitions agree now. The algebraic dot product is:
+We arrived at a simplifed version of the problem: an arbitrary vector $\textbf{a}=[a_x, a_y]$ and a fixed vector $\textbf{b}=[1, 0]$. Let's check if the definitions agree now. The algebraic dot product is:
 
 $$
 \textbf{a} \cdot \textbf{b} = a_xb_x+a_yb_y=a_x
@@ -382,11 +382,11 @@ board_div("board3", 400)
 board3 = make_board("board3", /*showSlider=*/false, /*sliderValue=*/0, /*showP=*/true)
 ```
 
-We introduced new elements in the above visualization:
+We introduced **new elements** in the above visualization:
 
-- The vector $\textbf{p}=[\|\textbf{a}\|\cos \theta, 0]$: the projection of the vector $\textbf{a}$ into $\textbf{b}$. It is visualized with green.
-- The length of the vector $\textbf{p}$ is $\|\textbf{p}\|=\|\textbf{a}\|\cos\theta=a_x$, which is also the dot product of $\textbf{a}$ and $\textbf{b}$.
-- $\textbf{p}=(\|\textbf{a}\|\cos\theta)\textbf{b}$, note that $(\|\textbf{a}\|\cos\theta)$ is a real number, which means how many $\textbf{b}$'s are required to reach the vector $\textbf{p}$.
+- The vector $\textbf{p}$, which is visualized with green. It visually represents the dot product and has coordinates: $p_x=\|\textbf{a}\|\cos \theta$ and $p_y=0$. The vector $\textbf{p}$ is actually [the projection](https://en.wikipedia.org/wiki/Dot_product#Scalar_projection_and_first_properties) of the vector $\textbf{a}$ into $\textbf{b}$. 
+- The length of the vector $\textbf{p}$ is $\|\textbf{p}\|=\|\textbf{a}\|\cos\theta=a_x$, which is also the dot product of $\textbf{a}$ and $\textbf{b}$ as we derived above.
+- $\textbf{p}=(\|\textbf{a}\|\cos\theta)\textbf{b}$, note that $\|\textbf{a}\|\cos\theta$ is a real number, which means how many $\textbf{b}$'s are required to reach the vector $\textbf{p}$.
 
 Try different values of $\textbf{a}$ by moving it in the visualization, and verify the following questions:
 
@@ -395,7 +395,13 @@ Try different values of $\textbf{a}$ by moving it in the visualization, and veri
 - When the dot product is positive ?
 - What values of $\textbf{a}$ result in the same dot product?
 
-The simplified form of the dot product is quite useful for intuition. I visualize this version in my mind when I forget some details of the dot product. At this point, you should be comfortable with the dot product: $\textbf{a} \cdot [1, 0]$. Let's now proof for any $\textbf{b}$ such that $\|\textbf{b}\|=1$. To do that, we can just rotate the both vector by an angle $\alpha$:
+The simplified form of the dot product is quite useful for intuition. I visualize this version in my mind when I forget some details of the dot product. At this point, you should be comfortable with the dot product of the simplified form: $\textbf{a} \cdot [1, 0]$. 
+
+#### General version 
+
+Honestly, I don't have a proof that provides good intuition at the moment for the generic version. Feel free to accept the facts and move on with your life 🙃. I will provide the best proof I have so far.
+
+Let's now proof for any $\textbf{b}$ such that $\|\textbf{b}\|=1$.
 
 ```{ojs}
 //| echo: false
@@ -409,23 +415,29 @@ board_div("board4", 400)
 board4 = make_board("board4", /*showSlider=*/true, /*sliderValue=*/10, /*showP=*/true,  /*showP=*/false)
 ```
 
-We introduced a slider which represents the angle $\alpha$ (in degrees). Feel free to play with the slider! 
+We introduced **a slider** which represents the angle $\alpha$ (in degrees) by which both vectors are rotated. Feel free to play with the slider! 
 
-We already proved when $\alpha=0$. Let's rotate everything by $\alpha > 0$ and prove. The dot product is invariant under rotations, so the dot product should not change and be equal to $\|\textbf{p}\|$ or $\|\textbf{a}\|\cos(\theta)$ under any $\alpha$.
+We want to prove that $\alpha > 0$ does not change the algebraic dot product, i.e., that it is invariant under rotations. To do this, we derive an alternative formula for the dot product:
 
+$$
+\begin{align}
+\|\textbf{a}-\textbf{b}\|^2 &= (a_x-b_x)^2 + (a_y-b_y)^2 \\
+&= a_x^2 + b_x^2 - 2a_xb_x + a_y^2 + b_y^2 - 2a_yb_y \\
+&= (a_x^2 + a_y^2) + (b_x^2 + b_y^2) - 2(a_xb_x + a_yb_y) \\
+&= \|\textbf{a}\|^2 + \|\textbf{b}\|^2 - 2 \textbf{a} \cdot \textbf{b}
+\end{align}
+$$
 
-**TO DO:**
-p = [|a|cos(th)cos(a), |a|cos(th)sin(a)]
+which gives us:
 
-|a|cos(th)cos(a)cos(a) + |a|cos(th)sin(a)sin(a)
+$$
+\textbf{a} \cdot \textbf{b} = \frac{\|\textbf{a}\|^2 + \|\textbf{b}\|^2 - \|\textbf{a}-\textbf{b}\|^2 }{2} 
+$$
 
-|a|
+The dot product above is derived purely from the lengths. Since the lengths remain unchanged under rotations, the algebraic dot product does as well, which completes our proof.
 
-|a|cos(th)cos(a) - |a|sin(th) sin(a)
+It's not hard to extend the 2D version of the proof to n-dimensional vectors, since we didn't rely on any properties unique to 2D.
 
-|a|cos(th)sin(a) + |a|sin(th) cos(a)
+## The End
 
-
-|a|cos(th)cos(a)cos(a) - |a|sin(th) sin(a)cos(a)
-
-|a|cos(th)sin(a)sin(a) + |a|sin(th) cos(a)sin(a)
+I hope you enjoyed this post. You can ask further questions on [my telegram channel](https://t.me/swemanml)

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Madiyar Aitbayev">
-<meta name="dcterms.date" content="2025-01-10">
+<meta name="dcterms.date" content="2025-01-11">
 
-<title>WIP: Dot Product Intuition – Madiyar’s Page</title>
+<title>Dot Product Intuition – Madiyar’s Page</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,6 @@ gtag('config', 'G-XDL07RCJG6', { 'anonymize_ip': true});
 </script>
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-<meta name="quarto:status" content="draft">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -151,7 +150,7 @@ window.Quarto = {
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -200,7 +199,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">WIP: Dot Product Intuition</h1>
+      <h1 class="title">Dot Product Intuition</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">math</div>
               </div>
@@ -220,7 +219,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 10, 2025</p>
+        <p class="date">January 11, 2025</p>
       </div>
     </div>
     
@@ -239,8 +238,8 @@ window.Quarto = {
 
 
 
-<section id="wip-dot-product-intuition" class="level1">
-<h1>WIP: Dot Product Intuition</h1>
+<section id="dot-product-intuition" class="level1">
+<h1>Dot Product Intuition</h1>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>The <strong>dot product</strong> (or <strong>scalar product</strong>) is a simple yet powerful operation that is used in many places in Machine Learning and other fields. In this post, I will explain the geometric intuition behind the dot product. You need to have a basic grasp of trigonometry to follow this post.</p>
@@ -292,20 +291,22 @@ window.Quarto = {
 <p>Let’s first simplify the problem as much as possible. Once we build up an intuition for simpler cases, we can come back and try to understand the general cases.</p>
 <section id="two-dimensions" class="level3">
 <h3 class="anchored" data-anchor-id="two-dimensions">Two dimensions</h3>
+<section id="simplified-version" class="level4">
+<h4 class="anchored" data-anchor-id="simplified-version">Simplified version</h4>
 <p>First, we will only consider the <span class="math inline">\(n=2\)</span> case. Assume that we have 2D vectors: <span class="math inline">\(\textbf{a}=[a_x, a_y]\)</span> and <span class="math inline">\(\textbf{b}=[b_x, b_y]\)</span> with the dot product:</p>
 <p><span class="math display">\[
 \textbf{a} \cdot \textbf{b} = a_xb_x+a_yb_y=\|\textbf{a}\|\|\textbf{b}\|\cos \theta
 \]</span></p>
 <p>where <span class="math inline">\(\|\textbf{a}\|=\sqrt{a_x^2+a_y^2}\)</span> is the length of the vector. We also have:</p>
 <ul>
-<li><span class="math inline">\(\textbf{a} = [a_x, a_y] = \left[\|\textbf{a}\|\cos\alpha, \| \textbf{a}\|\sin \alpha \right]\)</span> from the <a href="https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates">polar coordinates</a>, where <span class="math inline">\(\alpha\)</span> is the polar angle.</li>
+<li><span class="math inline">\(a_x = \|\textbf{a}\|\cos\alpha\)</span> and <span class="math inline">\(a_y=\| \textbf{a}\|\sin \alpha\)</span> from the <a href="https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates">polar coordinates</a>, where <span class="math inline">\(\alpha\)</span> is the polar angle.</li>
 <li><span class="math inline">\(\| k\textbf{a} \| = k\|\textbf{a}\|\)</span>, where <span class="math inline">\(k\)</span> is a real number</li>
 </ul>
 <p>Second, scaling either <span class="math inline">\(\textbf{a}\)</span> or <span class="math inline">\(\textbf{b}\)</span> by a real number <span class="math inline">\(k\)</span> does not invalidate the dot product equivalence. Let’s say we scale <span class="math inline">\(\textbf{b}\)</span> by <span class="math inline">\(k\)</span>, then:</p>
 <p><span class="math display">\[
 \textbf{a} \cdot (k \textbf{b}) = a_x(kb_x)+a_y(kb_y)=\|\textbf{a}\|(k\|\textbf{b}\|)\cos \theta
 \]</span></p>
-<p>With the above, let’s simplify the explanation further by constraining <span class="math inline">\(\|\textbf{b}\| = 1\)</span>. If the equivalence holds for <span class="math inline">\(\|\textbf{b}\| = 1\)</span>, then it holds for any <span class="math inline">\(\|k\textbf{b}\|\)</span>.</p>
+<p>With the above, we can simplify the explanation further by constraining <span class="math inline">\(\|\textbf{b}\| = 1\)</span>. If the equivalence holds for <span class="math inline">\(\|\textbf{b}\| = 1\)</span>, then it holds for any <span class="math inline">\(\|k\textbf{b}\|\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="86" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 85;"><span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>JXG <span class="op">=</span> <span class="cf">await</span> <span class="pp">require</span>(<span class="st">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -596,7 +597,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Now, we have a simplifed version of the problem: an arbitrary vector <span class="math inline">\(\textbf{a}=[a_x, a_y]\)</span> and a fixed vector <span class="math inline">\(\textbf{b}=[1, 0]\)</span>. Let’s check if the definitions agree now. The algebraic dot product is:</p>
+<p>We arrived at a simplifed version of the problem: an arbitrary vector <span class="math inline">\(\textbf{a}=[a_x, a_y]\)</span> and a fixed vector <span class="math inline">\(\textbf{b}=[1, 0]\)</span>. Let’s check if the definitions agree now. The algebraic dot product is:</p>
 <p><span class="math display">\[
 \textbf{a} \cdot \textbf{b} = a_xb_x+a_yb_y=a_x
 \]</span></p>
@@ -621,11 +622,11 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>We introduced new elements in the above visualization:</p>
+<p>We introduced <strong>new elements</strong> in the above visualization:</p>
 <ul>
-<li>The vector <span class="math inline">\(\textbf{p}=[\|\textbf{a}\|\cos \theta, 0]\)</span>: the projection of the vector <span class="math inline">\(\textbf{a}\)</span> into <span class="math inline">\(\textbf{b}\)</span>. It is visualized with green.</li>
-<li>The length of the vector <span class="math inline">\(\textbf{p}\)</span> is <span class="math inline">\(\|\textbf{p}\|=\|\textbf{a}\|\cos\theta=a_x\)</span>, which is also the dot product of <span class="math inline">\(\textbf{a}\)</span> and <span class="math inline">\(\textbf{b}\)</span>.</li>
-<li><span class="math inline">\(\textbf{p}=(\|\textbf{a}\|\cos\theta)\textbf{b}\)</span>, note that <span class="math inline">\((\|\textbf{a}\|\cos\theta)\)</span> is a real number, which means how many <span class="math inline">\(\textbf{b}\)</span>’s are required to reach the vector <span class="math inline">\(\textbf{p}\)</span>.</li>
+<li>The vector <span class="math inline">\(\textbf{p}\)</span>, which is visualized with green. It visually represents the dot product and has coordinates: <span class="math inline">\(p_x=\|\textbf{a}\|\cos \theta\)</span> and <span class="math inline">\(p_y=0\)</span>. The vector <span class="math inline">\(\textbf{p}\)</span> is actually <a href="https://en.wikipedia.org/wiki/Dot_product#Scalar_projection_and_first_properties">the projection</a> of the vector <span class="math inline">\(\textbf{a}\)</span> into <span class="math inline">\(\textbf{b}\)</span>.</li>
+<li>The length of the vector <span class="math inline">\(\textbf{p}\)</span> is <span class="math inline">\(\|\textbf{p}\|=\|\textbf{a}\|\cos\theta=a_x\)</span>, which is also the dot product of <span class="math inline">\(\textbf{a}\)</span> and <span class="math inline">\(\textbf{b}\)</span> as we derived above.</li>
+<li><span class="math inline">\(\textbf{p}=(\|\textbf{a}\|\cos\theta)\textbf{b}\)</span>, note that <span class="math inline">\(\|\textbf{a}\|\cos\theta\)</span> is a real number, which means how many <span class="math inline">\(\textbf{b}\)</span>’s are required to reach the vector <span class="math inline">\(\textbf{p}\)</span>.</li>
 </ul>
 <p>Try different values of <span class="math inline">\(\textbf{a}\)</span> by moving it in the visualization, and verify the following questions:</p>
 <ul>
@@ -634,9 +635,14 @@ window.Quarto = {
 <li>When the dot product is positive ?</li>
 <li>What values of <span class="math inline">\(\textbf{a}\)</span> result in the same dot product?</li>
 </ul>
-<p>The simplified form of the dot product is quite useful for intuition. I visualize this version in my mind when I forget some details of the dot product. At this point, you should be comfortable with the dot product: <span class="math inline">\(\textbf{a} \cdot [1, 0]\)</span>. Let’s now proof for any <span class="math inline">\(\textbf{b}\)</span> such that <span class="math inline">\(\|\textbf{b}\|=1\)</span>. To do that, we can just rotate the both vector by an angle <span class="math inline">\(\alpha\)</span>:</p>
+<p>The simplified form of the dot product is quite useful for intuition. I visualize this version in my mind when I forget some details of the dot product. At this point, you should be comfortable with the dot product of the simplified form: <span class="math inline">\(\textbf{a} \cdot [1, 0]\)</span>.</p>
+</section>
+<section id="general-version" class="level4">
+<h4 class="anchored" data-anchor-id="general-version">General version</h4>
+<p>Honestly, I don’t have a proof that provides good intuition at the moment for the generic version. Feel free to accept the facts and move on with your life 🙃. I will provide the best proof I have so far.</p>
+<p>Let’s now proof for any <span class="math inline">\(\textbf{b}\)</span> such that <span class="math inline">\(\|\textbf{b}\|=1\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="401" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 400;"><span id="cb12-401"><a href="#cb12-401" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="dv">400</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="407" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 406;"><span id="cb12-407"><a href="#cb12-407" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="dv">400</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="expression">
 
@@ -644,25 +650,37 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="407" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 406;"><span id="cb13-407"><a href="#cb13-407" aria-hidden="true" tabindex="-1"></a>board4 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">true</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">10</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">true</span><span class="op">,</span>  <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="413" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 412;"><span id="cb13-413"><a href="#cb13-413" aria-hidden="true" tabindex="-1"></a>board4 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">true</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">10</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">true</span><span class="op">,</span>  <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<p>We introduced a slider which represents the angle <span class="math inline">\(\alpha\)</span> (in degrees). Feel free to play with the slider!</p>
-<p>We already proved when <span class="math inline">\(\alpha=0\)</span>. Let’s rotate everything by <span class="math inline">\(\alpha &gt; 0\)</span> and prove. The dot product is invariant under rotations, so the dot product should not change and be equal to <span class="math inline">\(\|\textbf{p}\|\)</span> or <span class="math inline">\(\|\textbf{a}\|\cos(\theta)\)</span> under any <span class="math inline">\(\alpha\)</span>.</p>
-<p><strong>TO DO:</strong> p = [|a|cos(th)cos(a), |a|cos(th)sin(a)]</p>
-<p>|a|cos(th)cos(a)cos(a) + |a|cos(th)sin(a)sin(a)</p>
-<p>|a|</p>
-<p>|a|cos(th)cos(a) - |a|sin(th) sin(a)</p>
-<p>|a|cos(th)sin(a) + |a|sin(th) cos(a)</p>
-<p>|a|cos(th)cos(a)cos(a) - |a|sin(th) sin(a)cos(a)</p>
-<p>|a|cos(th)sin(a)sin(a) + |a|sin(th) cos(a)sin(a)</p>
-
-
+<p>We introduced <strong>a slider</strong> which represents the angle <span class="math inline">\(\alpha\)</span> (in degrees) by which both vectors are rotated. Feel free to play with the slider!</p>
+<p>We want to prove that <span class="math inline">\(\alpha &gt; 0\)</span> does not change the algebraic dot product, i.e., that it is invariant under rotations. To do this, we derive an alternative formula for the dot product:</p>
+<p><span class="math display">\[
+\begin{align}
+\|\textbf{a}-\textbf{b}\|^2 &amp;= (a_x-b_x)^2 + (a_y-b_y)^2 \\
+&amp;= a_x^2 + b_x^2 - 2a_xb_x + a_y^2 + b_y^2 - 2a_yb_y \\
+&amp;= (a_x^2 + a_y^2) + (b_x^2 + b_y^2) - 2(a_xb_x + a_yb_y) \\
+&amp;= \|\textbf{a}\|^2 + \|\textbf{b}\|^2 - 2 \textbf{a} \cdot \textbf{b}
+\end{align}
+\]</span></p>
+<p>which gives us:</p>
+<p><span class="math display">\[
+\textbf{a} \cdot \textbf{b} = \frac{\|\textbf{a}\|^2 + \|\textbf{b}\|^2 - \|\textbf{a}-\textbf{b}\|^2 }{2}
+\]</span></p>
+<p>The dot product above is derived purely from the lengths. Since the lengths remain unchanged under rotations, the algebraic dot product does as well, which completes our proof.</p>
+<p>It’s not hard to extend the 2D version of the proof to n-dimensional vectors, since we didn’t rely on any properties unique to 2D.</p>
 </section>
+</section>
+</section>
+<section id="the-end" class="level2">
+<h2 class="anchored" data-anchor-id="the-end">The End</h2>
+<p>I hope you enjoyed this post. You can ask further questions on <a href="https://t.me/swemanml">my telegram channel</a></p>
+
+
 </section>
 </section>
 
