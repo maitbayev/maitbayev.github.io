@@ -53,7 +53,11 @@ The geometric definition gives us a few useful properties:
 
 ## Equivalence?
 
-Wait, how can the algebraic and geometric definitions be the same? How is $cos( \theta)$ related to such a straightforward sum of components? A few questions I asked when I first encountered the dot product. I accepted the fact and moved on with my life until today. I will try to understand myself and also explain by interactive visualizations.
+Wait, how can the algebraic and geometric dot products be the same? 
+How is $cos( \theta)$ related to such a straightforward sum of components?
+A few questions I asked when I first encountered the dot product. 
+I accepted the fact and moved on with my life until today. 
+I will try to understand myself and also explain by interactive visualizations.
 
 ## Explanation
 
@@ -69,7 +73,7 @@ $$
 \textbf{a} \cdot \textbf{b} = a_xb_x+a_yb_y=\|\textbf{a}\|\|\textbf{b}\|\cos \theta
 $$
 
-where $\|\textbf{a}\|=\sqrt{a_x^2+a_y^2}$ is the length of the vector. We also have:
+where $\|\textbf{a}\|=\sqrt{a_x^2+a_y^2}$ is the length of the vector and $\theta$ is the angle between the vectors. We also have:
 
 - $a_x = \|\textbf{a}\|\cos\alpha$ and $a_y=\| \textbf{a}\|\sin \alpha$ from the [polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates), where $\alpha$ is the polar angle.
 - $\| k\textbf{a} \| = k\|\textbf{a}\|$, where $k$ is a real number
@@ -417,7 +421,7 @@ board4 = make_board("board4", /*showSlider=*/true, /*sliderValue=*/10, /*showP=*
 
 We introduced **a slider** which represents the angle $\alpha$ (in degrees) by which both vectors are rotated. Feel free to play with the slider! 
 
-We want to prove that $\alpha > 0$ does not change the algebraic dot product, i.e., that it is invariant under rotations. To do this, we derive an alternative formula for the dot product:
+We already proved for $\alpha=0$. Now, we want to prove that $\alpha > 0$ does not change the algebraic dot product, i.e., that it is invariant under rotations. To do this, we derive an alternative formula for the dot product:
 
 $$
 \begin{align}
