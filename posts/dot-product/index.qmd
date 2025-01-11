@@ -1,5 +1,5 @@
 ---
-title: "Dot Product Intuition"
+title: "WIP: Dot Product Intuition"
 author: "Madiyar Aitbayev"
 date: "2025-01-10"
 categories: [math]
@@ -8,7 +8,7 @@ draft: true
 draft-mode: "unlinked"
 ---
 
-# Dot Product Intuition
+# WIP: Dot Product Intuition
 
 ## Introduction
 
@@ -55,7 +55,32 @@ The geometric definition gives us a few useful properties:
 
 ## Equivalence?
 
-Wait, how can the algebraic and geometric definitions be the same? How is $cos( \theta)$ related to such a straightforward sum of components? These were the questions I asked when I first encountered the dot product. I accepted the fact and moved on with my life until today. I will try to understand myself and also explain by interactive visualizations.
+Wait, how can the algebraic and geometric definitions be the same? How is $cos( \theta)$ related to such a straightforward sum of components? A few questions I asked when I first encountered the dot product. I accepted the fact and moved on with my life until today. I will try to understand myself and also explain by interactive visualizations.
+
+## Explanation
+
+Let's first simplify the problem as much as possible. Once we build up an intuition for simpler cases, we can come back and try to understand the general cases.
+
+### Two dimensions
+
+First, we will only consider the $n=2$ case. Assume that we have 2D vectors: $\textbf{a}=[a_x, a_y]$ and $\textbf{b}=[b_x, b_y]$ with the dot product:
+
+$$
+\textbf{a} \cdot \textbf{b} = a_xb_x+a_yb_y=\|\textbf{a}\|\|\textbf{b}\|\cos \theta
+$$
+
+where $\|\textbf{a}\|=\sqrt{a_x^2+a_y^2}$ is the length of the vector. We also have:
+
+- $\textbf{a} = [a_x, a_y] = \left[\|\textbf{a}\|\cos\alpha, \| \textbf{a}\|\sin \alpha \right]$ from the [polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates), where $\alpha$ is the polar angle.
+- $\| k\textbf{a} \| = k\|\textbf{a}\|$, where $k$ is a real number
+
+Second, scaling either $\textbf{a}$ or $\textbf{b}$ by a real number $k$ does not invalidate the dot product equivalence. Let's say we scale $\textbf{b}$ by $k$, then:
+
+$$
+\textbf{a} \cdot (k \textbf{b}) = a_x(kb_x)+a_y(kb_y)=\|\textbf{a}\|(k\|\textbf{b}\|)\cos \theta
+$$
+
+With the above, let's simplify the explanation further by constraining $\|\textbf{b}\| = 1$. If the equivalence holds for $\|\textbf{b}\| = 1$, then it holds for any $\|k\textbf{b}\|$.
 
 ```{ojs}
 //| echo: false
@@ -77,7 +102,7 @@ function board_div(name, width=500) {
 ```{ojs}
 //| echo: false
 
-function make_board(name, extend=5.5) {
+function init_board(name, extend=5.5) {
   return JXG.JSXGraph.initBoard(name, {
     boundingbox: [-extend, extend, extend, -extend],
     showCopyright: false,
@@ -117,7 +142,10 @@ function make_board(name, extend=5.5) {
 ```{ojs}
 //| echo: false
 
-function make_board1() {
+function make_board(
+  name, showSlider=true, sliderValue=0.0, 
+  showP=true, showPLabel=true
+) {
   function vec_length(a)  {
     return Math.sqrt(a[0] * a[0] + a[1] * a[1]);
   }
@@ -149,17 +177,19 @@ function make_board1() {
     const unit_b = vec_unit(b);
     return vec_scale(unit_b, vec_dot(a, unit_b));
   }
-  function calcUnder(p, a, delta=0.15) {
+
+  function calcUnder(p, a, delta=0.05) {
     var n = vec_scale(vec_rot90(p), delta / vec_length(p));
     if (vec_cross(a, p) < 0) {
       n = vec_scale(n, -1);
     }
     return [n, vec_add(p, n)];
   }
+
   const a = [2.5, 2];
   const b = [1, 0];
   const p = [a[0], 0];
-  var board = make_board("board1", 3.5);
+  var board = init_board(name, 3.5);
   const pointa = board.create("point", a, {
     fixed: false,
     name: "a",
@@ -169,7 +199,32 @@ function make_board1() {
     fixed: true,
     name: "b",
     color: "red"
-  })
+  });
+  const pointp = board.create("point", [function() {
+    return calcP([pointa.X(), pointa.Y()], [pointb.X(), pointb.Y()])[0];
+  }, function() {
+    return calcP([pointa.X(), pointa.Y()], [pointb.X(), pointb.Y()])[1];
+  }], {
+    visible: showP,
+    fixed: true,
+    name: "p",
+    color: "green",
+    size: 5,
+  });
+  const lineGreen = board.create("line", [function() {
+    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.05)[0];
+  }, function() {
+    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.05)[1];
+  }], {
+    visible: showP,
+    lastArrow:true,
+    fixed: true,
+    straightFirst:false, 
+    straightLast:false, 
+    strokeColor: "green",
+    strokeWidth: 2,
+    label:{offsets:[-1,1]}
+  });
   const linea = board.create("line", [[0, 0], pointa], {
     fixed: true,
     straightFirst:false, 
@@ -187,18 +242,8 @@ function make_board1() {
     strokeWidth: 2
   });
 
-  const pointp = board.create("point", [function() {
-    return calcP([pointa.X(), pointa.Y()], [pointb.X(), pointb.Y()])[0];
-  }, function() {
-    return calcP([pointa.X(), pointa.Y()], [pointb.X(), pointb.Y()])[1];
-  }], {
-    fixed: true,
-    name: "p",
-    fillColor: "black",
-    strokeColor: "black",
-    size: 5,
-  })
   const lineap = board.create("line", [pointa, pointp], {
+    visible: showP,
     fixed: true,
     straightFirst:false, 
     straightLast:false, 
@@ -207,6 +252,7 @@ function make_board1() {
     strokeWidth: 1
   })
   const rightAngle = board.create("nonreflexangle", [pointa, pointp, pointb], {
+    visible: showP,
     name: "",
     strokeColor: "black",
     strokeWidth: 0.7,
@@ -221,21 +267,9 @@ function make_board1() {
   const alphaAngle = board.create("angle", [pointb, pointo, pointa], {
     name: "θ"
   });
-  const lineGreen = board.create("line", [function() {
-    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()])[0];
-  }, function() {
-    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()])[1];
-  }], {
-    fixed: true,
-    name: "Hell",
-    straightFirst:false, 
-    straightLast:false, 
-    strokeColor: "green",
-    dash: 1,
-    strokeWidth: 2,
-    label:{offsets:[-1,1]}
-  });
-  const slider = board.create('slider', [[-1, -2], [1, -2], [0, 0, 360]], {
+ 
+  const slider = board.create('slider', [[-1, -2], [1, -2], [0, sliderValue, 360]], {
+    visible: showSlider,
     name: "Rotate",
     snapWidth: 1
   });
@@ -246,28 +280,152 @@ function make_board1() {
     const s = calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.4);
     return vec_mid(s[0], s[1])[1];
   }, '||a|| cos(θ)'], {
+    visible: showP && showPLabel,
     anchorX: "middle",
     anchorY: "middle",
     fontSize: 19,
   })
   const rot = board.create('transform', [function(){return slider.Value() / 180 * Math.PI;}, [0, 0]], {type:'rotate'});
   rot.bindTo([pointb, pointa]);
+  return board;
+}
+```
+
+This is a visualization for the setup we have so far:
+
+```{ojs}
+//| echo: false
+board_div("board1", 300)
+```
+
+```{ojs}
+//| echo: false 
+//| output: false 
+ 
+board1 = make_board("board1", /*showSlider=*/false, /*sliderValue=*/30, /*showP=*/false)
+```
+
+We have the following items shown above:
+
+- The vector $\textbf{a}=[a_x, a_y]$. It is **interactive** and visualized with blue; feel free to move the vector $\textbf{a}$ around. 
+- The vector $\textbf{b}=[b_x, b_y]$. The length of $\textbf{b}$ is fixed to 1, i.e., $\|\textbf{b}\|=1$. It is visualized with red.
+- $\theta$: the angle from $\textbf{b}$ to $\textbf{a}$
+
+The geometric definition implies that the dot product is **invariant under rotations**. So, if we rotate the both vectors $\textbf{a}$ and $\textbf{b}$ by the same angle $\alpha$, the dot product won't change. It is not obvious from the algebraic definition, yet... Let's use this property and simplify our problem for the third time. We can rotate the both vectors such that $\textbf{b}$ is aligned with the x-axis. Click the button below for the illustration:
+
+
+```{ojs}
+//| echo: false 
+ 
+viewof mybutton = {
+  const form = Inputs.button("Play to Rotate", {value: null, reduce: () => {
+    var slider = board2.elementsByName['Rotate'];
+    function updateRotate() {
+      if (slider.Value() == 0) {
+        return;
+      }
+      slider.setValue(Math.max(0, slider.Value() - 1));
+      board2.update();
+      setTimeout(updateRotate, 12);
+    }
+    if (slider.Value() == 0) {
+      slider.setValue(359);
+    }
+    updateRotate();
+  }});
+  const scope = DOM.uid().id;
+  const cls = form.classList[0];
+  form.classList.add(scope);
+  form.append(html`<style>
+    .${cls} > button { color: white }
+    </style>
+  `);
+  return form;
 }
 ```
 
 ```{ojs}
 //| echo: false
-board_div("board1")
+board_div("board2", 300)
 ```
 
 ```{ojs}
-//| echo: false
-//| output: false
-{
-  make_board1()
-}
+//| echo: false 
+//| output: false 
+ 
+board2 = make_board("board2", /*showSlider=*/false, /*sliderValue=*/30, /*showP=*/false)
 ```
 
-```{python}
-print("Hello world")
+Now, we have a simplifed version of the problem: an arbitrary vector $\textbf{a}=[a_x, a_y]$ and a fixed vector $\textbf{b}=[1, 0]$. Let's check if the definitions agree now. The algebraic dot product is:
+
+$$
+\textbf{a} \cdot \textbf{b} = a_xb_x+a_yb_y=a_x
+$$
+
+and the geometric is:
+
+$$
+\textbf{a} \cdot \textbf{b} = \|\textbf{a}\|\|\textbf{b}\|\cos \theta =  \|\textbf{a}\|\cos \theta 
+$$
+
+now, we have $\textbf{a} \cdot \textbf{b} = a_x =  \|\textbf{a}\|\cos \theta$. This is correct due to [the polar coordinates](#two-dimensions). Alternatively, we can easily derive from the [cosine definition](https://en.wikipedia.org/wiki/Sine_and_cosine). The proof is left as an exercise to the reader. You can use the visualization below to convince yourself: 
+
+```{ojs}
+//| echo: false
+board_div("board3", 400)
 ```
+
+```{ojs}
+//| echo: false 
+//| output: false 
+ 
+board3 = make_board("board3", /*showSlider=*/false, /*sliderValue=*/0, /*showP=*/true)
+```
+
+We introduced new elements in the above visualization:
+
+- The vector $\textbf{p}=[\|\textbf{a}\|\cos \theta, 0]$: the projection of the vector $\textbf{a}$ into $\textbf{b}$. It is visualized with green.
+- The length of the vector $\textbf{p}$ is $\|\textbf{p}\|=\|\textbf{a}\|\cos\theta=a_x$, which is also the dot product of $\textbf{a}$ and $\textbf{b}$.
+- $\textbf{p}=(\|\textbf{a}\|\cos\theta)\textbf{b}$, note that $(\|\textbf{a}\|\cos\theta)$ is a real number, which means how many $\textbf{b}$'s are required to reach the vector $\textbf{p}$.
+
+Try different values of $\textbf{a}$ by moving it in the visualization, and verify the following questions:
+
+- When the dot product is zero?
+- When the dot product is negative ?
+- When the dot product is positive ?
+- What values of $\textbf{a}$ result in the same dot product?
+
+The simplified form of the dot product is quite useful for intuition. I visualize this version in my mind when I forget some details of the dot product. At this point, you should be comfortable with the dot product: $\textbf{a} \cdot [1, 0]$. Let's now proof for any $\textbf{b}$ such that $\|\textbf{b}\|=1$. To do that, we can just rotate the both vector by an angle $\alpha$:
+
+```{ojs}
+//| echo: false
+board_div("board4", 400)
+```
+
+```{ojs}
+//| echo: false 
+//| output: false 
+ 
+board4 = make_board("board4", /*showSlider=*/true, /*sliderValue=*/10, /*showP=*/true,  /*showP=*/false)
+```
+
+We introduced a slider which represents the angle $\alpha$ (in degrees). Feel free to play with the slider! 
+
+We already proved when $\alpha=0$. Let's rotate everything by $\alpha > 0$ and prove. The dot product is invariant under rotations, so the dot product should not change and be equal to $\|\textbf{p}\|$ or $\|\textbf{a}\|\cos(\theta)$ under any $\alpha$.
+
+
+**TO DO:**
+p = [|a|cos(th)cos(a), |a|cos(th)sin(a)]
+
+|a|cos(th)cos(a)cos(a) + |a|cos(th)sin(a)sin(a)
+
+|a|
+
+|a|cos(th)cos(a) - |a|sin(th) sin(a)
+
+|a|cos(th)sin(a) + |a|sin(th) cos(a)
+
+
+|a|cos(th)cos(a)cos(a) - |a|sin(th) sin(a)cos(a)
+
+|a|cos(th)sin(a)sin(a) + |a|sin(th) cos(a)sin(a)
