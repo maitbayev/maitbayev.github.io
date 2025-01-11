@@ -38,23 +38,24 @@ $$
 
 ### Geometric definition
 
-The dot product of $\textbf{a}$ and $\textbf{b}$ is: $$
+The dot product of $\textbf{a}$ and $\textbf{b}$ is: 
+$$
 \textbf{a} \cdot \textbf{b} = \|\mathbf{a}\|\|\mathbf{b}\|\cos \theta
 $$
 
-where $\theta$ is the angle between **a** and **b** and $\|\textbf{a}\|$ is the magnitude of a vector **a**. 
- 
+where $\theta$ is the angle between **a** and **b** and $\|\textbf{a}\|$ is the magnitude of a vector **a**.
+
 The geometric definition gives us a few useful properties:
 
-- The dot product is zero when **a** and **b** are orthogonal, since $\cos(90 \degree) = 0$
-- The dot product is positive for acute angles and negative for obtuse, e.g., $\cos(45\degree)$ or $\cos(89\degree)$ are positive but $\cos(180\degree), \cos(91\degree)$ are negative.
-- We can find the angle between vectors by $\theta = \arccos(\frac{\textbf{a} \cdot \textbf{b}}{\|\mathbf{a}\|\|\mathbf{b}\|})$. A picture from Wikipedia:
+-   The dot product is zero when **a** and **b** are orthogonal, since $\cos(90 \degree) = 0$
+-   The dot product is positive for acute angles and negative for obtuse, e.g., $\cos(45\degree)$ or $\cos(89\degree)$ are positive but $\cos(180\degree), \cos(91\degree)$ are negative.
+-   We can find the angle between vectors by $\theta = \arccos(\frac{\textbf{a} \cdot \textbf{b}}{\|\mathbf{a}\|\|\mathbf{b}\|})$. A picture from Wikipedia:
 
-![Source Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/76/Inner-product-angle.svg){width=300}
+![Source Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/76/Inner-product-angle.svg){width="300"}
 
 ## Equivalence?
 
-Wait, how can the algebraic and geometric definitions be the same? How is $cos( \theta)$ related to such a straightforward sum of components? These were the questions I asked when I first encountered the dot product. I accepted the fact and moved on with my life until today. I will try to understand myself and also explain by interactive visualizations. 
+Wait, how can the algebraic and geometric definitions be the same? How is $cos( \theta)$ related to such a straightforward sum of components? These were the questions I asked when I first encountered the dot product. I accepted the fact and moved on with my life until today. I will try to understand myself and also explain by interactive visualizations.
 
 ```{ojs}
 //| echo: false
@@ -83,6 +84,9 @@ function make_board(name, extend=5.5) {
     showNavigation: false,
     axis: true,
     grid: false,
+    pan: {
+      needTwoFingers: true
+    },
     defaultAxes: {
       x: {
         ticks: {
@@ -209,7 +213,12 @@ function make_board1() {
     fillColor: "#00000000",
     radius: 0.3
   });
-  const alphaAngle = board.create("angle", [pointb, [0, 0], pointa], {
+  const pointo = board.create("point", [0, 0], {
+    visible: false,
+    fixed: true,
+    name: "o",
+  });
+  const alphaAngle = board.create("angle", [pointb, pointo, pointa], {
     name: "θ"
   });
   const lineGreen = board.create("line", [function() {
@@ -257,4 +266,8 @@ board_div("board1")
 {
   make_board1()
 }
+```
+
+```{python}
+print("Hello world")
 ```
