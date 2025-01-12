@@ -12,6 +12,8 @@ image: "images/image.jpg"
 
 The **dot product** (or **scalar product**) is a simple yet powerful operation that is used in many places in Machine Learning and other fields. In this post, I will explain the geometric intuition behind the dot product. You need to have a basic grasp of trigonometry and vector algebra to follow this post.
 
+I will need this explanation for my future posts. 
+
 Feel free to ask questions on [my telegram channel](https://t.me/swemanml)
 
 ## Recap
@@ -214,9 +216,9 @@ function make_board(
     size: 5,
   });
   const lineGreen = board.create("line", [function() {
-    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.05)[0];
+    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.03)[0];
   }, function() {
-    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.05)[1];
+    return calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.03)[1];
   }], {
     visible: showP,
     lastArrow:true,
@@ -224,7 +226,7 @@ function make_board(
     straightFirst:false, 
     straightLast:false, 
     strokeColor: "green",
-    strokeWidth: 2,
+    strokeWidth: 2.5,
     label:{offsets:[-1,1]}
   });
   const linea = board.create("line", [[0, 0], pointa], {
@@ -272,7 +274,7 @@ function make_board(
  
   const slider = board.create('slider', [[-1, -2], [1, -2], [0, sliderValue, 360]], {
     visible: showSlider,
-    name: "Rotate",
+    name: "alpha",
     snapWidth: 1
   });
   const text = board.create('text', [function() {
@@ -281,11 +283,11 @@ function make_board(
   }, function() {
     const s = calcUnder([pointp.X(), pointp.Y()], [pointa.X(), pointa.Y()], 0.4);
     return vec_mid(s[0], s[1])[1];
-  }, '||a|| cos(θ)'], {
+  }, '||a||cos(θ)'], {
     visible: showP && showPLabel,
     anchorX: "middle",
     anchorY: "middle",
-    fontSize: 19,
+    // fontSize: 15,
   })
   const rot = board.create('transform', [function(){return slider.Value() / 180 * Math.PI;}, [0, 0]], {type:'rotate'});
   rot.bindTo([pointb, pointa]);
@@ -293,7 +295,7 @@ function make_board(
 }
 ```
 
-This is a visualization for the setup we have so far:
+A visualization for the setup we have so far:
 
 ```{ojs}
 //| echo: false
@@ -309,19 +311,18 @@ board1 = make_board("board1", /*showSlider=*/false, /*sliderValue=*/30, /*showP=
 
 We have the following items shown above:
 
-- The vector $\textbf{a}=[a_x, a_y]$. It is **interactive** and visualized with blue; feel free to move the vector $\textbf{a}$ around. 
-- The vector $\textbf{b}=[b_x, b_y]$. The length of $\textbf{b}$ is fixed to 1, i.e., $\|\textbf{b}\|=1$. It is visualized with red.
+- The vector $\textbf{a}$: it is **interactive** and visualized with blue; feel free to move the point $\textbf{a}$ around. 
+- The vector $\textbf{b}$: it is visualized with red and $\|\textbf{b}\|=1$.
 - $\theta$: the angle from $\textbf{b}$ to $\textbf{a}$
 
-The geometric definition implies that the dot product is **invariant under rotations**. So, if we rotate the both vectors $\textbf{a}$ and $\textbf{b}$ by the same angle $\alpha$, the dot product won't change. It is not obvious from the algebraic definition, yet... Let's use this property and simplify our problem for the third time. We can rotate the both vectors such that $\textbf{b}$ is aligned with the x-axis. Click the button below for the illustration:
-
+The geometric definition implies that the dot product is **invariant under rotations**. So, if we rotate the both vectors $\textbf{a}$ and $\textbf{b}$ by the same angle $\alpha$, the dot product won't change. It is not obvious from the algebraic definition, but a detailed proof is provided in [the following section](#rotational-invariance). Let's use this property and simplify our problem for the third time. We can rotate the both vectors such that $\textbf{b}$ is aligned with the x-axis. Click the button below for the illustration:
 
 ```{ojs}
 //| echo: false 
  
 viewof mybutton = {
   const form = Inputs.button("Play to Rotate", {value: null, reduce: () => {
-    var slider = board2.elementsByName['Rotate'];
+    var slider = board2.elementsByName["alpha"];
     function updateRotate() {
       if (slider.Value() == 0) {
         return;
@@ -355,10 +356,10 @@ board_div("board2", 300)
 //| echo: false 
 //| output: false 
  
-board2 = make_board("board2", /*showSlider=*/false, /*sliderValue=*/30, /*showP=*/false)
+board2 = make_board("board2", /*showSlider=*/true, /*sliderValue=*/30, /*showP=*/false)
 ```
 
-We arrived at a simplifed version of the problem: an arbitrary vector $\textbf{a}=[a_x, a_y]$ and a fixed vector $\textbf{b}=[1, 0]$. Let's check if the definitions agree now. The algebraic dot product is:
+We arrived at a simplifed version of the problem: a vector $\textbf{a}=[a_x, a_y]$ and a fixed vector $\textbf{b}=[1, 0]$. Let's check if the definitions agree now. The algebraic dot product is:
 
 $$
 \textbf{a} \cdot \textbf{b} = a_xb_x+a_yb_y=a_x
@@ -399,15 +400,13 @@ Try different values of $\textbf{a}$ by moving it in the visualization, and veri
 
 The simplified form of the dot product is quite useful for intuition. I visualize this version in my mind when I forget some details of the dot product. At this point, you should be comfortable with the dot product of the simplified form: $\textbf{a} \cdot [1, 0]$. 
 
-### General version 
+### Rotational invariance
 
-I'll provide the best proof I have so far, though it might lack clear geometric intuition.
-
-Let's now proof for any $\textbf{b}$ such that $\|\textbf{b}\|=1$.
+First, let's visualize the rotation:
 
 ```{ojs}
 //| echo: false
-board_div("board4", 400)
+board_div("board4", 500)
 ```
 
 ```{ojs}
@@ -417,9 +416,11 @@ board_div("board4", 400)
 board4 = make_board("board4", /*showSlider=*/true, /*sliderValue=*/10, /*showP=*/true,  /*showP=*/false)
 ```
 
-We introduced **a slider** which represents the angle $\alpha$ (in degrees) by which both vectors are rotated. Feel free to play with the slider! 
+There is **a slider** which represents the angle $\alpha$ (in degrees) by which both vectors are rotated. Feel free to play with the slider! You can also interact with the point $\textbf{a}$.
 
-We already proved for $\alpha=0$, i.e, when $\textbf{b}=[1, 0]$. Now, we want to prove that $\alpha > 0$ does not change the algebraic dot product, i.e., that it is invariant under rotations. To do this, we derive an alternative formula for the dot product:
+It is easy to see why the dot product is invariant under rotations from the geometric definition. The geometric definition relies only on the lengths of the vectors, and the lengths don't change when rotated.
+However, it is not immediately clear from the algebraic definition. To prove it, we derive an alternative formula for the algebraic dot product: 
+
 
 $$
 \begin{align}
@@ -433,12 +434,82 @@ $$
 which gives us:
 
 $$
-\textbf{a} \cdot \textbf{b} = \frac{\|\textbf{a}\|^2 + \|\textbf{b}\|^2 - \|\textbf{a}-\textbf{b}\|^2 }{2} 
+\begin{align}
+\textbf{a} \cdot \textbf{b} &= a_xb_x + a_yb_y \\
+&= \frac{\|\textbf{a}\|^2 + \|\textbf{b}\|^2 - \|\textbf{a}-\textbf{b}\|^2 }{2}
+\end{align} 
 $$
 
-The dot product above is derived purely from the lengths. Since the lengths remain unchanged under rotations, the algebraic dot product does as well, which completes our proof.
+The dot product above is derived purely from the lengths. Since the lengths remain unchanged under rotations, the algebraic dot product remains unchanged as well, which completes our proof.
 
-It's not hard to extend the 2D version of the proof to n-dimensional vectors, since we didn't rely on any properties unique to 2D.
+Note that we derived the [law of cosine](https://en.wikipedia.org/wiki/Law_of_cosines), which is quite cool!
+
+### General version
+
+It’s not hard to extend the 2D version of the proof to n-dimensional vectors, since we didn’t rely on any properties unique to 2D.
+
+I will provide more alternative proofs below. They're optional and collapsed. 
+
+::: {.callout-note collapse="true"}
+
+#### Proof 1
+
+We only scaled the vector $\textbf{b}$ but we can also scale the vector $\textbf{a}$, so that $\|\textbf{a}\|=1$. Also switch to the polar coordinates: $\textbf{a}=[\cos \alpha, \sin \alpha]$ and $\textbf{b}=[\cos \beta, \sin \beta]$. 
+
+Then, the geometric dot product is:
+
+$$
+\textbf{a} \cdot \textbf{b} = \cos(\alpha - \beta)
+$$ 
+
+The algebraic is:
+
+$$
+\textbf{a} \cdot \textbf{b} = \cos \alpha \cos \beta + \sin \alpha \sin \beta
+$$
+
+We arrive at the [cosine subtraction rule](https://mathworld.wolfram.com/TrigonometricAdditionFormulas.html): 
+$$
+\cos(\alpha-\beta)=\cos \alpha \cos \beta + \sin \alpha \sin \beta
+$$
+
+:::
+
+
+::: {.callout-note collapse="true"}
+
+#### Proof 2
+
+We will extend the formula from [rotational invariance](#rotational-invariance) section. We derived the following dot product formula:
+
+$$
+\begin{align}
+\textbf{a} \cdot \textbf{b} &= \sum_{i=1}^n a_ib_i \\
+&= \frac{\|\textbf{a}\|^2 + \|\textbf{b}\|^2 - \|\textbf{a}-\textbf{b}\|^2 }{2}
+\end{align} 
+$$
+
+From the [law of cosine](https://en.wikipedia.org/wiki/Law_of_cosines), we also have:
+
+$$
+\|\textbf{a}-\textbf{b}\|=\|\textbf{a}\|^2+\|\textbf{b}\|^2-2\|\textbf{a}\|\|\textbf{b}\|\cos \theta
+$$
+
+if we rearrange and combine the above two equations:
+$$
+\begin{align}
+\|\textbf{a}\|\|\textbf{b}\|\cos \theta =& \textbf{a} \cdot \textbf{b} \\
+=& \frac{\|\textbf{a}\|^2 + \|\textbf{b}\|^2 - \|\textbf{a}-\textbf{b}\|^2 }{2} 
+\end{align}
+$$
+
+:::
+
+::: {.callout-note collapse="true"}
+
+#### Proof 3
+You can also find more proofs in [proofwiki](https://proofwiki.org/wiki/Cosine_Formula_for_Dot_Product).
+:::
 
 ## The End
 
