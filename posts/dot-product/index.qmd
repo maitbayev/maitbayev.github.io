@@ -480,7 +480,7 @@ $$
 
 #### Proof 2
 
-We will extend the formula from [rotational invariance](#rotational-invariance) section. We derived the following dot product formula:
+We will extend the formula from [the rotational invariance](#rotational-invariance) section further. We derived the following dot product formula:
 
 $$
 \begin{align}
@@ -498,7 +498,7 @@ $$
 if we rearrange and combine the above two equations:
 $$
 \begin{align}
-\|\textbf{a}\|\|\textbf{b}\|\cos \theta =& \textbf{a} \cdot \textbf{b} \\
+\|\textbf{a}\|\|\textbf{b}\|\cos \theta =& \textbf{a} \cdot \textbf{b}= \sum_{i=1}^n a_ib_i  \\
 =& \frac{\|\textbf{a}\|^2 + \|\textbf{b}\|^2 - \|\textbf{a}-\textbf{b}\|^2 }{2} 
 \end{align}
 $$
