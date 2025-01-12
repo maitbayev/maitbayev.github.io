@@ -1,7 +1,7 @@
 ---
 title: "Dot Product Intuition"
 author: "Madiyar Aitbayev"
-date: "2025-01-11"
+date: "2025-01-13"
 categories: [math]
 image: "images/image.jpg"
 ---
@@ -10,7 +10,7 @@ image: "images/image.jpg"
 
 ## Introduction
 
-The **dot product** (or **scalar product**) is a simple yet powerful operation that is used in many places in Machine Learning and other fields. In this post, I will explain the geometric intuition behind the dot product. You need to have a basic grasp of trigonometry to follow this post.
+The **dot product** (or **scalar product**) is a simple yet powerful operation that is used in many places in Machine Learning and other fields. In this post, I will explain the geometric intuition behind the dot product. You need to have a basic grasp of trigonometry and vector algebra to follow this post.
 
 Feel free to ask questions on [my telegram channel](https://t.me/swemanml)
 
@@ -18,9 +18,9 @@ Feel free to ask questions on [my telegram channel](https://t.me/swemanml)
 
 More beginner friendly explanations are available in the following resources:
 
--   https://en.wikipedia.org/wiki/Dot_product
--   https://brilliant.org/wiki/dot-product-definition
--   https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/
+-   [en.wikipedia.org/wiki/Dot_product](https://en.wikipedia.org/wiki/Dot_product)
+-   [brilliant.org/wiki/dot-product-definition](https://brilliant.org/wiki/dot-product-definition)
+-   [betterexplained.com/articles/vector-calculus-understanding-the-dot-product](https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/)
 
 Feel free to checkout the above or other resources first.
 
@@ -43,6 +43,10 @@ $$
 
 where $\theta$ is the angle between **a** and **b** and $\|\textbf{a}\|$ is the magnitude of a vector **a**.
 
+::: {.callout-note collapse="true"}
+
+#### Geometric properties
+
 The geometric definition gives us a few useful properties:
 
 -   The dot product is zero when **a** and **b** are orthogonal, since $\cos(90 \degree) = 0$
@@ -50,11 +54,11 @@ The geometric definition gives us a few useful properties:
 -   We can find the angle between vectors by $\theta = \arccos(\frac{\textbf{a} \cdot \textbf{b}}{\|\mathbf{a}\|\|\mathbf{b}\|})$. A picture from Wikipedia:
 
 ![Source Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/76/Inner-product-angle.svg){width="300"}
+::: 
 
-## Equivalence?
+### Equivalence?
 
-Wait, how can the algebraic and geometric dot products be the same? 
-How is $cos( \theta)$ related to such a straightforward sum of components?
+Wait, how are the two dot product definitions the same? How is $cos( \theta)$ related to such a straightforward sum of components?
 A few questions I asked when I first encountered the dot product. 
 I accepted the fact and moved on with my life until today. 
 I will try to understand myself and also explain by interactive visualizations.
@@ -63,9 +67,7 @@ I will try to understand myself and also explain by interactive visualizations.
 
 Let's first simplify the problem as much as possible. Once we build up an intuition for simpler cases, we can come back and try to understand the general cases.
 
-### Two dimensions
-
-#### Simplified version
+### Simplified version
 
 First, we will only consider the $n=2$ case. Assume that we have 2D vectors: $\textbf{a}=[a_x, a_y]$ and $\textbf{b}=[b_x, b_y]$ with the dot product:
 
@@ -73,18 +75,15 @@ $$
 \textbf{a} \cdot \textbf{b} = a_xb_x+a_yb_y=\|\textbf{a}\|\|\textbf{b}\|\cos \theta
 $$
 
-where $\|\textbf{a}\|=\sqrt{a_x^2+a_y^2}$ is the length of the vector and $\theta$ is the angle between the vectors. We also have:
-
-- $a_x = \|\textbf{a}\|\cos\alpha$ and $a_y=\| \textbf{a}\|\sin \alpha$ from the [polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates), where $\alpha$ is the polar angle.
-- $\| k\textbf{a} \| = k\|\textbf{a}\|$, where $k$ is a real number
+where $\|\textbf{a}\|=\sqrt{a_x^2+a_y^2}$ is the length of the vector and $\theta$ is the angle between the vectors. 
 
 Second, scaling either $\textbf{a}$ or $\textbf{b}$ by a real number $k$ does not invalidate the dot product equivalence. Let's say we scale $\textbf{b}$ by $k$, then:
 
 $$
-\textbf{a} \cdot (k \textbf{b}) = a_x(kb_x)+a_y(kb_y)=\|\textbf{a}\|(k\|\textbf{b}\|)\cos \theta
+\textbf{a} \cdot (k \textbf{b}) = a_x(kb_x)+a_y(kb_y)=\|\textbf{a}\|k\|\textbf{b}\|\cos \theta
 $$
 
-With the above, we can simplify the explanation further by constraining $\|\textbf{b}\| = 1$. If the equivalence holds for $\|\textbf{b}\| = 1$, then it holds for any $\|k\textbf{b}\|$.
+With the above, we can simplify further by constraining $\|\textbf{b}\| = 1$. If the equivalence holds for $\|\textbf{b}\| = 1$, then it holds for any $\|k\textbf{b}\|$.
 
 ```{ojs}
 //| echo: false
@@ -169,7 +168,6 @@ function make_board(
   function vec_mid(a, b) {
     return vec_scale(vec_add(a, b), 0.5);
   }
-
   function vec_rot90(v) {
     return [-v[1], v[0]];
   }
@@ -401,9 +399,9 @@ Try different values of $\textbf{a}$ by moving it in the visualization, and veri
 
 The simplified form of the dot product is quite useful for intuition. I visualize this version in my mind when I forget some details of the dot product. At this point, you should be comfortable with the dot product of the simplified form: $\textbf{a} \cdot [1, 0]$. 
 
-#### General version 
+### General version 
 
-Honestly, I don't have a proof that provides good intuition at the moment for the generic version. Feel free to accept the facts and move on with your life 🙃. I will provide the best proof I have so far.
+I'll provide the best proof I have so far, though it might lack clear geometric intuition.
 
 Let's now proof for any $\textbf{b}$ such that $\|\textbf{b}\|=1$.
 
@@ -421,7 +419,7 @@ board4 = make_board("board4", /*showSlider=*/true, /*sliderValue=*/10, /*showP=*
 
 We introduced **a slider** which represents the angle $\alpha$ (in degrees) by which both vectors are rotated. Feel free to play with the slider! 
 
-We already proved for $\alpha=0$. Now, we want to prove that $\alpha > 0$ does not change the algebraic dot product, i.e., that it is invariant under rotations. To do this, we derive an alternative formula for the dot product:
+We already proved for $\alpha=0$, i.e, when $\textbf{b}=[1, 0]$. Now, we want to prove that $\alpha > 0$ does not change the algebraic dot product, i.e., that it is invariant under rotations. To do this, we derive an alternative formula for the dot product:
 
 $$
 \begin{align}
