@@ -392,7 +392,7 @@ board3 = make_board("board3", /*showSlider=*/false, /*sliderValue=*/0, /*showP=*
 
 We introduced **a new vector $\textbf{p}$** in the above visualization:
 
-- It is visualized with green
+- It is visualized in green and visually represents the dot product
 - It has coordinates $\textbf{p}=[\|\textbf{a}\|\cos \theta, 0]=[a_x, 0]$:
   - Where $p_x$ is the dot product as we derived above
 - The vector $\textbf{p}$ is collinear with the vector $\textbf{b}$

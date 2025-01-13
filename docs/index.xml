@@ -2362,7 +2362,7 @@ font-style: inherit;">true</span>)</span></code></pre></div>
 </div>
 <p>We introduced <strong>a new vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"></strong> in the above visualization:</p>
 <ul>
-<li>It is visualized with green</li>
+<li>It is visualized in green and visually represents the dot product</li>
 <li>It has coordinates <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D=%5B%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta,%200%5D=%5Ba_x,%200%5D">:
 <ul>
 <li>Where <img src="https://latex.codecogs.com/png.latex?p_x"> is the dot product as we derived above</li>
