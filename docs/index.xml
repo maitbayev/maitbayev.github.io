@@ -2359,11 +2359,18 @@ font-style: inherit;">true</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
-<p>We introduced <strong>new elements</strong> in the above visualization:</p>
+<p>We introduced <strong>a new vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"></strong> in the above visualization:</p>
 <ul>
-<li>The vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D">, which is visualized with green. It visually represents the dot product and has coordinates: <img src="https://latex.codecogs.com/png.latex?p_x=%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta"> and <img src="https://latex.codecogs.com/png.latex?p_y=0">. The vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is actually <a href="https://en.wikipedia.org/wiki/Dot_product#Scalar_projection_and_first_properties">the projection</a> of the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D"> into <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D">.</li>
-<li>The length of the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bp%7D%5C%7C=%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%5Ctheta=a_x">, which is also the dot product of <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> as we derived above.</li>
-<li><img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D=(%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%5Ctheta)%5Ctextbf%7Bb%7D">, note that <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%5Ctheta"> is a real number, which means how many <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D">’s are required to reach the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D">.</li>
+<li>The vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is visualized with green</li>
+<li>It has coordinates <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D=%5B%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta,%200%5D"></li>
+<li>The vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is actually <a href="https://en.wikipedia.org/wiki/Dot_product#Scalar_projection_and_first_properties">the projection</a> of the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D"> into <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D">.</li>
+<li>The length of the vector is the dot product, since <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bp%7D%5C%7C=%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%5Ctheta=a_x=%5Ctextbf%7Ba%7D%5Ccdot%5Ctextbf%7Bb%7D"> as we derived above</li>
+<li>The vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is collinear with the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"></li>
+<li>Since the vectors <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> lie along the same line:
+<ul>
+<li>we can express <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> using vector arithmetic: <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D=(%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta)%5Ctextbf%7Bb%7D"></li>
+<li>Note that <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta"> is a real number, which means how many <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D">`s are required to reach the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"></li>
+</ul></li>
 </ul>
 <p>Try different values of <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D"> by moving it in the visualization, and verify the following questions:</p>
 <ul>
@@ -2378,7 +2385,7 @@ font-style: inherit;">true</span>)</span></code></pre></div>
 <h3 class="anchored" data-anchor-id="rotational-invariance">Rotational invariance</h3>
 <p>First, let’s visualize the rotation:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="408" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 407;"><span id="cb12-408"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="413" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 412;"><span id="cb12-413"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -2394,7 +2401,7 @@ font-style: inherit;">500</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="414" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 413;"><span id="cb13-414">board4 <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="419" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 418;"><span id="cb13-419">board4 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;

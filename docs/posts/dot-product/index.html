@@ -631,11 +631,18 @@ Geometric properties
 </div>
 </div>
 </div>
-<p>We introduced <strong>new elements</strong> in the above visualization:</p>
+<p>We introduced <strong>a new vector <span class="math inline">\(\textbf{p}\)</span></strong> in the above visualization:</p>
 <ul>
-<li>The vector <span class="math inline">\(\textbf{p}\)</span>, which is visualized with green. It visually represents the dot product and has coordinates: <span class="math inline">\(p_x=\|\textbf{a}\|\cos \theta\)</span> and <span class="math inline">\(p_y=0\)</span>. The vector <span class="math inline">\(\textbf{p}\)</span> is actually <a href="https://en.wikipedia.org/wiki/Dot_product#Scalar_projection_and_first_properties">the projection</a> of the vector <span class="math inline">\(\textbf{a}\)</span> into <span class="math inline">\(\textbf{b}\)</span>.</li>
-<li>The length of the vector <span class="math inline">\(\textbf{p}\)</span> is <span class="math inline">\(\|\textbf{p}\|=\|\textbf{a}\|\cos\theta=a_x\)</span>, which is also the dot product of <span class="math inline">\(\textbf{a}\)</span> and <span class="math inline">\(\textbf{b}\)</span> as we derived above.</li>
-<li><span class="math inline">\(\textbf{p}=(\|\textbf{a}\|\cos\theta)\textbf{b}\)</span>, note that <span class="math inline">\(\|\textbf{a}\|\cos\theta\)</span> is a real number, which means how many <span class="math inline">\(\textbf{b}\)</span>’s are required to reach the vector <span class="math inline">\(\textbf{p}\)</span>.</li>
+<li>The vector <span class="math inline">\(\textbf{p}\)</span> is visualized with green</li>
+<li>It has coordinates <span class="math inline">\(\textbf{p}=[\|\textbf{a}\|\cos \theta, 0]\)</span></li>
+<li>The vector <span class="math inline">\(\textbf{p}\)</span> is actually <a href="https://en.wikipedia.org/wiki/Dot_product#Scalar_projection_and_first_properties">the projection</a> of the vector <span class="math inline">\(\textbf{a}\)</span> into <span class="math inline">\(\textbf{b}\)</span>.</li>
+<li>The length of the vector is the dot product, since <span class="math inline">\(\|\textbf{p}\|=\|\textbf{a}\|\cos\theta=a_x=\textbf{a}\cdot\textbf{b}\)</span> as we derived above</li>
+<li>The vector <span class="math inline">\(\textbf{p}\)</span> is collinear with the vector <span class="math inline">\(\textbf{b}\)</span></li>
+<li>Since the vectors <span class="math inline">\(\textbf{p}\)</span> and <span class="math inline">\(\textbf{b}\)</span> lie along the same line:
+<ul>
+<li>we can express <span class="math inline">\(\textbf{p}\)</span> using vector arithmetic: <span class="math inline">\(\textbf{p}=(\|\textbf{a}\|\cos \theta)\textbf{b}\)</span></li>
+<li>Note that <span class="math inline">\(\|\textbf{a}\|\cos \theta\)</span> is a real number, which means how many <span class="math inline">\(\textbf{b}\)</span>`s are required to reach the vector <span class="math inline">\(\textbf{p}\)</span></li>
+</ul></li>
 </ul>
 <p>Try different values of <span class="math inline">\(\textbf{a}\)</span> by moving it in the visualization, and verify the following questions:</p>
 <ul>
@@ -650,7 +657,7 @@ Geometric properties
 <h3 class="anchored" data-anchor-id="rotational-invariance">Rotational invariance</h3>
 <p>First, let’s visualize the rotation:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="408" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 407;"><span id="cb12-408"><a href="#cb12-408" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="413" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 412;"><span id="cb12-413"><a href="#cb12-413" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="expression">
 
@@ -658,7 +665,7 @@ Geometric properties
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="414" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 413;"><span id="cb13-414"><a href="#cb13-414" aria-hidden="true" tabindex="-1"></a>board4 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">true</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">10</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">true</span><span class="op">,</span>  <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="419" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 418;"><span id="cb13-419"><a href="#cb13-419" aria-hidden="true" tabindex="-1"></a>board4 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">true</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">10</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">true</span><span class="op">,</span>  <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
