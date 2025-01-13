@@ -2362,7 +2362,7 @@ font-style: inherit;">true</span>)</span></code></pre></div>
 </div>
 <p>We introduced <strong>a new vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"></strong> in the above visualization:</p>
 <ul>
-<li>The vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is visualized with green</li>
+<li>It is visualized with green</li>
 <li>It has coordinates <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D=%5B%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta,%200%5D=%5Ba_x,%200%5D">:
 <ul>
 <li>Where <img src="https://latex.codecogs.com/png.latex?p_x"> is the dot product as we derived above</li>
@@ -2512,6 +2512,28 @@ Alternative Proof 3
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We can the <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">Pythagorean theorem</a>:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5E2&amp;=%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Ba%7D-%5Ctextbf%7Bp%7D%5C%7C%5E2%20%5C%5C%0A&amp;=%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20(a_x-p_x)%5E2%20+%20(a_y-p_y)%5E2%20%5C%5C%0A&amp;=%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20(a_x%5E2+a_y%5E2)%20+%20(p_x%5E2+p_y%5E2)%20-%202(a_xp_x%20+%20a_yp_y)%20%5C%5C%0A&amp;=%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20-%202(a_xp_x%20+%20a_yp_y)%20%5C%5C%0A&amp;=%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20-%202%5Ctextbf%7Ba%7D%5Ccdot%5Ctextbf%7Bp%7D%20%5C%5C%0A%5Cend%7Balign%7D%0A"></p>
+<p>This gives us the following:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Aa_xp_x+a_yp_y=%5Ctextbf%7Ba%7D%5Ccdot%5Ctextbf%7Bp%7D=%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%0A"></p>
+<p>if we substitute <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> by <img src="https://latex.codecogs.com/png.latex?(%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%5Ctheta)%20%5Ctextbf%7Bb%7D">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%5Ctheta(a_xb_x+a_yb_y)=%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%5Ctheta(%5Ctextbf%7Ba%7D%5Ccdot%20%5Ctextbf%7Bb%7D)=(%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%5Ctheta)%5E2%0A"></p>
+<p>which gives back the both geometric and algebraic dot product.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alternative Proof 4
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can also find more proofs in <a href="https://proofwiki.org/wiki/Cosine_Formula_for_Dot_Product">proofwiki</a>.</p>
 </div>

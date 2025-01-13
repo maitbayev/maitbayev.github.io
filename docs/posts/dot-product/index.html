@@ -634,7 +634,7 @@ Geometric properties
 </div>
 <p>We introduced <strong>a new vector <span class="math inline">\(\textbf{p}\)</span></strong> in the above visualization:</p>
 <ul>
-<li>The vector <span class="math inline">\(\textbf{p}\)</span> is visualized with green</li>
+<li>It is visualized with green</li>
 <li>It has coordinates <span class="math inline">\(\textbf{p}=[\|\textbf{a}\|\cos \theta, 0]=[a_x, 0]\)</span>:
 <ul>
 <li>Where <span class="math inline">\(p_x\)</span> is the dot product as we derived above</li>
@@ -773,6 +773,40 @@ Alternative Proof 3
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We can the <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">Pythagorean theorem</a>:</p>
+<p><span class="math display">\[
+\begin{align}
+\|\textbf{a}\|^2&amp;=\|\textbf{p}\|^2 + \|\textbf{a}-\textbf{p}\|^2 \\
+&amp;= \|\textbf{p}\|^2 + (a_x-p_x)^2 + (a_y-p_y)^2 \\
+&amp;= \|\textbf{p}\|^2 + (a_x^2+a_y^2) + (p_x^2+p_y^2) - 2(a_xp_x + a_yp_y) \\
+&amp;= \|\textbf{p}\|^2 + \|\textbf{a}\|^2 + \|\textbf{p}\|^2 - 2(a_xp_x + a_yp_y) \\
+&amp;= \|\textbf{p}\|^2 + \|\textbf{a}\|^2 + \|\textbf{p}\|^2 - 2\textbf{a}\cdot\textbf{p} \\
+\end{align}
+\]</span></p>
+<p>This gives us the following:</p>
+<p><span class="math display">\[
+a_xp_x+a_yp_y=\textbf{a}\cdot\textbf{p}=\|\textbf{p}\|^2
+\]</span></p>
+<p>if we substitute <span class="math inline">\(\textbf{p}\)</span> by <span class="math inline">\((\|\textbf{a}\|\cos\theta) \textbf{b}\)</span>:</p>
+<p><span class="math display">\[
+\|\textbf{a}\|\cos\theta(a_xb_x+a_yb_y)=\|\textbf{a}\|\cos\theta(\textbf{a}\cdot \textbf{b})=(\|\textbf{a}\|\cos\theta)^2
+\]</span></p>
+<p>which gives back the both geometric and algebraic dot product.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alternative Proof 4
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can also find more proofs in <a href="https://proofwiki.org/wiki/Cosine_Formula_for_Dot_Product">proofwiki</a>.</p>
 </div>
