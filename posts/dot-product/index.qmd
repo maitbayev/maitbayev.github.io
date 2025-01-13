@@ -388,13 +388,16 @@ board3 = make_board("board3", /*showSlider=*/false, /*sliderValue=*/0, /*showP=*
 We introduced **a new vector $\textbf{p}$** in the above visualization:
 
 - The vector $\textbf{p}$ is visualized with green
-- It has coordinates $\textbf{p}=[\|\textbf{a}\|\cos \theta, 0]$ 
-- The vector $\textbf{p}$ is actually [the projection](https://en.wikipedia.org/wiki/Dot_product#Scalar_projection_and_first_properties) of the vector $\textbf{a}$ into $\textbf{b}$. 
-- The length of the vector is the dot product, since $\|\textbf{p}\|=\|\textbf{a}\|\cos\theta=a_x=\textbf{a}\cdot\textbf{b}$ as we derived above
+- It has coordinates $\textbf{p}=[\|\textbf{a}\|\cos \theta, 0]=[a_x, 0]$:
+  - Where $p_x$ is the dot product as we derived above
 - The vector $\textbf{p}$ is collinear with the vector $\textbf{b}$
 - Since the vectors $\textbf{p}$ and $\textbf{b}$ lie along the same line:
-  - we can express $\textbf{p}$ using vector arithmetic: $\textbf{p}=(\|\textbf{a}\|\cos \theta)\textbf{b}$ 
-  - Note that $\|\textbf{a}\|\cos \theta$ is a real number, which means how many $\textbf{b}$`s are required to reach the vector $\textbf{p}$
+  - We can express $\textbf{p}$ using vector arithmetic: $\textbf{p}=(\|\textbf{a}\|\cos \theta)\textbf{b}$ 
+  - $\|\textbf{a}\|\cos \theta$ is a real number, which means how many $\textbf{b}$`s are required to reach the vector $\textbf{p}$
+  - You can visualize a 1D number line spanned by the vector $\textbf{b}$, then $\|\textbf{a}\|\cos \theta$ is the location of $\textbf{p}$ in that 1D coordinate system.
+-  $p_x$ can be 0, positive or negative. When negative, the vector $\textbf{p}$ is opposite to the vector $\textbf{b}$
+- The vector $\textbf{p}$ is actually [the projection](https://en.wikipedia.org/wiki/Dot_product#Scalar_projection_and_first_properties) of the vector $\textbf{a}$ into $\textbf{b}$. 
+- Play with the point $\textbf{a}$ to gain more intuition!
 
 Try different values of $\textbf{a}$ by moving it in the visualization, and verify the following questions:
 
