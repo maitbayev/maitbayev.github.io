@@ -427,6 +427,7 @@ board4 = make_board("board4", /*showSlider=*/true, /*sliderValue=*/10, /*showP=*
 There is **a slider** which represents the angle $\alpha$ (in degrees) by which both vectors are rotated. Feel free to play with the slider! You can also interact with the point $\textbf{a}$.
 
 It is easy to see why the dot product is invariant under rotations from the geometric definition. The geometric definition relies only on the lengths of the vectors, and the lengths don't change when rotated.
+
 However, it is not immediately clear from the algebraic definition. To prove it, we derive an alternative formula for the algebraic dot product: 
 
 
@@ -456,11 +457,11 @@ Note that we derived the [law of cosine](https://en.wikipedia.org/wiki/Law_of_co
 
 It’s not hard to extend the 2D version of the proof to n-dimensional vectors, since we didn’t rely on any properties unique to 2D.
 
-I will provide more alternative proofs below. They're optional and collapsed. 
+I will provide more alternative proofs below, mostly for myself. They're optional and collapsed, feel free to read them.
 
 ::: {.callout-note collapse="true"}
 
-#### Proof 1
+#### Alternative Proof 1
 
 We only scaled the vector $\textbf{b}$ but we can also scale the vector $\textbf{a}$, so that $\|\textbf{a}\|=1$. Also switch to the polar coordinates: $\textbf{a}=[\cos \alpha, \sin \alpha]$ and $\textbf{b}=[\cos \beta, \sin \beta]$. 
 
@@ -486,7 +487,7 @@ $$
 
 ::: {.callout-note collapse="true"}
 
-#### Proof 2
+#### Alternative Proof 2
 
 We will extend the formula from [the rotational invariance](#rotational-invariance) section further. We derived the following dot product formula:
 
@@ -515,7 +516,7 @@ $$
 
 ::: {.callout-note collapse="true"}
 
-#### Proof 3
+#### Alternative Proof 3
 You can also find more proofs in [proofwiki](https://proofwiki.org/wiki/Cosine_Formula_for_Dot_Product).
 :::
 
