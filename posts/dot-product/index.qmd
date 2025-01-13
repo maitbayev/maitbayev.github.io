@@ -376,7 +376,7 @@ $$
 \textbf{a} \cdot \textbf{b} = \|\textbf{a}\|\|\textbf{b}\|\cos \theta =  \|\textbf{a}\|\cos \theta 
 $$
 
-now, we have $\textbf{a} \cdot \textbf{b} = a_x =  \|\textbf{a}\|\cos \theta$. This is correct due to [the polar coordinates](#two-dimensions). Alternatively, we can easily derive from the [cosine definition](https://en.wikipedia.org/wiki/Sine_and_cosine). The proof is left as an exercise to the reader. You can use the visualization below to convince yourself: 
+now, we have $\textbf{a} \cdot \textbf{b} = a_x =  \|\textbf{a}\|\cos \theta$. This is correct due to [the polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates). Alternatively, we can easily derive from the [cosine definition](https://en.wikipedia.org/wiki/Sine_and_cosine). The proof is left as an exercise to the reader. You can use the visualization below to convince yourself: 
 
 ```{ojs}
 //| echo: false
