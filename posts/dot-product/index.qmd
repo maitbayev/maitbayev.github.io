@@ -315,7 +315,12 @@ We have the following items shown above:
 - The vector $\textbf{b}$: it is visualized with red and $\|\textbf{b}\|=1$.
 - $\theta$: the angle from $\textbf{b}$ to $\textbf{a}$
 
-The geometric definition implies that the dot product is **invariant under rotations**. So, if we rotate the both vectors $\textbf{a}$ and $\textbf{b}$ by the same angle $\alpha$, the dot product won't change. It is not obvious from the algebraic definition, but a detailed proof is provided in [the following section](#rotational-invariance). Let's use this property and simplify our problem for the third time. We can rotate the both vectors such that $\textbf{b}$ is aligned with the x-axis. Click the button below for the illustration:
+The geometric definition implies that the dot product is **invariant under rotations**. 
+So, if we rotate the both vectors $\textbf{a}$ and $\textbf{b}$ by the same angle $\alpha$, the dot product won't change. 
+It is not obvious from the algebraic definition, but a detailed proof is provided in [the next section](#rotational-invariance).
+Let's trust this property for now until the next section, and simplify our problem for the third time.
+
+We can rotate the both vectors such that $\textbf{b}$ is aligned with the x-axis. Click the button below for the illustration:
 
 ```{ojs}
 //| echo: false 
@@ -332,7 +337,7 @@ viewof mybutton = {
       setTimeout(updateRotate, 12);
     }
     if (slider.Value() == 0) {
-      slider.setValue(359);
+      slider.setValue(60);
     }
     updateRotate();
   }});

@@ -2028,12 +2028,13 @@ font-style: inherit;">false</span>)</span></code></pre></div>
 <li>The vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D">: it is visualized with red and <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bb%7D%5C%7C=1">.</li>
 <li><img src="https://latex.codecogs.com/png.latex?%5Ctheta">: the angle from <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> to <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D"></li>
 </ul>
-<p>The geometric definition implies that the dot product is <strong>invariant under rotations</strong>. So, if we rotate the both vectors <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> by the same angle <img src="https://latex.codecogs.com/png.latex?%5Calpha">, the dot product won’t change. It is not obvious from the algebraic definition, but a detailed proof is provided in the following section. Let’s use this property and simplify our problem for the third time. We can rotate the both vectors such that <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> is aligned with the x-axis. Click the button below for the illustration:</p>
+<p>The geometric definition implies that the dot product is <strong>invariant under rotations</strong>. So, if we rotate the both vectors <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> by the same angle <img src="https://latex.codecogs.com/png.latex?%5Calpha">, the dot product won’t change. It is not obvious from the algebraic definition, but a detailed proof is provided in the next section. Let’s trust this property for now until the next section, and simplify our problem for the third time.</p>
+<p>We can rotate the both vectors such that <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> is aligned with the x-axis. Click the button below for the illustration:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="321" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 320;"><span id="cb7-321">viewof mybutton <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="326" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 325;"><span id="cb7-326">viewof mybutton <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
-<span id="cb7-322">  <span class="kw" style="color: #003B4F;
+<span id="cb7-327">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> form <span class="op" style="color: #5E5E5E;
@@ -2063,7 +2064,7 @@ font-style: inherit;">:</span> () <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb7-323">    <span class="kw" style="color: #003B4F;
+<span id="cb7-328">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">var</span> slider <span class="op" style="color: #5E5E5E;
@@ -2077,13 +2078,13 @@ background-color: null;
 font-style: inherit;">"alpha"</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-324">    <span class="kw" style="color: #003B4F;
+<span id="cb7-329">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">updateRotate</span>() {</span>
-<span id="cb7-325">      <span class="cf" style="color: #003B4F;
+<span id="cb7-330">      <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (slider<span class="op" style="color: #5E5E5E;
@@ -2095,14 +2096,14 @@ background-color: null;
 font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>) {</span>
-<span id="cb7-326">        <span class="cf" style="color: #003B4F;
+<span id="cb7-331">        <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-327">      }</span>
-<span id="cb7-328">      slider<span class="op" style="color: #5E5E5E;
+<span id="cb7-332">      }</span>
+<span id="cb7-333">      slider<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2127,14 +2128,14 @@ background-color: null;
 font-style: inherit;">1</span>))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-329">      board2<span class="op" style="color: #5E5E5E;
+<span id="cb7-334">      board2<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">update</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-330">      <span class="pp" style="color: #AD0000;
+<span id="cb7-335">      <span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">setTimeout</span>(updateRotate<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2143,8 +2144,8 @@ background-color: null;
 font-style: inherit;">12</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-331">    }</span>
-<span id="cb7-332">    <span class="cf" style="color: #003B4F;
+<span id="cb7-336">    }</span>
+<span id="cb7-337">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (slider<span class="op" style="color: #5E5E5E;
@@ -2156,25 +2157,25 @@ background-color: null;
 font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>) {</span>
-<span id="cb7-333">      slider<span class="op" style="color: #5E5E5E;
+<span id="cb7-338">      slider<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">setValue</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">359</span>)<span class="op" style="color: #5E5E5E;
+font-style: inherit;">60</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-334">    }</span>
-<span id="cb7-335">    <span class="fu" style="color: #4758AB;
+<span id="cb7-339">    }</span>
+<span id="cb7-340">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">updateRotate</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-336">  }})<span class="op" style="color: #5E5E5E;
+<span id="cb7-341">  }})<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-337">  <span class="kw" style="color: #003B4F;
+<span id="cb7-342">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> scope <span class="op" style="color: #5E5E5E;
@@ -2190,7 +2191,7 @@ background-color: null;
 font-style: inherit;">id</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-338">  <span class="kw" style="color: #003B4F;
+<span id="cb7-343">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> cls <span class="op" style="color: #5E5E5E;
@@ -2204,7 +2205,7 @@ background-color: null;
 font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-339">  form<span class="op" style="color: #5E5E5E;
+<span id="cb7-344">  form<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -2215,7 +2216,7 @@ background-color: null;
 font-style: inherit;">add</span>(scope)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-340">  form<span class="op" style="color: #5E5E5E;
+<span id="cb7-345">  form<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2224,7 +2225,7 @@ background-color: null;
 font-style: inherit;">html</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`&lt;style&gt;</span></span>
-<span id="cb7-341"><span class="vs" style="color: #20794D;
+<span id="cb7-346"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">    .</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2233,21 +2234,21 @@ background-color: null;
 font-style: inherit;">}</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;"> &gt; button { color: white }</span></span>
-<span id="cb7-342"><span class="vs" style="color: #20794D;
+<span id="cb7-347"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">    &lt;/style&gt;</span></span>
-<span id="cb7-343"><span class="vs" style="color: #20794D;
+<span id="cb7-348"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">  `</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-344">  <span class="cf" style="color: #003B4F;
+<span id="cb7-349">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> form<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-345">}</span></code></pre></div>
+<span id="cb7-350">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -2255,7 +2256,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="351" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 350;"><span id="cb8-351"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="356" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 355;"><span id="cb8-356"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -2271,7 +2272,7 @@ font-style: inherit;">300</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="357" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 356;"><span id="cb9-357">board2 <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="362" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 361;"><span id="cb9-362">board2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2310,7 +2311,7 @@ font-style: inherit;">false</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctextbf%7Ba%7D%20%5Ccdot%20%5Ctextbf%7Bb%7D%20=%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5C%7C%5Ctextbf%7Bb%7D%5C%7C%5Ccos%20%5Ctheta%20=%20%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta%0A"></p>
 <p>now, we have <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D%20%5Ccdot%20%5Ctextbf%7Bb%7D%20=%20a_x%20=%20%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta">. This is correct due to the polar coordinates. Alternatively, we can easily derive from the <a href="https://en.wikipedia.org/wiki/Sine_and_cosine">cosine definition</a>. The proof is left as an exercise to the reader. You can use the visualization below to convince yourself:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="377" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 376;"><span id="cb10-377"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="382" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 381;"><span id="cb10-382"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -2326,7 +2327,7 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="383" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 382;"><span id="cb11-383">board3 <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="388" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 387;"><span id="cb11-388">board3 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2390,7 +2391,7 @@ font-style: inherit;">true</span>)</span></code></pre></div>
 <h3 class="anchored" data-anchor-id="rotational-invariance">Rotational invariance</h3>
 <p>First, let’s visualize the rotation:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="416" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 415;"><span id="cb12-416"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="421" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 420;"><span id="cb12-421"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -2406,7 +2407,7 @@ font-style: inherit;">500</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="422" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 421;"><span id="cb13-422">board4 <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="427" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 426;"><span id="cb13-427">board4 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
