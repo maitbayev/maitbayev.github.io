@@ -2513,7 +2513,7 @@ Alternative Proof 3
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>We can the <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">Pythagorean theorem</a>:</p>
+<p>We can use the <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">Pythagorean theorem</a>:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5E2&amp;=%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Ba%7D-%5Ctextbf%7Bp%7D%5C%7C%5E2%20%5C%5C%0A&amp;=%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20(a_x-p_x)%5E2%20+%20(a_y-p_y)%5E2%20%5C%5C%0A&amp;=%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20(a_x%5E2+a_y%5E2)%20+%20(p_x%5E2+p_y%5E2)%20-%202(a_xp_x%20+%20a_yp_y)%20%5C%5C%0A&amp;=%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20-%202(a_xp_x%20+%20a_yp_y)%20%5C%5C%0A&amp;=%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5E2%20+%20%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%20-%202%5Ctextbf%7Ba%7D%5Ccdot%5Ctextbf%7Bp%7D%20%5C%5C%0A%5Cend%7Balign%7D%0A"></p>
 <p>This gives us the following:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Aa_xp_x+a_yp_y=%5Ctextbf%7Ba%7D%5Ccdot%5Ctextbf%7Bp%7D=%5C%7C%5Ctextbf%7Bp%7D%5C%7C%5E2%0A"></p>
