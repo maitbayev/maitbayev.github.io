@@ -16,7 +16,7 @@ My notes for the ["Denoising Diffusion Probabilistic Models"](https://arxiv.org/
 
 ### Forward Process
 
-We have latent variables $\mathbf{x_1},\mathbf{x_2}, ..., \mathbf{x_T}$ of the same dimensionality as the image $\mathbf{x_0}$. The f*orward process* or *diffusion process* is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule $\beta_1, ..., \beta_T$:
+We have latent variables $\mathbf{x_1},\mathbf{x_2}, ..., \mathbf{x_T}$ of the same dimensionality as the image $\mathbf{x_0}$. The *forward process* or *diffusion process* is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule $\beta_1, ..., \beta_T$:
 
 $$
 \mathbf{
@@ -26,7 +26,7 @@ q(x_{1:T}|x_0)= \prod_{t=1}^T{q(x_t|x_{t-1})}
 }
 $$
 
-The above equation means that we start with our data $\mathbf{x_0}$, then we sample a noisy version of our image $\mathbf{x_1}$ with the mean $\mathbf{x_0}$ scaled by $\mathbf{\sqrt{1-\beta_1}}$ and the variance $\mathbf{\beta_1}$. Finally, we repeat this process $\mathbf{T}$ times and arrive at pure standard Gaussian noise when small enough $\mathbf{\beta}$ and large enough $\mathbf{T}$ values are used. This process is fixed and not learned, unlike variational auto-encoder (VAE) models.
+The above equation means that we start with our data $\mathbf{x_0}$, then we sample a noisy version of our image $\mathbf{x_1}$ with the mean $\mathbf{x_0}$ scaled by $\mathbf{\sqrt{1-\beta_1}}$ and the variance $\mathbf{\beta_1}$. Finally, we repeat this process $\mathbf{T}$ times and arrive at pure standard Gaussian noise when small enough $\mathbf{\beta}$ and large enough $\mathbf{T}$ values are used. This process is fixed and not learned, unlike [variational auto-encoder](https://maitbayev.github.io/posts/auto-encoding-variational-bayes/) (VAE) models.
 
 A nice benefit from the forward process is that we can sample $\mathbf{x_t}$ at any timestep $\mathbf{t}$ in closed form without simulating the forward process steps $\mathbf{t}$ times. Let $\mathbf{\alpha_t=1-\beta_t}$ and $\mathbf{ \bar{\alpha}_t = \prod_{i=1}^t\alpha_i }$ :
 
@@ -76,7 +76,7 @@ We can view the reverse process as transitioning from a simple standard Gaussian
 
 ### Loss
 
-Training is performed by optimizing the **variational lower bound** (or the evidence lower bound) similar to the VAE:
+Training is performed by optimizing the **variational lower bound** (or the evidence lower bound) similar to the [VAE](https://maitbayev.github.io/posts/auto-encoding-variational-bayes/):
 
 $$
 \mathbb{E}[-\log p_\theta(\mathbf{x}_0)] \le 
@@ -91,7 +91,7 @@ $$
 ::: {.callout-note collapse="true"}
 ## Proof
 
-**Proof 1: Using Jensen's Inequality**
+**Proof 1: Using [Jensen's Inequality](https://maitbayev.github.io/posts/jensens-inequality/)**
 
 $$
 \mathbf {

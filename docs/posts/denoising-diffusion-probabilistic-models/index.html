@@ -211,7 +211,7 @@ window.Quarto = {
 <p><img src="images/figure2.jpg" class="img-fluid" width="490"></p>
 <section id="forward-process" class="level3">
 <h3 class="anchored" data-anchor-id="forward-process">Forward Process</h3>
-<p>We have latent variables <span class="math inline">\(\mathbf{x_1},\mathbf{x_2}, ..., \mathbf{x_T}\)</span> of the same dimensionality as the image <span class="math inline">\(\mathbf{x_0}\)</span>. The f<em>orward process</em> or <em>diffusion process</em> is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule <span class="math inline">\(\beta_1, ..., \beta_T\)</span>:</p>
+<p>We have latent variables <span class="math inline">\(\mathbf{x_1},\mathbf{x_2}, ..., \mathbf{x_T}\)</span> of the same dimensionality as the image <span class="math inline">\(\mathbf{x_0}\)</span>. The <em>forward process</em> or <em>diffusion process</em> is fixed to a Markov chain that gradually adds Gaussian noise to the image according to a variance schedule <span class="math inline">\(\beta_1, ..., \beta_T\)</span>:</p>
 <p><span class="math display">\[
 \mathbf{
 q(x_t|x_{t-1})= \mathcal{N} (x_t; \sqrt{1-\beta_t}x_{t-1}, \beta_{t}I),
@@ -219,7 +219,7 @@ q(x_t|x_{t-1})= \mathcal{N} (x_t; \sqrt{1-\beta_t}x_{t-1}, \beta_{t}I),
 q(x_{1:T}|x_0)= \prod_{t=1}^T{q(x_t|x_{t-1})}
 }
 \]</span></p>
-<p>The above equation means that we start with our data <span class="math inline">\(\mathbf{x_0}\)</span>, then we sample a noisy version of our image <span class="math inline">\(\mathbf{x_1}\)</span> with the mean <span class="math inline">\(\mathbf{x_0}\)</span> scaled by <span class="math inline">\(\mathbf{\sqrt{1-\beta_1}}\)</span> and the variance <span class="math inline">\(\mathbf{\beta_1}\)</span>. Finally, we repeat this process <span class="math inline">\(\mathbf{T}\)</span> times and arrive at pure standard Gaussian noise when small enough <span class="math inline">\(\mathbf{\beta}\)</span> and large enough <span class="math inline">\(\mathbf{T}\)</span> values are used. This process is fixed and not learned, unlike variational auto-encoder (VAE) models.</p>
+<p>The above equation means that we start with our data <span class="math inline">\(\mathbf{x_0}\)</span>, then we sample a noisy version of our image <span class="math inline">\(\mathbf{x_1}\)</span> with the mean <span class="math inline">\(\mathbf{x_0}\)</span> scaled by <span class="math inline">\(\mathbf{\sqrt{1-\beta_1}}\)</span> and the variance <span class="math inline">\(\mathbf{\beta_1}\)</span>. Finally, we repeat this process <span class="math inline">\(\mathbf{T}\)</span> times and arrive at pure standard Gaussian noise when small enough <span class="math inline">\(\mathbf{\beta}\)</span> and large enough <span class="math inline">\(\mathbf{T}\)</span> values are used. This process is fixed and not learned, unlike <a href="https://maitbayev.github.io/posts/auto-encoding-variational-bayes/">variational auto-encoder</a> (VAE) models.</p>
 <p>A nice benefit from the forward process is that we can sample <span class="math inline">\(\mathbf{x_t}\)</span> at any timestep <span class="math inline">\(\mathbf{t}\)</span> in closed form without simulating the forward process steps <span class="math inline">\(\mathbf{t}\)</span> times. Let <span class="math inline">\(\mathbf{\alpha_t=1-\beta_t}\)</span> and <span class="math inline">\(\mathbf{ \bar{\alpha}_t = \prod_{i=1}^t\alpha_i }\)</span> :</p>
 <p><span class="math display">\[
 \mathbf {
@@ -271,7 +271,7 @@ p_{\theta}(\mathbf{x_{t-1}|x_t}) = \mathcal{N}(\mathbf{x_{t-1}}; \mathbf{\mu_\th
 </section>
 <section id="loss" class="level3">
 <h3 class="anchored" data-anchor-id="loss">Loss</h3>
-<p>Training is performed by optimizing the <strong>variational lower bound</strong> (or the evidence lower bound) similar to the VAE:</p>
+<p>Training is performed by optimizing the <strong>variational lower bound</strong> (or the evidence lower bound) similar to the <a href="https://maitbayev.github.io/posts/auto-encoding-variational-bayes/">VAE</a>:</p>
 <p><span class="math display">\[
 \mathbb{E}[-\log p_\theta(\mathbf{x}_0)] \le
 \mathbb{E}_q\left[-\log
@@ -293,7 +293,7 @@ Proof
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Proof 1: Using Jensen’s Inequality</strong></p>
+<p><strong>Proof 1: Using <a href="https://maitbayev.github.io/posts/jensens-inequality/">Jensen’s Inequality</a></strong></p>
 <p><span class="math display">\[
 \mathbf {
 \begin{aligned}
