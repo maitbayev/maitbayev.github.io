@@ -2458,7 +2458,12 @@ font-style: inherit;">false</span>)</span></code></pre></div>
 </section>
 <section id="general-version" class="level3">
 <h3 class="anchored" data-anchor-id="general-version">General version</h3>
-<p>It’s not hard to extend the 2D version of the proof to n-dimensional vectors, since we didn’t rely on any properties unique to 2D.</p>
+<p>It’s not hard to extend the 2D version of the proof to n-dimensional vectors, since we didn’t rely on any properties unique to 2D. The shortest way is:</p>
+<ul>
+<li>Note that the dot product of n-dimensional vectors is invariant under rotations. The same proof as in the rotational invariance</li>
+<li>Rotate the vectors such that they lie in the xy-plane</li>
+<li>Now, we reduced n-dimensional vectors to 2D vectors, which we already know how to prove</li>
+</ul>
 <p>I will provide more alternative proofs below, mostly for myself. They’re optional and collapsed, feel free to read them.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">

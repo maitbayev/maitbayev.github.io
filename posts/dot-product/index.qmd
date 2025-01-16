@@ -460,7 +460,11 @@ Note that we derived the [law of cosine](https://en.wikipedia.org/wiki/Law_of_co
 
 ### General version
 
-It’s not hard to extend the 2D version of the proof to n-dimensional vectors, since we didn’t rely on any properties unique to 2D.
+It’s not hard to extend the 2D version of the proof to n-dimensional vectors, since we didn’t rely on any properties unique to 2D. The shortest way is:
+
+- Note that the dot product of n-dimensional vectors is invariant under rotations. The same proof as in the [rotational invariance](#rotational-invariance)
+- Rotate the vectors such that they lie in the xy-plane
+- Now, we reduced n-dimensional vectors to 2D vectors, which we already know how to prove
 
 I will provide more alternative proofs below, mostly for myself. They're optional and collapsed, feel free to read them.
 
