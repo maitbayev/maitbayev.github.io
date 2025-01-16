@@ -4,12 +4,12 @@ title: "About"
 about:
   template: jolla
   links:
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/aitbayev/
     - icon: substack
       text: Subscribe
       href: https://maitbayev.substack.com/subscribe
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/aitbayev/
     - icon: github
       text: Github
       href: https://github.com/maitbayev
