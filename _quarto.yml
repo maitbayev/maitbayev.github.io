@@ -14,10 +14,6 @@ website:
         href: index.xml
       - icon: substack
         href: https://maitbayev.substack.com/subscribe
-      - icon: twitter-x 
-        href: https://x.com/aitbayev
-      - icon: github
-        href: https://github.com/maitbayev
       - icon: telegram
         href: https://t.me/swemanml
 format:
