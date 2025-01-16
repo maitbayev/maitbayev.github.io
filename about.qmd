@@ -7,13 +7,15 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/aitbayev/
+    - icon: substack
+      text: Subscribe
+      href: https://maitbayev.substack.com/subscribe
     - icon: github
       text: Github
       href: https://github.com/maitbayev
     - icon: twitter-x
       text: "x.com"
       href: https://x.com/aitbayev
-
 ---
 
 Engineer at Snap Inc, ex-Google.
