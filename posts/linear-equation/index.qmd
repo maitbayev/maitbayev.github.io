@@ -1,0 +1,302 @@
+---
+title: "Draft: Linear Equation Intuition"
+author: "Madiyar Aitbayev"
+date: "2025-01-20"
+categories: [math]
+image: "images/image.jpg"
+draft: true
+draft-mode: visible 
+---
+
+# Draft: Linear Equation Intuition
+
+## Introduction
+
+A **linear equation** is an equation in the form $a_1x_1+\cdots+a_nx_n+b=0$.
+In two dimensions, it's an **equation of a line** $ax+by+c=0$, while in three dimensions, it's an **equation of a plane** $ax+by+cz+d=0$.
+
+A linear equation is the foundation of linear models in machine learning, such as [linear regression](https://en.wikipedia.org/wiki/Linear_regression) and [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression).
+
+In this post, let's understand the intuitions behind the linear equation, such as:
+
+- Why $ax+by+c$ is the distance between the point $(x, y)$ and the line?
+- What are the meanings of $(a, b)$ and $c$?
+- How are [the dot product](https://maitbayev.github.io/posts/dot-product/) and linear equation related?
+
+My previous post about [the dot product](https://maitbayev.github.io/posts/dot-product/) is a required prerequisite to this post.
+
+### Equation of a line
+
+Let's start with a **simpler** equation of a line in the form of $ax+by=0$, where we have $c=0$.
+Does it remind you something ? Yes, [the dot product](https://maitbayev.github.io/posts/dot-product/) between $(a, b)$ and $(x, y)$. The dot product $(a, b) \cdot (x, y)$ is zero when the two vectors are orthogonal. Oh nice, this means that (a, b) is an orthogonal vector to our line. An orthogonal vector is also known as a **normal vector** of a line.  Also, notice that the simpler line contains the origin since $a\cdot0+b\cdot0=0$ holds true.
+
+Let's visualize our setup:
+
+```{ojs}
+//| echo: false
+JXG = await require('https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js')
+```
+
+```{ojs}
+//| echo: false
+
+function board_div(name, width=500) {
+  return html`<div 
+    id=${name} 
+    style='max-width:${width}px; aspect-ratio: 1; 
+            margin-inline: auto'>
+  </div>` 
+}
+```
+
+```{ojs}
+//| echo: false
+
+function init_board(name, extend=5.5, grid=false) {
+  return JXG.JSXGraph.initBoard(name, {
+    boundingbox: [-extend, extend, extend, -extend],
+    showCopyright: false,
+    showNavigation: false,
+    axis: true,
+    grid: grid,
+    pan: {
+      needTwoFingers: true
+    },
+    defaultAxes: {
+      x: {
+        ticks: {
+          insertTicks: false,
+          minorTicks: 0,   
+          majorHeight: 5,
+          ticksDistance: 1,
+          strokeOpacity: 0.8,
+          strokeColor: '#000000',
+          strokeWidth: 1 
+        }
+      },
+      y: {
+        ticks: {
+          insertTicks: false,
+          minorTicks: 0,
+          majorHeight: 5,
+          strokeOpacity: 0.8,
+          strokeColor: '#000000',
+          strokeWidth: 1 
+        }
+      }
+    },
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+ 
+function make_board1() {
+  const board = init_board("board1", /*extend=*/10, /*grid=*/true);
+  const pointN = board.create("point", [3, 3], {
+    name: "n",
+    color: "red",
+    snapToGrid: true,
+  })
+  const lineN = board.create("line", [[0, 0], pointN], {
+    strokewidth: 3,
+    color: "red",
+    fixed: true,
+    straightFirst:false, 
+    straightLast:false, 
+    lastArrow:true,
+  })
+  const line = board.create("line", [function() {
+    return 0;
+  }, function() {
+    return pointN.X();
+  }, function() {
+    return pointN.Y();
+  }], {
+    strokewidth: 3,
+    fixed: true
+  });
+  const lineText = board.create("text", [-8, -8, function() {
+    return pointN.X() + "x + " + pointN.Y() + "y = 0";
+  }], {
+    fontSize: 19
+  });
+  return board;
+}
+```
+
+```{ojs}
+//| echo: false
+ 
+board_div("board1", /*width=*/400)
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+make_board1() 
+```
+
+We have the following items visualized:
+
+- Our line $ax+by=0$ is visualized with blue
+  - It passes through the origin
+- A normal vector of the line $\textbf{n}=[n_x, n_y]=[a, b]$ is visualized with red
+
+Feel free to **play** (by moving) with the point $\textbf{n}$ and notice how the line equation is changing w.r.t to the normal vector.
+
+We can multiply or divide the line equation by any real number $k$ without changing the equation, in other words, $kax+kby+kc=0$ and $ax+by+c=0$ hold true to the same set of points. Let's use this property and divide the equation by $\sqrt{a^2+b^2}$ so that $a^2+b^2=1$ (or $\|\textbf{n}\|=1$). From now on, we assume that $\|\textbf{n}\|=1$.
+
+Let's check what we have:
+
+```{ojs}
+//| echo: false
+ 
+function make_board(name, props) {
+  function rad(deg) {
+    return deg / 180 * Math.PI;
+  }
+  function vec_scale(v, s) {
+    return [v[0] * s, v[1] * s];
+  }
+  function vec_dot(a, b) {
+    return a[0] * b[0] + a[1] * b[1];
+  }
+  const showPoint = props.showPoint || false
+  const board = init_board(name, /*extend=*/4.5);
+ 
+  const sliderAlpha = board.create("slider", [[-1, -3], [1, -3], [0, 45, 360]], {
+    name: "alpha",
+    snapWidth: 1
+  });
+  const pointN = board.create("point", [function() {
+    return Math.cos(rad(sliderAlpha.Value()));
+  }, function() {
+    return Math.sin(rad(sliderAlpha.Value()));
+  }], {
+    visible: true,
+    name: "n",
+    color: "#00000000",
+    fixed: true,
+    highlight: false
+  });
+  const line = board.create("line", [function() {
+    return 0;
+  }, function() {
+    return pointN.X();
+  }, function() {
+    return pointN.Y();
+  }], {
+    strokewidth: 3,
+    fixed: true,
+    highlight: false
+  });
+  const pointP = board.create("point", [3, 0], {
+    name: "p",
+    size: 7,
+    color: "green",
+    visible: props.showPoint || false 
+  });
+  const gliderP = board.create("glider", [1, -1, line], {
+    name: "p",
+    size: 7,
+    color: "green",
+    visible: props.showPointGlider || false,
+  });
+  const pointProj = board.create("point", [function() {
+    let p = [pointP.X(), pointP.Y()];
+    let n = [pointN.X(), pointN.Y()];
+    let proj = vec_scale(n, vec_dot(p, n));
+    return proj[0];
+  }, function() {
+    let p = [pointP.X(), pointP.Y()];
+    let n = [pointN.X(), pointN.Y()];
+    let proj = vec_scale(n, vec_dot(p, n));
+    return proj[1];
+  }], {
+    visible: false
+  });
+  const lineProj = board.create("line", [pointP, pointProj], {
+    color: "gray",
+    strokeWidth: 1,
+    fixed: true,
+    dash: 2,
+    straightFirst:false, 
+    straightLast:false,
+    visible: showPoint 
+  }) 
+  const normalAxis = board.create('axis', [[0, 0], pointN], {
+    visible: props.showNormalAxis || false,
+    ticks: {
+      majorHeight: 7,
+      minorHeight: 0,
+    },
+    needsRegularUpdate: true
+  });
+  const lineN = board.create("line", [[0, 0], pointN], {
+    strokewidth: 3,
+    color: "red",
+    fixed: true,
+    straightFirst: false, 
+    straightLast: false, 
+    lastArrow: true,
+    highlight: false
+  })
+  
+  return board;
+}
+```
+
+```{ojs}
+//| echo: false
+ 
+board_div("board2", /*width=*/400)
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+make_board("board2", {
+  showPointGlider: true, 
+}) 
+```
+
+We introduced new elements:
+
+- A slider that defines the angle of the normal vector $\textbf{n}$
+- A green point $\textbf{p}=[x, y]$
+  - Try moving this point!
+  - It is always on the line, i.e., $ax+by=0$ where $a=n_x$ and $b=n_y$
+  - Alternatively, $\textbf{n} \cdot \textbf{p} = 0$: the dot product between the vector $\textbf{n}$ and $\textbf{p}$ is zero.
+  - It follows that the vectors $\textbf{n}$ and $\textbf{p}$ are orthogonal.
+- We also restricted $\textbf{n}$ so that $\|\textbf{n}\|=1$
+
+We have learned so far that the coefficients $a$ and $b$ of the line equation represent the normal vector $\textbf{n}=[a, b]$, and we can express the line equation with the dot product $\textbf{n} \cdot \textbf{p} = 0$.
+
+What is the meaning of the line equation when the point $\textbf{p}$ is not on the line, i.e., when $ax+by \neq 0$? **Spoiler:** the value is the signed distance from the point $\textbf{p}$ to our line. Let's understand this intuitively. 
+
+The dot product $\textbf{n} \cdot \textbf{p}$ is a non-zero value when the point $\textbf{p}$ is not on the line. From [the previous](https://maitbayev.github.io/posts/dot-product/) post we know that the dot product is the projection of the vector $\textbf{p}$ to the vector $\textbf{n}$. Imagine a 1D number line spanned by the vector $\textbf{n}$ like this:
+
+```{ojs}
+//| echo: false
+ 
+board_div("board3", /*width=*/400)
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+make_board("board3", {
+  showPoint: true,
+  showNormalAxis: true, 
+}) 
+```
+
+The introduced 1D number line has ticks that represent the signed distances from our line. The projection of the point $\textbf{p}$ falls somewhere on that 1D number line (the dotted line segment), which corresponds to the dot product. Remember that $ax+by$ and $\textbf{n} \cdot \textbf{p}$ are the same. Play with the point $\textbf{p}$ (and with the slider) to understand when $ax+by$ is zero, positive and negative. Can you see that $ax+by$ (and $\textbf{n} \cdot \textbf{p}$) represents the signed distance between the point $\textbf{p}$ and our line?
+
+**TO DO:**
+
+## The End
+
+I hope you enjoyed this post. [Subscribe](https://maitbayev.substack.com/subscribe) to get a notification about future posts. 
