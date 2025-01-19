@@ -144,7 +144,7 @@ We have the following items visualized:
   - It passes through the origin
 - A normal vector of the line $\textbf{n}=[n_x, n_y]=[a, b]$ is visualized with red
 
-Feel free to **play** (by moving) with the point $\textbf{n}$ and notice how the line equation is changing w.r.t to the normal vector.
+Feel free to **play** (by moving) with the point $\textbf{n}$ and notice how the line equation is changing with respect to the normal vector.
 
 We can multiply or divide the line equation by any real number $k$ without changing the equation, in other words, $kax+kby+kc=0$ and $ax+by+c=0$ hold true to the same set of points. Let's use this property and divide the equation by $\sqrt{a^2+b^2}$ so that $a^2+b^2=1$ (or $\|\textbf{n}\|=1$). From now on, we assume that $\|\textbf{n}\|=1$.
 
