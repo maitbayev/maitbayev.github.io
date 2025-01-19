@@ -21,9 +21,31 @@ In this post, let's understand the intuitions behind the linear equation, such a
 - What are the meanings of $(a, b)$ and $c$?
 - How are [the dot product](https://maitbayev.github.io/posts/dot-product/) and linear equation related?
 
-My previous post about [the dot product](https://maitbayev.github.io/posts/dot-product/) is a required prerequisite to this post.
+My previous post about [the dot product](https://maitbayev.github.io/posts/dot-product/) is a required prerequisite to this post. 
+You need to have a good intuition about the dot product.
 
-### Equation of a line
+## Cheatsheet
+
+The distance from the point (x, y) to the line is: 
+$$
+\left|\frac{ax+by+c}{\sqrt{a^2+b^2}}\right|
+$$
+
+in n-dimensions:
+
+$$
+\left|\frac{a_1x_1+\cdots+a_nx_n+b}{\sqrt{a_1^1+\cdots+a_n^2}}\right|
+$$
+
+The vector $\textbf{n}=[a, b]$ is the orthogonal vector to the line $ax+by+c=0$, and $\textbf{n}=[a_1, a_2, \cdots, a_n]$ in n-dimensions.
+
+The line equation can be expressed with the dot product as $\textbf{n} \cdot {[x, y]}+c=0$ and $\textbf{n} \cdot \textbf{x} + b = 0$ in n-dimensions.
+
+:::$
+
+## Equation of a line
+
+### ax+by 
 
 Let's start with a **simpler** equation of a line in the form of $ax+by=0$, where we have $c=0$.
 Does it remind you something ? Yes, [the dot product](https://maitbayev.github.io/posts/dot-product/) between $(a, b)$ and $(x, y)$. The dot product $(a, b) \cdot (x, y)$ is zero when the two vectors are orthogonal. Oh nice, this means that (a, b) is an orthogonal vector to our line. An orthogonal vector is also known as a **normal vector** of a line.  Also, notice that the simpler line contains the origin since $a\cdot0+b\cdot0=0$ holds true.
@@ -140,13 +162,30 @@ We have the following items visualized:
 
 - Our line $ax+by=0$ is visualized with blue
   - It passes through the origin
-- A normal vector of the line $\textbf{n}=[n_x, n_y]=[a, b]$ is visualized with red
+- A normal vector of the line $\textbf{n}=[a, b]$ is visualized with red
 
 Feel free to **play** (by moving) with the point $\textbf{n}$ and notice how the line equation is changing with respect to the normal vector.
 
-We can multiply or divide the line equation by any real number $k$ without changing the equation, in other words, $kax+kby+kc=0$ and $ax+by+c=0$ hold true to the same set of points. Let's use this property and divide the equation by $\sqrt{a^2+b^2}$ so that $a^2+b^2=1$ (or $\|\textbf{n}\|=1$). From now on, we assume that $\|\textbf{n}\|=1$.
+We can multiply or divide the line equation by any real number $k$ without changing the equation, in other words, $kax+kby+kc=0$ and $ax+by+c=0$ hold true to the same set of points. 
+Let's use this property and divide the equation by $\sqrt{a^2+b^2}$, since it gives us $a^2+b^2=1$ and $\|\textbf{n}\|=1$.
 
-Let's check what we have:
+::: {.callout-note collapse="true"}
+#### Explanation 
+
+We obtain a new normalized line equation with the coefficients:
+$$
+\begin{align}
+a_{new}&=\frac{a}{\sqrt{a^2+b^2}}\\
+b_{new}&=\frac{b}{\sqrt{a^2+b^2}}\\
+c_{new}&=\frac{c}{\sqrt{a^2+b^2}}
+\end{align}
+$$
+
+Note that $a_{new}^2+b_{new}^2=1$ holds true.
+
+:::
+
+From now on, we assume that $\|\textbf{n}\|=1$. Let's check what we have:
 
 ```{ojs}
 //| echo: false
@@ -270,14 +309,12 @@ We introduced new elements:
 - A slider that defines the angle of the normal vector $\textbf{n}$
 - A green point $\textbf{p}=[x, y]$
   - Try moving this point!
-  - It is always on the line, i.e., $ax+by=0$ where $a=n_x$ and $b=n_y$
-  - Alternatively, $\textbf{n} \cdot \textbf{p} = 0$: the dot product between the vector $\textbf{n}$ and $\textbf{p}$ is zero.
-  - It follows that the vectors $\textbf{n}$ and $\textbf{p}$ are orthogonal.
+  - It is always on the line, i.e., $ax+by=0$ where $\textbf{n}=[a, b]$ 
 - We also restricted $\textbf{n}$ so that $\|\textbf{n}\|=1$
 
-We have learned so far that the coefficients $a$ and $b$ of the line equation represent the normal vector $\textbf{n}=[a, b]$, and we can express the line equation with the dot product $\textbf{n} \cdot \textbf{p} = 0$.
+We have learned so far that $a$ and $b$ represent the normal vector $\textbf{n}=[a, b]$, and we can express the line equation with the dot product $\textbf{n} \cdot \textbf{p} = 0$.
 
-What is the meaning of the line equation when the point $\textbf{p}$ is not on the line, i.e., when $ax+by \neq 0$? **Spoiler:** the value is the signed distance from the point $\textbf{p}$ to our line. Let's understand this intuitively. 
+What is the meaning of the line equation when the point $\textbf{p}$ is outside of the line, i.e., when $ax+by \neq 0$? **Spoiler:** the value is the signed distance from the point $\textbf{p}$ to our line. Let's understand this intuitively. 
 
 The dot product $\textbf{n} \cdot \textbf{p}$ is a non-zero value when the point $\textbf{p}$ is not on the line. From [the previous](https://maitbayev.github.io/posts/dot-product/) post we know that the dot product is the projection of the vector $\textbf{p}$ to the vector $\textbf{n}$. Imagine a 1D number line spanned by the vector $\textbf{n}$ like this:
 
@@ -296,15 +333,20 @@ make_board("board3", {
 }) 
 ```
 
-The introduced 1D number line has ticks that represent the signed distances from our line. The projection of the point $\textbf{p}$ falls somewhere on that 1D number line (the dotted line segment), which corresponds to the dot product. Remember that $ax+by$ and $\textbf{n} \cdot \textbf{p}$ are the same. Play with the point $\textbf{p}$ (and with the slider) to understand when $ax+by$ is zero, positive and negative. Can you see that $ax+by$ (and $\textbf{n} \cdot \textbf{p}$) represents the signed distance between the point $\textbf{p}$ and our line?
+The introduced 1D number line has ticks that represent the signed distances from our line. 
+The projection of the point $\textbf{p}$ falls somewhere on that 1D number line (following the dotted line segment), which corresponds to the dot product. 
+Remember that $ax+by$ and $\textbf{n} \cdot \textbf{p}$ are the same.
+Play with the point $\textbf{p}$ (and with the slider) to understand when $ax+by$ is zero, positive and negative. 
+Can you see that $ax+by$ (and $\textbf{n} \cdot \textbf{p}$) represents the signed distance from the point $\textbf{p}$ to our line?
 
-By this point, you need to understand the simple line equation of the form $ax+by=0$. What about $ax+by+c=0$? 
+### ax+by+c
+
+By this point, you need to understand the line equation of the form $ax+by=0$. What about $ax+by+c=0$? 
 Let's explore this!
 
-Notice that $ax+by+c=0$ is almost similar to the $ax+by=0$ except the $c$ coefficient. 
 We represented $ax+by$ with the dot product $\textbf{n} \cdot \textbf{p}$, then $ax+by+c$ can be represented with $\textbf{n} \cdot \textbf{p}+c$. 
 First, we land on the 1D number line with $\textbf{n} \cdot \textbf{p}$, then move $c$ steps forward on that 1D number line. 
-It means that our line is located at the $-c$ tick of the 1D number line, since we add $c$.
+It is easier explained with a visualization:
 
 ```{ojs}
 //| echo: false
@@ -322,14 +364,16 @@ make_board("board4", {
 })
 ```
 
-We introduced a slider for the coefficient $c$. Play with it, and notice the location of our line when $c=1$ and $c=-1$.
+Play with the slider for $c$, and notice the location of our line when $c=1$ and $c=-1$.
 
-Can you see that $ax+by+c$ is still the signed distance from the point $\textbf{p}$ and our line? What does $c$ represent?
+Can you see that $ax+by+c$ is still the signed distance from the point $\textbf{p}$ to our line? What does $c$ represent?
 
 ::: {.callout-note collapse="true"}
 #### Explanation 
 
-$ax+by+c$ (or $\textbf{n} \cdot \textbf{p} + c$) is the signed distance. We land on the 1D number line with $c'=\textbf{n} \cdot \textbf{p}$, then we have $c'+c$. The $c'+c$ is zero when $c'=-c$; 1 when $c'=-c+1$; -1 when $c'=-c-1$; and so on.
+First, we land on the 1D number line with $c'=\textbf{n} \cdot \textbf{p}$.
+Then, let's denote $ax+by+c$ as $c'+c$. 
+The $c'+c$ is zero when $c'=-c$; $1$ when $c'=-c+1$; $-1$ when $c'=-c-1$; and so on.
 
 $|c|$ is the distance from the origin to our line, c is the signed distance.
 

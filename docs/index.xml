@@ -33,13 +33,25 @@
 <li>What are the meanings of <img src="https://latex.codecogs.com/png.latex?(a,%20b)"> and <img src="https://latex.codecogs.com/png.latex?c">?</li>
 <li>How are <a href="https://maitbayev.github.io/posts/dot-product/">the dot product</a> and linear equation related?</li>
 </ul>
-<p>My previous post about <a href="https://maitbayev.github.io/posts/dot-product/">the dot product</a> is a required prerequisite to this post.</p>
-<section id="equation-of-a-line" class="level3">
-<h3 class="anchored" data-anchor-id="equation-of-a-line">Equation of a line</h3>
+<p>My previous post about <a href="https://maitbayev.github.io/posts/dot-product/">the dot product</a> is a required prerequisite to this post. You need to have a good intuition about the dot product.</p>
+</section>
+<section id="cheatsheet" class="level2">
+<h2 class="anchored" data-anchor-id="cheatsheet">Cheatsheet</h2>
+<p>The distance from the point (x, y) to the line is: <img src="https://latex.codecogs.com/png.latex?%0A%5Cleft%7C%5Cfrac%7Bax+by+c%7D%7B%5Csqrt%7Ba%5E2+b%5E2%7D%7D%5Cright%7C%0A"></p>
+<p>in n-dimensions:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft%7C%5Cfrac%7Ba_1x_1+%5Ccdots+a_nx_n+b%7D%7B%5Csqrt%7Ba_1%5E1+%5Ccdots+a_n%5E2%7D%7D%5Cright%7C%0A"></p>
+<p>The vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D=%5Ba,%20b%5D"> is the orthogonal vector to the line <img src="https://latex.codecogs.com/png.latex?ax+by+c=0">, and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D=%5Ba_1,%20a_2,%20%5Ccdots,%20a_n%5D"> in n-dimensions.</p>
+<p>The line equation can be expressed with the dot product as <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%7B%5Bx,%20y%5D%7D+c=0"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bx%7D%20+%20b%20=%200"> in n-dimensions.</p>
+</section>
+<div class="$">
+<section id="equation-of-a-line" class="level2">
+<h2 class="anchored" data-anchor-id="equation-of-a-line">Equation of a line</h2>
+<section id="axby" class="level3">
+<h3 class="anchored" data-anchor-id="axby">ax+by</h3>
 <p>Let’s start with a <strong>simpler</strong> equation of a line in the form of <img src="https://latex.codecogs.com/png.latex?ax+by=0">, where we have <img src="https://latex.codecogs.com/png.latex?c=0">. Does it remind you something ? Yes, <a href="https://maitbayev.github.io/posts/dot-product/">the dot product</a> between <img src="https://latex.codecogs.com/png.latex?(a,%20b)"> and <img src="https://latex.codecogs.com/png.latex?(x,%20y)">. The dot product <img src="https://latex.codecogs.com/png.latex?(a,%20b)%20%5Ccdot%20(x,%20y)"> is zero when the two vectors are orthogonal. Oh nice, this means that (a, b) is an orthogonal vector to our line. An orthogonal vector is also known as a <strong>normal vector</strong> of a line. Also, notice that the simpler line contains the origin since <img src="https://latex.codecogs.com/png.latex?a%5Ccdot0+b%5Ccdot0=0"> holds true.</p>
 <p>Let’s visualize our setup:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="34" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 33;"><span id="cb1-34">JXG <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="56" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 55;"><span id="cb1-56">JXG <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -56,7 +68,7 @@ font-style: inherit;">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/js
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="39" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 38;"><span id="cb2-39"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="61" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 60;"><span id="cb2-61"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -68,7 +80,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">500</span>) {</span>
-<span id="cb2-40">  <span class="cf" style="color: #003B4F;
+<span id="cb2-62">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="fu" style="color: #4758AB;
@@ -76,7 +88,7 @@ background-color: null;
 font-style: inherit;">html</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`&lt;div </span></span>
-<span id="cb2-41"><span class="vs" style="color: #20794D;
+<span id="cb2-63"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">    id=</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -85,7 +97,7 @@ background-color: null;
 font-style: inherit;">}</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;"> </span></span>
-<span id="cb2-42"><span class="vs" style="color: #20794D;
+<span id="cb2-64"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">    style='max-width:</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -94,13 +106,13 @@ background-color: null;
 font-style: inherit;">}</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">px; aspect-ratio: 1; </span></span>
-<span id="cb2-43"><span class="vs" style="color: #20794D;
+<span id="cb2-65"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">            margin-inline: auto'&gt;</span></span>
-<span id="cb2-44"><span class="vs" style="color: #20794D;
+<span id="cb2-66"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">  &lt;/div&gt;`</span> </span>
-<span id="cb2-45">}</span></code></pre></div>
+<span id="cb2-67">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -108,7 +120,7 @@ font-style: inherit;">  &lt;/div&gt;`</span> </span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="51" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 50;"><span id="cb3-51"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="73" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 72;"><span id="cb3-73"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -127,7 +139,7 @@ font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span>) {</span>
-<span id="cb3-52">  <span class="cf" style="color: #003B4F;
+<span id="cb3-74">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> JXG<span class="op" style="color: #5E5E5E;
@@ -141,7 +153,7 @@ background-color: null;
 font-style: inherit;">initBoard</span>(name<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb3-53">    <span class="dt" style="color: #AD0000;
+<span id="cb3-75">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">boundingbox</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -158,7 +170,7 @@ background-color: null;
 font-style: inherit;">-</span>extend]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-54">    <span class="dt" style="color: #AD0000;
+<span id="cb3-76">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">showCopyright</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -168,7 +180,7 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-55">    <span class="dt" style="color: #AD0000;
+<span id="cb3-77">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">showNavigation</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -178,7 +190,7 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-56">    <span class="dt" style="color: #AD0000;
+<span id="cb3-78">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">axis</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -188,19 +200,19 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-57">    <span class="dt" style="color: #AD0000;
+<span id="cb3-79">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">grid</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> grid<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-58">    <span class="dt" style="color: #AD0000;
+<span id="cb3-80">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">pan</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb3-59">      <span class="dt" style="color: #AD0000;
+<span id="cb3-81">      <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">needTwoFingers</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -208,25 +220,25 @@ font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">true</span></span>
-<span id="cb3-60">    }<span class="op" style="color: #5E5E5E;
+<span id="cb3-82">    }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-61">    <span class="dt" style="color: #AD0000;
+<span id="cb3-83">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">defaultAxes</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb3-62">      <span class="dt" style="color: #AD0000;
+<span id="cb3-84">      <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb3-63">        <span class="dt" style="color: #AD0000;
+<span id="cb3-85">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">ticks</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb3-64">          <span class="dt" style="color: #AD0000;
+<span id="cb3-86">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">insertTicks</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -236,7 +248,7 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-65">          <span class="dt" style="color: #AD0000;
+<span id="cb3-87">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">minorTicks</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -245,7 +257,7 @@ background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span>   </span>
-<span id="cb3-66">          <span class="dt" style="color: #AD0000;
+<span id="cb3-88">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">majorHeight</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -254,7 +266,7 @@ background-color: null;
 font-style: inherit;">5</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-67">          <span class="dt" style="color: #AD0000;
+<span id="cb3-89">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">ticksDistance</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -263,7 +275,7 @@ background-color: null;
 font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-68">          <span class="dt" style="color: #AD0000;
+<span id="cb3-90">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokeOpacity</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -272,7 +284,7 @@ background-color: null;
 font-style: inherit;">0.8</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-69">          <span class="dt" style="color: #AD0000;
+<span id="cb3-91">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokeColor</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -281,28 +293,28 @@ background-color: null;
 font-style: inherit;">'#000000'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-70">          <span class="dt" style="color: #AD0000;
+<span id="cb3-92">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokeWidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span> </span>
-<span id="cb3-71">        }</span>
-<span id="cb3-72">      }<span class="op" style="color: #5E5E5E;
+<span id="cb3-93">        }</span>
+<span id="cb3-94">      }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-73">      <span class="dt" style="color: #AD0000;
+<span id="cb3-95">      <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">y</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb3-74">        <span class="dt" style="color: #AD0000;
+<span id="cb3-96">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">ticks</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb3-75">          <span class="dt" style="color: #AD0000;
+<span id="cb3-97">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">insertTicks</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -312,7 +324,7 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-76">          <span class="dt" style="color: #AD0000;
+<span id="cb3-98">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">minorTicks</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -321,7 +333,7 @@ background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-77">          <span class="dt" style="color: #AD0000;
+<span id="cb3-99">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">majorHeight</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -330,7 +342,7 @@ background-color: null;
 font-style: inherit;">5</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-78">          <span class="dt" style="color: #AD0000;
+<span id="cb3-100">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokeOpacity</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -339,7 +351,7 @@ background-color: null;
 font-style: inherit;">0.8</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-79">          <span class="dt" style="color: #AD0000;
+<span id="cb3-101">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokeColor</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -348,22 +360,22 @@ background-color: null;
 font-style: inherit;">'#000000'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-80">          <span class="dt" style="color: #AD0000;
+<span id="cb3-102">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokeWidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span> </span>
-<span id="cb3-81">        }</span>
-<span id="cb3-82">      }</span>
-<span id="cb3-83">    }<span class="op" style="color: #5E5E5E;
+<span id="cb3-103">        }</span>
+<span id="cb3-104">      }</span>
+<span id="cb3-105">    }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb3-84">  })<span class="op" style="color: #5E5E5E;
+<span id="cb3-106">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb3-85">}</span></code></pre></div>
+<span id="cb3-107">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -371,13 +383,13 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="91" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb4-91"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="113" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 112;"><span id="cb4-113"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">make_board1</span>() {</span>
-<span id="cb4-92">  <span class="kw" style="color: #003B4F;
+<span id="cb4-114">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> board <span class="op" style="color: #5E5E5E;
@@ -402,7 +414,7 @@ font-weight: bold;
 font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-93">  <span class="kw" style="color: #003B4F;
+<span id="cb4-115">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> pointN <span class="op" style="color: #5E5E5E;
@@ -424,7 +436,7 @@ background-color: null;
 font-style: inherit;">3</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb4-94">    <span class="dt" style="color: #AD0000;
+<span id="cb4-116">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">name</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -433,7 +445,7 @@ background-color: null;
 font-style: inherit;">"n"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-95">    <span class="dt" style="color: #AD0000;
+<span id="cb4-117">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">color</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -442,7 +454,7 @@ background-color: null;
 font-style: inherit;">"red"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-96">    <span class="dt" style="color: #AD0000;
+<span id="cb4-118">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">snapToGrid</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -452,8 +464,8 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-97">  })</span>
-<span id="cb4-98">  <span class="kw" style="color: #003B4F;
+<span id="cb4-119">  })</span>
+<span id="cb4-120">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> lineN <span class="op" style="color: #5E5E5E;
@@ -477,7 +489,7 @@ background-color: null;
 font-style: inherit;">,</span> pointN]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb4-99">    <span class="dt" style="color: #AD0000;
+<span id="cb4-121">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokewidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -486,7 +498,7 @@ background-color: null;
 font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-100">    <span class="dt" style="color: #AD0000;
+<span id="cb4-122">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">color</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -495,7 +507,7 @@ background-color: null;
 font-style: inherit;">"red"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-101">    <span class="dt" style="color: #AD0000;
+<span id="cb4-123">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fixed</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -505,7 +517,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-102">    <span class="dt" style="color: #AD0000;
+<span id="cb4-124">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">straightFirst</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -515,7 +527,7 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb4-103">    <span class="dt" style="color: #AD0000;
+<span id="cb4-125">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">straightLast</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -525,7 +537,7 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb4-104">    <span class="dt" style="color: #AD0000;
+<span id="cb4-126">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">lastArrow</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -535,8 +547,8 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-105">  })</span>
-<span id="cb4-106">  <span class="kw" style="color: #003B4F;
+<span id="cb4-127">  })</span>
+<span id="cb4-128">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> line <span class="op" style="color: #5E5E5E;
@@ -553,7 +565,7 @@ font-style: inherit;">,</span> [<span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb4-107">    <span class="cf" style="color: #003B4F;
+<span id="cb4-129">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="dv" style="color: #AD0000;
@@ -561,13 +573,13 @@ background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-108">  }<span class="op" style="color: #5E5E5E;
+<span id="cb4-130">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb4-109">    <span class="cf" style="color: #003B4F;
+<span id="cb4-131">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> pointN<span class="op" style="color: #5E5E5E;
@@ -577,13 +589,13 @@ background-color: null;
 font-style: inherit;">X</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-110">  }<span class="op" style="color: #5E5E5E;
+<span id="cb4-132">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb4-111">    <span class="cf" style="color: #003B4F;
+<span id="cb4-133">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> pointN<span class="op" style="color: #5E5E5E;
@@ -593,10 +605,10 @@ background-color: null;
 font-style: inherit;">Y</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-112">  }]<span class="op" style="color: #5E5E5E;
+<span id="cb4-134">  }]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb4-113">    <span class="dt" style="color: #AD0000;
+<span id="cb4-135">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokewidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -605,7 +617,7 @@ background-color: null;
 font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-114">    <span class="dt" style="color: #AD0000;
+<span id="cb4-136">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fixed</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -613,10 +625,10 @@ font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">true</span></span>
-<span id="cb4-115">  })<span class="op" style="color: #5E5E5E;
+<span id="cb4-137">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-116">  <span class="kw" style="color: #003B4F;
+<span id="cb4-138">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> lineText <span class="op" style="color: #5E5E5E;
@@ -645,7 +657,7 @@ font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb4-117">    <span class="cf" style="color: #003B4F;
+<span id="cb4-139">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> pointN<span class="op" style="color: #5E5E5E;
@@ -669,26 +681,26 @@ background-color: null;
 font-style: inherit;">"y = 0"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-118">  }]<span class="op" style="color: #5E5E5E;
+<span id="cb4-140">  }]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb4-119">    <span class="dt" style="color: #AD0000;
+<span id="cb4-141">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fontSize</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">19</span></span>
-<span id="cb4-120">  })<span class="op" style="color: #5E5E5E;
+<span id="cb4-142">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-121">  <span class="cf" style="color: #003B4F;
+<span id="cb4-143">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> board<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-122">}</span></code></pre></div>
+<span id="cb4-144">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -696,7 +708,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="128" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb5-128"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="150" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 149;"><span id="cb5-150"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -714,7 +726,7 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="135" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb6-135"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="157" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 156;"><span id="cb6-157"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">make_board1</span>()</span></code></pre></div>
 <div class="cell-output cell-output-display hidden">
@@ -729,13 +741,30 @@ font-style: inherit;">make_board1</span>()</span></code></pre></div>
 <ul>
 <li>It passes through the origin</li>
 </ul></li>
-<li>A normal vector of the line <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D=%5Bn_x,%20n_y%5D=%5Ba,%20b%5D"> is visualized with red</li>
+<li>A normal vector of the line <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D=%5Ba,%20b%5D"> is visualized with red</li>
 </ul>
 <p>Feel free to <strong>play</strong> (by moving) with the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D"> and notice how the line equation is changing with respect to the normal vector.</p>
-<p>We can multiply or divide the line equation by any real number <img src="https://latex.codecogs.com/png.latex?k"> without changing the equation, in other words, <img src="https://latex.codecogs.com/png.latex?kax+kby+kc=0"> and <img src="https://latex.codecogs.com/png.latex?ax+by+c=0"> hold true to the same set of points. Let’s use this property and divide the equation by <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7Ba%5E2+b%5E2%7D"> so that <img src="https://latex.codecogs.com/png.latex?a%5E2+b%5E2=1"> (or <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bn%7D%5C%7C=1">). From now on, we assume that <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bn%7D%5C%7C=1">.</p>
-<p>Let’s check what we have:</p>
+<p>We can multiply or divide the line equation by any real number <img src="https://latex.codecogs.com/png.latex?k"> without changing the equation, in other words, <img src="https://latex.codecogs.com/png.latex?kax+kby+kc=0"> and <img src="https://latex.codecogs.com/png.latex?ax+by+c=0"> hold true to the same set of points. Let’s use this property and divide the equation by <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7Ba%5E2+b%5E2%7D">, since it gives us <img src="https://latex.codecogs.com/png.latex?a%5E2+b%5E2=1"> and <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bn%7D%5C%7C=1">.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Explanation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We obtain a new normalized line equation with the coefficients: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0Aa_%7Bnew%7D&amp;=%5Cfrac%7Ba%7D%7B%5Csqrt%7Ba%5E2+b%5E2%7D%7D%5C%5C%0Ab_%7Bnew%7D&amp;=%5Cfrac%7Bb%7D%7B%5Csqrt%7Ba%5E2+b%5E2%7D%7D%5C%5C%0Ac_%7Bnew%7D&amp;=%5Cfrac%7Bc%7D%7B%5Csqrt%7Ba%5E2+b%5E2%7D%7D%0A%5Cend%7Balign%7D%0A"></p>
+<p>Note that <img src="https://latex.codecogs.com/png.latex?a_%7Bnew%7D%5E2+b_%7Bnew%7D%5E2=1"> holds true.</p>
+</div>
+</div>
+</div>
+<p>From now on, we assume that <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bn%7D%5C%7C=1">. Let’s check what we have:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="152" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb7-152"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="191" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 190;"><span id="cb7-191"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -743,13 +772,13 @@ background-color: null;
 font-style: inherit;">make_board</span>(name<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> props) {</span>
-<span id="cb7-153">  <span class="kw" style="color: #003B4F;
+<span id="cb7-192">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rad</span>(deg) {</span>
-<span id="cb7-154">    <span class="cf" style="color: #003B4F;
+<span id="cb7-193">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> deg <span class="op" style="color: #5E5E5E;
@@ -767,8 +796,8 @@ background-color: null;
 font-style: inherit;">PI</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-155">  }</span>
-<span id="cb7-156">  <span class="kw" style="color: #003B4F;
+<span id="cb7-194">  }</span>
+<span id="cb7-195">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -776,7 +805,7 @@ background-color: null;
 font-style: inherit;">vec_scale</span>(v<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> s) {</span>
-<span id="cb7-157">    <span class="cf" style="color: #003B4F;
+<span id="cb7-196">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> [v[<span class="dv" style="color: #AD0000;
@@ -792,8 +821,8 @@ background-color: null;
 font-style: inherit;">*</span> s]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-158">  }</span>
-<span id="cb7-159">  <span class="kw" style="color: #003B4F;
+<span id="cb7-197">  }</span>
+<span id="cb7-198">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -801,7 +830,7 @@ background-color: null;
 font-style: inherit;">vec_dot</span>(a<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> b) {</span>
-<span id="cb7-160">    <span class="cf" style="color: #003B4F;
+<span id="cb7-199">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> a[<span class="dv" style="color: #AD0000;
@@ -821,8 +850,8 @@ background-color: null;
 font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-161">  }</span>
-<span id="cb7-162">  <span class="kw" style="color: #003B4F;
+<span id="cb7-200">  }</span>
+<span id="cb7-201">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> showPoint <span class="op" style="color: #5E5E5E;
@@ -837,7 +866,7 @@ font-style: inherit;">||</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span></span>
-<span id="cb7-163">  <span class="kw" style="color: #003B4F;
+<span id="cb7-202">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> board <span class="op" style="color: #5E5E5E;
@@ -853,8 +882,8 @@ background-color: null;
 font-style: inherit;">4.5</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-164"> </span>
-<span id="cb7-165">  <span class="kw" style="color: #003B4F;
+<span id="cb7-203"> </span>
+<span id="cb7-204">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> sliderAlpha <span class="op" style="color: #5E5E5E;
@@ -902,7 +931,7 @@ background-color: null;
 font-style: inherit;">360</span>]]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-166">    <span class="dt" style="color: #AD0000;
+<span id="cb7-205">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">name</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -911,17 +940,17 @@ background-color: null;
 font-style: inherit;">"alpha"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-167">    <span class="dt" style="color: #AD0000;
+<span id="cb7-206">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">snapWidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb7-168">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-207">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-169">  <span class="kw" style="color: #003B4F;
+<span id="cb7-208">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> sliderC <span class="op" style="color: #5E5E5E;
@@ -971,7 +1000,7 @@ background-color: null;
 font-style: inherit;">4</span>]]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-170">    <span class="dt" style="color: #AD0000;
+<span id="cb7-209">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">name</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -980,7 +1009,7 @@ background-color: null;
 font-style: inherit;">"c"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-171">    <span class="dt" style="color: #AD0000;
+<span id="cb7-210">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">snapWidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -989,7 +1018,7 @@ background-color: null;
 font-style: inherit;">0.1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-172">    <span class="dt" style="color: #AD0000;
+<span id="cb7-211">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">visible</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1003,10 +1032,10 @@ font-style: inherit;">||</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span></span>
-<span id="cb7-173">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-212">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-174">  <span class="kw" style="color: #003B4F;
+<span id="cb7-213">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> pointN <span class="op" style="color: #5E5E5E;
@@ -1023,7 +1052,7 @@ font-style: inherit;">,</span> [<span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb7-175">    <span class="cf" style="color: #003B4F;
+<span id="cb7-214">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="bu" style="color: null;
@@ -1041,13 +1070,13 @@ background-color: null;
 font-style: inherit;">Value</span>()))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-176">  }<span class="op" style="color: #5E5E5E;
+<span id="cb7-215">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb7-177">    <span class="cf" style="color: #003B4F;
+<span id="cb7-216">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="bu" style="color: null;
@@ -1065,10 +1094,10 @@ background-color: null;
 font-style: inherit;">Value</span>()))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-178">  }]<span class="op" style="color: #5E5E5E;
+<span id="cb7-217">  }]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-179">    <span class="dt" style="color: #AD0000;
+<span id="cb7-218">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">visible</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1078,7 +1107,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-180">    <span class="dt" style="color: #AD0000;
+<span id="cb7-219">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">name</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1087,7 +1116,7 @@ background-color: null;
 font-style: inherit;">"n"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-181">    <span class="dt" style="color: #AD0000;
+<span id="cb7-220">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">color</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1096,7 +1125,7 @@ background-color: null;
 font-style: inherit;">"#00000000"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-182">    <span class="dt" style="color: #AD0000;
+<span id="cb7-221">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fixed</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1106,7 +1135,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-183">    <span class="dt" style="color: #AD0000;
+<span id="cb7-222">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">highlight</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1114,10 +1143,10 @@ font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span></span>
-<span id="cb7-184">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-223">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-185">  <span class="kw" style="color: #003B4F;
+<span id="cb7-224">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> line <span class="op" style="color: #5E5E5E;
@@ -1134,7 +1163,7 @@ font-style: inherit;">,</span> [<span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb7-186">    <span class="cf" style="color: #003B4F;
+<span id="cb7-225">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> sliderC<span class="op" style="color: #5E5E5E;
@@ -1144,13 +1173,13 @@ background-color: null;
 font-style: inherit;">Value</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-187">  }<span class="op" style="color: #5E5E5E;
+<span id="cb7-226">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb7-188">    <span class="cf" style="color: #003B4F;
+<span id="cb7-227">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> pointN<span class="op" style="color: #5E5E5E;
@@ -1160,13 +1189,13 @@ background-color: null;
 font-style: inherit;">X</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-189">  }<span class="op" style="color: #5E5E5E;
+<span id="cb7-228">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb7-190">    <span class="cf" style="color: #003B4F;
+<span id="cb7-229">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> pointN<span class="op" style="color: #5E5E5E;
@@ -1176,10 +1205,10 @@ background-color: null;
 font-style: inherit;">Y</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-191">  }]<span class="op" style="color: #5E5E5E;
+<span id="cb7-230">  }]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-192">    <span class="dt" style="color: #AD0000;
+<span id="cb7-231">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokewidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1188,7 +1217,7 @@ background-color: null;
 font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-193">    <span class="dt" style="color: #AD0000;
+<span id="cb7-232">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fixed</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1198,7 +1227,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-194">    <span class="dt" style="color: #AD0000;
+<span id="cb7-233">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">highlight</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1206,10 +1235,10 @@ font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span></span>
-<span id="cb7-195">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-234">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-196">  <span class="kw" style="color: #003B4F;
+<span id="cb7-235">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> pointP <span class="op" style="color: #5E5E5E;
@@ -1231,7 +1260,7 @@ background-color: null;
 font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-197">    <span class="dt" style="color: #AD0000;
+<span id="cb7-236">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">name</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1240,7 +1269,7 @@ background-color: null;
 font-style: inherit;">"p"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-198">    <span class="dt" style="color: #AD0000;
+<span id="cb7-237">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">size</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1249,7 +1278,7 @@ background-color: null;
 font-style: inherit;">7</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-199">    <span class="dt" style="color: #AD0000;
+<span id="cb7-238">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">color</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1258,7 +1287,7 @@ background-color: null;
 font-style: inherit;">"green"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-200">    <span class="dt" style="color: #AD0000;
+<span id="cb7-239">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">visible</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1272,10 +1301,10 @@ font-style: inherit;">||</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span> </span>
-<span id="cb7-201">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-240">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-202">  <span class="kw" style="color: #003B4F;
+<span id="cb7-241">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> gliderP <span class="op" style="color: #5E5E5E;
@@ -1301,7 +1330,7 @@ background-color: null;
 font-style: inherit;">,</span> line]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-203">    <span class="dt" style="color: #AD0000;
+<span id="cb7-242">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">name</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1310,7 +1339,7 @@ background-color: null;
 font-style: inherit;">"p"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-204">    <span class="dt" style="color: #AD0000;
+<span id="cb7-243">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">size</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1319,7 +1348,7 @@ background-color: null;
 font-style: inherit;">7</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-205">    <span class="dt" style="color: #AD0000;
+<span id="cb7-244">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">color</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1328,7 +1357,7 @@ background-color: null;
 font-style: inherit;">"green"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-206">    <span class="dt" style="color: #AD0000;
+<span id="cb7-245">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">visible</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1344,10 +1373,10 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-207">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-246">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-208">  <span class="kw" style="color: #003B4F;
+<span id="cb7-247">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> pointProj <span class="op" style="color: #5E5E5E;
@@ -1364,7 +1393,7 @@ font-style: inherit;">,</span> [<span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb7-209">    <span class="kw" style="color: #003B4F;
+<span id="cb7-248">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">let</span> p <span class="op" style="color: #5E5E5E;
@@ -1382,7 +1411,7 @@ background-color: null;
 font-style: inherit;">Y</span>()]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-210">    <span class="kw" style="color: #003B4F;
+<span id="cb7-249">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">let</span> n <span class="op" style="color: #5E5E5E;
@@ -1400,7 +1429,7 @@ background-color: null;
 font-style: inherit;">Y</span>()]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-211">    <span class="kw" style="color: #003B4F;
+<span id="cb7-250">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">let</span> proj <span class="op" style="color: #5E5E5E;
@@ -1416,7 +1445,7 @@ background-color: null;
 font-style: inherit;">,</span> n))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-212">    <span class="cf" style="color: #003B4F;
+<span id="cb7-251">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> proj[<span class="dv" style="color: #AD0000;
@@ -1424,13 +1453,13 @@ background-color: null;
 font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-213">  }<span class="op" style="color: #5E5E5E;
+<span id="cb7-252">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb7-214">    <span class="kw" style="color: #003B4F;
+<span id="cb7-253">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">let</span> p <span class="op" style="color: #5E5E5E;
@@ -1448,7 +1477,7 @@ background-color: null;
 font-style: inherit;">Y</span>()]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-215">    <span class="kw" style="color: #003B4F;
+<span id="cb7-254">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">let</span> n <span class="op" style="color: #5E5E5E;
@@ -1466,7 +1495,7 @@ background-color: null;
 font-style: inherit;">Y</span>()]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-216">    <span class="kw" style="color: #003B4F;
+<span id="cb7-255">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">let</span> proj <span class="op" style="color: #5E5E5E;
@@ -1482,7 +1511,7 @@ background-color: null;
 font-style: inherit;">,</span> n))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-217">    <span class="cf" style="color: #003B4F;
+<span id="cb7-256">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> proj[<span class="dv" style="color: #AD0000;
@@ -1490,10 +1519,10 @@ background-color: null;
 font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-218">  }]<span class="op" style="color: #5E5E5E;
+<span id="cb7-257">  }]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-219">    <span class="dt" style="color: #AD0000;
+<span id="cb7-258">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">visible</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1501,10 +1530,10 @@ font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span></span>
-<span id="cb7-220">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-259">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-221">  <span class="kw" style="color: #003B4F;
+<span id="cb7-260">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> lineProj <span class="op" style="color: #5E5E5E;
@@ -1522,7 +1551,7 @@ background-color: null;
 font-style: inherit;">,</span> pointProj]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-222">    <span class="dt" style="color: #AD0000;
+<span id="cb7-261">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">color</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1531,7 +1560,7 @@ background-color: null;
 font-style: inherit;">"gray"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-223">    <span class="dt" style="color: #AD0000;
+<span id="cb7-262">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokeWidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1540,7 +1569,7 @@ background-color: null;
 font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-224">    <span class="dt" style="color: #AD0000;
+<span id="cb7-263">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fixed</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1550,7 +1579,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-225">    <span class="dt" style="color: #AD0000;
+<span id="cb7-264">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">dash</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1559,7 +1588,7 @@ background-color: null;
 font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-226">    <span class="dt" style="color: #AD0000;
+<span id="cb7-265">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">straightFirst</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1569,7 +1598,7 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb7-227">    <span class="dt" style="color: #AD0000;
+<span id="cb7-266">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">straightLast</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1579,15 +1608,15 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-228">    <span class="dt" style="color: #AD0000;
+<span id="cb7-267">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">visible</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> showPoint </span>
-<span id="cb7-229">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-268">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-230">  <span class="kw" style="color: #003B4F;
+<span id="cb7-269">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> normalAxis <span class="op" style="color: #5E5E5E;
@@ -1611,7 +1640,7 @@ background-color: null;
 font-style: inherit;">,</span> pointN]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-231">    <span class="dt" style="color: #AD0000;
+<span id="cb7-270">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">visible</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1627,12 +1656,12 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-232">    <span class="dt" style="color: #AD0000;
+<span id="cb7-271">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">ticks</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb7-233">      <span class="dt" style="color: #AD0000;
+<span id="cb7-272">      <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">majorHeight</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1641,7 +1670,7 @@ background-color: null;
 font-style: inherit;">7</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-234">      <span class="dt" style="color: #AD0000;
+<span id="cb7-273">      <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">minorHeight</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1650,10 +1679,10 @@ background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-235">    }<span class="op" style="color: #5E5E5E;
+<span id="cb7-274">    }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-236">    <span class="dt" style="color: #AD0000;
+<span id="cb7-275">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">needsRegularUpdate</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1661,10 +1690,10 @@ font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">true</span></span>
-<span id="cb7-237">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-276">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-238">  <span class="kw" style="color: #003B4F;
+<span id="cb7-277">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> lineN <span class="op" style="color: #5E5E5E;
@@ -1688,7 +1717,7 @@ background-color: null;
 font-style: inherit;">,</span> pointN]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb7-239">    <span class="dt" style="color: #AD0000;
+<span id="cb7-278">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokewidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1697,7 +1726,7 @@ background-color: null;
 font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-240">    <span class="dt" style="color: #AD0000;
+<span id="cb7-279">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">color</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1706,7 +1735,7 @@ background-color: null;
 font-style: inherit;">"red"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-241">    <span class="dt" style="color: #AD0000;
+<span id="cb7-280">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fixed</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1716,7 +1745,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-242">    <span class="dt" style="color: #AD0000;
+<span id="cb7-281">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">straightFirst</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1726,7 +1755,7 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb7-243">    <span class="dt" style="color: #AD0000;
+<span id="cb7-282">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">straightLast</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1736,7 +1765,7 @@ font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb7-244">    <span class="dt" style="color: #AD0000;
+<span id="cb7-283">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">lastArrow</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1746,7 +1775,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb7-245">    <span class="dt" style="color: #AD0000;
+<span id="cb7-284">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">highlight</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1754,17 +1783,17 @@ font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span></span>
-<span id="cb7-246">  })<span class="op" style="color: #5E5E5E;
+<span id="cb7-285">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-247">  </span>
-<span id="cb7-248">  <span class="cf" style="color: #003B4F;
+<span id="cb7-286">  </span>
+<span id="cb7-287">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> board<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-249">}</span></code></pre></div>
+<span id="cb7-288">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -1772,7 +1801,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="255" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 254;"><span id="cb8-255"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="294" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 293;"><span id="cb8-294"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -1790,14 +1819,14 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="262" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 261;"><span id="cb9-262"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="301" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 300;"><span id="cb9-301"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">make_board</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"board2"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb9-263">  <span class="dt" style="color: #AD0000;
+<span id="cb9-302">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">showPointGlider</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1807,7 +1836,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb9-264">})</span></code></pre></div>
+<span id="cb9-303">})</span></code></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-9" data-nodetype="expression">
 
@@ -1820,17 +1849,15 @@ font-style: inherit;">,</span> </span>
 <li>A green point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D=%5Bx,%20y%5D">
 <ul>
 <li>Try moving this point!</li>
-<li>It is always on the line, i.e., <img src="https://latex.codecogs.com/png.latex?ax+by=0"> where <img src="https://latex.codecogs.com/png.latex?a=n_x"> and <img src="https://latex.codecogs.com/png.latex?b=n_y"></li>
-<li>Alternatively, <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D%20=%200">: the dot product between the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is zero.</li>
-<li>It follows that the vectors <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> are orthogonal.</li>
+<li>It is always on the line, i.e., <img src="https://latex.codecogs.com/png.latex?ax+by=0"> where <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D=%5Ba,%20b%5D"></li>
 </ul></li>
 <li>We also restricted <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D"> so that <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bn%7D%5C%7C=1"></li>
 </ul>
-<p>We have learned so far that the coefficients <img src="https://latex.codecogs.com/png.latex?a"> and <img src="https://latex.codecogs.com/png.latex?b"> of the line equation represent the normal vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D=%5Ba,%20b%5D">, and we can express the line equation with the dot product <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D%20=%200">.</p>
-<p>What is the meaning of the line equation when the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is not on the line, i.e., when <img src="https://latex.codecogs.com/png.latex?ax+by%20%5Cneq%200">? <strong>Spoiler:</strong> the value is the signed distance from the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> to our line. Let’s understand this intuitively.</p>
+<p>We have learned so far that <img src="https://latex.codecogs.com/png.latex?a"> and <img src="https://latex.codecogs.com/png.latex?b"> represent the normal vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D=%5Ba,%20b%5D">, and we can express the line equation with the dot product <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D%20=%200">.</p>
+<p>What is the meaning of the line equation when the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is outside of the line, i.e., when <img src="https://latex.codecogs.com/png.latex?ax+by%20%5Cneq%200">? <strong>Spoiler:</strong> the value is the signed distance from the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> to our line. Let’s understand this intuitively.</p>
 <p>The dot product <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D"> is a non-zero value when the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is not on the line. From <a href="https://maitbayev.github.io/posts/dot-product/">the previous</a> post we know that the dot product is the projection of the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> to the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D">. Imagine a 1D number line spanned by the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D"> like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="285" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 284;"><span id="cb10-285"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="322" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 321;"><span id="cb10-322"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -1848,14 +1875,14 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="292" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 291;"><span id="cb11-292"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="329" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 328;"><span id="cb11-329"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">make_board</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"board3"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb11-293">  <span class="dt" style="color: #AD0000;
+<span id="cb11-330">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">showPoint</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1865,7 +1892,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb11-294">  <span class="dt" style="color: #AD0000;
+<span id="cb11-331">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">showNormalAxis</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1875,18 +1902,21 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb11-295">})</span></code></pre></div>
+<span id="cb11-332">})</span></code></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-11" data-nodetype="expression">
 
 </div>
 </div>
 </div>
-<p>The introduced 1D number line has ticks that represent the signed distances from our line. The projection of the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> falls somewhere on that 1D number line (the dotted line segment), which corresponds to the dot product. Remember that <img src="https://latex.codecogs.com/png.latex?ax+by"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D"> are the same. Play with the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> (and with the slider) to understand when <img src="https://latex.codecogs.com/png.latex?ax+by"> is zero, positive and negative. Can you see that <img src="https://latex.codecogs.com/png.latex?ax+by"> (and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">) represents the signed distance between the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> and our line?</p>
-<p>By this point, you need to understand the simple line equation of the form <img src="https://latex.codecogs.com/png.latex?ax+by=0">. What about <img src="https://latex.codecogs.com/png.latex?ax+by+c=0">? Let’s explore this!</p>
-<p>Notice that <img src="https://latex.codecogs.com/png.latex?ax+by+c=0"> is almost similar to the <img src="https://latex.codecogs.com/png.latex?ax+by=0"> except the <img src="https://latex.codecogs.com/png.latex?c"> coefficient. We represented <img src="https://latex.codecogs.com/png.latex?ax+by"> with the dot product <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">, then <img src="https://latex.codecogs.com/png.latex?ax+by+c"> can be represented with <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D+c">. First, we land on the 1D number line with <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">, then move <img src="https://latex.codecogs.com/png.latex?c"> steps forward on that 1D number line. It means that our line is located at the <img src="https://latex.codecogs.com/png.latex?-c"> tick of the 1D number line, since we add <img src="https://latex.codecogs.com/png.latex?c">.</p>
+<p>The introduced 1D number line has ticks that represent the signed distances from our line. The projection of the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> falls somewhere on that 1D number line (following the dotted line segment), which corresponds to the dot product. Remember that <img src="https://latex.codecogs.com/png.latex?ax+by"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D"> are the same. Play with the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> (and with the slider) to understand when <img src="https://latex.codecogs.com/png.latex?ax+by"> is zero, positive and negative. Can you see that <img src="https://latex.codecogs.com/png.latex?ax+by"> (and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">) represents the signed distance from the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> to our line?</p>
+</section>
+<section id="axbyc" class="level3">
+<h3 class="anchored" data-anchor-id="axbyc">ax+by+c</h3>
+<p>By this point, you need to understand the line equation of the form <img src="https://latex.codecogs.com/png.latex?ax+by=0">. What about <img src="https://latex.codecogs.com/png.latex?ax+by+c=0">? Let’s explore this!</p>
+<p>We represented <img src="https://latex.codecogs.com/png.latex?ax+by"> with the dot product <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">, then <img src="https://latex.codecogs.com/png.latex?ax+by+c"> can be represented with <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D+c">. First, we land on the 1D number line with <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">, then move <img src="https://latex.codecogs.com/png.latex?c"> steps forward on that 1D number line. It is easier explained with a visualization:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="310" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 309;"><span id="cb12-310"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="352" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 351;"><span id="cb12-352"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -1904,14 +1934,14 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="317" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 316;"><span id="cb13-317"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="359" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 358;"><span id="cb13-359"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">make_board</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"board4"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb13-318">  <span class="dt" style="color: #AD0000;
+<span id="cb13-360">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">showPoint</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1921,7 +1951,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb13-319">  <span class="dt" style="color: #AD0000;
+<span id="cb13-361">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">showNormalAxis</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1931,7 +1961,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb13-320">  <span class="dt" style="color: #AD0000;
+<span id="cb13-362">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">showC</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1941,17 +1971,17 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb13-321">})</span></code></pre></div>
+<span id="cb13-363">})</span></code></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-13" data-nodetype="expression">
 
 </div>
 </div>
 </div>
-<p>We introduced a slider for the coefficient <img src="https://latex.codecogs.com/png.latex?c">. Play with it, and notice the location of our line when <img src="https://latex.codecogs.com/png.latex?c=1"> and <img src="https://latex.codecogs.com/png.latex?c=-1">.</p>
-<p>Can you see that <img src="https://latex.codecogs.com/png.latex?ax+by+c"> is still the signed distance from the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> and our line? What does <img src="https://latex.codecogs.com/png.latex?c"> represent?</p>
+<p>Play with the slider for <img src="https://latex.codecogs.com/png.latex?c">, and notice the location of our line when <img src="https://latex.codecogs.com/png.latex?c=1"> and <img src="https://latex.codecogs.com/png.latex?c=-1">.</p>
+<p>Can you see that <img src="https://latex.codecogs.com/png.latex?ax+by+c"> is still the signed distance from the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> to our line? What does <img src="https://latex.codecogs.com/png.latex?c"> represent?</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1960,9 +1990,9 @@ Explanation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><img src="https://latex.codecogs.com/png.latex?ax+by+c"> (or <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D%20+%20c">) is the signed distance. We land on the 1D number line with <img src="https://latex.codecogs.com/png.latex?c'=%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">, then we have <img src="https://latex.codecogs.com/png.latex?c'+c">. The <img src="https://latex.codecogs.com/png.latex?c'+c"> is zero when <img src="https://latex.codecogs.com/png.latex?c'=-c">; 1 when <img src="https://latex.codecogs.com/png.latex?c'=-c+1">; -1 when <img src="https://latex.codecogs.com/png.latex?c'=-c-1">; and so on.</p>
+<p>First, we land on the 1D number line with <img src="https://latex.codecogs.com/png.latex?c'=%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">. Then, let’s denote <img src="https://latex.codecogs.com/png.latex?ax+by+c"> as <img src="https://latex.codecogs.com/png.latex?c'+c">. The <img src="https://latex.codecogs.com/png.latex?c'+c"> is zero when <img src="https://latex.codecogs.com/png.latex?c'=-c">; <img src="https://latex.codecogs.com/png.latex?1"> when <img src="https://latex.codecogs.com/png.latex?c'=-c+1">; <img src="https://latex.codecogs.com/png.latex?-1"> when <img src="https://latex.codecogs.com/png.latex?c'=-c-1">; and so on.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%7Cc%7C"> is the distance from the origin to our line, c is the signed distance.</p>
 </div>
 </div>
@@ -1975,6 +2005,7 @@ Explanation
 
 
 </section>
+</div>
 </section>
 
  ]]></description>
