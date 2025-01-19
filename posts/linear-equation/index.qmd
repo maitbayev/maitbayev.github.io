@@ -1,14 +1,12 @@
 ---
-title: "Draft: Linear Equation Intuition"
+title: "Linear Equation Intuition"
 author: "Madiyar Aitbayev"
 date: "2025-01-20"
 categories: [math]
 image: "images/image.jpg"
-draft: true
-draft-mode: visible 
 ---
 
-# Draft: Linear Equation Intuition
+# Linear Equation Intuition
 
 ## Introduction
 
@@ -166,9 +164,14 @@ function make_board(name, props) {
   const showPoint = props.showPoint || false
   const board = init_board(name, /*extend=*/4.5);
  
-  const sliderAlpha = board.create("slider", [[-1, -3], [1, -3], [0, 45, 360]], {
+  const sliderAlpha = board.create("slider", [[-1, -2.5], [1, -2.5], [0, 45, 360]], {
     name: "alpha",
     snapWidth: 1
+  });
+  const sliderC = board.create("slider", [[-1, -3.5], [1, -3.5], [-4, 0, 4]], {
+    name: "c",
+    snapWidth: 0.1,
+    visible: props.showC || false
   });
   const pointN = board.create("point", [function() {
     return Math.cos(rad(sliderAlpha.Value()));
@@ -182,7 +185,7 @@ function make_board(name, props) {
     highlight: false
   });
   const line = board.create("line", [function() {
-    return 0;
+    return sliderC.Value();
   }, function() {
     return pointN.X();
   }, function() {
@@ -225,7 +228,7 @@ function make_board(name, props) {
     straightFirst:false, 
     straightLast:false,
     visible: showPoint 
-  }) 
+  });
   const normalAxis = board.create('axis', [[0, 0], pointN], {
     visible: props.showNormalAxis || false,
     ticks: {
@@ -242,7 +245,7 @@ function make_board(name, props) {
     straightLast: false, 
     lastArrow: true,
     highlight: false
-  })
+  });
   
   return board;
 }
@@ -295,7 +298,43 @@ make_board("board3", {
 
 The introduced 1D number line has ticks that represent the signed distances from our line. The projection of the point $\textbf{p}$ falls somewhere on that 1D number line (the dotted line segment), which corresponds to the dot product. Remember that $ax+by$ and $\textbf{n} \cdot \textbf{p}$ are the same. Play with the point $\textbf{p}$ (and with the slider) to understand when $ax+by$ is zero, positive and negative. Can you see that $ax+by$ (and $\textbf{n} \cdot \textbf{p}$) represents the signed distance between the point $\textbf{p}$ and our line?
 
-**TO DO:**
+By this point, you need to understand the simple line equation of the form $ax+by=0$. What about $ax+by+c=0$? 
+Let's explore this!
+
+Notice that $ax+by+c=0$ is almost similar to the $ax+by=0$ except the $c$ coefficient. 
+We represented $ax+by$ with the dot product $\textbf{n} \cdot \textbf{p}$, then $ax+by+c$ can be represented with $\textbf{n} \cdot \textbf{p}+c$. 
+First, we land on the 1D number line with $\textbf{n} \cdot \textbf{p}$, then move $c$ steps forward on that 1D number line. 
+It means that our line is located at the $-c$ tick of the 1D number line, since we add $c$.
+
+```{ojs}
+//| echo: false
+ 
+board_div("board4", /*width=*/400)
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+make_board("board4", {
+  showPoint: true,
+  showNormalAxis: true,
+  showC: true,
+})
+```
+
+We introduced a slider for the coefficient $c$. Play with it, and notice the location of our line when $c=1$ and $c=-1$.
+
+Can you see that $ax+by+c$ is still the signed distance from the point $\textbf{p}$ and our line? What does $c$ represent?
+
+::: {.callout-note collapse="true"}
+#### Explanation 
+
+$ax+by+c$ (or $\textbf{n} \cdot \textbf{p} + c$) is the signed distance. We land on the 1D number line with $c'=\textbf{n} \cdot \textbf{p}$, then we have $c'+c$. The $c'+c$ is zero when $c'=-c$; 1 when $c'=-c+1$; -1 when $c'=-c-1$; and so on.
+
+$|c|$ is the distance from the origin to our line, c is the signed distance.
+
+:::
+
 
 ## The End
 

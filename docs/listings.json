@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/linear-equation/index.html",
       "/posts/dot-product/index.html",
       "/posts/jensens-inequality/index.html",
       "/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html",
