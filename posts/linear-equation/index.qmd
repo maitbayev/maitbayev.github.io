@@ -163,6 +163,7 @@ We have the following items visualized:
 - Our line $ax+by=0$ is visualized with blue
   - It passes through the origin
 - A normal vector of the line $\textbf{n}=[a, b]$ is visualized with red
+- Note that multiple $\textbf{n}$ vectors can represent the same line
 
 Feel free to **play** (by moving) with the point $\textbf{n}$ and notice how the line equation is changing with respect to the normal vector.
 
@@ -190,7 +191,7 @@ From now on, we assume that $\|\textbf{n}\|=1$. Let's check what we have:
 ```{ojs}
 //| echo: false
  
-function make_board(name, props) {
+function make_board(name, props = {}) {
   function rad(deg) {
     return deg / 180 * Math.PI;
   }
@@ -299,24 +300,14 @@ board_div("board2", /*width=*/400)
 ```{ojs}
 //| echo: false
 //| output: false
-make_board("board2", {
-  showPointGlider: true, 
-}) 
+make_board("board2") 
 ```
 
-We introduced new elements:
+We introduced **a slider** that defines the angle of the normal vector $\textbf{n}$. 
+We also restricted $\textbf{n}$ so that $\|\textbf{n}\|=1$.
+Now, our line is uniquely defined by $\textbf{n}$, which was not case before.
 
-- A slider that defines the angle of the normal vector $\textbf{n}$
-- A green point $\textbf{p}=[x, y]$
-  - Try moving this point!
-  - It is always on the line, i.e., $ax+by=0$ where $\textbf{n}=[a, b]$ 
-- We also restricted $\textbf{n}$ so that $\|\textbf{n}\|=1$
-
-We have learned so far that $a$ and $b$ represent the normal vector $\textbf{n}=[a, b]$, and we can express the line equation with the dot product $\textbf{n} \cdot \textbf{p} = 0$.
-
-What is the meaning of the line equation when the point $\textbf{p}$ is outside of the line, i.e., when $ax+by \neq 0$? **Spoiler:** the value is the signed distance from the point $\textbf{p}$ to our line. Let's understand this intuitively. 
-
-The dot product $\textbf{n} \cdot \textbf{p}$ is a non-zero value when the point $\textbf{p}$ is not on the line. From [the previous](https://maitbayev.github.io/posts/dot-product/) post we know that the dot product is the projection of the vector $\textbf{p}$ to the vector $\textbf{n}$. Imagine a 1D number line spanned by the vector $\textbf{n}$ like this:
+Let's introduce a point $\textbf{p}=[x, y]$ on the line:
 
 ```{ojs}
 //| echo: false
@@ -328,6 +319,32 @@ board_div("board3", /*width=*/400)
 //| echo: false
 //| output: false
 make_board("board3", {
+  showPointGlider: true,
+}) 
+```
+
+Try moving the new green point! The point $\textbf{p}=[x, y]$ always lies on the line, in other words:
+
+- $ax+by=0$, where $\textbf{n}=[a, b]$
+- Equivalently $\textbf{n} \cdot \textbf{p} = 0$
+- The angle defined by the points $(\textbf{n}, \text{origin}, \textbf{p})$ is a right angle.
+
+We have learned so far that $a$ and $b$ represent the normal vector $\textbf{n}=[a, b]$, and we can express the line equation with the dot product $\textbf{n} \cdot \textbf{p} = 0$.
+
+What is the meaning of the line equation when the point $\textbf{p}$ is outside of the line, i.e., when $ax+by \neq 0$? **Spoiler:** the value is the signed distance from the point $\textbf{p}$ to our line. Let's understand this intuitively. 
+
+The dot product $\textbf{n} \cdot \textbf{p}$ is a non-zero value when the point $\textbf{p}$ is not on the line. From [the previous](https://maitbayev.github.io/posts/dot-product/) post we know that the dot product is the projection of the vector $\textbf{p}$ to the vector $\textbf{n}$. Imagine a 1D number line spanned by the vector $\textbf{n}$ like this:
+
+```{ojs}
+//| echo: false
+ 
+board_div("board4", /*width=*/400)
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+make_board("board4", {
   showPoint: true,
   showNormalAxis: true, 
 }) 
@@ -341,23 +358,23 @@ Can you see that $ax+by$ (and $\textbf{n} \cdot \textbf{p}$) represents the sign
 
 ### ax+by+c
 
-By this point, you need to understand the line equation of the form $ax+by=0$. What about $ax+by+c=0$? 
-Let's explore this!
+By this point, you need to understand the line equation of the form $ax+by=0$. 
+Now, let's explore the line equation of the form $ax+by+c=0$!
 
-We represented $ax+by$ with the dot product $\textbf{n} \cdot \textbf{p}$, then $ax+by+c$ can be represented with $\textbf{n} \cdot \textbf{p}+c$. 
+We represented $ax+by$ with the dot product $\textbf{n} \cdot \textbf{p}$, similarly $ax+by+c$ can be represented with $\textbf{n} \cdot \textbf{p}+c$. 
 First, we land on the 1D number line with $\textbf{n} \cdot \textbf{p}$, then move $c$ steps forward on that 1D number line. 
 It is easier explained with a visualization:
 
 ```{ojs}
 //| echo: false
  
-board_div("board4", /*width=*/400)
+board_div("board5", /*width=*/400)
 ```
 
 ```{ojs}
 //| echo: false
 //| output: false
-make_board("board4", {
+make_board("board5", {
   showPoint: true,
   showNormalAxis: true,
   showC: true,
@@ -376,6 +393,7 @@ Then, let's denote $ax+by+c$ as $c'+c$.
 The $c'+c$ is zero when $c'=-c$; $1$ when $c'=-c+1$; $-1$ when $c'=-c-1$; and so on.
 
 $|c|$ is the distance from the origin to our line, c is the signed distance.
+The signed distance is positive in the direction of the normal vector, and negative in the opposite direction.
 
 :::
 
