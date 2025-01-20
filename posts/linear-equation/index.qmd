@@ -26,6 +26,8 @@ You need to have a good intuition about the dot product.
 
 ## Cheatsheet
 
+A short summary for people in hurry.
+
 The distance from the point (x, y) to the line is: 
 $$
 \left|\frac{ax+by+c}{\sqrt{a^2+b^2}}\right|
