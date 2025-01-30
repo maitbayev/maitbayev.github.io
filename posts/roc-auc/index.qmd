@@ -6,6 +6,7 @@ categories: [math, cv]
 draft: true
 draft-mode: unlinked
 image: "images/image.jpg"
+toc: true
 ---
 
 # AUC Interpretation
@@ -241,7 +242,7 @@ plot1D(true)
 
 Positive items in the dataset are shown in green, and negative items are shown in red. The sizes of circles represent the predicted probability scores, with smaller circles representing scores close to 0 and larger circles representing scores close to 1. The items are ordered according to their probability scores, from smallest to largest. 
 
-Next, we choose a threshold depending on the application of our ML model. For now, let's visualize the threshold as well:
+Next, we choose a threshold depending on the application of our ML model. But, for now, let's visualize the threshold as well:
 
 ```{ojs}
 //| echo: false
@@ -277,7 +278,10 @@ Why not calculate the true positive (TP), false positive (FP), false negative (F
 }
 ```
 
+**Tip**: You can adjust the threshold using the slider above (give it a try), and the tables above and below will update accordingly.
+
 And the metrics as defined above:
+
 ```{ojs}
 //| echo: false
 {
@@ -388,3 +392,7 @@ return Plot.plot({
 ```{ojs}
 viewof pointSelection = htl.html`<input type=range min=1 max=100 step=1 value=50 style="width:400px">`
 ```
+
+## The End
+
+I hope you enjoyed this post. [Subscribe](https://maitbayev.substack.com/subscribe) to get a notification about future posts. 
