@@ -7,6 +7,6 @@ freeze: true
 # Enable banner style title blocks
 title-block-banner: true
 
-comments:
-  giscus: 
-    repo: maitbayev/maitbayev.github.io
+# comments:
+#   giscus: 
+#     repo: maitbayev/maitbayev.github.io

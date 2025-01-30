@@ -1,0 +1,390 @@
+---
+title: "ROC and AUC Interpretation"
+author: "Madiyar Aitbayev"
+date: "2025-01-30"
+categories: [math, cv]
+draft: true
+draft-mode: unlinked
+image: "images/image.jpg"
+---
+
+# AUC Interpretation
+
+## Introduction 
+
+A **binary classification** is a machine learning model that classifies input data into two classes. We need different metrics to train or evaluate the performance of ML models. 
+The **ROC AUC** score is a popular metric for evaluating binary classification models. In this post, we will try to understand the intuition behind the **ROC AUC** with simple visualizations.
+
+## Recap
+
+Let's say we have two classes ("positive" and "negative") and a machine learning model that predicts a probability score between 0 and 1. A probability of **0.9** signifes that the input is closer to **"positive"** than "negative", a probability of **0.2** signifies that the input is closer to **"negative"**, and so on.
+
+However, our task is to produce a binary output: "positive" or "negative". To achieve this, we choose a **threshold**. Any input with a predicted probability score above the threshold is classified as positive, while inputs with lower scores are classified as negative.
+
+### Confusion Matrix
+
+There are four outcomes of the predicted binary output, which can be visualized with the following table, called a confusion matrix:
+
+![confusion matrix](images/confusion_matrix.jpg)
+
+
+The green row corresponds to the positive items in our dataset, while the red row corresponds to the negative items in the dataset. The columns correspond to the model predictions. The cells outlined with dark green are the items our model classified correctly, i.e., the accurate predictions of our model.   
+
+Now, we can give a few relevant metrics based on the confusion matrix.
+
+### Accuracy 
+
+Accuracy is the proportion of all accurate predictions **among all items** in the dataset. It is defined as:
+
+$$
+\text{Accuracy} = \frac{TP+TN}{TP+TN+FP+FN}
+$$
+
+Accuracy can be misleading, especially with imbalanced datasets. For example, if 99% of our dataset is positive, a model that always predicts positive will have an accuracy of 99%, but this doesn't provide meaningful insight. Hence, we need other metrics. 
+
+### True Positive Rate
+
+The true positive rate or recall is the proportion of accurate predictions **among positive items**:
+
+$$
+\text{Recall or TPR} = \frac{TP}{TP+FN}
+$$
+
+The recall only considers the green row (actual positives) from our confusion table, and completely ignores the red row.
+
+### True Negative Rate
+
+The true negative rate or specificity is the proportion of accurate predictions **among negative items**:
+
+$$
+\text{Specificity or TNR} = \frac{TN}{FP+TN}
+$$
+
+The specificity only consider the red row (actual negatives) from our confusion table. 
+
+### False Positive Rate 
+
+The false positive rate is the proportion of **inaccurate** predictions **among negative items**:
+
+$$
+\text{FPR} = \frac{FP}{FP+TN}
+$$
+
+alternatively:
+
+$$
+\text{FPR}=1-\text{TNR}
+$$
+
+The false positive rate is related to the true negative rate. However, we will be using FPR more than TNR in the next sections. 
+
+### Visualizations
+
+```{ojs}
+//| echo: false
+ 
+stats = {
+    function truePositive(positives, threshold) {
+        var truePositive = 0;
+        for (var i in positives) {
+            if (positives[i] > threshold) {
+                truePositive += 1;
+            }
+        }
+        return truePositive;
+    }
+
+    function trueNegative(negatives, threshold) {
+        var trueNegative = 0;
+        for (var i in negatives) {
+            if (negatives[i] <= threshold) {
+                trueNegative += 1;
+            }
+        }
+        return trueNegative;
+    }
+
+    function falsePositive(negatives, threshold) {
+        return negatives.length - trueNegative(negatives, threshold);
+    }
+
+    function falseNegative(positives, threshold) {
+        return positives.length - truePositive(positives, threshold);
+    }
+
+    function recall(positives, threshold) {
+        return truePositive(positives, threshold) / positives.length;
+    }
+
+    function specifity(negatives, threshold) {
+        return trueNegative(negatives, threshold) / negatives.length;
+    }
+
+    function fallout(negatives, threshold) {
+        return 1.0 - specifity(negatives, threshold);
+    }
+
+    return {
+        truePositive: truePositive,
+        trueNegative: trueNegative,
+        falsePositive: falsePositive,
+        falseNegative: falseNegative,
+        recall: recall,
+        specifity: specifity,
+        fallout: fallout
+    }
+}
+```
+
+```{ojs}
+//| echo: false
+function confusionMatrix(positives, negatives, threshold) {
+    this.positives = positives;
+    this.negatives = negatives;
+    this.threshold = threshold;
+    this.truePositive = stats.truePositive(positives, threshold);
+    this.trueNegative = stats.trueNegative(negatives, threshold);
+    this.falsePositive = stats.falsePositive(negatives, threshold);
+    this.falseNegative = stats.falseNegative(positives, threshold);
+    this.recall = stats.recall(positives, threshold);
+    this.fallout = stats.fallout(negatives, threshold);
+    return this;
+}
+```
+
+```{ojs}
+//| echo: false
+positives = [0.1, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+```
+
+```{ojs}
+//| echo: false
+negatives = [0.1, 0.2, 0.3, 0.5, 0.8, 1.0];
+```
+
+```{ojs}
+//| echo: false
+lightRed = "#ff8886"
+```
+
+
+
+```{ojs}
+//| echo: false
+function plot1D(simple=false) {
+    var positiveDots = []
+    for (var i in positives) {
+        positiveDots.push({
+            x: positives[i], 
+            y: 1,
+            r: positives[i],
+            strokeWidth: !simple && positives[i] > thresholdSlider ? 3 : 0,
+            stroke: "green",
+        })
+    }
+    var negativeDots = [];
+    for (var i in negatives) {
+        negativeDots.push({
+            x: negatives[i],
+            y: 0,
+            r: negatives[i],
+            strokeWidth: !simple && negatives[i] <= thresholdSlider ? 3 : 0,
+            // stroke: "#8b0000",
+            stroke: "green"
+        })
+    }
+    return Plot.plot({
+        r: {range: [0, 20]},
+        height: 100,
+        width: 600,
+        x: { label: "probability" },
+        y: { axis: null },
+        marginRight: 25,
+        marginTop: 25,
+        marginBottom: 25,
+        marginLeft: 25,
+        marks: [
+            Plot.dot(positiveDots, {
+                x: "x", y: "y", r: "r", 
+                stroke: "stroke", strokeWidth: "strokeWidth", 
+                fill: "lightgreen"
+            }),
+            Plot.dot(negativeDots, {
+                x: "x", y: "y", r: "r", 
+                stroke: "stroke", strokeWidth: "strokeWidth", 
+                fill: lightRed
+            }),
+            Plot.line([
+                [Math.min(thresholdSlider, 1), 0], 
+                [Math.min(thresholdSlider, 1), 1]
+            ], { 
+                strokeWidth: 3, 
+                strokeDasharray: "2, 6",
+                opacity: 0
+            })
+        ]
+    })
+}
+```
+
+Let's setup a visualization for better understanding. Assume that we have:
+
+- A dataset with positive and negative items
+- A ML model that predicts a probability score from 0 to 1, representing the probability that the input belongs to the positive class.
+
+Then, we can visualize our dataset and their probability predictions in the same visualization as below:
+
+```{ojs}
+//| echo: false
+plot1D(true)
+```
+
+Positive items in the dataset are shown in green, and negative items are shown in red. The sizes of circles represent the predicted probability scores, with smaller circles representing scores close to 0 and larger circles representing scores close to 1. The items are ordered according to their probability scores, from smallest to largest. 
+
+Next, we choose a threshold depending on the application of our ML model. For now, let's visualize the threshold as well:
+
+```{ojs}
+//| echo: false
+plot1D(false)
+```
+
+```{ojs}
+//| echo: false
+viewof thresholdSlider = htl.html`<input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:600px">`
+``` 
+
+The circles with a dark green outline represent items that are accurately classified, in other words, true positives and true negatives.
+
+Why not calculate the true positive (TP), false positive (FP), false negative (FP) and true negative (TN) values from the confussion matrix:
+
+
+
+```{ojs}
+//| echo: false
+{
+    const confusion = confusionMatrix(positives, negatives, thresholdSlider);
+    const data = [{
+        "threshold": Math.min(1, thresholdSlider), 
+        "TP": confusion.truePositive,
+        "FP": confusion.falsePositive,
+        "FN": confusion.falseNegative,
+        "TN": confusion.trueNegative,
+        // "TPR (Recall)": confusion.truePositive + "/" + positives.length,
+        // "FPR": confusion.falsePositive + "/" + negatives.length,
+        // "TNR (Specificity)": confusion.trueNegative + "/" + negatives.length,
+    }]
+    return Inputs.table(data)
+}
+```
+
+And the metrics as defined above:
+```{ojs}
+//| echo: false
+{
+    const confusion = confusionMatrix(positives, negatives, thresholdSlider);
+    const correctItems = confusion.truePositive + confusion.trueNegative;
+    const allItems = positives.length + negatives.length;
+    const data = [{
+        "Accuracy": correctItems + "/" + allItems,
+        "TPR (Recall)": confusion.truePositive + "/" + positives.length,
+        "FPR": confusion.falsePositive + "/" + negatives.length,
+        "TNR (Specificity)": confusion.trueNegative + "/" + negatives.length,
+    }]
+    return Inputs.table(data)
+}
+```
+
+Play with the threshold slider and make sure that you understand different metrics, especially the true positive rate and the false positive rate.
+
+```{ojs}
+{
+function roc_curve(positives, negatives) {
+    var thresholds = positives.concat(negatives);
+    thresholds.push(-0.1); 
+    thresholds.push(1.1); 
+    thresholds.sort();
+    thresholds.reverse();
+    var result = []
+    for (var i in thresholds) {
+        const threshold = thresholds[i]; 
+        if (i == 0 || threshold != thresholds[i-1]) {
+            const f = stats.fallout(negatives, threshold);
+            const r = stats.recall(positives, threshold);
+            const prevx = (i == 0 ? -1 : result[result.length - 1].x);
+            result.push({x: prevx >= f ? prevx + 1e-6 : f, y: r})
+        }
+    }
+    return result;
+}
+
+var falloutDots = []
+for (var i in negatives) {
+    const value = stats.fallout(negatives, negatives[i]);
+    falloutDots.push({
+        x: value, 
+        y: 0.0,
+        r: negatives[i] 
+    })
+}
+var recallDots = []
+for (var i in positives) {
+    const value = stats.recall(positives, positives[i]);
+    recallDots.push({
+        x: 0.0, 
+        y: value,
+        r: positives[i],
+    })
+}
+
+var aucPoints = [];
+for (var i in falloutDots) {
+    for (var j in recallDots) {
+        if (falloutDots[i].r <= recallDots[j].r) {
+            aucPoints.push([falloutDots[i].x, recallDots[j].y])
+        }
+    }
+}
+aucPoints.reverse();
+const point = aucPoints[Math.floor(pointSelection / 101 * aucPoints.length)];
+
+return Plot.plot({
+    grid: true,
+    x: {label: "False Negative Rate"},
+    y: {label: "True Positive Rate"},
+    r: {range: [0, 20]},
+    aspectRatio: 1.0,
+    marks: [
+        Plot.line([[0, point[1]], point], {
+           strokeDasharray: "1, 7",
+        }),
+        Plot.line([[point[0], 0], point], {
+           strokeDasharray: "1, 7",
+        }),
+        Plot.areaY(roc_curve(positives, negatives), {
+            x: "x",
+            y: "y",
+            opacity: 0.15,
+        }),
+        Plot.line(roc_curve(positives, negatives), {
+            x: "x",
+            y: "y",
+            strokeWidth: 2
+        }),
+        Plot.dot(falloutDots, {x: "x", y: "y", r: "r", fill: lightRed}),
+        Plot.dot(recallDots, {x: "x", y: "y", r: "r", fill: "lightgreen"}),
+        Plot.line([[0, 0], [1, 1]], {
+            stroke: "orange",
+            opacity: 0.0,
+        }),
+        Plot.dot([{x: point[0], y: point[1], r: 0.15}], {
+            x: "x", y: "y", r: "r",
+            fill: "black",
+        }),
+    ]
+})
+}
+```
+
+```{ojs}
+viewof pointSelection = htl.html`<input type=range min=1 max=100 step=1 value=50 style="width:400px">`
+```
