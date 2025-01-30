@@ -298,7 +298,7 @@ And the metrics as defined above:
 }
 ```
 
-Play with the threshold slider and make sure that you understand different metrics, especially the true positive rate and the false positive rate.
+Play with the threshold slider and make sure that you understand different metrics, especially the true positive rate and the false positive rate. Maybe try to reproduce the metrics youself first and compare with the table?
 
 ```{ojs}
 {
