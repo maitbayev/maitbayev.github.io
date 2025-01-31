@@ -24,11 +24,11 @@ I suggest you also checkout the following resources:
 
 1. [evidentlyai.com/classification-metrics/...](https://www.evidentlyai.com/classification-metrics/explain-roc-curve) - quite detailed explaination
 2. [developers.google.com/machine-learning/...](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc) - beginner friendly explanation 
-3. [wikipedia.org/wiki/Receiver_operating_characteristic](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) - the Wikipedia entry
 4. [madrury.github.io/jekyll/update/statistics/...](https://madrury.github.io/jekyll/update/statistics/2017/06/21/auc-proof.html) - my favourite so far that gives a probabilistic intution of ROC AUC score 
 5. [www.alexejgossmann.com/auc/](https://www.alexejgossmann.com/auc/) - more advanced explanation
 
-Let's say we have two classes ("positive" and "negative") and a machine learning model that predicts a probability score between 0 and 1. A probability of **0.9** signifes that the input is closer to **"positive"** than "negative", a probability of **0.2** signifies that the input is closer to **"negative"**, and so on.
+Let's say we have two classes ("positive" and "negative") and a machine learning model that predicts a probability score between 0 and 1. 
+A probability of **0.9** signifes that the input is closer to **"positive"** than "negative", a probability of **0.2** signifies that the input is closer to **"negative"**, and so on.
 
 However, our task is to produce a binary output: "positive" or "negative". To achieve this, we choose a **threshold**. 
 Any input with a predicted probability score above the threshold is classified as positive, while inputs with lower scores are classified as negative.
@@ -90,7 +90,7 @@ $$
 
 The false positive rate is related to the true negative rate. However, we will be using FPR more than TNR in the next sections. 
 
-### Visualizations
+### Visualization
 
 ```{ojs}
 //| echo: false
@@ -241,7 +241,7 @@ function plot1D(simple, threshold, fpr=false) {
             ], { 
                 strokeWidth: 3, 
                 strokeDasharray: "2, 6",
-                opacity: 2
+                opacity: simple ? 0 : 1,
             })
         ]
     })
@@ -349,7 +349,7 @@ viewof thresholdSlider2 = html`
 `
 ``` 
 
-the true positive rate and the false positive rate values: 
+The true positive and the false positive rates accordingly: 
 
 ```{ojs}
 //| echo: false
@@ -377,7 +377,7 @@ plot_roc(null, thresholdSlider2)
 
 Play with the slider above and compare the values in the table and (x, y) values of the black point.
 
-The 2D visualization is similar to the 1D visualization, except the following differences:
+The new 2D visualization is similar to the previous 1D visualization, except the following differences:
 
 - The positives items (green) are visualized along the Y-axis 
 - The negatives items (red) are visualized along the X-axis 
@@ -494,7 +494,7 @@ The area under the ROC curve is called ROC AUC score.
 ROC AUC stands for "Receiver Operating Characteristic Area Under the Curve".
 
 The ROC AUC score is a single number that summarizes the ML model's performance across all threshold values.
-Note that the ROC curve summarizes with a plot, whereas the ROC AUC score summarizes with a single number.
+Note that the ROC curve summarizes with a visual plot, whereas the ROC AUC score summarizes with a single number.
 
 ```{ojs}
 //| echo: false
@@ -528,7 +528,7 @@ viewof pointSelection = html`
 Every point (e.g., the black dot above) under the ROC curve has a corresponding green circle (follow the dotted horizontal segment) and a corresponding red circle (follow the dotted vertical segment). 
 Then, the mentioned green circle is always bigger or equal to the red circle. 
 
-**Tip**: Try the slider above and compare the matching green circle with the matching red circles.
+**Tip**: Try the slider above and compare the matching green circle with the matching red circle.
 
 This is the same interpretation as the probabilistic interpretation when the number of items in our dataset approaches infinity. 
 
