@@ -266,6 +266,7 @@ window.Quarto = {
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>A <strong>binary classification</strong> is a machine learning model that classifies input data into two classes. We need different metrics to train or evaluate the performance of ML models. The <strong>ROC AUC</strong> score is a popular metric for evaluating binary classification models. In this post, we will try to understand the intuition behind the <strong>ROC AUC</strong> with simple visualizations.</p>
+<p><a href="https://maitbayev.substack.com/subscribe">Subscribe</a> to get a notification about future posts.</p>
 </section>
 <section id="recap" class="level2">
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
@@ -322,57 +323,57 @@ window.Quarto = {
 <section id="visualizations" class="level3">
 <h3 class="anchored" data-anchor-id="visualizations">Visualizations</h3>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="85" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 84;"><span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> {</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">truePositive</span>(positives<span class="op">,</span> threshold) {</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> truePositive <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> positives) {</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (positives[i] <span class="op">&gt;</span> threshold) {</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>                truePositive <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> truePositive<span class="op">;</span></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">trueNegative</span>(negatives<span class="op">,</span> threshold) {</span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> trueNegative <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> negatives) {</span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (negatives[i] <span class="op">&lt;=</span> threshold) {</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>                trueNegative <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> trueNegative<span class="op">;</span></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">falsePositive</span>(negatives<span class="op">,</span> threshold) {</span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> negatives<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="fu">trueNegative</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">falseNegative</span>(positives<span class="op">,</span> threshold) {</span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> positives<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="fu">truePositive</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">recall</span>(positives<span class="op">,</span> threshold) {</span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">truePositive</span>(positives<span class="op">,</span> threshold) <span class="op">/</span> positives<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">specifity</span>(negatives<span class="op">,</span> threshold) {</span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">trueNegative</span>(negatives<span class="op">,</span> threshold) <span class="op">/</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">fallout</span>(negatives<span class="op">,</span> threshold) {</span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">1.0</span> <span class="op">-</span> <span class="fu">specifity</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>        <span class="dt">truePositive</span><span class="op">:</span> truePositive<span class="op">,</span></span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>        <span class="dt">trueNegative</span><span class="op">:</span> trueNegative<span class="op">,</span></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>        <span class="dt">falsePositive</span><span class="op">:</span> falsePositive<span class="op">,</span></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>        <span class="dt">falseNegative</span><span class="op">:</span> falseNegative<span class="op">,</span></span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>        <span class="dt">recall</span><span class="op">:</span> recall<span class="op">,</span></span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>        <span class="dt">specifity</span><span class="op">:</span> specifity<span class="op">,</span></span>
-<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fallout</span><span class="op">:</span> fallout</span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="87" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 86;"><span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> {</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">truePositive</span>(positives<span class="op">,</span> threshold) {</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> truePositive <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> positives) {</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (positives[i] <span class="op">&gt;</span> threshold) {</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>                truePositive <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> truePositive<span class="op">;</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">trueNegative</span>(negatives<span class="op">,</span> threshold) {</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> trueNegative <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> negatives) {</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (negatives[i] <span class="op">&lt;=</span> threshold) {</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>                trueNegative <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> trueNegative<span class="op">;</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">falsePositive</span>(negatives<span class="op">,</span> threshold) {</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> negatives<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="fu">trueNegative</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">falseNegative</span>(positives<span class="op">,</span> threshold) {</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> positives<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="fu">truePositive</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">recall</span>(positives<span class="op">,</span> threshold) {</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">truePositive</span>(positives<span class="op">,</span> threshold) <span class="op">/</span> positives<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">specifity</span>(negatives<span class="op">,</span> threshold) {</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">trueNegative</span>(negatives<span class="op">,</span> threshold) <span class="op">/</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">fallout</span>(negatives<span class="op">,</span> threshold) {</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">1.0</span> <span class="op">-</span> <span class="fu">specifity</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>        <span class="dt">truePositive</span><span class="op">:</span> truePositive<span class="op">,</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>        <span class="dt">trueNegative</span><span class="op">:</span> trueNegative<span class="op">,</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>        <span class="dt">falsePositive</span><span class="op">:</span> falsePositive<span class="op">,</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>        <span class="dt">falseNegative</span><span class="op">:</span> falseNegative<span class="op">,</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>        <span class="dt">recall</span><span class="op">:</span> recall<span class="op">,</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>        <span class="dt">specifity</span><span class="op">:</span> specifity<span class="op">,</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fallout</span><span class="op">:</span> fallout</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -380,18 +381,18 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="141" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 140;"><span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">confusionMatrix</span>(positives<span class="op">,</span> negatives<span class="op">,</span> threshold) {</span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">positives</span> <span class="op">=</span> positives<span class="op">;</span></span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">negatives</span> <span class="op">=</span> negatives<span class="op">;</span></span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">threshold</span> <span class="op">=</span> threshold<span class="op">;</span></span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">truePositive</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">truePositive</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">trueNegative</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">trueNegative</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">falsePositive</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">falsePositive</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">falseNegative</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">falseNegative</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">recall</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">recall</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">fallout</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">fallout</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">this</span><span class="op">;</span></span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="143" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 142;"><span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">confusionMatrix</span>(positives<span class="op">,</span> negatives<span class="op">,</span> threshold) {</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">positives</span> <span class="op">=</span> positives<span class="op">;</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">negatives</span> <span class="op">=</span> negatives<span class="op">;</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">threshold</span> <span class="op">=</span> threshold<span class="op">;</span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">truePositive</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">truePositive</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">trueNegative</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">trueNegative</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">falsePositive</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">falsePositive</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">falseNegative</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">falseNegative</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">recall</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">recall</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">fallout</span> <span class="op">=</span> stats<span class="op">.</span><span class="fu">fallout</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">this</span><span class="op">;</span></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -399,7 +400,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="157" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 156;"><span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>positives <span class="op">=</span> [<span class="fl">0.1</span><span class="op">,</span> <span class="fl">0.3</span><span class="op">,</span> <span class="fl">0.5</span><span class="op">,</span> <span class="fl">0.6</span><span class="op">,</span> <span class="fl">0.7</span><span class="op">,</span> <span class="fl">0.8</span><span class="op">,</span> <span class="fl">0.9</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="159" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 158;"><span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>positives <span class="op">=</span> [<span class="fl">0.1</span><span class="op">,</span> <span class="fl">0.3</span><span class="op">,</span> <span class="fl">0.5</span><span class="op">,</span> <span class="fl">0.6</span><span class="op">,</span> <span class="fl">0.7</span><span class="op">,</span> <span class="fl">0.8</span><span class="op">,</span> <span class="fl">0.9</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -407,7 +408,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="162" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 161;"><span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>negatives <span class="op">=</span> [<span class="fl">0.1</span><span class="op">,</span> <span class="fl">0.2</span><span class="op">,</span> <span class="fl">0.3</span><span class="op">,</span> <span class="fl">0.5</span><span class="op">,</span> <span class="fl">0.8</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="164" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 163;"><span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a>negatives <span class="op">=</span> [<span class="fl">0.1</span><span class="op">,</span> <span class="fl">0.2</span><span class="op">,</span> <span class="fl">0.3</span><span class="op">,</span> <span class="fl">0.5</span><span class="op">,</span> <span class="fl">0.8</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -415,7 +416,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="167" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 166;"><span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>lightRed <span class="op">=</span> <span class="st">"#ff8886"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="169" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 168;"><span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>lightRed <span class="op">=</span> <span class="st">"#ff8886"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
@@ -423,68 +424,68 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="174" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 173;"><span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">plot1D</span>(simple<span class="op">,</span> threshold<span class="op">,</span> fpr<span class="op">=</span><span class="kw">false</span>) {</span>
-<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> positiveDots <span class="op">=</span> []</span>
-<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> positives) {</span>
-<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a>        positiveDots<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> positives[i]<span class="op">,</span> </span>
-<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
-<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> positives[i]<span class="op">,</span></span>
-<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeWidth</span><span class="op">:</span> <span class="op">!</span>simple <span class="op">&amp;&amp;</span> positives[i] <span class="op">&gt;</span> threshold<span class="op">?</span> <span class="dv">3</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a>            <span class="dt">stroke</span><span class="op">:</span> <span class="st">"green"</span><span class="op">,</span></span>
-<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> negativeDots <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> negatives) {</span>
-<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> strokeWidth <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (simple) {</span>
-<span id="cb6-189"><a href="#cb6-189" aria-hidden="true" tabindex="-1"></a>            strokeWidth <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-190"><a href="#cb6-190" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span> (fpr <span class="op">&amp;&amp;</span> negatives[i] <span class="op">&gt;</span> threshold) {</span>
-<span id="cb6-191"><a href="#cb6-191" aria-hidden="true" tabindex="-1"></a>            strokeWidth <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
-<span id="cb6-192"><a href="#cb6-192" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span> (<span class="op">!</span>fpr <span class="op">&amp;&amp;</span> negatives[i] <span class="op">&lt;=</span> threshold) {</span>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="176" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 175;"><span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">plot1D</span>(simple<span class="op">,</span> threshold<span class="op">,</span> fpr<span class="op">=</span><span class="kw">false</span>) {</span>
+<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> positiveDots <span class="op">=</span> []</span>
+<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> positives) {</span>
+<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a>        positiveDots<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> positives[i]<span class="op">,</span> </span>
+<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> positives[i]<span class="op">,</span></span>
+<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeWidth</span><span class="op">:</span> <span class="op">!</span>simple <span class="op">&amp;&amp;</span> positives[i] <span class="op">&gt;</span> threshold<span class="op">?</span> <span class="dv">3</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a>            <span class="dt">stroke</span><span class="op">:</span> <span class="st">"green"</span><span class="op">,</span></span>
+<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> negativeDots <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> negatives) {</span>
+<span id="cb6-189"><a href="#cb6-189" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> strokeWidth <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-190"><a href="#cb6-190" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (simple) {</span>
+<span id="cb6-191"><a href="#cb6-191" aria-hidden="true" tabindex="-1"></a>            strokeWidth <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-192"><a href="#cb6-192" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span> (fpr <span class="op">&amp;&amp;</span> negatives[i] <span class="op">&gt;</span> threshold) {</span>
 <span id="cb6-193"><a href="#cb6-193" aria-hidden="true" tabindex="-1"></a>            strokeWidth <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
-<span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a>        negativeDots<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb6-196"><a href="#cb6-196" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> negatives[i]<span class="op">,</span></span>
-<span id="cb6-197"><a href="#cb6-197" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb6-198"><a href="#cb6-198" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> negatives[i]<span class="op">,</span></span>
-<span id="cb6-199"><a href="#cb6-199" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeWidth</span><span class="op">:</span> strokeWidth<span class="op">,</span></span>
-<span id="cb6-200"><a href="#cb6-200" aria-hidden="true" tabindex="-1"></a>            <span class="dt">stroke</span><span class="op">:</span> fpr <span class="op">?</span> <span class="st">"#8b0000"</span> <span class="op">:</span> <span class="st">"green"</span></span>
-<span id="cb6-201"><a href="#cb6-201" aria-hidden="true" tabindex="-1"></a>            <span class="co">//stroke: "red"</span></span>
-<span id="cb6-202"><a href="#cb6-202" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb6-203"><a href="#cb6-203" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb6-204"><a href="#cb6-204" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb6-205"><a href="#cb6-205" aria-hidden="true" tabindex="-1"></a>        <span class="dt">r</span><span class="op">:</span> {<span class="dt">range</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">20</span>]}<span class="op">,</span></span>
-<span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a>        <span class="dt">height</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
-<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a>        <span class="dt">width</span><span class="op">:</span> <span class="dv">600</span><span class="op">,</span></span>
-<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"probability"</span> }<span class="op">,</span></span>
-<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span></span>
-<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
-<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
-<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
-<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
-<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>(positiveDots<span class="op">,</span> {</span>
-<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> </span>
-<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a>                <span class="dt">stroke</span><span class="op">:</span> <span class="st">"stroke"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="st">"strokeWidth"</span><span class="op">,</span> </span>
-<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a>                <span class="dt">fill</span><span class="op">:</span> <span class="st">"lightgreen"</span></span>
-<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
-<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>(negativeDots<span class="op">,</span> {</span>
-<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> </span>
-<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a>                <span class="dt">stroke</span><span class="op">:</span> <span class="st">"stroke"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="st">"strokeWidth"</span><span class="op">,</span> </span>
-<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a>                <span class="dt">fill</span><span class="op">:</span> lightRed</span>
-<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
-<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>([</span>
-<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a>                [<span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(threshold<span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> </span>
-<span id="cb6-227"><a href="#cb6-227" aria-hidden="true" tabindex="-1"></a>                [<span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(threshold<span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">1</span>]</span>
-<span id="cb6-228"><a href="#cb6-228" aria-hidden="true" tabindex="-1"></a>            ]<span class="op">,</span> { </span>
-<span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a>                <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> </span>
-<span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a>                <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"2, 6"</span><span class="op">,</span></span>
-<span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a>                <span class="dt">opacity</span><span class="op">:</span> <span class="dv">2</span></span>
-<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a>            })</span>
-<span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a>        ]</span>
-<span id="cb6-234"><a href="#cb6-234" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb6-235"><a href="#cb6-235" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span> (<span class="op">!</span>fpr <span class="op">&amp;&amp;</span> negatives[i] <span class="op">&lt;=</span> threshold) {</span>
+<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a>            strokeWidth <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb6-196"><a href="#cb6-196" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-197"><a href="#cb6-197" aria-hidden="true" tabindex="-1"></a>        negativeDots<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb6-198"><a href="#cb6-198" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> negatives[i]<span class="op">,</span></span>
+<span id="cb6-199"><a href="#cb6-199" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb6-200"><a href="#cb6-200" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> negatives[i]<span class="op">,</span></span>
+<span id="cb6-201"><a href="#cb6-201" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeWidth</span><span class="op">:</span> strokeWidth<span class="op">,</span></span>
+<span id="cb6-202"><a href="#cb6-202" aria-hidden="true" tabindex="-1"></a>            <span class="dt">stroke</span><span class="op">:</span> fpr <span class="op">?</span> <span class="st">"#8b0000"</span> <span class="op">:</span> <span class="st">"green"</span></span>
+<span id="cb6-203"><a href="#cb6-203" aria-hidden="true" tabindex="-1"></a>            <span class="co">//stroke: "red"</span></span>
+<span id="cb6-204"><a href="#cb6-204" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb6-205"><a href="#cb6-205" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a>        <span class="dt">r</span><span class="op">:</span> {<span class="dt">range</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">20</span>]}<span class="op">,</span></span>
+<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a>        <span class="dt">height</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
+<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a>        <span class="dt">width</span><span class="op">:</span> <span class="dv">600</span><span class="op">,</span></span>
+<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"probability"</span> }<span class="op">,</span></span>
+<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span></span>
+<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
+<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
+<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
+<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
+<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>(positiveDots<span class="op">,</span> {</span>
+<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> </span>
+<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>                <span class="dt">stroke</span><span class="op">:</span> <span class="st">"stroke"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="st">"strokeWidth"</span><span class="op">,</span> </span>
+<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a>                <span class="dt">fill</span><span class="op">:</span> <span class="st">"lightgreen"</span></span>
+<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>(negativeDots<span class="op">,</span> {</span>
+<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> </span>
+<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a>                <span class="dt">stroke</span><span class="op">:</span> <span class="st">"stroke"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="st">"strokeWidth"</span><span class="op">,</span> </span>
+<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a>                <span class="dt">fill</span><span class="op">:</span> lightRed</span>
+<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb6-227"><a href="#cb6-227" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>([</span>
+<span id="cb6-228"><a href="#cb6-228" aria-hidden="true" tabindex="-1"></a>                [<span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(threshold<span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> </span>
+<span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a>                [<span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(threshold<span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">1</span>]</span>
+<span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a>            ]<span class="op">,</span> { </span>
+<span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a>                <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> </span>
+<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a>                <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"2, 6"</span><span class="op">,</span></span>
+<span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a>                <span class="dt">opacity</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb6-234"><a href="#cb6-234" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb6-235"><a href="#cb6-235" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -498,7 +499,7 @@ window.Quarto = {
 </ul>
 <p>Then, we can visualize our dataset and their probability predictions in the same visualization as below:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="248" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 247;"><span id="cb7-248"><a href="#cb7-248" aria-hidden="true" tabindex="-1"></a><span class="fu">plot1D</span>(<span class="kw">true</span><span class="op">,</span> thresholdSlider)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="250" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 249;"><span id="cb7-250"><a href="#cb7-250" aria-hidden="true" tabindex="-1"></a><span class="fu">plot1D</span>(<span class="kw">true</span><span class="op">,</span> thresholdSlider)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="expression">
 
@@ -508,7 +509,7 @@ window.Quarto = {
 <p>Positive items in the dataset are shown in green, and negative items are shown in red. The sizes of circles represent the predicted probability scores, with smaller circles representing scores close to 0 and larger circles representing scores close to 1. The items are ordered according to their probability scores, from smallest to largest.</p>
 <p>Next, we choose a threshold depending on the application of our ML model. But, for now, let’s visualize the threshold as well:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="257" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 256;"><span id="cb8-257"><a href="#cb8-257" aria-hidden="true" tabindex="-1"></a><span class="fu">plot1D</span>(<span class="kw">false</span><span class="op">,</span> thresholdSlider)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="259" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 258;"><span id="cb8-259"><a href="#cb8-259" aria-hidden="true" tabindex="-1"></a><span class="fu">plot1D</span>(<span class="kw">false</span><span class="op">,</span> thresholdSlider)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="expression">
 
@@ -516,9 +517,9 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="262" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 261;"><span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a>viewof thresholdSlider <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:90%"/&gt;</span></span>
-<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="264" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 263;"><span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a>viewof thresholdSlider <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:90%"/&gt;</span></span>
+<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
@@ -528,17 +529,17 @@ window.Quarto = {
 <p>The circles with dark green outline represent items that are accurately classified, in other words, true positives and true negatives.</p>
 <p>Why not calculate the true positive (TP), false positive (FP), false negative (FP) and true negative (TN) values from the confussion matrix:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="275" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 274;"><span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> confusion <span class="op">=</span> <span class="fu">confusionMatrix</span>(positives<span class="op">,</span> negatives<span class="op">,</span> thresholdSlider)<span class="op">;</span></span>
-<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> [{</span>
-<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a>        <span class="st">"threshold"</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span><span class="op">,</span> thresholdSlider)<span class="op">,</span> </span>
-<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TP"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">truePositive</span><span class="op">,</span></span>
-<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a>        <span class="st">"FP"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">falsePositive</span><span class="op">,</span></span>
-<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a>        <span class="st">"FN"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">falseNegative</span><span class="op">,</span></span>
-<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TN"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">trueNegative</span><span class="op">,</span></span>
-<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a>    }]</span>
-<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">table</span>(data)</span>
-<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="277" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 276;"><span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> confusion <span class="op">=</span> <span class="fu">confusionMatrix</span>(positives<span class="op">,</span> negatives<span class="op">,</span> thresholdSlider)<span class="op">;</span></span>
+<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> [{</span>
+<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a>        <span class="st">"threshold"</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span><span class="op">,</span> thresholdSlider)<span class="op">,</span> </span>
+<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TP"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">truePositive</span><span class="op">,</span></span>
+<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>        <span class="st">"FP"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">falsePositive</span><span class="op">,</span></span>
+<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a>        <span class="st">"FN"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">falseNegative</span><span class="op">,</span></span>
+<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TN"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">trueNegative</span><span class="op">,</span></span>
+<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a>    }]</span>
+<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">table</span>(data)</span>
+<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="expression">
 
@@ -548,18 +549,18 @@ window.Quarto = {
 <p><strong>Tip</strong>: You can adjust the threshold using the slider above (give it a try), and the tables above and below will update accordingly.</p>
 <p>And the metrics as defined above:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="294" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 293;"><span id="cb11-294"><a href="#cb11-294" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> confusion <span class="op">=</span> <span class="fu">confusionMatrix</span>(positives<span class="op">,</span> negatives<span class="op">,</span> thresholdSlider)<span class="op">;</span></span>
-<span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> correctItems <span class="op">=</span> confusion<span class="op">.</span><span class="at">truePositive</span> <span class="op">+</span> confusion<span class="op">.</span><span class="at">trueNegative</span><span class="op">;</span></span>
-<span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> allItems <span class="op">=</span> positives<span class="op">.</span><span class="at">length</span> <span class="op">+</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
-<span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> [{</span>
-<span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Accuracy"</span><span class="op">:</span> correctItems <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> allItems<span class="op">,</span></span>
-<span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TPR (Recall)"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">truePositive</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> positives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
-<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a>        <span class="st">"FPR"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">falsePositive</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
-<span id="cb11-302"><a href="#cb11-302" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TNR (Specificity)"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">trueNegative</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
-<span id="cb11-303"><a href="#cb11-303" aria-hidden="true" tabindex="-1"></a>    }]</span>
-<span id="cb11-304"><a href="#cb11-304" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">table</span>(data)</span>
-<span id="cb11-305"><a href="#cb11-305" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="296" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> confusion <span class="op">=</span> <span class="fu">confusionMatrix</span>(positives<span class="op">,</span> negatives<span class="op">,</span> thresholdSlider)<span class="op">;</span></span>
+<span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> correctItems <span class="op">=</span> confusion<span class="op">.</span><span class="at">truePositive</span> <span class="op">+</span> confusion<span class="op">.</span><span class="at">trueNegative</span><span class="op">;</span></span>
+<span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> allItems <span class="op">=</span> positives<span class="op">.</span><span class="at">length</span> <span class="op">+</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> [{</span>
+<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Accuracy"</span><span class="op">:</span> correctItems <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> allItems<span class="op">,</span></span>
+<span id="cb11-302"><a href="#cb11-302" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TPR (Recall)"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">truePositive</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> positives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
+<span id="cb11-303"><a href="#cb11-303" aria-hidden="true" tabindex="-1"></a>        <span class="st">"FPR"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">falsePositive</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
+<span id="cb11-304"><a href="#cb11-304" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TNR (Specificity)"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">trueNegative</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
+<span id="cb11-305"><a href="#cb11-305" aria-hidden="true" tabindex="-1"></a>    }]</span>
+<span id="cb11-306"><a href="#cb11-306" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">table</span>(data)</span>
+<span id="cb11-307"><a href="#cb11-307" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="expression">
 
@@ -578,7 +579,7 @@ window.Quarto = {
 <p>The ROC curve is the plot of the true positive rate (TPR) against the false positive rate (FPR) at each threshold values.</p>
 <p>Let’s bring back a slightly modified version of our visualization:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="326" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 325;"><span id="cb12-326"><a href="#cb12-326" aria-hidden="true" tabindex="-1"></a><span class="fu">plot1D</span>(<span class="kw">false</span><span class="op">,</span> thresholdSlider2<span class="op">,</span> <span class="co">/*fpr=*/</span><span class="kw">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="328" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 327;"><span id="cb12-328"><a href="#cb12-328" aria-hidden="true" tabindex="-1"></a><span class="fu">plot1D</span>(<span class="kw">false</span><span class="op">,</span> thresholdSlider2<span class="op">,</span> <span class="co">/*fpr=*/</span><span class="kw">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="expression">
 
@@ -587,9 +588,9 @@ window.Quarto = {
 </div>
 <p>Earlier, we have been visualizing the true negative rate. Now, we are visualizing the false positive rate, outlined with dark red.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="334" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 333;"><span id="cb13-334"><a href="#cb13-334" aria-hidden="true" tabindex="-1"></a>viewof thresholdSlider2 <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb13-335"><a href="#cb13-335" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:90%"/&gt;</span></span>
-<span id="cb13-336"><a href="#cb13-336" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="336" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 335;"><span id="cb13-336"><a href="#cb13-336" aria-hidden="true" tabindex="-1"></a>viewof thresholdSlider2 <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb13-337"><a href="#cb13-337" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:90%"/&gt;</span></span>
+<span id="cb13-338"><a href="#cb13-338" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
@@ -598,16 +599,16 @@ window.Quarto = {
 </div>
 <p>the true positive rate and the false positive rate values:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="343" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 342;"><span id="cb14-343"><a href="#cb14-343" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb14-344"><a href="#cb14-344" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> confusion <span class="op">=</span> <span class="fu">confusionMatrix</span>(positives<span class="op">,</span> negatives<span class="op">,</span> thresholdSlider2)<span class="op">;</span></span>
-<span id="cb14-345"><a href="#cb14-345" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> [{</span>
-<span id="cb14-346"><a href="#cb14-346" aria-hidden="true" tabindex="-1"></a>        <span class="st">"threshold"</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span><span class="op">,</span> thresholdSlider2)<span class="op">,</span> </span>
-<span id="cb14-347"><a href="#cb14-347" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TPR"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">truePositive</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> positives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
-<span id="cb14-348"><a href="#cb14-348" aria-hidden="true" tabindex="-1"></a>        <span class="st">"FPR"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">falsePositive</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
-<span id="cb14-349"><a href="#cb14-349" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb14-350"><a href="#cb14-350" aria-hidden="true" tabindex="-1"></a>    }]</span>
-<span id="cb14-351"><a href="#cb14-351" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">table</span>(data)</span>
-<span id="cb14-352"><a href="#cb14-352" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="345" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 344;"><span id="cb14-345"><a href="#cb14-345" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb14-346"><a href="#cb14-346" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> confusion <span class="op">=</span> <span class="fu">confusionMatrix</span>(positives<span class="op">,</span> negatives<span class="op">,</span> thresholdSlider2)<span class="op">;</span></span>
+<span id="cb14-347"><a href="#cb14-347" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> [{</span>
+<span id="cb14-348"><a href="#cb14-348" aria-hidden="true" tabindex="-1"></a>        <span class="st">"threshold"</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span><span class="op">,</span> thresholdSlider2)<span class="op">,</span> </span>
+<span id="cb14-349"><a href="#cb14-349" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TPR"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">truePositive</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> positives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
+<span id="cb14-350"><a href="#cb14-350" aria-hidden="true" tabindex="-1"></a>        <span class="st">"FPR"</span><span class="op">:</span> confusion<span class="op">.</span><span class="at">falsePositive</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> negatives<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
+<span id="cb14-351"><a href="#cb14-351" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb14-352"><a href="#cb14-352" aria-hidden="true" tabindex="-1"></a>    }]</span>
+<span id="cb14-353"><a href="#cb14-353" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">table</span>(data)</span>
+<span id="cb14-354"><a href="#cb14-354" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-14" data-nodetype="expression">
 
@@ -616,7 +617,7 @@ window.Quarto = {
 </div>
 <p>Now, we need to plot FPR (x-axis) against TPR (y-axis).</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="360" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 359;"><span id="cb15-360"><a href="#cb15-360" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_roc</span>(<span class="kw">null</span><span class="op">,</span> thresholdSlider2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="362" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 361;"><span id="cb15-362"><a href="#cb15-362" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_roc</span>(<span class="kw">null</span><span class="op">,</span> thresholdSlider2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-15" data-nodetype="expression">
 
@@ -632,106 +633,106 @@ window.Quarto = {
 <li>The threshold is visualized by the black circle</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="375" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 374;"><span id="cb16-375"><a href="#cb16-375" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">plot_roc</span>(pointSelection<span class="op">=</span><span class="kw">null</span><span class="op">,</span> pointThreshold<span class="op">=</span><span class="dv">0</span>) {</span>
-<span id="cb16-376"><a href="#cb16-376" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">roc_curve</span>(positives<span class="op">,</span> negatives) {</span>
-<span id="cb16-377"><a href="#cb16-377" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> thresholds <span class="op">=</span> positives<span class="op">.</span><span class="fu">concat</span>(negatives)<span class="op">;</span></span>
-<span id="cb16-378"><a href="#cb16-378" aria-hidden="true" tabindex="-1"></a>        thresholds<span class="op">.</span><span class="fu">push</span>(<span class="op">-</span><span class="fl">0.1</span>)<span class="op">;</span></span>
-<span id="cb16-379"><a href="#cb16-379" aria-hidden="true" tabindex="-1"></a>        thresholds<span class="op">.</span><span class="fu">push</span>(<span class="fl">1.1</span>)<span class="op">;</span></span>
-<span id="cb16-380"><a href="#cb16-380" aria-hidden="true" tabindex="-1"></a>        thresholds<span class="op">.</span><span class="fu">sort</span>()<span class="op">;</span></span>
-<span id="cb16-381"><a href="#cb16-381" aria-hidden="true" tabindex="-1"></a>        thresholds<span class="op">.</span><span class="fu">reverse</span>()<span class="op">;</span></span>
-<span id="cb16-382"><a href="#cb16-382" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> result <span class="op">=</span> []</span>
-<span id="cb16-383"><a href="#cb16-383" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> thresholds) {</span>
-<span id="cb16-384"><a href="#cb16-384" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> threshold <span class="op">=</span> thresholds[i]<span class="op">;</span> </span>
-<span id="cb16-385"><a href="#cb16-385" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (i <span class="op">!=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> threshold <span class="op">==</span> thresholds[i <span class="op">-</span> <span class="dv">1</span>]) {</span>
-<span id="cb16-386"><a href="#cb16-386" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span><span class="op">;</span></span>
-<span id="cb16-387"><a href="#cb16-387" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb16-388"><a href="#cb16-388" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> f <span class="op">=</span> stats<span class="op">.</span><span class="fu">fallout</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb16-389"><a href="#cb16-389" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> r <span class="op">=</span> stats<span class="op">.</span><span class="fu">recall</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
-<span id="cb16-390"><a href="#cb16-390" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> prevx <span class="op">=</span> (i <span class="op">==</span> <span class="dv">0</span> <span class="op">?</span> <span class="op">-</span><span class="dv">1</span> <span class="op">:</span> result[result<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>]<span class="op">.</span><span class="at">x</span>)<span class="op">;</span></span>
-<span id="cb16-391"><a href="#cb16-391" aria-hidden="true" tabindex="-1"></a>            result<span class="op">.</span><span class="fu">push</span>({<span class="dt">x</span><span class="op">:</span> prevx <span class="op">&gt;=</span> f <span class="op">?</span> prevx <span class="op">+</span> <span class="fl">1e-8</span> <span class="op">:</span> f<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> r})</span>
-<span id="cb16-392"><a href="#cb16-392" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb16-393"><a href="#cb16-393" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result<span class="op">;</span></span>
-<span id="cb16-394"><a href="#cb16-394" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb16-395"><a href="#cb16-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-396"><a href="#cb16-396" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> falloutDots <span class="op">=</span> []</span>
-<span id="cb16-397"><a href="#cb16-397" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> negatives) {</span>
-<span id="cb16-398"><a href="#cb16-398" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> value <span class="op">=</span> stats<span class="op">.</span><span class="fu">fallout</span>(negatives<span class="op">,</span> negatives[i] <span class="op">-</span> <span class="fl">1e-6</span>)<span class="op">;</span></span>
-<span id="cb16-399"><a href="#cb16-399" aria-hidden="true" tabindex="-1"></a>        falloutDots<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb16-400"><a href="#cb16-400" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> value<span class="op">,</span> </span>
-<span id="cb16-401"><a href="#cb16-401" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span></span>
-<span id="cb16-402"><a href="#cb16-402" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> negatives[i] </span>
-<span id="cb16-403"><a href="#cb16-403" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb16-404"><a href="#cb16-404" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb16-405"><a href="#cb16-405" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> recallDots <span class="op">=</span> []</span>
-<span id="cb16-406"><a href="#cb16-406" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> positives) {</span>
-<span id="cb16-407"><a href="#cb16-407" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> value <span class="op">=</span> stats<span class="op">.</span><span class="fu">recall</span>(positives<span class="op">,</span> positives[i] <span class="op">-</span> <span class="fl">1e-6</span>)<span class="op">;</span></span>
-<span id="cb16-408"><a href="#cb16-408" aria-hidden="true" tabindex="-1"></a>        recallDots<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb16-409"><a href="#cb16-409" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span> </span>
-<span id="cb16-410"><a href="#cb16-410" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> value<span class="op">,</span></span>
-<span id="cb16-411"><a href="#cb16-411" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> positives[i]<span class="op">,</span></span>
-<span id="cb16-412"><a href="#cb16-412" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb16-413"><a href="#cb16-413" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb16-414"><a href="#cb16-414" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-415"><a href="#cb16-415" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> aucPoints <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb16-416"><a href="#cb16-416" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> falloutDots) {</span>
-<span id="cb16-417"><a href="#cb16-417" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j <span class="kw">in</span> recallDots) {</span>
-<span id="cb16-418"><a href="#cb16-418" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (falloutDots[i]<span class="op">.</span><span class="at">r</span> <span class="op">&lt;=</span> recallDots[j]<span class="op">.</span><span class="at">r</span>) {</span>
-<span id="cb16-419"><a href="#cb16-419" aria-hidden="true" tabindex="-1"></a>                aucPoints<span class="op">.</span><span class="fu">push</span>([falloutDots[i]<span class="op">.</span><span class="at">x</span><span class="op">,</span> recallDots[j]<span class="op">.</span><span class="at">y</span>])</span>
-<span id="cb16-420"><a href="#cb16-420" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb16-421"><a href="#cb16-421" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb16-422"><a href="#cb16-422" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb16-423"><a href="#cb16-423" aria-hidden="true" tabindex="-1"></a>    aucPoints<span class="op">.</span><span class="fu">reverse</span>()<span class="op">;</span></span>
-<span id="cb16-424"><a href="#cb16-424" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> point <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">;</span></span>
-<span id="cb16-425"><a href="#cb16-425" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> pointOpacity <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb16-426"><a href="#cb16-426" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (pointThreshold <span class="op">!=</span> <span class="kw">null</span>) { </span>
-<span id="cb16-427"><a href="#cb16-427" aria-hidden="true" tabindex="-1"></a>        point <span class="op">=</span> [</span>
-<span id="cb16-428"><a href="#cb16-428" aria-hidden="true" tabindex="-1"></a>            stats<span class="op">.</span><span class="fu">fallout</span>(negatives<span class="op">,</span> pointThreshold)<span class="op">,</span> </span>
-<span id="cb16-429"><a href="#cb16-429" aria-hidden="true" tabindex="-1"></a>            stats<span class="op">.</span><span class="fu">recall</span>(positives<span class="op">,</span> pointThreshold)</span>
-<span id="cb16-430"><a href="#cb16-430" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">;</span></span>
-<span id="cb16-431"><a href="#cb16-431" aria-hidden="true" tabindex="-1"></a>        pointOpacity <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb16-432"><a href="#cb16-432" aria-hidden="true" tabindex="-1"></a>    } </span>
-<span id="cb16-433"><a href="#cb16-433" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (pointSelection <span class="op">!=</span> <span class="kw">null</span>) {</span>
-<span id="cb16-434"><a href="#cb16-434" aria-hidden="true" tabindex="-1"></a>        point <span class="op">=</span> aucPoints[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(pointSelection <span class="op">/</span> <span class="dv">101</span> <span class="op">*</span> aucPoints<span class="op">.</span><span class="at">length</span>)]<span class="op">;</span></span>
-<span id="cb16-435"><a href="#cb16-435" aria-hidden="true" tabindex="-1"></a>        pointOpacity <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb16-436"><a href="#cb16-436" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb16-437"><a href="#cb16-437" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb16-438"><a href="#cb16-438" aria-hidden="true" tabindex="-1"></a>        <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb16-439"><a href="#cb16-439" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"False Negative Rate"</span>}<span class="op">,</span></span>
-<span id="cb16-440"><a href="#cb16-440" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"True Positive Rate"</span>}<span class="op">,</span></span>
-<span id="cb16-441"><a href="#cb16-441" aria-hidden="true" tabindex="-1"></a>        <span class="dt">r</span><span class="op">:</span> {<span class="dt">range</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">20</span>]}<span class="op">,</span></span>
-<span id="cb16-442"><a href="#cb16-442" aria-hidden="true" tabindex="-1"></a>        <span class="dt">aspectRatio</span><span class="op">:</span> <span class="fl">1.0</span><span class="op">,</span></span>
-<span id="cb16-443"><a href="#cb16-443" aria-hidden="true" tabindex="-1"></a>        <span class="dt">width</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
-<span id="cb16-444"><a href="#cb16-444" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb16-445"><a href="#cb16-445" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>([[<span class="dv">0</span><span class="op">,</span> point[<span class="dv">1</span>]]<span class="op">,</span> point]<span class="op">,</span> {</span>
-<span id="cb16-446"><a href="#cb16-446" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"1, 7"</span><span class="op">,</span></span>
-<span id="cb16-447"><a href="#cb16-447" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
-<span id="cb16-448"><a href="#cb16-448" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>([[point[<span class="dv">0</span>]<span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> point]<span class="op">,</span> {</span>
-<span id="cb16-449"><a href="#cb16-449" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"1, 7"</span><span class="op">,</span></span>
-<span id="cb16-450"><a href="#cb16-450" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
-<span id="cb16-451"><a href="#cb16-451" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">areaY</span>(<span class="fu">roc_curve</span>(positives<span class="op">,</span> negatives)<span class="op">,</span> {</span>
-<span id="cb16-452"><a href="#cb16-452" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
-<span id="cb16-453"><a href="#cb16-453" aria-hidden="true" tabindex="-1"></a>                <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
-<span id="cb16-454"><a href="#cb16-454" aria-hidden="true" tabindex="-1"></a>                <span class="dt">opacity</span><span class="op">:</span> <span class="fl">0.15</span><span class="op">,</span></span>
-<span id="cb16-455"><a href="#cb16-455" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
-<span id="cb16-456"><a href="#cb16-456" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">roc_curve</span>(positives<span class="op">,</span> negatives)<span class="op">,</span> {</span>
-<span id="cb16-457"><a href="#cb16-457" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
-<span id="cb16-458"><a href="#cb16-458" aria-hidden="true" tabindex="-1"></a>                <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
-<span id="cb16-459"><a href="#cb16-459" aria-hidden="true" tabindex="-1"></a>                <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
-<span id="cb16-460"><a href="#cb16-460" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
-<span id="cb16-461"><a href="#cb16-461" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>(falloutDots<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> lightRed})<span class="op">,</span></span>
-<span id="cb16-462"><a href="#cb16-462" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>(recallDots<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"lightgreen"</span>})<span class="op">,</span></span>
-<span id="cb16-463"><a href="#cb16-463" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>([[<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>]]<span class="op">,</span> {</span>
-<span id="cb16-464"><a href="#cb16-464" aria-hidden="true" tabindex="-1"></a>                <span class="dt">stroke</span><span class="op">:</span> <span class="st">"orange"</span><span class="op">,</span></span>
-<span id="cb16-465"><a href="#cb16-465" aria-hidden="true" tabindex="-1"></a>                <span class="dt">opacity</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span></span>
-<span id="cb16-466"><a href="#cb16-466" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
-<span id="cb16-467"><a href="#cb16-467" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>([{<span class="dt">x</span><span class="op">:</span> point[<span class="dv">0</span>]<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> point[<span class="dv">1</span>]<span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="fl">0.15</span>}]<span class="op">,</span> {</span>
-<span id="cb16-468"><a href="#cb16-468" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span></span>
-<span id="cb16-469"><a href="#cb16-469" aria-hidden="true" tabindex="-1"></a>                <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
-<span id="cb16-470"><a href="#cb16-470" aria-hidden="true" tabindex="-1"></a>                <span class="dt">opacity</span><span class="op">:</span> pointOpacity</span>
-<span id="cb16-471"><a href="#cb16-471" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
-<span id="cb16-472"><a href="#cb16-472" aria-hidden="true" tabindex="-1"></a>        ]</span>
-<span id="cb16-473"><a href="#cb16-473" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb16-474"><a href="#cb16-474" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="377" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 376;"><span id="cb16-377"><a href="#cb16-377" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">plot_roc</span>(pointSelection<span class="op">=</span><span class="kw">null</span><span class="op">,</span> pointThreshold<span class="op">=</span><span class="dv">0</span>) {</span>
+<span id="cb16-378"><a href="#cb16-378" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">roc_curve</span>(positives<span class="op">,</span> negatives) {</span>
+<span id="cb16-379"><a href="#cb16-379" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> thresholds <span class="op">=</span> positives<span class="op">.</span><span class="fu">concat</span>(negatives)<span class="op">;</span></span>
+<span id="cb16-380"><a href="#cb16-380" aria-hidden="true" tabindex="-1"></a>        thresholds<span class="op">.</span><span class="fu">push</span>(<span class="op">-</span><span class="fl">0.1</span>)<span class="op">;</span></span>
+<span id="cb16-381"><a href="#cb16-381" aria-hidden="true" tabindex="-1"></a>        thresholds<span class="op">.</span><span class="fu">push</span>(<span class="fl">1.1</span>)<span class="op">;</span></span>
+<span id="cb16-382"><a href="#cb16-382" aria-hidden="true" tabindex="-1"></a>        thresholds<span class="op">.</span><span class="fu">sort</span>()<span class="op">;</span></span>
+<span id="cb16-383"><a href="#cb16-383" aria-hidden="true" tabindex="-1"></a>        thresholds<span class="op">.</span><span class="fu">reverse</span>()<span class="op">;</span></span>
+<span id="cb16-384"><a href="#cb16-384" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> result <span class="op">=</span> []</span>
+<span id="cb16-385"><a href="#cb16-385" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> thresholds) {</span>
+<span id="cb16-386"><a href="#cb16-386" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> threshold <span class="op">=</span> thresholds[i]<span class="op">;</span> </span>
+<span id="cb16-387"><a href="#cb16-387" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (i <span class="op">!=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> threshold <span class="op">==</span> thresholds[i <span class="op">-</span> <span class="dv">1</span>]) {</span>
+<span id="cb16-388"><a href="#cb16-388" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb16-389"><a href="#cb16-389" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb16-390"><a href="#cb16-390" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> f <span class="op">=</span> stats<span class="op">.</span><span class="fu">fallout</span>(negatives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb16-391"><a href="#cb16-391" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> r <span class="op">=</span> stats<span class="op">.</span><span class="fu">recall</span>(positives<span class="op">,</span> threshold)<span class="op">;</span></span>
+<span id="cb16-392"><a href="#cb16-392" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> prevx <span class="op">=</span> (i <span class="op">==</span> <span class="dv">0</span> <span class="op">?</span> <span class="op">-</span><span class="dv">1</span> <span class="op">:</span> result[result<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>]<span class="op">.</span><span class="at">x</span>)<span class="op">;</span></span>
+<span id="cb16-393"><a href="#cb16-393" aria-hidden="true" tabindex="-1"></a>            result<span class="op">.</span><span class="fu">push</span>({<span class="dt">x</span><span class="op">:</span> prevx <span class="op">&gt;=</span> f <span class="op">?</span> prevx <span class="op">+</span> <span class="fl">1e-8</span> <span class="op">:</span> f<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> r})</span>
+<span id="cb16-394"><a href="#cb16-394" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb16-395"><a href="#cb16-395" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb16-396"><a href="#cb16-396" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-397"><a href="#cb16-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-398"><a href="#cb16-398" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> falloutDots <span class="op">=</span> []</span>
+<span id="cb16-399"><a href="#cb16-399" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> negatives) {</span>
+<span id="cb16-400"><a href="#cb16-400" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> value <span class="op">=</span> stats<span class="op">.</span><span class="fu">fallout</span>(negatives<span class="op">,</span> negatives[i] <span class="op">-</span> <span class="fl">1e-6</span>)<span class="op">;</span></span>
+<span id="cb16-401"><a href="#cb16-401" aria-hidden="true" tabindex="-1"></a>        falloutDots<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb16-402"><a href="#cb16-402" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> value<span class="op">,</span> </span>
+<span id="cb16-403"><a href="#cb16-403" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span></span>
+<span id="cb16-404"><a href="#cb16-404" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> negatives[i] </span>
+<span id="cb16-405"><a href="#cb16-405" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb16-406"><a href="#cb16-406" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-407"><a href="#cb16-407" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> recallDots <span class="op">=</span> []</span>
+<span id="cb16-408"><a href="#cb16-408" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> positives) {</span>
+<span id="cb16-409"><a href="#cb16-409" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> value <span class="op">=</span> stats<span class="op">.</span><span class="fu">recall</span>(positives<span class="op">,</span> positives[i] <span class="op">-</span> <span class="fl">1e-6</span>)<span class="op">;</span></span>
+<span id="cb16-410"><a href="#cb16-410" aria-hidden="true" tabindex="-1"></a>        recallDots<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb16-411"><a href="#cb16-411" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span> </span>
+<span id="cb16-412"><a href="#cb16-412" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> value<span class="op">,</span></span>
+<span id="cb16-413"><a href="#cb16-413" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> positives[i]<span class="op">,</span></span>
+<span id="cb16-414"><a href="#cb16-414" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb16-415"><a href="#cb16-415" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-416"><a href="#cb16-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-417"><a href="#cb16-417" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> aucPoints <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb16-418"><a href="#cb16-418" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> falloutDots) {</span>
+<span id="cb16-419"><a href="#cb16-419" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j <span class="kw">in</span> recallDots) {</span>
+<span id="cb16-420"><a href="#cb16-420" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (falloutDots[i]<span class="op">.</span><span class="at">r</span> <span class="op">&lt;=</span> recallDots[j]<span class="op">.</span><span class="at">r</span>) {</span>
+<span id="cb16-421"><a href="#cb16-421" aria-hidden="true" tabindex="-1"></a>                aucPoints<span class="op">.</span><span class="fu">push</span>([falloutDots[i]<span class="op">.</span><span class="at">x</span><span class="op">,</span> recallDots[j]<span class="op">.</span><span class="at">y</span>])</span>
+<span id="cb16-422"><a href="#cb16-422" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb16-423"><a href="#cb16-423" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb16-424"><a href="#cb16-424" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-425"><a href="#cb16-425" aria-hidden="true" tabindex="-1"></a>    aucPoints<span class="op">.</span><span class="fu">reverse</span>()<span class="op">;</span></span>
+<span id="cb16-426"><a href="#cb16-426" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> point <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb16-427"><a href="#cb16-427" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> pointOpacity <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-428"><a href="#cb16-428" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (pointThreshold <span class="op">!=</span> <span class="kw">null</span>) { </span>
+<span id="cb16-429"><a href="#cb16-429" aria-hidden="true" tabindex="-1"></a>        point <span class="op">=</span> [</span>
+<span id="cb16-430"><a href="#cb16-430" aria-hidden="true" tabindex="-1"></a>            stats<span class="op">.</span><span class="fu">fallout</span>(negatives<span class="op">,</span> pointThreshold)<span class="op">,</span> </span>
+<span id="cb16-431"><a href="#cb16-431" aria-hidden="true" tabindex="-1"></a>            stats<span class="op">.</span><span class="fu">recall</span>(positives<span class="op">,</span> pointThreshold)</span>
+<span id="cb16-432"><a href="#cb16-432" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">;</span></span>
+<span id="cb16-433"><a href="#cb16-433" aria-hidden="true" tabindex="-1"></a>        pointOpacity <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb16-434"><a href="#cb16-434" aria-hidden="true" tabindex="-1"></a>    } </span>
+<span id="cb16-435"><a href="#cb16-435" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (pointSelection <span class="op">!=</span> <span class="kw">null</span>) {</span>
+<span id="cb16-436"><a href="#cb16-436" aria-hidden="true" tabindex="-1"></a>        point <span class="op">=</span> aucPoints[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(pointSelection <span class="op">/</span> <span class="dv">101</span> <span class="op">*</span> aucPoints<span class="op">.</span><span class="at">length</span>)]<span class="op">;</span></span>
+<span id="cb16-437"><a href="#cb16-437" aria-hidden="true" tabindex="-1"></a>        pointOpacity <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb16-438"><a href="#cb16-438" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-439"><a href="#cb16-439" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb16-440"><a href="#cb16-440" aria-hidden="true" tabindex="-1"></a>        <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb16-441"><a href="#cb16-441" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"False Negative Rate"</span>}<span class="op">,</span></span>
+<span id="cb16-442"><a href="#cb16-442" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"True Positive Rate"</span>}<span class="op">,</span></span>
+<span id="cb16-443"><a href="#cb16-443" aria-hidden="true" tabindex="-1"></a>        <span class="dt">r</span><span class="op">:</span> {<span class="dt">range</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">20</span>]}<span class="op">,</span></span>
+<span id="cb16-444"><a href="#cb16-444" aria-hidden="true" tabindex="-1"></a>        <span class="dt">aspectRatio</span><span class="op">:</span> <span class="fl">1.0</span><span class="op">,</span></span>
+<span id="cb16-445"><a href="#cb16-445" aria-hidden="true" tabindex="-1"></a>        <span class="dt">width</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb16-446"><a href="#cb16-446" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb16-447"><a href="#cb16-447" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>([[<span class="dv">0</span><span class="op">,</span> point[<span class="dv">1</span>]]<span class="op">,</span> point]<span class="op">,</span> {</span>
+<span id="cb16-448"><a href="#cb16-448" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"1, 7"</span><span class="op">,</span></span>
+<span id="cb16-449"><a href="#cb16-449" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb16-450"><a href="#cb16-450" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>([[point[<span class="dv">0</span>]<span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> point]<span class="op">,</span> {</span>
+<span id="cb16-451"><a href="#cb16-451" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"1, 7"</span><span class="op">,</span></span>
+<span id="cb16-452"><a href="#cb16-452" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb16-453"><a href="#cb16-453" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">areaY</span>(<span class="fu">roc_curve</span>(positives<span class="op">,</span> negatives)<span class="op">,</span> {</span>
+<span id="cb16-454"><a href="#cb16-454" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb16-455"><a href="#cb16-455" aria-hidden="true" tabindex="-1"></a>                <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb16-456"><a href="#cb16-456" aria-hidden="true" tabindex="-1"></a>                <span class="dt">opacity</span><span class="op">:</span> <span class="fl">0.15</span><span class="op">,</span></span>
+<span id="cb16-457"><a href="#cb16-457" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb16-458"><a href="#cb16-458" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">roc_curve</span>(positives<span class="op">,</span> negatives)<span class="op">,</span> {</span>
+<span id="cb16-459"><a href="#cb16-459" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb16-460"><a href="#cb16-460" aria-hidden="true" tabindex="-1"></a>                <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb16-461"><a href="#cb16-461" aria-hidden="true" tabindex="-1"></a>                <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb16-462"><a href="#cb16-462" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb16-463"><a href="#cb16-463" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>(falloutDots<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> lightRed})<span class="op">,</span></span>
+<span id="cb16-464"><a href="#cb16-464" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>(recallDots<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"lightgreen"</span>})<span class="op">,</span></span>
+<span id="cb16-465"><a href="#cb16-465" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">line</span>([[<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>]]<span class="op">,</span> {</span>
+<span id="cb16-466"><a href="#cb16-466" aria-hidden="true" tabindex="-1"></a>                <span class="dt">stroke</span><span class="op">:</span> <span class="st">"orange"</span><span class="op">,</span></span>
+<span id="cb16-467"><a href="#cb16-467" aria-hidden="true" tabindex="-1"></a>                <span class="dt">opacity</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span></span>
+<span id="cb16-468"><a href="#cb16-468" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb16-469"><a href="#cb16-469" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">dot</span>([{<span class="dt">x</span><span class="op">:</span> point[<span class="dv">0</span>]<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> point[<span class="dv">1</span>]<span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="fl">0.15</span>}]<span class="op">,</span> {</span>
+<span id="cb16-470"><a href="#cb16-470" aria-hidden="true" tabindex="-1"></a>                <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span></span>
+<span id="cb16-471"><a href="#cb16-471" aria-hidden="true" tabindex="-1"></a>                <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb16-472"><a href="#cb16-472" aria-hidden="true" tabindex="-1"></a>                <span class="dt">opacity</span><span class="op">:</span> pointOpacity</span>
+<span id="cb16-473"><a href="#cb16-473" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb16-474"><a href="#cb16-474" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb16-475"><a href="#cb16-475" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb16-476"><a href="#cb16-476" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-16" data-nodetype="declaration">
 
@@ -744,7 +745,7 @@ window.Quarto = {
 <p>The area under the ROC curve is called ROC AUC score. ROC AUC stands for “Receiver Operating Characteristic Area Under the Curve”.</p>
 <p>The ROC AUC score is a single number that summarizes the ML model’s performance across all threshold values. Note that the ROC curve summarizes with a plot, whereas the ROC AUC score summarizes with a single number.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="488" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 487;"><span id="cb17-488"><a href="#cb17-488" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_roc</span>(<span class="kw">null</span><span class="op">,</span> <span class="kw">null</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="490" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 489;"><span id="cb17-490"><a href="#cb17-490" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_roc</span>(<span class="kw">null</span><span class="op">,</span> <span class="kw">null</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-17" data-nodetype="expression">
 
@@ -759,7 +760,7 @@ window.Quarto = {
 </blockquote>
 <p>It is nicely explained with the visualization that we already have:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="503" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 502;"><span id="cb18-503"><a href="#cb18-503" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_roc</span>(pointSelection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="505" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 504;"><span id="cb18-505"><a href="#cb18-505" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_roc</span>(pointSelection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-18" data-nodetype="expression">
 
@@ -767,16 +768,16 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb19" data-startfrom="508" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 507;"><span id="cb19-508"><a href="#cb19-508" aria-hidden="true" tabindex="-1"></a>viewof pointSelection <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb19-509"><a href="#cb19-509" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;input type=range min=1 max=100 step=1 value=50 style="width:90%"/&gt;</span></span>
-<span id="cb19-510"><a href="#cb19-510" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb19" data-startfrom="510" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 509;"><span id="cb19-510"><a href="#cb19-510" aria-hidden="true" tabindex="-1"></a>viewof pointSelection <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb19-511"><a href="#cb19-511" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;input type=range min=1 max=100 step=1 value=50 style="width:90%"/&gt;</span></span>
+<span id="cb19-512"><a href="#cb19-512" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-19" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<p>Every point (e.g., the black dot above) under the ROC curve has a corresponding green circle (follow the dotted vertical segment) and a corresponding red circle (follow the dotted horizontal segment). Then, the mentioned green circle is always bigger or equal to the red circle.</p>
+<p>Every point (e.g., the black dot above) under the ROC curve has a corresponding green circle (follow the dotted horizontal segment) and a corresponding red circle (follow the dotted vertical segment). Then, the mentioned green circle is always bigger or equal to the red circle.</p>
 <p><strong>Tip</strong>: Try the slider above and compare the matching green circle with the matching red circles.</p>
 <p>This is the same interpretation as the probabilistic interpretation when the number of items in our dataset approaches infinity.</p>
 </section>

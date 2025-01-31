@@ -16,6 +16,8 @@ toc: true
 A **binary classification** is a machine learning model that classifies input data into two classes. We need different metrics to train or evaluate the performance of ML models. 
 The **ROC AUC** score is a popular metric for evaluating binary classification models. In this post, we will try to understand the intuition behind the **ROC AUC** with simple visualizations.
 
+[Subscribe](https://maitbayev.substack.com/subscribe) to get a notification about future posts. 
+
 ## Recap
 
 Let's say we have two classes ("positive" and "negative") and a machine learning model that predicts a probability score between 0 and 1. A probability of **0.9** signifes that the input is closer to **"positive"** than "negative", a probability of **0.2** signifies that the input is closer to **"negative"**, and so on.
@@ -511,7 +513,7 @@ viewof pointSelection = html`
 `
 ```
 
-Every point (e.g., the black dot above) under the ROC curve has a corresponding green circle (follow the dotted vertical segment) and a corresponding red circle (follow the dotted horizontal segment). 
+Every point (e.g., the black dot above) under the ROC curve has a corresponding green circle (follow the dotted horizontal segment) and a corresponding red circle (follow the dotted vertical segment). 
 Then, the mentioned green circle is always bigger or equal to the red circle. 
 
 **Tip**: Try the slider above and compare the matching green circle with the matching red circles.
