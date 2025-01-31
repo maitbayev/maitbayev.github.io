@@ -2,7 +2,7 @@
 title: "ROC and AUC Interpretation"
 author: "Madiyar Aitbayev"
 date: "2025-01-31"
-categories: [math, cv]
+categories: [math, cv, loss]
 image: "images/image.jpg"
 toc: true
 ---
