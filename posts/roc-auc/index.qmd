@@ -261,7 +261,9 @@ plot1D(false, thresholdSlider)
 
 ```{ojs}
 //| echo: false
-viewof thresholdSlider = htl.html`<input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:600px">`
+viewof thresholdSlider = html`
+<input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:90%"/>
+`
 ``` 
 
 The circles with dark green outline represent items that are accurately classified, in other words, true positives and true negatives.
@@ -331,7 +333,9 @@ we are visualizing the false positive rate, outlined with dark red.
 
 ```{ojs}
 //| echo: false
-viewof thresholdSlider2 = htl.html`<input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:600px">`
+viewof thresholdSlider2 = html`
+<input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:90%"/>
+`
 ``` 
 
 the true positive rate and the false positive rate values: 
@@ -490,7 +494,11 @@ The area of the light gray region in the above visualization is the ROC AUC Scor
 
 The ROC AUC score is 0.5 for a classifier that performs no better than random guessing and approaches 1.0 for a classifier with perfect performance.
 
-**TO DO:**
+The ROC AUC score has a very nice probabilistic interpretation:
+
+> The ROC AUC is the probability that the model will predict a higher probability score to a randomly selected positive item than a randomly selected negative item.
+
+It is nicely explained with the visualization that we already have:
 
 ```{ojs}
 //| echo: false
@@ -498,8 +506,16 @@ plot_roc(pointSelection)
 ```
 
 ```{ojs}
-viewof pointSelection = htl.html`<input type=range min=1 max=100 step=1 value=50 style="width:400px">`
+//| echo: false
+viewof pointSelection = html`
+<input type=range min=1 max=100 step=1 value=50 style="width:90%"/>
+`
 ```
+
+Every point (e.g., the black dot above) under the ROC curve has a corresponding green circle (follow the dotted vertical segment) and a corresponding red circle (follow the dotted horizontal segment). 
+Then, the mentioned green circle is always bigger or equal to the red circle. 
+
+**Tip**: Try slider the slider above and compare the matching green circle with the matching red circles.
 
 ## The End
 
