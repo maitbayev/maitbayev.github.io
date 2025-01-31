@@ -748,11 +748,11 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The ROC AUC score represents the area of the light gray region in the above visualization.</p>
-<p>The ROC AUC score is 0.5 for a random classifier and closer to 1.0 for a perfect classifier.</p>
+<p>The area of the light gray region in the above visualization is the ROC AUC Score.</p>
+<p>The ROC AUC score is 0.5 for a classifier that performs no better than random guessing and approaches 1.0 for a classifier with perfect performance.</p>
 <p><strong>TO DO:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="497" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 496;"><span id="cb18-497"><a href="#cb18-497" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_roc</span>(pointSelection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="496" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 495;"><span id="cb18-496"><a href="#cb18-496" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_roc</span>(pointSelection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-18" data-nodetype="expression">
 
@@ -760,7 +760,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" data-startfrom="501" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 500;"><span id="cb19-501"><a href="#cb19-501" aria-hidden="true" tabindex="-1"></a>viewof pointSelection <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;input type=range min=1 max=100 step=1 value=50 style="width:400px"&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19" data-startfrom="500" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 499;"><span id="cb19-500"><a href="#cb19-500" aria-hidden="true" tabindex="-1"></a>viewof pointSelection <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;input type=range min=1 max=100 step=1 value=50 style="width:400px"&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-19" data-nodetype="declaration">
 

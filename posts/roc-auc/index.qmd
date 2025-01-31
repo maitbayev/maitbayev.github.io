@@ -486,10 +486,9 @@ Note that the ROC curve summarizes with a plot, whereas the ROC AUC score summar
 plot_roc(null, null)
 ```
 
-The ROC AUC score represents the area of the light gray region in the above visualization. 
+The area of the light gray region in the above visualization is the ROC AUC Score.
 
-The ROC AUC score is 0.5 for a random classifier and closer to 1.0 for a perfect classifier. 
-
+The ROC AUC score is 0.5 for a classifier that performs no better than random guessing and approaches 1.0 for a classifier with perfect performance.
 
 **TO DO:**
 
