@@ -7,24 +7,35 @@ image: "images/image.jpg"
 toc: true
 ---
 
-# AUC Interpretation
+# ROC and AUC Interpretation
 
 ## Introduction 
 
-A **binary classification** is a machine learning model that classifies input data into two classes. We need different metrics to train or evaluate the performance of ML models. 
-The **ROC AUC** score is a popular metric for evaluating binary classification models. In this post, we will try to understand the intuition behind the **ROC AUC** with simple visualizations.
+A **binary classification** is a machine learning model that classifies input data into two classes. 
+We need different metrics to train or evaluate the performance of ML models. 
+The [Area Under the Receiver Operating Characteristic Curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) (**ROC AUC**) score is a popular metric for evaluating binary classification models. 
+In this post, we will try to understand the intuition behind the **ROC AUC** with simple and interactive visualizations.
 
 [Subscribe](https://maitbayev.substack.com/subscribe) to get a notification about future posts. 
 
 ## Recap
 
+I suggest you also checkout the following resources:
+
+1. [evidentlyai.com/classification-metrics/...](https://www.evidentlyai.com/classification-metrics/explain-roc-curve) - quite detailed explaination
+2. [developers.google.com/machine-learning/...](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc) - beginner friendly explanation 
+3. [wikipedia.org/wiki/Receiver_operating_characteristic](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) - the Wikipedia entry
+4. [madrury.github.io/jekyll/update/statistics/...](https://madrury.github.io/jekyll/update/statistics/2017/06/21/auc-proof.html) - my favourite so far that gives a probabilistic intution of ROC AUC score 
+5. [www.alexejgossmann.com/auc/](https://www.alexejgossmann.com/auc/) - more advanced explanation
+
 Let's say we have two classes ("positive" and "negative") and a machine learning model that predicts a probability score between 0 and 1. A probability of **0.9** signifes that the input is closer to **"positive"** than "negative", a probability of **0.2** signifies that the input is closer to **"negative"**, and so on.
 
-However, our task is to produce a binary output: "positive" or "negative". To achieve this, we choose a **threshold**. Any input with a predicted probability score above the threshold is classified as positive, while inputs with lower scores are classified as negative.
+However, our task is to produce a binary output: "positive" or "negative". To achieve this, we choose a **threshold**. 
+Any input with a predicted probability score above the threshold is classified as positive, while inputs with lower scores are classified as negative.
 
 ### Confusion Matrix
 
-There are four outcomes of the predicted binary output, which can be visualized with the following table, called a confusion matrix:
+There are four outcomes of the predicted binary output, which can be nicely summarized with the following table, called a confusion matrix:
 
 ![confusion matrix](images/confusion_matrix.jpg)
 
@@ -278,8 +289,8 @@ Why not calculate the true positive (TP), false positive (FP), false negative (F
     const data = [{
         "threshold": Math.min(1, thresholdSlider), 
         "TP": confusion.truePositive,
-        "FP": confusion.falsePositive,
         "FN": confusion.falseNegative,
+        "FP": confusion.falsePositive,
         "TN": confusion.trueNegative,
     }]
     return Inputs.table(data)
@@ -306,15 +317,16 @@ And the metrics as defined above:
 }
 ```
 
-Play with the threshold slider and make sure that you understand different metrics, especially the true positive rate and the false positive rate. Maybe try to reproduce the metrics youself first and compare with the table?
+Play with the threshold slider and make sure that you understand different metrics, especially the true positive rate and the false positive rate. 
+Maybe try to reproduce the metrics youself first at different thresholds and compare with the table?
 
 ## ROC and AUC
 
 ### ROC Curve
 
 Choosing a specific threshold can be difficult since it depends on the particular application. 
-Luckily we have metrics that shows the performance of a ML model at varying threshold values. 
-One of them is a receiver operating characteristic curve or ROC curve. 
+Luckily we have metrics that show the performance of a ML model at varying threshold values. 
+One of them is a [receiver operating characteristic curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) or ROC curve. 
 
 The term "Receiver Operating Characteristic" originates from Word War II, where it was used in radar systems for detecting enemy objects. 
 
@@ -492,6 +504,8 @@ plot_roc(null, null)
 The area of the light gray region in the above visualization is the ROC AUC Score.
 
 The ROC AUC score is 0.5 for a classifier that performs no better than random guessing and approaches 1.0 for a classifier with perfect performance.
+
+### Probabilistic Interpretation
 
 The ROC AUC score has a very nice probabilistic interpretation:
 
