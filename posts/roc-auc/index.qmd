@@ -534,4 +534,8 @@ This is the same interpretation as the probabilistic interpretation when the num
 
 ## The End
 
-I hope you enjoyed this post. [Subscribe](https://maitbayev.substack.com/subscribe) to get a notification about future posts. 
+I hope you enjoyed this post.
+
+In the next post, we will work on an efficient Python implementation of the ROC AUC score based on probabilistic intuition.
+
+[Subscribe](https://maitbayev.substack.com/subscribe) to get a notification about future posts.
