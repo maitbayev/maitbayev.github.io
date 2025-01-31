@@ -172,26 +172,36 @@ lightRed = "#ff8886"
 
 ```{ojs}
 //| echo: false
-function plot1D(simple=false) {
+ 
+function plot1D(simple, threshold, fpr=false) {
+    console.log("plot1d" + threshold)
     var positiveDots = []
     for (var i in positives) {
         positiveDots.push({
             x: positives[i], 
             y: 1,
             r: positives[i],
-            strokeWidth: !simple && positives[i] > thresholdSlider ? 3 : 0,
+            strokeWidth: !simple && positives[i] > threshold? 3 : 0,
             stroke: "green",
         })
     }
     var negativeDots = [];
     for (var i in negatives) {
+        var strokeWidth = 0;
+        if (simple) {
+            strokeWidth = 0;
+        } else if (fpr && negatives[i] > threshold) {
+            strokeWidth = 3;
+        } else if (!fpr && negatives[i] <= threshold) {
+            strokeWidth = 3;
+        }
         negativeDots.push({
             x: negatives[i],
             y: 0,
             r: negatives[i],
-            strokeWidth: !simple && negatives[i] <= thresholdSlider ? 3 : 0,
-            // stroke: "#8b0000",
-            stroke: "green"
+            strokeWidth: strokeWidth,
+            stroke: fpr ? "#8b0000" : "green"
+            //stroke: "red"
         })
     }
     return Plot.plot({
@@ -216,12 +226,12 @@ function plot1D(simple=false) {
                 fill: lightRed
             }),
             Plot.line([
-                [Math.min(thresholdSlider, 1), 0], 
-                [Math.min(thresholdSlider, 1), 1]
+                [Math.min(threshold, 1), 0], 
+                [Math.min(threshold, 1), 1]
             ], { 
                 strokeWidth: 3, 
                 strokeDasharray: "2, 6",
-                opacity: 0
+                opacity: 2
             })
         ]
     })
@@ -237,7 +247,7 @@ Then, we can visualize our dataset and their probability predictions in the same
 
 ```{ojs}
 //| echo: false
-plot1D(true)
+plot1D(true, thresholdSlider)
 ```
 
 Positive items in the dataset are shown in green, and negative items are shown in red. The sizes of circles represent the predicted probability scores, with smaller circles representing scores close to 0 and larger circles representing scores close to 1. The items are ordered according to their probability scores, from smallest to largest. 
@@ -246,7 +256,7 @@ Next, we choose a threshold depending on the application of our ML model. But, f
 
 ```{ojs}
 //| echo: false
-plot1D(false)
+plot1D(false, thresholdSlider)
 ```
 
 ```{ojs}
@@ -254,7 +264,7 @@ plot1D(false)
 viewof thresholdSlider = htl.html`<input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:600px">`
 ``` 
 
-The circles with a dark green outline represent items that are accurately classified, in other words, true positives and true negatives.
+The circles with dark green outline represent items that are accurately classified, in other words, true positives and true negatives.
 
 Why not calculate the true positive (TP), false positive (FP), false negative (FP) and true negative (TN) values from the confussion matrix:
 
@@ -270,9 +280,6 @@ Why not calculate the true positive (TP), false positive (FP), false negative (F
         "FP": confusion.falsePositive,
         "FN": confusion.falseNegative,
         "TN": confusion.trueNegative,
-        // "TPR (Recall)": confusion.truePositive + "/" + positives.length,
-        // "FPR": confusion.falsePositive + "/" + negatives.length,
-        // "TNR (Specificity)": confusion.trueNegative + "/" + negatives.length,
     }]
     return Inputs.table(data)
 }
@@ -300,93 +307,172 @@ And the metrics as defined above:
 
 Play with the threshold slider and make sure that you understand different metrics, especially the true positive rate and the false positive rate. Maybe try to reproduce the metrics youself first and compare with the table?
 
+## ROC and AUC
+
+### ROC Curve
+
+Choosing a specific threshold can be difficult since it depends on the particular application. 
+Luckily we have metrics that shows the performance of a ML model at varying threshold values. 
+One of them is a receiver operating characteristic curve or ROC curve. 
+
+The term "Receiver Operating Characteristic" originates from Word War II, where it was used in radar systems for detecting enemy objects. 
+
+The ROC curve is the plot of the true positive rate (TPR) against the false positive rate (FPR) at each threshold values. 
+
+Let's bring back a slightly modified version of our visualization:
+
 ```{ojs}
+//| echo: false
+plot1D(false, thresholdSlider2, /*fpr=*/true)
+```
+
+Earlier, we have been visualizing the true negative rate. Now,
+we are visualizing the false positive rate, outlined with dark red. 
+
+```{ojs}
+//| echo: false
+viewof thresholdSlider2 = htl.html`<input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:600px">`
+``` 
+
+the true positive rate and the false positive rate: 
+
+```{ojs}
+//| echo: false
 {
-function roc_curve(positives, negatives) {
-    var thresholds = positives.concat(negatives);
-    thresholds.push(-0.1); 
-    thresholds.push(1.1); 
-    thresholds.sort();
-    thresholds.reverse();
-    var result = []
-    for (var i in thresholds) {
-        const threshold = thresholds[i]; 
-        if (i == 0 || threshold != thresholds[i-1]) {
+    const confusion = confusionMatrix(positives, negatives, thresholdSlider2);
+    const data = [{
+        "threshold": Math.min(1, thresholdSlider2), 
+        "TPR": confusion.truePositive + "/" + positives.length,
+        "FPR": confusion.falsePositive + "/" + negatives.length,
+       
+    }]
+    return Inputs.table(data)
+}
+```
+
+
+Now, we need to plot FPR (x-axis) against TPR (y-axis).
+
+```{ojs}
+//| echo: false
+plot_roc(null, thresholdSlider2)
+```
+
+**Tip**: You can adjust the slider above, then this visualization will update accordingly.
+
+Play with the slider above and compare the values in the table and (x, y) values of the black point.
+
+The 2D visualization is similar to the 1D visualization, except the following differences:
+
+- The positives items (green) are visualized along the Y-axis 
+- The negatives items (red) are visualized along the X-axis 
+- The threshold is visualized by the black circle 
+
+```{ojs}
+//| echo: false
+function plot_roc(pointSelection=null, pointThreshold=0) {
+    function roc_curve(positives, negatives) {
+        var thresholds = positives.concat(negatives);
+        thresholds.push(-0.1);
+        thresholds.push(1.1);
+        thresholds.sort();
+        thresholds.reverse();
+        var result = []
+        for (var i in thresholds) {
+            const threshold = thresholds[i]; 
+            if (i != 0 && threshold == thresholds[i - 1]) {
+                continue;
+            }
             const f = stats.fallout(negatives, threshold);
             const r = stats.recall(positives, threshold);
             const prevx = (i == 0 ? -1 : result[result.length - 1].x);
-            result.push({x: prevx >= f ? prevx + 1e-6 : f, y: r})
+            result.push({x: prevx >= f ? prevx + 1e-8 : f, y: r})
+        }
+        return result;
+    }
+
+    var falloutDots = []
+    for (var i in negatives) {
+        const value = stats.fallout(negatives, negatives[i] - 1e-6);
+        falloutDots.push({
+            x: value, 
+            y: 0.0,
+            r: negatives[i] 
+        })
+    }
+    var recallDots = []
+    for (var i in positives) {
+        const value = stats.recall(positives, positives[i] - 1e-6);
+        recallDots.push({
+            x: 0.0, 
+            y: value,
+            r: positives[i],
+        })
+    }
+
+    var aucPoints = [];
+    for (var i in falloutDots) {
+        for (var j in recallDots) {
+            if (falloutDots[i].r <= recallDots[j].r) {
+                aucPoints.push([falloutDots[i].x, recallDots[j].y])
+            }
         }
     }
-    return result;
-}
-
-var falloutDots = []
-for (var i in negatives) {
-    const value = stats.fallout(negatives, negatives[i]);
-    falloutDots.push({
-        x: value, 
-        y: 0.0,
-        r: negatives[i] 
-    })
-}
-var recallDots = []
-for (var i in positives) {
-    const value = stats.recall(positives, positives[i]);
-    recallDots.push({
-        x: 0.0, 
-        y: value,
-        r: positives[i],
-    })
-}
-
-var aucPoints = [];
-for (var i in falloutDots) {
-    for (var j in recallDots) {
-        if (falloutDots[i].r <= recallDots[j].r) {
-            aucPoints.push([falloutDots[i].x, recallDots[j].y])
-        }
-    }
-}
-aucPoints.reverse();
-const point = aucPoints[Math.floor(pointSelection / 101 * aucPoints.length)];
-
-return Plot.plot({
-    grid: true,
-    x: {label: "False Negative Rate"},
-    y: {label: "True Positive Rate"},
-    r: {range: [0, 20]},
-    aspectRatio: 1.0,
-    marks: [
-        Plot.line([[0, point[1]], point], {
-           strokeDasharray: "1, 7",
-        }),
-        Plot.line([[point[0], 0], point], {
-           strokeDasharray: "1, 7",
-        }),
-        Plot.areaY(roc_curve(positives, negatives), {
-            x: "x",
-            y: "y",
-            opacity: 0.15,
-        }),
-        Plot.line(roc_curve(positives, negatives), {
-            x: "x",
-            y: "y",
-            strokeWidth: 2
-        }),
-        Plot.dot(falloutDots, {x: "x", y: "y", r: "r", fill: lightRed}),
-        Plot.dot(recallDots, {x: "x", y: "y", r: "r", fill: "lightgreen"}),
-        Plot.line([[0, 0], [1, 1]], {
-            stroke: "orange",
-            opacity: 0.0,
-        }),
-        Plot.dot([{x: point[0], y: point[1], r: 0.15}], {
-            x: "x", y: "y", r: "r",
-            fill: "black",
-        }),
+    aucPoints.reverse();
+    var point = [
+        stats.fallout(negatives, pointThreshold), 
+        stats.recall(positives, pointThreshold)
     ]
-})
+    if (pointSelection != null) {
+        point = aucPoints[Math.floor(pointSelection / 101 * aucPoints.length)];
+    }
+    return Plot.plot({
+        grid: true,
+        x: {label: "False Negative Rate"},
+        y: {label: "True Positive Rate"},
+        r: {range: [0, 20]},
+        aspectRatio: 1.0,
+        width: 450,
+        marks: [
+            Plot.line([[0, point[1]], point], {
+            strokeDasharray: "1, 7",
+            }),
+            Plot.line([[point[0], 0], point], {
+            strokeDasharray: "1, 7",
+            }),
+            Plot.areaY(roc_curve(positives, negatives), {
+                x: "x",
+                y: "y",
+                opacity: 0.15,
+            }),
+            Plot.line(roc_curve(positives, negatives), {
+                x: "x",
+                y: "y",
+                strokeWidth: 2
+            }),
+            Plot.dot(falloutDots, {x: "x", y: "y", r: "r", fill: lightRed}),
+            Plot.dot(recallDots, {x: "x", y: "y", r: "r", fill: "lightgreen"}),
+            Plot.line([[0, 0], [1, 1]], {
+                stroke: "orange",
+                opacity: 0.0,
+            }),
+            Plot.dot([{x: point[0], y: point[1], r: 0.15}], {
+                x: "x", y: "y", r: "r",
+                fill: "black",
+            }),
+        ]
+    })
 }
+```
+
+
+### Area Under the Curve
+
+**TODO**
+
+```{ojs}
+//| echo: false
+plot_roc(pointSelection)
 ```
 
 ```{ojs}
