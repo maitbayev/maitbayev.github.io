@@ -174,7 +174,6 @@ lightRed = "#ff8886"
 //| echo: false
  
 function plot1D(simple, threshold, fpr=false) {
-    console.log("plot1d" + threshold)
     var positiveDots = []
     for (var i in positives) {
         positiveDots.push({
