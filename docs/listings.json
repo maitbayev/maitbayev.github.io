@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/roc-auc/index.html",
       "/posts/linear-equation/index.html",
       "/posts/dot-product/index.html",
       "/posts/jensens-inequality/index.html",
