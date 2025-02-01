@@ -20,6 +20,9 @@ In this post, we will try to understand the intuition behind the **ROC AUC** wit
 
 ## Recap
 
+Feel free to skip this section if you are already familiar with the confusion matrix, true positive rate and false positive rate.
+[Next Section](#visualization)
+
 I suggest you also checkout the following resources:
 
 1. [evidentlyai.com/classification-metrics/...](https://www.evidentlyai.com/classification-metrics/explain-roc-curve) - quite detailed explaination
@@ -56,7 +59,7 @@ Accuracy can be misleading, especially with imbalanced datasets. For example, if
 
 ### True Positive Rate
 
-The true positive rate or recall is the proportion of accurate predictions **among positive items**:
+The true positive rate or **recall** is the proportion of accurate predictions **among positive items**:
 
 $$
 \text{Recall or TPR} = \frac{TP}{TP+FN}
@@ -66,13 +69,13 @@ The recall only considers the green row (actual positives) from our confusion ta
 
 ### True Negative Rate
 
-The true negative rate or specificity is the proportion of accurate predictions **among negative items**:
+The true negative rate or **specificity** is the proportion of accurate predictions **among negative items**:
 
 $$
 \text{Specificity or TNR} = \frac{TN}{FP+TN}
 $$
 
-The specificity only consider the red row (actual negatives) from our confusion table. 
+The specificity only considers the red row (actual negatives) from our confusion table. 
 
 ### False Positive Rate 
 
@@ -90,7 +93,7 @@ $$
 
 The false positive rate is related to the true negative rate. However, we will be using FPR more than TNR in the next sections. 
 
-### Visualization
+## Visualization
 
 ```{ojs}
 //| echo: false
@@ -180,6 +183,14 @@ lightRed = "#ff8886"
 ```
 
 
+```{ojs}
+//| echo: false
+function customTable(data) {
+    const table = Inputs.table(data);
+    table.style.setProperty("font-size", "1.3em");
+    return table 
+}
+```
 
 ```{ojs}
 //| echo: false
@@ -251,7 +262,7 @@ function plot1D(simple, threshold, fpr=false) {
 Let's setup a visualization for better understanding. Assume that we have:
 
 - A dataset with positive and negative items
-- A ML model that predicts a probability score from 0 to 1, representing the probability that the input belongs to the positive class.
+- An ML model that predicts a probability score from 0 to 1, representing the probability that the input belongs to the positive class.
 
 Then, we can visualize our dataset and their probability predictions in the same visualization as below:
 
@@ -278,7 +289,7 @@ viewof thresholdSlider = html`
 
 The circles with dark green outline represent items that are accurately classified, in other words, true positives and true negatives.
 
-Why not calculate the true positive (TP), false positive (FP), false negative (FP) and true negative (TN) values from the confussion matrix:
+Why not calculate the true positive (TP), false positive (FP), false negative (FP) and true negative (TN) values from the confusion matrix:
 
 
 
@@ -287,13 +298,13 @@ Why not calculate the true positive (TP), false positive (FP), false negative (F
 {
     const confusion = confusionMatrix(positives, negatives, thresholdSlider);
     const data = [{
-        "threshold": Math.min(1, thresholdSlider), 
+        "Threshold": Math.min(1, thresholdSlider), 
         "TP": confusion.truePositive,
         "FN": confusion.falseNegative,
         "FP": confusion.falsePositive,
         "TN": confusion.trueNegative,
     }]
-    return Inputs.table(data)
+    return customTable(data);
 }
 ```
 
@@ -309,11 +320,11 @@ And the metrics as defined above:
     const allItems = positives.length + negatives.length;
     const data = [{
         "Accuracy": correctItems + "/" + allItems,
-        "TPR (Recall)": confusion.truePositive + "/" + positives.length,
+        "TPR": confusion.truePositive + "/" + positives.length,
         "FPR": confusion.falsePositive + "/" + negatives.length,
-        "TNR (Specificity)": confusion.trueNegative + "/" + negatives.length,
+        "TNR": confusion.trueNegative + "/" + negatives.length,
     }]
-    return Inputs.table(data)
+    return customTable(data)
 }
 ```
 
@@ -325,7 +336,7 @@ Maybe try to reproduce the metrics youself first at different thresholds and com
 ### ROC Curve
 
 Choosing a specific threshold can be difficult since it depends on the particular application. 
-Luckily we have metrics that show the performance of a ML model at varying threshold values. 
+Luckily we have metrics that show the performance of an ML model at varying threshold values. 
 One of them is a [receiver operating characteristic curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) or ROC curve. 
 
 The term "Receiver Operating Characteristic" originates from Word War II, where it was used in radar systems for detecting enemy objects. 
@@ -355,13 +366,12 @@ The true positive and the false positive rates accordingly:
 //| echo: false
 {
     const confusion = confusionMatrix(positives, negatives, thresholdSlider2);
-    const data = [{
+    return customTable([{
         "threshold": Math.min(1, thresholdSlider2), 
         "TPR": confusion.truePositive + "/" + positives.length,
         "FPR": confusion.falsePositive + "/" + negatives.length,
        
-    }]
-    return Inputs.table(data)
+    }])
 }
 ```
 
