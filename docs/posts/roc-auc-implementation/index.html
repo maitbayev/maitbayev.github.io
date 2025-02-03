@@ -236,11 +236,12 @@ window.Quarto = {
   <li><a href="#efficient-implementation-of-roc-auc-score" id="toc-efficient-implementation-of-roc-auc-score" class="nav-link active" data-scroll-target="#efficient-implementation-of-roc-auc-score">Efficient Implementation of ROC AUC Score</a>
   <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">Explanation</a>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">Explanation</a></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a>
   <ul class="collapse">
-  <li><a href="#explanation-1" id="toc-explanation-1" class="nav-link" data-scroll-target="#explanation-1">Explanation</a></li>
   <li><a href="#trapezoid-area" id="toc-trapezoid-area" class="nav-link" data-scroll-target="#trapezoid-area">Trapezoid Area</a></li>
   </ul></li>
+  <li><a href="#the-end" id="toc-the-end" class="nav-link" data-scroll-target="#the-end">The End</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -268,55 +269,64 @@ window.Quarto = {
 <li>An ML model that predicts a probability score from 0 to 1, representing the probability that the input belongs to the positive class.</li>
 </ul>
 <p>Similar to the previous post, we can visualize our dataset and their probability predictions in the same visualization as following:</p>
-<div id="c95e6c0e-4912-48af-9cfc-b09ba312491e" class="cell" data-execution_count="8">
+<div id="c95e6c0e-4912-48af-9cfc-b09ba312491e" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="120" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Positive items in the dataset are shown in green, and negative items are shown in red. The sizes of circles represent the predicted probability scores, with smaller circles representing scores close to 0 and larger circles representing scores close to 1.</p>
+<p>Then, choosing a threshold gives us different points on the ROC curve with x representing the false positive rate (FPR) an y representing the true positive rate (TPR). For example:</p>
+<div id="a9ee6bf5-052a-407b-aabb-472046b4667a" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="120" src="iframe_figures/figure_7.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>A threshold of value 0.5 gives us the point <span class="math inline">\((\frac{3}{8}, \frac{4}{7})\)</span>, whereas a threshold of value 0.4:</p>
+<div id="2a9cfbeb-b06e-4d94-b221-d9bd98faa1c0" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="120" src="iframe_figures/figure_8.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Positive items in the dataset are shown in green, and negative items are shown in red. The sizes of circles represent the predicted probability scores, with smaller circles representing scores close to 0 and larger circles representing scores close to 1.</p>
-<p>Then, choosing a threshold gives us different points on the ROC curve with x representing the false positive rate (fpr) an y representing the true positive rate (tpr). For example:</p>
-<div id="a9ee6bf5-052a-407b-aabb-472046b4667a" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>figure_auc1d(positives, negatives, threshold<span class="op">=</span><span class="fl">0.5</span>, reverse<span class="op">=</span><span class="va">False</span>).show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="120" src="iframe_figures/figure_9.html" frameborder="0" allowfullscreen=""></iframe>
-</div>
-</div>
-<p>A threshold of value 0.5 gives us the point <span class="math inline">\((\frac{3}{8}, \frac{4}{7})\)</span>, whereas a threshold of value 0.4 gives us the point <span class="math inline">\((\frac{3}{8}, \frac{5}{7})\)</span>. Then, we need to find the sum of areas of all trapezoids defined by the mentioned adjacent points:</p>
+<p>gives us the point <span class="math inline">\((\frac{3}{8}, \frac{5}{7})\)</span>. We just increased the numerator of the true positive rate when transitioning from 0.5 to 0.4, since a new green point was introduced as a true positive item; everything else remains the same. We would increase the numerator of the false positive rate if a new red point was introduced instead.</p>
+<p>Next, we need to calculate the sum of the areas of all trapezoids formed by the mentioned adjacent points:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/trapezoids.jpg" class="img-fluid figure-img"></p>
 <figcaption>trapezoids</figcaption>
 </figure>
 </div>
-<p>We will sum all 5 trapezoids shown above, which will be the ROC AUC score.</p>
-<section id="explanation-1" class="level3">
-<h3 class="anchored" data-anchor-id="explanation-1">Explanation</h3>
+<p>We would find the sum of all trapezoids shown above, which will be the ROC AUC score.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
 <p>Let’s setup our environment:</p>
-<div id="efb4296c-f16a-4bbb-a08e-9a30cb0bf997" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">2</span>, n)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>predicted <span class="op">=</span> np.random.rand(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="efb4296c-f16a-4bbb-a08e-9a30cb0bf997" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">2</span>, n)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>predicted <span class="op">=</span> np.random.rand(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="03e87115-b626-451c-a9b3-ab7e57330b61" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sklearn.metrics.roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<p>We randomly generated a target which a predicted probability score from 0 to 1. Let’s check what <code>sklearn.metrics.roc_auc_score</code> results:</p>
+<div id="03e87115-b626-451c-a9b3-ab7e57330b61" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sklearn.metrics.roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>np.float64(0.4277597402597403)</code></pre>
 </div>
 </div>
-</section>
+<p>Our implementation should have the same score.</p>
 <section id="trapezoid-area" class="level3">
 <h3 class="anchored" data-anchor-id="trapezoid-area">Trapezoid Area</h3>
+<p>First, let’s implement a helper function that finds the area of the trapezoid defined by two points <span class="math inline">\((x_0, y_0)\)</span> and <span class="math inline">\((x_1, y_1)\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/trapezoid.jpg" class="img-fluid figure-img"></p>
 <figcaption>Area of trapezoid</figcaption>
 </figure>
 </div>
-<p>We want to find the area of the trapezoid defined by the <span class="math inline">\((x_0, y_0)\)</span> and <span class="math inline">\((x_1, y_1)\)</span> points as shown in the picture above. We can add the area of the the rectangle and the right triangle, which is:</p>
+<p>To achieve this, we can add the area of the rectangle and the right triangle, which is:</p>
 <p><span class="math display">\[
 \begin{align}
 \text{Area}&amp;=(x_1-x_0) \times y0+\frac{1}{2}(x_1-x_0) \times (y_1-y_0)\\
@@ -325,51 +335,58 @@ window.Quarto = {
 \end{align}
 \]</span></p>
 <p>Let’s implement the formula in Python:</p>
-<div id="b05fd4da-7772-4c00-bc16-e4daa55e44b8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trapezoid_area(p0, p1):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (p1[<span class="dv">0</span>] <span class="op">-</span> p0[<span class="dv">0</span>]) <span class="op">*</span> (p0[<span class="dv">1</span>] <span class="op">+</span> p1[<span class="dv">1</span>]) <span class="op">/</span> <span class="fl">2.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b05fd4da-7772-4c00-bc16-e4daa55e44b8" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trapezoid_area(p0, p1):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (p1[<span class="dv">0</span>] <span class="op">-</span> p0[<span class="dv">0</span>]) <span class="op">*</span> (p0[<span class="dv">1</span>] <span class="op">+</span> p1[<span class="dv">1</span>]) <span class="op">/</span> <span class="fl">2.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c6a6c28a-ad71-41a8-9342-486144bff3f0" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fast_roc_auc_score(target, predicted):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> target.shape[<span class="dv">0</span>]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    num_positive <span class="op">=</span> np.<span class="bu">sum</span>(target <span class="op">==</span> <span class="dv">1</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    num_negative <span class="op">=</span> n <span class="op">-</span> num_positive </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> np.argsort(predicted)[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    last <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    num_true_positive <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    num_false_positive <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Make sure that the new threshold is unique</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> index <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> predicted[order[index]] <span class="op">!=</span> predicted[order[index <span class="op">-</span> <span class="dv">1</span>]]:</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># True positive rate</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>            tpr <span class="op">=</span> num_true_positive <span class="op">/</span> num_positive</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># False positive rate</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            fpr <span class="op">=</span> num_false_positive <span class="op">/</span> num_negative</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            <span class="co"># New point on the ROC curve</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> [tpr, fpr]</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>            score <span class="op">+=</span> trapezoid_area(last, cur)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>            last <span class="op">=</span> cur</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> target[order[index]] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            num_true_positive <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>            num_false_positive <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    score <span class="op">+=</span> trapezoid_area(last, [<span class="dv">1</span>, <span class="dv">1</span>])</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, we implement the algorithm that we described above:</p>
+<div id="86bf73f9-97bb-4468-a13c-8a4caaf28e4a" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fast_roc_auc_score(target, predicted):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> target.shape[<span class="dv">0</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    num_positive <span class="op">=</span> np.<span class="bu">sum</span>(target <span class="op">==</span> <span class="dv">1</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    num_negative <span class="op">=</span> n <span class="op">-</span> num_positive </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> np.argsort(predicted)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    last <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    num_true_positive <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    num_false_positive <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Make sure that the new threshold is unique</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> index <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> predicted[order[index]] <span class="op">!=</span> predicted[order[index <span class="op">-</span> <span class="dv">1</span>]]:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># True positive rate</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            tpr <span class="op">=</span> num_true_positive <span class="op">/</span> num_positive</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># False positive rate</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            fpr <span class="op">=</span> num_false_positive <span class="op">/</span> num_negative</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            <span class="co"># New point on the ROC curve</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> [tpr, fpr]</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            score <span class="op">+=</span> trapezoid_area(last, cur)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            last <span class="op">=</span> cur</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> target[order[index]] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            num_true_positive <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            num_false_positive <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    score <span class="op">+=</span> trapezoid_area(last, [<span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="361f6637-19a5-467b-96bb-6b4ae06f04ce" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fast_roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="361f6637-19a5-467b-96bb-6b4ae06f04ce" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fast_roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>np.float64(0.5722402597402597)</code></pre>
 </div>
 </div>
-
-
+<p>Nice, we got exactly the same result as <code>sklearn</code></p>
 </section>
+</section>
+<section id="the-end" class="level2">
+<h2 class="anchored" data-anchor-id="the-end">The End</h2>
+<p>I hope you enjoyed this post.</p>
+<p><a href="https://maitbayev.substack.com/subscribe">Subscribe</a> to get a notification about future posts.</p>
+
+
 </section>
 </section>
 
