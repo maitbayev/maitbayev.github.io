@@ -63,7 +63,7 @@
 <figcaption>trapezoids</figcaption>
 </figure>
 </div>
-<p>We would find the sum of all trapezoids shown above, which will be the ROC AUC score.</p>
+<p>We would find the sum of all five trapezoids shown above, which will be the ROC AUC score.</p>
 </section>
 <section id="implementation" class="level2">
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
