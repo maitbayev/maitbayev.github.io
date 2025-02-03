@@ -195,7 +195,7 @@ function customTable(data) {
 ```{ojs}
 //| echo: false
  
-function plot1D(simple, threshold, fpr=false) {
+function plot1D(simple, threshold, fpr=false, reverse=false) {
     var positiveDots = []
     for (var i in positives) {
         positiveDots.push({
@@ -229,7 +229,7 @@ function plot1D(simple, threshold, fpr=false) {
         r: {range: [0, 20]},
         height: 100,
         width: 600,
-        x: { label: "probability" },
+        x: { label: "probability", reverse: reverse },
         y: { axis: null },
         marginRight: 25,
         marginTop: 25,
@@ -347,7 +347,7 @@ Let's bring back a slightly modified version of our visualization:
 
 ```{ojs}
 //| echo: false
-plot1D(false, thresholdSlider2, /*fpr=*/true)
+plot1D(false, thresholdSlider2, /*fpr=*/true);
 ```
 
 Earlier, we have been visualizing the true negative rate. Now,
@@ -367,7 +367,7 @@ The true positive and the false positive rates accordingly:
 {
     const confusion = confusionMatrix(positives, negatives, thresholdSlider2);
     return customTable([{
-        "threshold": Math.min(1, thresholdSlider2), 
+        "Threshold": Math.min(1, thresholdSlider2), 
         "TPR": confusion.truePositive + "/" + positives.length,
         "FPR": confusion.falsePositive + "/" + negatives.length,
        

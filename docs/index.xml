@@ -695,6 +695,13 @@ background-color: null;
 font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
+font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> reverse<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
 font-style: inherit;">false</span>) {</span>
 <span id="cb7-197">    <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -956,7 +963,13 @@ font-style: inherit;">label</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"probability"</span> }<span class="op" style="color: #5E5E5E;
+font-style: inherit;">"probability"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">reverse</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> reverse }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
 <span id="cb7-231">        <span class="dt" style="color: #AD0000;
@@ -1547,7 +1560,9 @@ background-color: null;
 font-style: inherit;">/*fpr=*/</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">true</span>)</span></code></pre></div>
+font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="expression">
 
@@ -1600,7 +1615,7 @@ background-color: null;
 font-style: inherit;">customTable</span>([{</span>
 <span id="cb15-369">        <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"threshold"</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">"Threshold"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="bu" style="color: null;
 background-color: null;
