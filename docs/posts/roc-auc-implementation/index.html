@@ -258,7 +258,7 @@ window.Quarto = {
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>This post is a continuation of the <a href="https://maitbayev.github.io/posts/roc-auc">ROC and AUC Interpretation</a>. Please make sure that you understand that post before reading this one.</p>
-<p>In this post, we will implement an efficient ROC AUC Score in Python with <span class="math inline">\(O(n\log n)\)</span> runtime complexity.</p>
+<p>In this post, we will implement a ROC AUC Score in Python with <span class="math inline">\(O(n\log n)\)</span> runtime complexity.</p>
 <p><a href="https://maitbayev.substack.com/subscribe">Subscribe</a> to get a notification about future posts.</p>
 </section>
 <section id="explanation" class="level2">
@@ -268,7 +268,7 @@ window.Quarto = {
 <li>A dataset with positive and negative items</li>
 <li>An ML model that predicts a probability score from 0 to 1, representing the probability that the input belongs to the positive class</li>
 </ul>
-<p>We want to compute the ROC AUC score of our model predictions. The algorithm that we are going to implement is explained more easily with a visualization.</p>
+<p>We want to compute the ROC AUC score of our model predictions. The algorithm that we are going to implement is explained more easily with a visualization (press the play button):</p>
 <div id="51790732-e7a0-4432-a5dd-b6e501ed9174" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <video src="images/algo.webm" controls="">
@@ -276,11 +276,11 @@ window.Quarto = {
     </video>
 </div>
 </div>
-<p>This is the slightly modified visualization from <a href="https://maitbayev.github.io/posts/roc-auc">the other post</a>. A few notes from the animation video:</p>
+<p>This is a slightly modified visualization from <a href="https://maitbayev.github.io/posts/roc-auc">the other post</a>. A few notes from the animation video:</p>
 <ul>
 <li>The ROC score is the sum of the areas of trapezoids formed by two adjacent points on the ROC curve</li>
 <li>Some trapezoids have zero area</li>
-<li>We start processing the dataset items with the one that has the highest probability score.</li>
+<li>We process the dataset items in order of their probability scores, from the highest to the lowest</li>
 </ul>
 </section>
 <section id="implementation" class="level2">
@@ -361,13 +361,15 @@ window.Quarto = {
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Let’s verify the result:</p>
 <div id="361f6637-19a5-467b-96bb-6b4ae06f04ce" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>np.float64(0.4277597402597403)</code></pre>
 </div>
 </div>
-<p>Nice, we got exactly the same result as <code>sklearn</code>. It is better explained in the code, but roughtly our algorithm is:</p>
+<p>Nice, we got exactly the same result as <code>sklearn</code>.</p>
+<p>It is better explained in the code, but roughtly our algorithm is:</p>
 <ol type="1">
 <li>Sort items by their predicted scores, from largest to smallest</li>
 <li>Process the sorted items one by one in a loop
