@@ -146,8 +146,8 @@ background-color: null;
 font-style: inherit;">2.0</span></span></code></pre></div>
 </div>
 </section>
-<section id="fast-roc-auc-score" class="level3">
-<h3 class="anchored" data-anchor-id="fast-roc-auc-score">Fast ROC AUC Score</h3>
+<section id="roc-auc-score" class="level3">
+<h3 class="anchored" data-anchor-id="roc-auc-score">ROC AUC Score</h3>
 <p>It is better explained in the code, but roughtly our algorithm is:</p>
 <ol type="1">
 <li>Sort items by their predicted scores, from largest to smallest</li>

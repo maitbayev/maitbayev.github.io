@@ -239,7 +239,7 @@ window.Quarto = {
   <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a>
   <ul class="collapse">
   <li><a href="#trapezoid-area" id="toc-trapezoid-area" class="nav-link" data-scroll-target="#trapezoid-area">Trapezoid Area</a></li>
-  <li><a href="#fast-roc-auc-score" id="toc-fast-roc-auc-score" class="nav-link" data-scroll-target="#fast-roc-auc-score">Fast ROC AUC Score</a></li>
+  <li><a href="#roc-auc-score" id="toc-roc-auc-score" class="nav-link" data-scroll-target="#roc-auc-score">ROC AUC Score</a></li>
   </ul></li>
   <li><a href="#the-end" id="toc-the-end" class="nav-link" data-scroll-target="#the-end">The End</a></li>
   </ul></li>
@@ -340,8 +340,8 @@ window.Quarto = {
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (p1[<span class="dv">0</span>] <span class="op">-</span> p0[<span class="dv">0</span>]) <span class="op">*</span> (p0[<span class="dv">1</span>] <span class="op">+</span> p1[<span class="dv">1</span>]) <span class="op">/</span> <span class="fl">2.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="fast-roc-auc-score" class="level3">
-<h3 class="anchored" data-anchor-id="fast-roc-auc-score">Fast ROC AUC Score</h3>
+<section id="roc-auc-score" class="level3">
+<h3 class="anchored" data-anchor-id="roc-auc-score">ROC AUC Score</h3>
 <p>It is better explained in the code, but roughtly our algorithm is:</p>
 <ol type="1">
 <li>Sort items by their predicted scores, from largest to smallest</li>
