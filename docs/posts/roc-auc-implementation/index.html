@@ -275,7 +275,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Positive items in the dataset are shown in green, and negative items are shown in red. The sizes of circles represent the predicted probability scores, with smaller circles representing scores close to 0 and larger circles representing scores close to 1.</p>
-<p>Then, choosing a threshold gives us different points on the ROC curve with x representing the false positive rate (FPR) an y representing the true positive rate (TPR). For example:</p>
+<p>Then, choosing a threshold gives us different points on the ROC curve with x representing the false positive rate (FPR) and y representing the true positive rate (TPR). For example:</p>
 <div id="a9ee6bf5-052a-407b-aabb-472046b4667a" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="120" src="iframe_figures/figure_3.html" frameborder="0" allowfullscreen=""></iframe>
@@ -354,7 +354,7 @@ window.Quarto = {
 </ol></li>
 </ol>
 <div id="86bf73f9-97bb-4468-a13c-8a4caaf28e4a" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fast_roc_auc_score(target, predicted):</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> roc_auc_score(target, predicted):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> target.shape[<span class="dv">0</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    num_positive <span class="op">=</span> np.<span class="bu">sum</span>(target <span class="op">==</span> <span class="dv">1</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    num_negative <span class="op">=</span> n <span class="op">-</span> num_positive </span>
@@ -386,7 +386,7 @@ window.Quarto = {
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="361f6637-19a5-467b-96bb-6b4ae06f04ce" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fast_roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>np.float64(0.4277597402597403)</code></pre>
 </div>
