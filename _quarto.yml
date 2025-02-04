@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - "*.webm"
 
 website:
   title: "Madiyar's Page"

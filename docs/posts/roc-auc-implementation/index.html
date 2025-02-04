@@ -263,44 +263,30 @@ window.Quarto = {
 </section>
 <section id="explanation" class="level2">
 <h2 class="anchored" data-anchor-id="explanation">Explanation</h2>
-<p>Let’s say we have:</p>
+<p>Similar to the <a href="https://maitbayev.github.io/posts/roc-auc">previous post</a> we have:</p>
 <ul>
 <li>A dataset with positive and negative items</li>
-<li>An ML model that predicts a probability score from 0 to 1, representing the probability that the input belongs to the positive class.</li>
+<li>An ML model that predicts a probability score from 0 to 1, representing the probability that the input belongs to the positive class</li>
 </ul>
-<p>Similar to the previous post, we can visualize our dataset and their probability predictions in the same visualization as following:</p>
-<div id="c95e6c0e-4912-48af-9cfc-b09ba312491e" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="120" src="iframe_figures/figure_2.html" frameborder="0" allowfullscreen=""></iframe>
+<p>We want to compute the ROC AUC score of our model predictions. The algorithm that we are going to implement is explained more easily with a visualization.</p>
+<div id="51790732-e7a0-4432-a5dd-b6e501ed9174" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<video src="images/algo.webm" controls="">
+      Your browser does not support the <code>video</code> element.
+    </video>
 </div>
 </div>
-<p>Positive items in the dataset are shown in green, and negative items are shown in red. The sizes of circles represent the predicted probability scores, with smaller circles representing scores close to 0 and larger circles representing scores close to 1.</p>
-<p>Then, choosing a threshold gives us different points on the ROC curve with x representing the false positive rate (FPR) and y representing the true positive rate (TPR). For example:</p>
-<div id="a9ee6bf5-052a-407b-aabb-472046b4667a" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="120" src="iframe_figures/figure_3.html" frameborder="0" allowfullscreen=""></iframe>
-</div>
-</div>
-<p>A threshold of value 0.5 gives us the point <span class="math inline">\((\frac{3}{8}, \frac{4}{7})\)</span>, whereas a threshold of value 0.4:</p>
-<div id="2a9cfbeb-b06e-4d94-b221-d9bd98faa1c0" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="120" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
-</div>
-</div>
-<p>gives us the point <span class="math inline">\((\frac{3}{8}, \frac{5}{7})\)</span>. We just increased the numerator of the true positive rate when transitioning from 0.5 to 0.4, since a new green point was introduced as a true positive item; everything else remains the same. We would increase the numerator of the false positive rate if a new red point was introduced instead.</p>
-<p>Next, we need to calculate the sum of the areas of all trapezoids formed by the mentioned adjacent points:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/trapezoids.jpg" class="img-fluid figure-img"></p>
-<figcaption>trapezoids</figcaption>
-</figure>
-</div>
-<p>We would find the sum of all five trapezoids shown above, which will be the ROC AUC score.</p>
+<p>This is the slightly modified visualization from <a href="https://maitbayev.github.io/posts/roc-auc">the other post</a>. A few notes from the animation video:</p>
+<ul>
+<li>The ROC score is the sum of the areas of trapezoids formed by two adjacent points on the ROC curve</li>
+<li>Some trapezoids have zero area</li>
+<li>We start processing the dataset items with the one that has the highest probability score.</li>
+</ul>
 </section>
 <section id="implementation" class="level2">
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
 <p>Let’s setup our environment:</p>
-<div id="efb4296c-f16a-4bbb-a08e-9a30cb0bf997" class="cell" data-execution_count="5">
+<div id="efb4296c-f16a-4bbb-a08e-9a30cb0bf997" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
@@ -309,10 +295,10 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>predicted <span class="op">=</span> np.random.rand(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We randomly generated targets and predicted probability scores. Let’s check the result of <code>sklearn.metrics.roc_auc_score</code>:</p>
-<div id="03e87115-b626-451c-a9b3-ab7e57330b61" class="cell" data-execution_count="6">
+<div id="03e87115-b626-451c-a9b3-ab7e57330b61" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sklearn.metrics.roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>np.float64(0.4277597402597403)</code></pre>
 </div>
 </div>
@@ -322,7 +308,7 @@ window.Quarto = {
 <p>First, let’s implement a helper function that finds the area of the trapezoid defined by two points <span class="math inline">\((x_0, y_0)\)</span> and <span class="math inline">\((x_1, y_1)\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/trapezoid.jpg" class="img-fluid figure-img"></p>
+<p><img src="images/trapezoid.jpg" class="img-fluid figure-img" width="300"></p>
 <figcaption>Area of trapezoid</figcaption>
 </figure>
 </div>
@@ -335,30 +321,20 @@ window.Quarto = {
 \end{align}
 \]</span></p>
 <p>Let’s implement the formula in Python:</p>
-<div id="b05fd4da-7772-4c00-bc16-e4daa55e44b8" class="cell" data-execution_count="7">
+<div id="b05fd4da-7772-4c00-bc16-e4daa55e44b8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trapezoid_area(p0, p1):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (p1[<span class="dv">0</span>] <span class="op">-</span> p0[<span class="dv">0</span>]) <span class="op">*</span> (p0[<span class="dv">1</span>] <span class="op">+</span> p1[<span class="dv">1</span>]) <span class="op">/</span> <span class="fl">2.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="roc-auc-score" class="level3">
 <h3 class="anchored" data-anchor-id="roc-auc-score">ROC AUC Score</h3>
-<p>It is better explained in the code, but roughtly our algorithm is:</p>
-<ol type="1">
-<li>Sort items by their predicted scores, from largest to smallest</li>
-<li>Process the sorted items one by one in a loop
-<ol type="1">
-<li>Form the current point on the ROC curve by: <span class="math inline">\((\frac{\text{num\_false\_positive}}{\text{num\_negative}}, \frac{\text{num\_true\_positive}}{\text{num\_positive}})\)</span></li>
-<li>Add the trapezoid area formed by the previous point and the current one</li>
-<li>If the current item is positive, then increase <code>num_true_positive</code> by one</li>
-<li>If the current item is negative, then increase <code>num_false_positive</code> by one</li>
-</ol></li>
-</ol>
-<div id="86bf73f9-97bb-4468-a13c-8a4caaf28e4a" class="cell" data-execution_count="8">
+<p>Now our main implementation:</p>
+<div id="86bf73f9-97bb-4468-a13c-8a4caaf28e4a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> roc_auc_score(target, predicted):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> target.shape[<span class="dv">0</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    num_positive <span class="op">=</span> np.<span class="bu">sum</span>(target <span class="op">==</span> <span class="dv">1</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    num_negative <span class="op">=</span> n <span class="op">-</span> num_positive </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># argsort in reverse order</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> np.argsort(predicted)[::<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    last <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    num_true_positive <span class="op">=</span> <span class="dv">0</span></span>
@@ -385,13 +361,23 @@ window.Quarto = {
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="361f6637-19a5-467b-96bb-6b4ae06f04ce" class="cell" data-execution_count="9">
+<div id="361f6637-19a5-467b-96bb-6b4ae06f04ce" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>np.float64(0.4277597402597403)</code></pre>
 </div>
 </div>
-<p>Nice, we got exactly the same result as <code>sklearn</code></p>
+<p>Nice, we got exactly the same result as <code>sklearn</code>. It is better explained in the code, but roughtly our algorithm is:</p>
+<ol type="1">
+<li>Sort items by their predicted scores, from largest to smallest</li>
+<li>Process the sorted items one by one in a loop
+<ol type="1">
+<li>Form the current point on the ROC curve by: <span class="math inline">\((\frac{\text{num\_false\_positive}}{\text{num\_negative}}, \frac{\text{num\_true\_positive}}{\text{num\_positive}})\)</span></li>
+<li>Add the trapezoid area formed by the previous point and the current one</li>
+<li>If the current item is positive, then increase <code>num_true_positive</code> by one</li>
+<li>If the current item is negative, then increase <code>num_false_positive</code> by one</li>
+</ol></li>
+</ol>
 </section>
 </section>
 <section id="the-end" class="level2">
