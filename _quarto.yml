@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
   resources:
-    - "*.webm"
+    - "*.mp4"
 
 website:
   title: "Madiyar's Page"
