@@ -330,57 +330,74 @@ window.Quarto = {
 <section id="roc-auc-score" class="level3">
 <h3 class="anchored" data-anchor-id="roc-auc-score">ROC AUC Score</h3>
 <p>Now our main implementation:</p>
-<div id="86bf73f9-97bb-4468-a13c-8a4caaf28e4a" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> roc_auc_score(target, predicted):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> target.shape[<span class="dv">0</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    num_positive <span class="op">=</span> np.<span class="bu">sum</span>(target <span class="op">==</span> <span class="dv">1</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    num_negative <span class="op">=</span> n <span class="op">-</span> num_positive </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># argsort in reverse order</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> np.argsort(predicted)[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    last <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    num_true_positive <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    num_false_positive <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Make sure that the new threshold is unique</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> index <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> predicted[order[index]] <span class="op">!=</span> predicted[order[index <span class="op">-</span> <span class="dv">1</span>]]:</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># True positive rate</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            tpr <span class="op">=</span> num_true_positive <span class="op">/</span> num_positive</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># False positive rate</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            fpr <span class="op">=</span> num_false_positive <span class="op">/</span> num_negative</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            <span class="co"># New point on the ROC curve</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> [fpr, tpr]</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            score <span class="op">+=</span> trapezoid_area(last, cur)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            last <span class="op">=</span> cur</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> target[order[index]] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            num_true_positive <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            num_false_positive <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    score <span class="op">+=</span> trapezoid_area(last, [<span class="dv">1</span>, <span class="dv">1</span>])</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="86bf73f9-97bb-4468-a13c-8a4caaf28e4a" class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> roc_auc_score(target, predicted):</span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> target.shape[<span class="dv">0</span>]</span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>    num_positive <span class="op">=</span> np.<span class="bu">sum</span>(target <span class="op">==</span> <span class="dv">1</span>)</span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>    num_negative <span class="op">=</span> n <span class="op">-</span> num_positive </span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># argsort in reverse order</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> np.argsort(predicted)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a>    last <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a>    num_true_positive <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a>    num_false_positive <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="dv">0</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-11" class="code-annotation-target"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Make sure that the new threshold is unique</span></span>
+<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> index <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> predicted[order[index]] <span class="op">!=</span> predicted[order[index <span class="op">-</span> <span class="dv">1</span>]]:</span>
+<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># True positive rate</span></span>
+<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a>            tpr <span class="op">=</span> num_true_positive <span class="op">/</span> num_positive</span>
+<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># False positive rate</span></span>
+<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a>            fpr <span class="op">=</span> num_false_positive <span class="op">/</span> num_negative</span>
+<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18" aria-hidden="true" tabindex="-1"></a>            <span class="co"># New point on the ROC curve</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-19" class="code-annotation-target"><a href="#annotated-cell-4-19" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> [fpr, tpr]</span>
+<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20" aria-hidden="true" tabindex="-1"></a>            </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-21" class="code-annotation-target"><a href="#annotated-cell-4-21" aria-hidden="true" tabindex="-1"></a>            score <span class="op">+=</span> trapezoid_area(last, cur)</span>
+<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22" aria-hidden="true" tabindex="-1"></a>            last <span class="op">=</span> cur</span>
+<span id="annotated-cell-4-23"><a href="#annotated-cell-4-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="annotated-cell-4-24"><a href="#annotated-cell-4-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> target[order[index]] <span class="op">==</span> <span class="dv">1</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-4-25" class="code-annotation-target"><a href="#annotated-cell-4-25" aria-hidden="true" tabindex="-1"></a>            num_true_positive <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-4-26"><a href="#annotated-cell-4-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-4-27" class="code-annotation-target"><a href="#annotated-cell-4-27" aria-hidden="true" tabindex="-1"></a>            num_false_positive <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-4-28"><a href="#annotated-cell-4-28" aria-hidden="true" tabindex="-1"></a>    score <span class="op">+=</span> trapezoid_area(last, [<span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="annotated-cell-4-29"><a href="#annotated-cell-4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-4-30"><a href="#annotated-cell-4-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="1">Sort items by their predicted scores, from largest to smallest</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="11" data-code-annotation="2">Process the sorted items one by one in a loop:</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="19" data-code-annotation="3">Form the current point on the ROC curve by: <span class="math inline">\((\frac{\text{num\_false\_positive}}{\text{num\_negative}}, \frac{\text{num\_true\_positive}}{\text{num\_positive}})\)</span></span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="21" data-code-annotation="4">Add the trapezoid area formed by the previous point and the current one</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="25" data-code-annotation="5">If the current item is positive, then increase <code>num_true_positive</code> by one</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="27" data-code-annotation="6">If the current item is negative, then increase <code>num_false_positive</code> by one</span>
+</dd>
+</dl>
+</div>
 </div>
 <p>Let’s verify the result:</p>
 <div id="361f6637-19a5-467b-96bb-6b4ae06f04ce" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>roc_auc_score(target, predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>np.float64(0.4277597402597403)</code></pre>
 </div>
 </div>
 <p>Nice, we got exactly the same result as <code>sklearn</code>.</p>
-<p>It is better explained in the code, but roughtly our algorithm is:</p>
-<ol type="1">
-<li>Sort items by their predicted scores, from largest to smallest</li>
-<li>Process the sorted items one by one in a loop
-<ol type="1">
-<li>Form the current point on the ROC curve by: <span class="math inline">\((\frac{\text{num\_false\_positive}}{\text{num\_negative}}, \frac{\text{num\_true\_positive}}{\text{num\_positive}})\)</span></li>
-<li>Add the trapezoid area formed by the previous point and the current one</li>
-<li>If the current item is positive, then increase <code>num_true_positive</code> by one</li>
-<li>If the current item is negative, then increase <code>num_false_positive</code> by one</li>
-</ol></li>
-</ol>
 </section>
 </section>
 <section id="the-end" class="level2">
