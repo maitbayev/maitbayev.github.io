@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/random-two-vectors/index.html",
       "/posts/roc-auc-implementation/index.html",
       "/posts/roc-auc/index.html",
       "/posts/linear-equation/index.html",

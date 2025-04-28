@@ -1,0 +1,165 @@
+---
+title: "Why are two random vectors near orthogonal in high dimensions?"
+author: "Madiyar Aitbayev"
+date: "2025-04-27"
+categories: [math, random, vector]
+image: "images/image.jpg"
+toc: true
+---
+
+# Why are two random vectors near orthogonal in high dimensions?
+
+## Introduction 
+
+
+[Subscribe](https://maitbayev.substack.com/subscribe) to get a notification about future posts. 
+
+## Recap
+
+```{ojs}
+//| echo: false
+THREE = {
+  const THREE = window.THREE = await require("three@0.145.0/build/three.min.js");
+  await require("three@0.145.0/examples/js/controls/OrbitControls.js").catch(() => {});
+  return THREE;
+}
+```
+
+```{ojs}
+//| echo: false
+function makeSphere(wireframe = false, opacity = 1) {
+  const material = new THREE.MeshBasicMaterial({
+    wireframe: wireframe, 
+    opacity: opacity, 
+    color: 0x555555, 
+    transparent: true  
+  });
+  const geometry = new THREE.SphereGeometry(1, 32, 32 ); 
+  return new THREE.Mesh(geometry, material);
+}
+```
+
+```{ojs}
+//| echo: false
+function makeSphereSlice(wireframe = false, opacity = 1) {
+  const material = new THREE.MeshBasicMaterial({
+    wireframe: wireframe, 
+    opacity: opacity, 
+    color: 0xff0000, 
+    transparent: true  
+  });
+  const geometry = new THREE.SphereGeometry(
+    1.01, 32, 32,
+    0, Math.PI * 2.0,
+    Math.PI / 2 - Math.PI / 8, Math.PI / 4
+  ); 
+  return new THREE.Mesh(geometry, material);
+}
+```
+
+```{ojs}
+//| echo: false
+function makeCircle(color) {
+  const geometry = new THREE.CircleGeometry(1, 32); 
+  const material = new THREE.MeshStandardMaterial({ 
+    color: color,
+    side: THREE.DoubleSide,
+    opacity: 0.3,
+    transparent: true,
+    depthTest: false, 
+  }); 
+  const circle = new THREE.Mesh( geometry, material );
+  circle.lookAt(0, 1, 0);
+  return circle;
+}
+```
+
+```{ojs}
+//| echo: false
+function makeVector(vec, color) {
+  function customArrow( fx, fy, fz, ix, iy, iz, thickness, color) {
+    const ARROW_BODY = new THREE.CylinderGeometry( 1, 1, 1, 12 )
+                            .rotateX( Math.PI/2)
+                            .translate( 0, 0, 0.5 );
+
+    const ARROW_HEAD = new THREE.ConeGeometry( 1, 1, 12 )
+                            .rotateX( Math.PI/2)
+                            .translate( 0, 0, -0.5 );
+    var material = new THREE.MeshLambertMaterial( {color: color} );
+    
+    var length = Math.sqrt( (ix-fx)**2 + (iy-fy)**2 + (iz-fz)**2 );
+    
+    var body = new THREE.Mesh( ARROW_BODY, material );
+    body.scale.set( thickness, thickness, length-10*thickness );
+      
+    var head = new THREE.Mesh( ARROW_HEAD, material );
+    head.position.set( 0, 0, length );
+    head.scale.set( 3*thickness, 3*thickness, 10*thickness );
+    
+    var arrow = new THREE.Group( );
+    arrow.position.set( ix, iy, iz );
+    arrow.lookAt( fx, fy, fz );	
+    arrow.add( body, head );
+    return arrow;
+  }
+  return customArrow(vec[0], vec[1], vec[2], 0, 0, 0, 0.02, color);
+}
+```
+
+```{ojs}
+//| echo: false
+function makeScene(height) {
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  scene.add(new THREE.AxesHelper(2));
+  scene.add(makeSphere(/*wireframe: */false, /*opacity: */0.1));
+  scene.add(makeSphere(/*wireframe: */true, /*opacity: */1));
+  const light = new THREE.AmbientLight(0xFFFFFF,  /*intensity=*/1);
+  scene.add(light);
+  scene.add(makeSphereSlice(false, 0.3));
+  scene.add(makeVector([0, 1, 0], 0x000000));
+  scene.add(makeVector([0, 0, 1], 0xff0000));
+  scene.add(makeCircle(0xff0000));
+  return scene;
+}
+```
+
+
+```{ojs}
+//| echo: false
+function makeRendererElement(height, scene) {
+  function makeCamera() {
+    const fov = 45;
+    const aspect = width / height;
+    const near = 1;
+    const far = 1000;
+    const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+    camera.position.z = 3;
+    return camera;
+  }
+  const camera = makeCamera();
+  const renderer = new THREE.WebGLRenderer({antialias: true});
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.autoRotate = true;
+  controls.enableZoom = false 
+
+  function animate() {
+    requestAnimationFrame( animate );
+    controls.update();
+    renderer.render( scene, camera );
+  }
+  animate();
+
+  invalidation.then(() => (controls.dispose(), renderer.dispose()));
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(devicePixelRatio);
+  renderer.render(scene, camera)
+  controls.addEventListener("change", () => renderer.render(scene, camera));
+  return renderer.domElement
+}
+```
+
+```{ojs}
+//| echo: false
+makeRendererElement(400, makeScene())
+```
