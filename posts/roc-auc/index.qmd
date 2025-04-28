@@ -459,7 +459,7 @@ function plot_roc(pointSelection=null, pointThreshold=0) {
     }
     return Plot.plot({
         grid: true,
-        x: {label: "False Negative Rate"},
+        x: {label: "False Positive Rate"},
         y: {label: "True Positive Rate"},
         r: {range: [0, 20]},
         aspectRatio: 1.0,
