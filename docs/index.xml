@@ -627,7 +627,7 @@ font-style: inherit;">2</span>)])</span></code></pre></div>
 </div>
 </div>
 </div>
-<p>This simplifies the dot product to <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bu%7D%20%5Ccdot%20%5Cmathbf%7Bv%7D%20=%20%5Ccos%20(%5Calpha)%20=%20v_y">. The probability of being near orthogonal is pretty low in two dimensions, but this help in framing our problem for higher dimensions.</p>
+<p>This simplifies the dot product to <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bu%7D%20%5Ccdot%20%5Cmathbf%7Bv%7D%20=%20%5Ccos%20(%5Calpha)%20=%20v_y">. The probability of being near orthogonal is pretty low in two dimensions, but this helps us in framing our problem for higher dimensions.</p>
 <p>It turns out that the average value of <img src="https://latex.codecogs.com/png.latex?%5Ccos%5E2(%5Calpha)"> or <img src="https://latex.codecogs.com/png.latex?v_y%5E2"> is exactly <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7B2%7D">. There are numerous analytical proofs, but the simplest intuition is derived from <img src="https://latex.codecogs.com/png.latex?v_x%5E2+v_y%5E2=1">. We have a total budget of 1, which we distribute between <img src="https://latex.codecogs.com/png.latex?v_x%5E2"> and <img src="https://latex.codecogs.com/png.latex?v_y%5E2">; thus, on average, <img src="https://latex.codecogs.com/png.latex?v_y%5E2"> receives half of the budget.</p>
 <p>We only have two the orthogonal vectors to <strong>u</strong>, and they are:</p>
 <div class="cell">
@@ -2482,7 +2482,7 @@ font-style: inherit;">;</span></span>
 <section id="n-dimensions" class="level2">
 <h2 class="anchored" data-anchor-id="n-dimensions">N-dimensions</h2>
 <p>Visualizing an N-dimensional sphere is challenging. However, we have all the tools needed to develop an intuition.</p>
-<p>Similar to the 2D and 3D case, we can fix the first vector as <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bu%7D=%5B0,%200,%20%5Cdots,%201%5D">. The second vector <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bv%7D=%5Bv_1,%20v_2,%20%5Ccdots,%20v_n%5D"> is randomly chosen from an N-dimensional unit sphere. Their dot product is then given by:</p>
+<p>Similar to the 2D and 3D cases, we can fix the first vector as <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bu%7D=%5B0,%200,%20%5Cdots,%201%5D">. The second vector <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bv%7D=%5Bv_1,%20v_2,%20%5Ccdots,%20v_n%5D"> is randomly chosen from an N-dimensional unit sphere. Their dot product is then given by:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7Bu%7D%20%5Ccdot%20%5Cmathbf%7Bv%7D%20=%20%5Ccos%20(%5Calpha)%20=%20v_n%0A"></p>
 <p>The average value of <img src="https://latex.codecogs.com/png.latex?%5Ccos%5E2%20(%5Calpha)"> or <img src="https://latex.codecogs.com/png.latex?v_n%5E2"> is <img src="https://latex.codecogs.com/png.latex?%5Cdfrac%7B1%7D%7Bn%7D">. Since <img src="https://latex.codecogs.com/png.latex?v_1%5E2+v_2%5E2%20+%20%5Ccdot%20+%20v_n%5E2=1"> and the total value of 1 is divided equally among n components, giving <img src="https://latex.codecogs.com/png.latex?v_n%5E2"> a share of <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7Bn%7D">. As n becomes large enough, the average value of <img src="https://latex.codecogs.com/png.latex?cos%5E2(%5Calpha)"> approaches zero.</p>
 <div class="callout callout-style-default callout-note callout-titled">

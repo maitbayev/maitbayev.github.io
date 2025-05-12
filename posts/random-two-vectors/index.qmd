@@ -92,7 +92,7 @@ The dot product is [invariant under rotations](https://maitbayev.github.io/posts
 makeCircle2D([0, -1], [-1 / Math.sqrt(2), -1 / Math.sqrt(2)])
 ```
 
-This simplifies the dot product to $\mathbf{u} \cdot \mathbf{v} = \cos (\alpha) = v_y$. The probability of being near orthogonal is pretty low in two dimensions, but this help in framing our problem for higher dimensions. 
+This simplifies the dot product to $\mathbf{u} \cdot \mathbf{v} = \cos (\alpha) = v_y$. The probability of being near orthogonal is pretty low in two dimensions, but this helps us in framing our problem for higher dimensions. 
 
 It turns out that the average value of $\cos^2(\alpha)$ or $v_y^2$  is exactly $\frac{1}{2}$. There are numerous analytical proofs, but the simplest intuition is derived from $v_x^2+v_y^2=1$. We have a total budget of 1, which we distribute between $v_x^2$ and $v_y^2$; thus, on average, $v_y^2$ receives half of the budget.
 
@@ -325,7 +325,7 @@ The average value of $\cos^2 (\alpha)$ or $v_z^2$ is $\dfrac{1}{3}$. Similar to 
 
 Visualizing an N-dimensional sphere is challenging. However, we have all the tools needed to develop an intuition. 
 
-Similar to the 2D and 3D case, we can fix the first vector as $\mathbf{u}=[0, 0, \dots, 1]$. The second vector $\mathbf{v}=[v_1, v_2, \cdots, v_n]$ is randomly chosen from an N-dimensional unit sphere. Their dot product is then given by:
+Similar to the 2D and 3D cases, we can fix the first vector as $\mathbf{u}=[0, 0, \dots, 1]$. The second vector $\mathbf{v}=[v_1, v_2, \cdots, v_n]$ is randomly chosen from an N-dimensional unit sphere. Their dot product is then given by:
 
 $$
 \mathbf{u} \cdot \mathbf{v} = \cos (\alpha) = v_n
