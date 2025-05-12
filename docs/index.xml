@@ -9,7 +9,7 @@
 <link>https://maitbayev.github.io/</link>
 <atom:link href="https://maitbayev.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>Madiyar&#39;s Page</description>
-<generator>quarto-1.7.30</generator>
+<generator>quarto-1.8.4</generator>
 <lastBuildDate>Sun, 11 May 2025 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Why are two random vectors near orthogonal in high dimensions?</title>
@@ -2486,7 +2486,7 @@ font-style: inherit;">;</span></span>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7Bu%7D%20%5Ccdot%20%5Cmathbf%7Bv%7D%20=%20%5Ccos%20(%5Calpha)%20=%20v_n%0A"></p>
 <p>The average value of <img src="https://latex.codecogs.com/png.latex?%5Ccos%5E2%20(%5Calpha)"> or <img src="https://latex.codecogs.com/png.latex?v_n%5E2"> is <img src="https://latex.codecogs.com/png.latex?%5Cdfrac%7B1%7D%7Bn%7D">. Since <img src="https://latex.codecogs.com/png.latex?v_1%5E2+v_2%5E2%20+%20%5Ccdot%20+%20v_n%5E2=1"> and the total value of 1 is divided equally among n components, giving <img src="https://latex.codecogs.com/png.latex?v_n%5E2"> a share of <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7Bn%7D">. As n becomes large enough, the average value of <img src="https://latex.codecogs.com/png.latex?cos%5E2(%5Calpha)"> approaches zero.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -6287,7 +6287,7 @@ font-style: inherit;">make_board1</span>()</span></code></pre></div>
 <p>Feel free to <strong>play</strong> (by moving) with the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D"> and notice how the line equation is changing with respect to the normal vector.</p>
 <p>We can multiply or divide the line equation by any real number <img src="https://latex.codecogs.com/png.latex?k"> without changing the equation, in other words, <img src="https://latex.codecogs.com/png.latex?kax+kby+kc=0"> and <img src="https://latex.codecogs.com/png.latex?ax+by+c=0"> hold true to the same set of points. Let’s use this property and divide the equation by <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7Ba%5E2+b%5E2%7D">, since it gives us <img src="https://latex.codecogs.com/png.latex?a%5E2+b%5E2=1"> and <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bn%7D%5C%7C=1">.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -7552,7 +7552,7 @@ font-style: inherit;">,</span></span>
 <p>Play with the slider for <img src="https://latex.codecogs.com/png.latex?c">, and notice the location of our line when <img src="https://latex.codecogs.com/png.latex?c=1"> and <img src="https://latex.codecogs.com/png.latex?c=-1">.</p>
 <p>Can you see that <img src="https://latex.codecogs.com/png.latex?ax+by+c"> is still the signed distance from the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> to our line? What does <img src="https://latex.codecogs.com/png.latex?c"> represent?</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -7623,7 +7623,7 @@ Explanation
 <p>The dot product of <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> is: <img src="https://latex.codecogs.com/png.latex?%0A%5Ctextbf%7Ba%7D%20%5Ccdot%20%5Ctextbf%7Bb%7D%20=%20%5C%7C%5Cmathbf%7Ba%7D%5C%7C%5C%7C%5Cmathbf%7Bb%7D%5C%7C%5Ccos%20%5Ctheta%0A"></p>
 <p>where <img src="https://latex.codecogs.com/png.latex?%5Ctheta"> is the angle between <strong>a</strong> and <strong>b</strong> and <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Ba%7D%5C%7C"> is the magnitude of a vector <strong>a</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -10040,7 +10040,7 @@ font-style: inherit;">false</span>)</span></code></pre></div>
 </ul>
 <p>I will provide more alternative proofs below, mostly for myself. They’re optional and collapsed, feel free to read them.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -10061,7 +10061,7 @@ Alternative Proof 1
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -10081,7 +10081,7 @@ Alternative Proof 2
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -10103,7 +10103,7 @@ Alternative Proof 3
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -11063,7 +11063,7 @@ font-style: inherit;">22</span>])</span></code></pre></div>
 <p>Assume we have a <strong>convex function</strong> <img src="https://latex.codecogs.com/png.latex?f"> and <img src="https://latex.codecogs.com/png.latex?x_1,%20x_2,%20%5Ccdots,%20x_n"> in <img src="https://latex.codecogs.com/png.latex?f">’s domain, and also positive weights <img src="https://latex.codecogs.com/png.latex?%5Clambda_1,%20%5Clambda_2,%20%5Ccdots,%20%5Clambda_n"> where <img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20=%201">. Then Jensen’s inequality can be stated as:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Af(%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20x_i)%20%5Cle%20%5Csum_%7Bi=1%7D%5En%20%5Clambda_i%20f(x_i)%0A"></p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -11156,7 +11156,7 @@ font-style: inherit;">25</span>])</span></code></pre></div>
 <section id="applications" class="level2">
 <h2 class="anchored" data-anchor-id="applications">Applications</h2>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -15429,7 +15429,7 @@ dmY2MS4xLjEwMA==
 <p>Where each term can be rewritten as:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7B%0A%5Clog%20p_%5Ctheta(x%5Bi%5D)%20=%20D_%7BKL%7D(q_%5Cphi(z%7Cx%5Bi%5D)%7C%7Cp_%5Ctheta(z%7Cx%5Bi%5D))%20+%20%5Cmathcal%7BL%7D(%5Ctheta,%20%5Cphi,%20x%5Bi%5D)%0A%7D%0A"></p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -15450,7 +15450,7 @@ Proof
 <p><strong>The variational lower bound,</strong> also called as th<strong>e evidence lower bound (</strong>ELBO) can be also rewritten as:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%5Bi%5D%7D)%20&amp;%5Cge%20%5Cmathcal%7BL%7D(%5Ctheta,%20%5Cphi;%20%5Cmathbf%7Bx%5Bi%5D%7D)%5C%5C%0A&amp;=%20%5Cmathbb%7BE%7D_%7Bq_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)%7D%20%5Cleft%5B%0A-%5Clog%20q_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)%20+%20%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%5Bi%5D,%20z%7D)%0A%5Cright%5D%5C%5C%0A&amp;=%20-D_%7BKL%7D(q_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)%7C%7Cp_%5Ctheta(%5Cmathbf%7Bz%7D))%0A+%0A%5Cmathbb%7BE%7D_%7Bq_%5Cphi(%5Cmathbf%7Bz%7Cx%5Bi%5D%7D)%7D%20%5Cleft%5B%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%5Bi%5D%7Cz%7D)%0A%5Cright%5D%0A%5Cend%7Baligned%7D%0A"></p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -15539,7 +15539,7 @@ Proof
 <p>A nice benefit from the forward process is that we can sample <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_t%7D"> at any timestep <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bt%7D"> in closed form without simulating the forward process steps <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bt%7D"> times. Let <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Calpha_t=1-%5Cbeta_t%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%20%5Cbar%7B%5Calpha%7D_t%20=%20%5Cprod_%7Bi=1%7D%5Et%5Calpha_i%20%7D"> :</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%20%7B%0Aq(x_t%7Cx_0)%20=%20%5Cmathcal%7BN%7D(x_t;%20%5Csqrt%7B%5Cbar%7B%5Calpha_t%7D%7Dx_0,%20(1-%5Cbar%7B%5Calpha%7D_t)I)%0A%7D%0A"></p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -15571,7 +15571,7 @@ Here we used the fact that <a href="https://en.wikipedia.org/wiki/Sum_of_normall
 <p>Training is performed by optimizing the <strong>variational lower bound</strong> (or the evidence lower bound) similar to the <a href="https://maitbayev.github.io/posts/auto-encoding-variational-bayes/">VAE</a>:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BE%7D%5B-%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx%7D_0)%5D%20%5Cle%0A%5Cmathbb%7BE%7D_q%5Cleft%5B-%5Clog%0A%20%20%5Cfrac%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7B0:T%7D%7D)%7D%7Bq(%5Cmathbf%7Bx_%7B1:T%7D%7D%7C%5Cmathbf%7Bx_0%7D)%7D%0A%5Cright%5D=%0A%5Cmathbb%7BE_q%7D%5Cleft%5B%0A-%5Clog%20p(%5Cmathbf%7Bx_T%7D)%20-%20%5Csum_%7Bt%5Cge1%7D%5Clog%7B%5Cfrac%7Bp_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D)%7D%7Bq(%5Cmathbf%7Bx_%7Bt%7D%7Cx_%7Bt-1%7D%7D)%7D%7D%0A%5Cright%5D%0A"></p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -15594,7 +15594,7 @@ Proof
 <p>Efficient training is possible by optimizing random terms of the loss, however it requires two random variables for each term, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_%7Bt-1%7D%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx_%7Bt%7D%7D">, which introduces high variance Monte Carlo estimates. We can reduce the variance:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0AE_q%20%5Cleft%5B%0AD_%7BKL%7D(q(%5Cmathbf%7Bx_T%7Cx_0%7D%7C%7Cp(%5Cmathbf%7Bx_T%7D))%0A+%0A%5Csum_%7Bt%5Cgt1%7D%7BD_%7BKL%7D(q(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t,x_0%7D)%7C%7Cp_%5Ctheta(%5Cmathbf%7Bx_%7Bt-1%7D%7Cx_t%7D))%7D%0A-%0A%5Clog%20p_%5Ctheta(%5Cmathbf%7Bx_0%7Cx_1%7D)%0A%5Cright%5D%0A"></p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
