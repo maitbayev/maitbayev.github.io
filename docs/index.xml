@@ -528,7 +528,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 </div>
-<p>This problem is equivalent to taking two random vectors <strong>u</strong> and <strong>v</strong> on a circle of radius 1 and computing their <a href="https://maitbayev.github.io/posts/dot-product/">dot product</a>.</p>
+<p>This problem is equivalent to selecting two random vectors <strong>u</strong> and <strong>v</strong> on a circle of radius 1 and computing their <a href="https://maitbayev.github.io/posts/dot-product/">dot product</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="75" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb2-75"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -576,7 +576,7 @@ font-style: inherit;">2</span>)])</span></code></pre></div>
 <p>As a reminder <a href="https://maitbayev.github.io/posts/dot-product/">the dot product</a> of <strong>u</strong> and <strong>v</strong> is:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7Bu%7D%20%5Ccdot%20%5Cmathbf%7Bv%7D%20=%20u_x%20v_x%20+%20u_y%20v_y%20=%20%5Ccos%20(%5Calpha)%0A"></p>
 <p>The dot product is zero when <strong>u</strong> and <strong>v</strong> are orthogonal, and near zero when they are nearly orthogonal.</p>
-<p>The dot product is <a href="https://maitbayev.github.io/posts/dot-product/#rotational-invariance">invariant under rotations</a>, which means that we can rotate both vectors such that the vector <strong>u</strong> is [0, 1]:</p>
+<p>The dot product is <a href="https://maitbayev.github.io/posts/dot-product/#rotational-invariance">invariant under rotations</a>, which means that we can rotate both vectors in the same way such that the vector <strong>u</strong> is [0, 1]:</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb3" data-startfrom="91" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb3-91"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2109,7 +2109,7 @@ font-style: inherit;">domElement</span></span>
 </div>
 </div>
 </div>
-<p>In three dimensions, we take two random vectors <strong>u</strong> and <strong>v</strong> on a unit sphere and rotate them together so that the vector <strong>u</strong> becomes [0, 0, 1] (the north pole):</p>
+<p>In three dimensions, we take two random vectors <strong>u</strong> and <strong>v</strong> on a unit sphere and rotate them together so that the vector <strong>u</strong> becomes the north pole ([0, 0, 1]):</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb12" data-startfrom="266" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 265;"><span id="cb12-266">{ </span>
 <span id="cb12-267">  <span class="kw" style="color: #003B4F;
@@ -2274,7 +2274,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 </div>
-<p>In other words, any vector in the red circle above is orthogonal to <strong>u</strong>. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors:</p>
+<p>In other words, any vector in the red circle above is orthogonal to <strong>u</strong>. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors with the same dot product:</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb14" data-startfrom="296" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb14-296">{ </span>
 <span id="cb14-297">  <span class="kw" style="color: #003B4F;
@@ -2370,7 +2370,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 </div>
-<p>The larger the circle from which we select the vector <strong>v</strong>, the closer it is to being orthogonal:</p>
+<p>The larger the circle from which we select the vector <strong>v</strong> is, the closer it is to being orthogonal:</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb15" data-startfrom="309" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 308;"><span id="cb15-309">{ </span>
 <span id="cb15-310">  <span class="kw" style="color: #003B4F;
@@ -2485,6 +2485,25 @@ font-style: inherit;">;</span></span>
 <p>Similar to the 2D and 3D case, we can fix the first vector as <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bu%7D=%5B0,%200,%20%5Cdots,%201%5D">. The second vector <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bv%7D=%5Bv_1,%20v_2,%20%5Ccdots,%20v_n%5D"> is randomly chosen from an N-dimensional unit sphere. Their dot product is then given by:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7Bu%7D%20%5Ccdot%20%5Cmathbf%7Bv%7D%20=%20%5Ccos%20(%5Calpha)%20=%20v_n%0A"></p>
 <p>The average value of <img src="https://latex.codecogs.com/png.latex?%5Ccos%5E2%20(%5Calpha)"> or <img src="https://latex.codecogs.com/png.latex?v_n%5E2"> is <img src="https://latex.codecogs.com/png.latex?%5Cdfrac%7B1%7D%7Bn%7D">. Since <img src="https://latex.codecogs.com/png.latex?v_1%5E2+v_2%5E2%20+%20%5Ccdot%20+%20v_n%5E2=1"> and the total value of 1 is divided equally among n components, giving <img src="https://latex.codecogs.com/png.latex?v_n%5E2"> a share of <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7Bn%7D">. As n becomes large enough, the average value of <img src="https://latex.codecogs.com/png.latex?cos%5E2(%5Calpha)"> approaches zero.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+More Formal Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In my opinion the above explanation is enough to understand the intuition. But, let’s also give a formal proof for the expected value of <img src="https://latex.codecogs.com/png.latex?v_n%5E2">.</p>
+<p>We’re looking for <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5Cleft%5Bv_n%5E2%5Cright%5D">. And we also have:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathbb%7BE%7D%5Bv_1%5E2%20+%20%5Ccdots%20+%20v_n%5E2%5D%20&amp;=%5Cmathbb%7BE%7D%5Bv_1%5E2%5D%20+%20%5Ccdots%20+%20%5Cmathbb%7BE%7D%5Bv_n%5E2%5D%5C%5C%0A&amp;=%20n%5Cmathbb%7BE%7D%5Bv_n%5E2%5D%20%5C%5C%0A&amp;=%201%0A%5Cend%7Balign%7D%0A"></p>
+<p>Here we used the fact that the expected values for all components of <strong>v</strong> are the same and the linearity of the expectation.</p>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -11075,7 +11094,7 @@ Concave Function
 <section id="triangle" class="level4">
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with a triangle, i.e., <img src="https://latex.codecogs.com/png.latex?n=3">:</p>
-<div id="cell-16" class="cell" data-execution_count="5">
+<div id="cell-16" class="cell">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
@@ -11107,7 +11126,7 @@ font-style: inherit;">27</span>])</span></code></pre></div>
 <section id="four-points-or-more" class="level4">
 <h4 class="anchored" data-anchor-id="four-points-or-more">Four Points or More</h4>
 <p>It is easy to generalize for <img src="https://latex.codecogs.com/png.latex?n%3E3">. I am adding it here for the sake of completeness:</p>
-<div id="cell-20" class="cell" data-execution_count="6">
+<div id="cell-20" class="cell">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;

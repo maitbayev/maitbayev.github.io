@@ -69,7 +69,7 @@ function makeCircle2D(vecU, vecV, height=200) {
 }
 ```
 
-This problem is equivalent to taking two random vectors **u** and **v** on a circle of radius 1 and computing their [dot product](https://maitbayev.github.io/posts/dot-product/).
+This problem is equivalent to selecting two random vectors **u** and **v** on a circle of radius 1 and computing their [dot product](https://maitbayev.github.io/posts/dot-product/).
 
 ```{ojs}
 //| echo: false
@@ -85,7 +85,7 @@ $$
 The dot product is zero when **u** and **v** are orthogonal, and near zero when they are nearly orthogonal.
 
 
-The dot product is [invariant under rotations](https://maitbayev.github.io/posts/dot-product/#rotational-invariance), which means that we can rotate both vectors such that the vector **u** is [0, 1]:
+The dot product is [invariant under rotations](https://maitbayev.github.io/posts/dot-product/#rotational-invariance), which means that we can rotate both vectors in the same way such that the vector **u** is [0, 1]:
 
 ```{ojs}
 //| echo: false
@@ -260,7 +260,7 @@ function makeRendererElement(height, scene) {
 ```
 
 
-In three dimensions, we take two random vectors **u** and **v** on a unit sphere and rotate them together so that the vector **u** becomes [0, 0, 1] (the north pole):
+In three dimensions, we take two random vectors **u** and **v** on a unit sphere and rotate them together so that the vector **u** becomes the north pole ([0, 0, 1]):
 
 ```{ojs}
 //| echo: false
@@ -290,7 +290,7 @@ In 2D, we only had two vectors that are orthogonal to **u**. In 3D, we have an e
 }
 ```
 
-In other words, any vector in the red circle above is orthogonal to **u**. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors:
+In other words, any vector in the red circle above is orthogonal to **u**. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors with the same dot product:
 
 ```{ojs}
 //| echo: false
@@ -303,7 +303,7 @@ In other words, any vector in the red circle above is orthogonal to **u**. Moreo
 }
 ```
 
-The larger the circle from which we select the vector **v**, the closer it is to being orthogonal:
+The larger the circle from which we select the vector **v** is, the closer it is to being orthogonal:
 
 ```{ojs}
 //| echo: false
@@ -331,4 +331,24 @@ $$
 \mathbf{u} \cdot \mathbf{v} = \cos (\alpha) = v_n
 $$
 
-The average value of $\cos^2 (\alpha)$ or $v_n^2$ is $\dfrac{1}{n}$. Since $v_1^2+v_2^2 + \cdot + v_n^2=1$ and the total value of 1 is divided equally among n components, giving $v_n^2$ a share of $\frac{1}{n}$. As n becomes large enough, the average value of $cos^2(\alpha)$ approaches zero.
+The average value of $\cos^2 (\alpha)$ or $v_n^2$ is $\dfrac{1}{n}$. Since $v_1^2+v_2^2 + \cdot + v_n^2=1$ and the total value of 1 is divided equally among n components, giving $v_n^2$ a share of $\frac{1}{n}$. As n becomes large enough, the average value of $cos^2(\alpha)$ approaches zero. 
+
+::: {.callout-note collapse="true"}
+
+### More Formal Proof
+
+In my opinion the above explanation is enough to understand the intuition. But, let's also give a formal proof for the expected value of $v_n^2$. 
+
+We're looking for $\mathbb{E}\left[v_n^2\right]$. And we also have:
+
+$$
+\begin{align}
+\mathbb{E}[v_1^2 + \cdots + v_n^2] &=\mathbb{E}[v_1^2] + \cdots + \mathbb{E}[v_n^2]\\
+&= n\mathbb{E}[v_n^2] \\
+&= 1
+\end{align}
+$$
+
+Here we used the fact that the expected values for all components of **v** are the same and the linearity of the expectation.
+
+:::

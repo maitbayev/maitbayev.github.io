@@ -311,7 +311,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>This problem is equivalent to taking two random vectors <strong>u</strong> and <strong>v</strong> on a circle of radius 1 and computing their <a href="https://maitbayev.github.io/posts/dot-product/">dot product</a>.</p>
+<p>This problem is equivalent to selecting two random vectors <strong>u</strong> and <strong>v</strong> on a circle of radius 1 and computing their <a href="https://maitbayev.github.io/posts/dot-product/">dot product</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="75" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="fu">makeCircle2D</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> [<span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -325,7 +325,7 @@ window.Quarto = {
 \mathbf{u} \cdot \mathbf{v} = u_x v_x + u_y v_y = \cos (\alpha)
 \]</span></p>
 <p>The dot product is zero when <strong>u</strong> and <strong>v</strong> are orthogonal, and near zero when they are nearly orthogonal.</p>
-<p>The dot product is <a href="https://maitbayev.github.io/posts/dot-product/#rotational-invariance">invariant under rotations</a>, which means that we can rotate both vectors such that the vector <strong>u</strong> is [0, 1]:</p>
+<p>The dot product is <a href="https://maitbayev.github.io/posts/dot-product/#rotational-invariance">invariant under rotations</a>, which means that we can rotate both vectors in the same way such that the vector <strong>u</strong> is [0, 1]:</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb3" data-startfrom="91" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="fu">makeCircle2D</span>([<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> [<span class="op">-</span><span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="op">-</span><span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -521,7 +521,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>In three dimensions, we take two random vectors <strong>u</strong> and <strong>v</strong> on a unit sphere and rotate them together so that the vector <strong>u</strong> becomes [0, 0, 1] (the north pole):</p>
+<p>In three dimensions, we take two random vectors <strong>u</strong> and <strong>v</strong> on a unit sphere and rotate them together so that the vector <strong>u</strong> becomes the north pole ([0, 0, 1]):</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb12" data-startfrom="266" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 265;"><span id="cb12-266"><a href="#cb12-266" aria-hidden="true" tabindex="-1"></a>{ </span>
 <span id="cb12-267"><a href="#cb12-267" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scene <span class="op">=</span> <span class="fu">makeScene</span>([<span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>)])<span class="op">;</span></span>
@@ -552,7 +552,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>In other words, any vector in the red circle above is orthogonal to <strong>u</strong>. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors:</p>
+<p>In other words, any vector in the red circle above is orthogonal to <strong>u</strong>. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors with the same dot product:</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb14" data-startfrom="296" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb14-296"><a href="#cb14-296" aria-hidden="true" tabindex="-1"></a>{ </span>
 <span id="cb14-297"><a href="#cb14-297" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> vec <span class="op">=</span> [<span class="fl">0.7</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="op">-</span> <span class="fl">0.7</span> <span class="op">*</span> <span class="fl">0.7</span>)<span class="op">,</span> <span class="dv">0</span>]<span class="op">;</span></span>
@@ -567,7 +567,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The larger the circle from which we select the vector <strong>v</strong>, the closer it is to being orthogonal:</p>
+<p>The larger the circle from which we select the vector <strong>v</strong> is, the closer it is to being orthogonal:</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb15" data-startfrom="309" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 308;"><span id="cb15-309"><a href="#cb15-309" aria-hidden="true" tabindex="-1"></a>{ </span>
 <span id="cb15-310"><a href="#cb15-310" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> vec <span class="op">=</span> [<span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)]<span class="op">;</span></span>
@@ -594,6 +594,31 @@ window.Quarto = {
 \mathbf{u} \cdot \mathbf{v} = \cos (\alpha) = v_n
 \]</span></p>
 <p>The average value of <span class="math inline">\(\cos^2 (\alpha)\)</span> or <span class="math inline">\(v_n^2\)</span> is <span class="math inline">\(\dfrac{1}{n}\)</span>. Since <span class="math inline">\(v_1^2+v_2^2 + \cdot + v_n^2=1\)</span> and the total value of 1 is divided equally among n components, giving <span class="math inline">\(v_n^2\)</span> a share of <span class="math inline">\(\frac{1}{n}\)</span>. As n becomes large enough, the average value of <span class="math inline">\(cos^2(\alpha)\)</span> approaches zero.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+More Formal Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In my opinion the above explanation is enough to understand the intuition. But, let’s also give a formal proof for the expected value of <span class="math inline">\(v_n^2\)</span>.</p>
+<p>We’re looking for <span class="math inline">\(\mathbb{E}\left[v_n^2\right]\)</span>. And we also have:</p>
+<p><span class="math display">\[
+\begin{align}
+\mathbb{E}[v_1^2 + \cdots + v_n^2] &amp;=\mathbb{E}[v_1^2] + \cdots + \mathbb{E}[v_n^2]\\
+&amp;= n\mathbb{E}[v_n^2] \\
+&amp;= 1
+\end{align}
+\]</span></p>
+<p>Here we used the fact that the expected values for all components of <strong>v</strong> are the same and the linearity of the expectation.</p>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -1031,10 +1056,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://giscus.app/client.js" data-repo="maitbayev/maitbayev.github.io" data-repo-id="R_kgDOMWtaEQ" data-category="General" data-category-id="DIC_kwDOMWtaEc4Cl_dk" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 
 
