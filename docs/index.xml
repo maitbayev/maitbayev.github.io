@@ -2274,7 +2274,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 </div>
-<p>In other words, any vector in the red circle above is orthogonal to <strong>u</strong>. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors with the same dot product:</p>
+<p>In other words, any vector in the red circle above is orthogonal to <strong>u</strong>. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors:</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb14" data-startfrom="296" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb14-296">{ </span>
 <span id="cb14-297">  <span class="kw" style="color: #003B4F;

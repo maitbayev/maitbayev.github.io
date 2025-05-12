@@ -290,7 +290,7 @@ In 2D, we only had two vectors that are orthogonal to **u**. In 3D, we have an e
 }
 ```
 
-In other words, any vector in the red circle above is orthogonal to **u**. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors with the same dot product:
+In other words, any vector in the red circle above is orthogonal to **u**. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors:
 
 ```{ojs}
 //| echo: false
