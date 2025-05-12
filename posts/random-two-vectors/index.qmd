@@ -11,10 +11,109 @@ toc: true
 
 ## Introduction 
 
+High-dimensional embedding vectors are fundamental building blocks in Machine Learning, particularly in [transformers](https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)) or [word2vec](https://en.wikipedia.org/wiki/Word2vec). Typically, two vectors that are semantically similar point in roughly the same direction; if they are entirely dissimilar, they point in opposite directions; and if they're nearly orthogonal, they are unrelated.
+
+We usually think in two or three dimensions, but there are some unintuitive properties that only apply in higher dimensions. For example, two random vectors are expected to be near orthogonal in high dimensions. Intuitively, it makes sense for [word2vec](https://en.wikipedia.org/wiki/Word2vec), as we expect that two words are unrelated in most instances.
+
+In this post, I will explain why two random vectors are expected to be nearly orthogonal in high dimensions.
 
 [Subscribe](https://maitbayev.substack.com/subscribe) to get a notification about future posts. 
 
-## Recap
+## Two Dimensions
+
+```{ojs}
+//| echo: false
+function makeCircle2D(vecU, vecV, height=200) {
+  const svg = d3.create('svg')
+    .attr('viewBox', [0, 0, width, height]);
+  
+  function appendArrow(svg, v, color, id) {
+    svg
+      .append('defs')
+      .append('marker')
+      .attr('id', id)
+      .attr('viewBox', [0, 0, 20, 20])
+      .attr('refX', 20)
+      .attr('refY', 10)
+      .attr('markerWidth', 10)
+      .attr('markerHeight', 10)
+      .attr('orient', 'auto-start-reverse')
+      .append('path')
+      .attr('d', d3.line()([[0, 0], [0, 20], [20, 10]]))
+      .attr('fill', color);
+    svg
+      .append('path')
+      .attr('d', d3.line()(
+        [[width / 2, height / 2], [width / 2 + v[0], height / 2 + v[1]]]
+      ))
+      .attr('stroke', color)
+      .attr('stroke-width', '2px')
+      .attr('marker-end', 'url(#' + id + ')')
+      .attr('fill', 'none');
+  }
+  const radius = Math.min(width, height) / 2 - 4;
+  vecU = [vecU[0] * radius, vecU[1] * radius];
+  vecV = [vecV[0] * radius, vecV[1] * radius];
+  svg
+    .append('circle')
+    .attr('cx', '50%')
+    .attr('cy', '50%')
+    .attr('r', radius)
+    .style('stroke', 'black')
+    .style('stroke-width', '2px')
+    .style('fill', 'none');
+
+  appendArrow(svg, vecU, "black", "arrow-0");
+  appendArrow(svg, vecV, "red", "arrow-1");
+  return svg.node();
+}
+```
+
+This problem is equivalent to taking two random vectors **u** and **v** on a circle of radius 1 and computing their [dot product](https://maitbayev.github.io/posts/dot-product/).
+
+```{ojs}
+//| echo: false
+makeCircle2D([0, 1], [1 / Math.sqrt(2), 1 / Math.sqrt(2)])
+```
+
+As a reminder [the dot product](https://maitbayev.github.io/posts/dot-product/) of **u** and **v** is:
+
+$$
+\mathbf{u} \cdot \mathbf{v} = u_x v_x + u_y v_y = \cos (\alpha)
+$$
+
+The dot product is zero when **u** and **v** are orthogonal, and near zero when they are nearly orthogonal.
+
+
+The dot product is [invariant under rotations](https://maitbayev.github.io/posts/dot-product/#rotational-invariance), which means that we can rotate both vectors such that the vector **u** is [0, 1]:
+
+```{ojs}
+//| echo: false
+makeCircle2D([0, -1], [-1 / Math.sqrt(2), -1 / Math.sqrt(2)])
+```
+
+This simplifies the dot product to $\mathbf{u} \cdot \mathbf{v} = \cos (\alpha) = v_y$. The probability of being near orthogonal is pretty low in two dimensions, but this help in framing our problem for higher dimensions. 
+
+It turns out that the average value of $\cos^2(\alpha)$ or $v_y^2$  is exactly $\frac{1}{2}$. There are numerous analytical proofs, but the simplest intuition is derived from $v_x^2+v_y^2=1$. We have a total budget of 1, which we distribute between $v_x^2$ and $v_y^2$; thus, on average, $v_y^2$ receives half of the budget.
+
+We only have two the orthogonal vectors to **u**, and they are:
+
+```{ojs}
+//| echo: false
+html`
+<div style="display: flex; justify-content: center;">
+  <div style="width: 50%;">
+    ${makeCircle2D([0, -1], [-1, 0], 400)}
+  </div>
+  <div style="width: 50%;">
+    ${makeCircle2D([0, -1], [1, 0], 400)}
+  </div>
+</div>
+`
+```
+
+## Three Dimensions 
+
 
 ```{ojs}
 //| echo: false
@@ -41,17 +140,19 @@ function makeSphere(wireframe = false, opacity = 1) {
 
 ```{ojs}
 //| echo: false
-function makeSphereSlice(wireframe = false, opacity = 1) {
+function makeSphereSlice(wireframe = true, opacity = 1) {
   const material = new THREE.MeshBasicMaterial({
     wireframe: wireframe, 
     opacity: opacity, 
     color: 0xff0000, 
-    transparent: true  
+    transparent: true,
+    side: THREE.DoubleSide, 
+    depthTest: false, 
   });
   const geometry = new THREE.SphereGeometry(
     1.01, 32, 32,
     0, Math.PI * 2.0,
-    Math.PI / 2 - Math.PI / 8, Math.PI / 4
+    Math.PI / 2 - Math.PI / 32, Math.PI / 16
   ); 
   return new THREE.Mesh(geometry, material);
 }
@@ -59,8 +160,10 @@ function makeSphereSlice(wireframe = false, opacity = 1) {
 
 ```{ojs}
 //| echo: false
-function makeCircle(color) {
-  const geometry = new THREE.CircleGeometry(1, 32); 
+function makeCircle3D(color, radius=1) {
+  const geometry = new THREE.CircleGeometry(radius, 32); 
+  // radius^2+z^2=1
+  // z=sqrt(1-radius^2)
   const material = new THREE.MeshStandardMaterial({ 
     color: color,
     side: THREE.DoubleSide,
@@ -69,6 +172,7 @@ function makeCircle(color) {
     depthTest: false, 
   }); 
   const circle = new THREE.Mesh( geometry, material );
+  circle.position.y = Math.sqrt(1 - radius * radius);
   circle.lookAt(0, 1, 0);
   return circle;
 }
@@ -108,18 +212,16 @@ function makeVector(vec, color) {
 
 ```{ojs}
 //| echo: false
-function makeScene(height) {
+function makeScene(vec) {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0xffffff);
-  scene.add(new THREE.AxesHelper(2));
+  scene.add(new THREE.AxesHelper(1.5));
   scene.add(makeSphere(/*wireframe: */false, /*opacity: */0.1));
   scene.add(makeSphere(/*wireframe: */true, /*opacity: */1));
   const light = new THREE.AmbientLight(0xFFFFFF,  /*intensity=*/1);
   scene.add(light);
-  scene.add(makeSphereSlice(false, 0.3));
   scene.add(makeVector([0, 1, 0], 0x000000));
-  scene.add(makeVector([0, 0, 1], 0xff0000));
-  scene.add(makeCircle(0xff0000));
+  scene.add(makeVector(vec, 0xff0000));
   return scene;
 }
 ```
@@ -133,33 +235,100 @@ function makeRendererElement(height, scene) {
     const aspect = width / height;
     const near = 1;
     const far = 1000;
-    const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+    var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     camera.position.z = 3;
     return camera;
   }
   const camera = makeCamera();
   const renderer = new THREE.WebGLRenderer({antialias: true});
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.autoRotate = true;
-  controls.enableZoom = false 
-
+  controls.autoRotate = false;
+  controls.enableZoom = false;
   function animate() {
     requestAnimationFrame( animate );
     controls.update();
     renderer.render( scene, camera );
   }
   animate();
-
   invalidation.then(() => (controls.dispose(), renderer.dispose()));
   renderer.setSize(width, height);
   renderer.setPixelRatio(devicePixelRatio);
   renderer.render(scene, camera)
-  controls.addEventListener("change", () => renderer.render(scene, camera));
+  // controls.addEventListener("change", () => renderer.render(scene, camera));
   return renderer.domElement
 }
 ```
 
+
+In three dimensions, we take two random vectors **u** and **v** on a unit sphere and rotate them together so that the vector **u** becomes [0, 0, 1] (the north pole):
+
 ```{ojs}
 //| echo: false
-makeRendererElement(400, makeScene())
+{ 
+  const scene = makeScene([1 / Math.sqrt(3), 1 / Math.sqrt(3), 1 / Math.sqrt(3)]);
+  return makeRendererElement(300, scene);
+}
 ```
+
+**Tip**: The spheres in this post are **interactive**.
+
+The dot product of $\mathbf{u}=[0, 0, 1]$ and $\mathbf{v}=[v_x, v_y, v_z]$ is:
+
+$$
+\mathbf{u} \cdot \mathbf{v} = \cos (\alpha) = v_z
+$$
+
+In 2D, we only had two vectors that are orthogonal to **u**. In 3D, we have an entire subspace of vectors that are orthogonal to **u**:
+
+```{ojs}
+//| echo: false
+{ 
+  const scene = makeScene([1 / Math.sqrt(2), 0, 1 / Math.sqrt(2)]);
+  scene.add(makeCircle3D(0xff0000));
+  scene.rotateX(Math.PI / 10);
+  return makeRendererElement(300, scene);
+}
+```
+
+In other words, any vector in the red circle above is orthogonal to **u**. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors:
+
+```{ojs}
+//| echo: false
+{ 
+  const vec = [0.7, Math.sqrt(1 - 0.7 * 0.7), 0];
+  const scene = makeScene(vec);
+  scene.add(makeCircle3D(0xff0000, 0.7));
+  scene.rotateX(Math.PI / 8);
+  return makeRendererElement(300, scene);
+}
+```
+
+The larger the circle from which we select the vector **v**, the closer it is to being orthogonal:
+
+```{ojs}
+//| echo: false
+{ 
+  const vec = [1 / Math.sqrt(2), 0, 1 / Math.sqrt(2)];
+  const scene = makeScene(vec);
+  scene.add(makeSphereSlice(false, 0.3));
+  // scene.add(makeCircle3D(0xff0000, 1));
+  scene.rotateX(Math.PI / 8);
+  return makeRendererElement(300, scene);
+}
+```
+
+For example, we can consider all vectors within the thin red stripe to be nearly orthogonal. 
+
+The average value of $\cos^2 (\alpha)$ or $v_z^2$ is $\dfrac{1}{3}$. Similar to the 2D case, this comes from the fact that $v_x^2+v_y^2+v_z^2=1$. With a total budget of 1 split among $v_x^2$, $v_y^2$ and $v_z^2$, each gets, on average, one-third of it.
+
+## N-dimensions 
+
+Visualizing an N-dimensional sphere is challenging. However, we have all the tools needed to develop an intuition. 
+
+Similar to the 2D and 3D case, we can fix the first vector as $\mathbf{u}=[0, 0, \dots, 1]$. The second vector $\mathbf{v}=[v_1, v_2, \cdots, v_n]$ is randomly chosen from an N-dimensional unit sphere. Their dot product is then given by:
+
+$$
+\mathbf{u} \cdot \mathbf{v} = \cos (\alpha) = v_n
+$$
+
+The average value of $\cos^2 (\alpha)$ or $v_n^2$ is $\dfrac{1}{n}$. Since $v_1^2+v_2^2 + \cdot + v_n^2=1$ and the total value of 1 is divided equally among n components, giving $v_n^2$ a share of $\frac{1}{n}$. As n becomes large enough, the average value of $cos^2(\alpha)$ approaches zero.
