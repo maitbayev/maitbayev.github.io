@@ -629,7 +629,7 @@ font-style: inherit;">2</span>)])</span></code></pre></div>
 </div>
 <p>This simplifies the dot product to <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bu%7D%20%5Ccdot%20%5Cmathbf%7Bv%7D%20=%20%5Ccos%20(%5Calpha)%20=%20v_y">. The probability of being near orthogonal is pretty low in two dimensions, but this helps us in framing our problem for higher dimensions.</p>
 <p>It turns out that the average value of <img src="https://latex.codecogs.com/png.latex?%5Ccos%5E2(%5Calpha)"> or <img src="https://latex.codecogs.com/png.latex?v_y%5E2"> is exactly <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7B2%7D">. There are numerous analytical proofs, but the simplest intuition is derived from <img src="https://latex.codecogs.com/png.latex?v_x%5E2+v_y%5E2=1">. We have a total budget of 1, which we distribute between <img src="https://latex.codecogs.com/png.latex?v_x%5E2"> and <img src="https://latex.codecogs.com/png.latex?v_y%5E2">; thus, on average, <img src="https://latex.codecogs.com/png.latex?v_y%5E2"> receives half of the budget.</p>
-<p>We only have two the orthogonal vectors to <strong>u</strong>, and they are:</p>
+<p>We only have two orthogonal vectors to <strong>u</strong>, and they are:</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb4" data-startfrom="102" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 101;"><span id="cb4-102"><span class="fu" style="color: #4758AB;
 background-color: null;

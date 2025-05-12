@@ -96,7 +96,7 @@ This simplifies the dot product to $\mathbf{u} \cdot \mathbf{v} = \cos (\alpha) 
 
 It turns out that the average value of $\cos^2(\alpha)$ or $v_y^2$  is exactly $\frac{1}{2}$. There are numerous analytical proofs, but the simplest intuition is derived from $v_x^2+v_y^2=1$. We have a total budget of 1, which we distribute between $v_x^2$ and $v_y^2$; thus, on average, $v_y^2$ receives half of the budget.
 
-We only have two the orthogonal vectors to **u**, and they are:
+We only have two orthogonal vectors to **u**, and they are:
 
 ```{ojs}
 //| echo: false
