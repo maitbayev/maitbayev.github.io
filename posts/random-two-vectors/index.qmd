@@ -1,7 +1,7 @@
 ---
 title: "Why are two random vectors near orthogonal in high dimensions?"
 author: "Madiyar Aitbayev"
-date: "2025-04-27"
+date: "2025-05-12"
 categories: [math, random, vector]
 image: "images/image.jpg"
 toc: true
@@ -337,18 +337,18 @@ The average value of $\cos^2 (\alpha)$ or $v_n^2$ is $\dfrac{1}{n}$. Since $v_1^
 
 ### More Formal Proof
 
-In my opinion the above explanation is enough to understand the intuition. But, let's also give a formal proof for the expected value of $v_n^2$. 
+In my opinion the above explanation is enough to understand the intuition. However, let’s also present a formal proof for the expected value of $v_n^2$. 
 
 We're looking for $\mathbb{E}\left[v_n^2\right]$. And we also have:
 
 $$
 \begin{align}
-\mathbb{E}[v_1^2 + \cdots + v_n^2] &=\mathbb{E}[v_1^2] + \cdots + \mathbb{E}[v_n^2]\\
+\mathbb{E}[\sum_{i=1}^n v_i^2] &=\sum_{i=1}^n \mathbb{E}[v_i^2] \\
 &= n\mathbb{E}[v_n^2] \\
 &= 1
 \end{align}
 $$
 
-Here we used the fact that the expected values for all components of **v** are the same and the linearity of the expectation.
+Hence, $\mathbb{E}[v_n^2]=\frac{1}{n}$. Here we used the property that all components of **v** have identical expected values and [the linearity of expectation](https://en.wikipedia.org/wiki/Expected_value#Properties).
 
 :::

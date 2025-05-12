@@ -9,8 +9,8 @@
 <link>https://maitbayev.github.io/</link>
 <atom:link href="https://maitbayev.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>Madiyar&#39;s Page</description>
-<generator>quarto-1.5.54</generator>
-<lastBuildDate>Sat, 26 Apr 2025 23:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.30</generator>
+<lastBuildDate>Sun, 11 May 2025 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Why are two random vectors near orthogonal in high dimensions?</title>
   <dc:creator>Madiyar Aitbayev</dc:creator>
@@ -2497,10 +2497,10 @@ More Formal Proof
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In my opinion the above explanation is enough to understand the intuition. But, let’s also give a formal proof for the expected value of <img src="https://latex.codecogs.com/png.latex?v_n%5E2">.</p>
+<p>In my opinion the above explanation is enough to understand the intuition. However, let’s also present a formal proof for the expected value of <img src="https://latex.codecogs.com/png.latex?v_n%5E2">.</p>
 <p>We’re looking for <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5Cleft%5Bv_n%5E2%5Cright%5D">. And we also have:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathbb%7BE%7D%5Bv_1%5E2%20+%20%5Ccdots%20+%20v_n%5E2%5D%20&amp;=%5Cmathbb%7BE%7D%5Bv_1%5E2%5D%20+%20%5Ccdots%20+%20%5Cmathbb%7BE%7D%5Bv_n%5E2%5D%5C%5C%0A&amp;=%20n%5Cmathbb%7BE%7D%5Bv_n%5E2%5D%20%5C%5C%0A&amp;=%201%0A%5Cend%7Balign%7D%0A"></p>
-<p>Here we used the fact that the expected values for all components of <strong>v</strong> are the same and the linearity of the expectation.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathbb%7BE%7D%5B%5Csum_%7Bi=1%7D%5En%20v_i%5E2%5D%20&amp;=%5Csum_%7Bi=1%7D%5En%20%5Cmathbb%7BE%7D%5Bv_i%5E2%5D%20%5C%5C%0A&amp;=%20n%5Cmathbb%7BE%7D%5Bv_n%5E2%5D%20%5C%5C%0A&amp;=%201%0A%5Cend%7Balign%7D%0A"></p>
+<p>Hence, <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5Bv_n%5E2%5D=%5Cfrac%7B1%7D%7Bn%7D">. Here we used the property that all components of <strong>v</strong> have identical expected values and <a href="https://en.wikipedia.org/wiki/Expected_value#Properties">the linearity of expectation</a>.</p>
 </div>
 </div>
 </div>
@@ -2514,7 +2514,7 @@ More Formal Proof
   <category>random</category>
   <category>vector</category>
   <guid>https://maitbayev.github.io/posts/random-two-vectors/</guid>
-  <pubDate>Sat, 26 Apr 2025 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 11 May 2025 23:00:00 GMT</pubDate>
   <media:content url="https://maitbayev.github.io/posts/random-two-vectors/images/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
