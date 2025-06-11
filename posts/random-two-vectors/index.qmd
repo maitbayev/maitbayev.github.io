@@ -352,3 +352,29 @@ $$
 Hence, $\mathbb{E}[v_n^2]=\frac{1}{n}$. Here we used the property that all components of **v** have identical expected values and [the linearity of expectation](https://en.wikipedia.org/wiki/Expected_value#Properties).
 
 :::
+
+## The End
+
+I hope you enjoyed this post. 
+
+[Subscribe](https://maitbayev.substack.com/subscribe) to get a notification about future posts. 
+
+```{ojs}
+//| echo: false
+html`
+    <canvas id="canvas" style="width:100%; height: 360px;">
+    </canvas>
+`
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+pkg = {
+  const file = await FileAttachment("./pkg/demo.js").url();
+  const module = await import(file);
+  module.default = await module.default(await FileAttachment("./pkg/demo_bg.wasm").url());
+  // module.set_panic_hook();
+  return module;
+}
+```
