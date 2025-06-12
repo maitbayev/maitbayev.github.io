@@ -257,7 +257,7 @@ function __wbg_adapter_50(arg0, arg1, arg2, arg3) {
 }
 
 function __wbg_adapter_53(arg0, arg1, arg2) {
-    wasm.closure2556_externref_shim(arg0, arg1, arg2);
+    wasm.closure2557_externref_shim(arg0, arg1, arg2);
 }
 
 const __wbindgen_enum_GpuBlendFactor = ["zero", "one", "src", "one-minus-src", "src-alpha", "one-minus-src-alpha", "dst", "one-minus-dst", "dst-alpha", "one-minus-dst-alpha", "src-alpha-saturated", "constant", "one-minus-constant", "src1", "one-minus-src1", "src1-alpha", "one-minus-src1-alpha"];
@@ -2441,8 +2441,8 @@ function __wbg_get_imports() {
         const ret = makeMutClosure(arg0, arg1, 2387, __wbg_adapter_50);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper8139 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 2557, __wbg_adapter_53);
+    imports.wbg.__wbindgen_closure_wrapper8142 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 2558, __wbg_adapter_53);
         return ret;
     };
     imports.wbg.__wbindgen_debug_string = function(arg0, arg1) {
