@@ -3,6 +3,7 @@ project:
   output-dir: docs
   resources:
     - "*.mp4"
+    - "*.wasm"
 
 website:
   title: "Madiyar's Page"
