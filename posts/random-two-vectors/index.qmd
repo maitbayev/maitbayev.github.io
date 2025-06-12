@@ -373,7 +373,7 @@ html`
 pkg = {
   const file = await FileAttachment("./pkg/demo.js").url();
   const module = await import(file);
-  module.default = await module.default(await FileAttachment("./pkg/demo_bg.wasm").url());
+  module.default = await module.default();
   // module.set_panic_hook();
   return module;
 }
