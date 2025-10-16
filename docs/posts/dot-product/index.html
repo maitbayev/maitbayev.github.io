@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.4">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-19cd9126a9a9c64aacb03dc90954a64a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5d4dd9db148681779f63c031488aa21a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -156,6 +157,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Madiyar’s Page</span>
     </a>
@@ -272,7 +275,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Geometric properties
+<span class="screen-reader-only">Note</span>Geometric properties
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -315,7 +318,7 @@ Geometric properties
 \]</span></p>
 <p>With the above, we can simplify further by constraining <span class="math inline">\(\|\textbf{b}\| = 1\)</span>. If the equivalence holds for <span class="math inline">\(\|\textbf{b}\| = 1\)</span>, then it holds for any <span class="math inline">\(\|k\textbf{b}\|\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="91" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>JXG <span class="op">=</span> <span class="cf">await</span> <span class="pp">require</span>(<span class="st">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="91" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>JXG <span class="op">=</span> <span class="cf">await</span> <span class="pp">require</span>(<span class="st">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -323,13 +326,13 @@ Geometric properties
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="96" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 95;"><span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">board_div</span>(name<span class="op">,</span> width<span class="op">=</span><span class="dv">500</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="96" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 95;"><span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">board_div</span>(name<span class="op">,</span> width<span class="op">=</span><span class="dv">500</span>) {</span>
 <span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div </span></span>
 <span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="vs">    id=</span><span class="sc">${</span>name<span class="sc">}</span><span class="vs"> </span></span>
 <span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="vs">    style='max-width:</span><span class="sc">${</span>width<span class="sc">}</span><span class="vs">px; aspect-ratio: 1; </span></span>
 <span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin-inline: auto'&gt;</span></span>
 <span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span> </span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -337,7 +340,7 @@ Geometric properties
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="108" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 107;"><span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">init_board</span>(name<span class="op">,</span> extend<span class="op">=</span><span class="fl">5.5</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="108" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 107;"><span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">init_board</span>(name<span class="op">,</span> extend<span class="op">=</span><span class="fl">5.5</span>) {</span>
 <span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(name<span class="op">,</span> {</span>
 <span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>    <span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span>extend<span class="op">,</span> extend<span class="op">,</span> extend<span class="op">,</span> <span class="op">-</span>extend]<span class="op">,</span></span>
 <span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>    <span class="dt">showCopyright</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
@@ -371,7 +374,7 @@ Geometric properties
 <span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>      }</span>
 <span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
 <span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -379,7 +382,7 @@ Geometric properties
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="148" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 147;"><span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">make_board</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="148" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 147;"><span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">make_board</span>(</span>
 <span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>  name<span class="op">,</span> showSlider<span class="op">=</span><span class="kw">true</span><span class="op">,</span> sliderValue<span class="op">=</span><span class="fl">0.0</span><span class="op">,</span> </span>
 <span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>  showP<span class="op">=</span><span class="kw">true</span><span class="op">,</span> showPLabel<span class="op">=</span><span class="kw">true</span></span>
 <span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>) {</span>
@@ -524,7 +527,7 @@ Geometric properties
 <span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> rot <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'transform'</span><span class="op">,</span> [<span class="kw">function</span>(){<span class="cf">return</span> slider<span class="op">.</span><span class="fu">Value</span>() <span class="op">/</span> <span class="dv">180</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">;</span>}<span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>]]<span class="op">,</span> {<span class="dt">type</span><span class="op">:</span><span class="st">'rotate'</span>})<span class="op">;</span></span>
 <span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a>  rot<span class="op">.</span><span class="fu">bindTo</span>([pointb<span class="op">,</span> pointa])<span class="op">;</span></span>
 <span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> board<span class="op">;</span></span>
-<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -533,7 +536,7 @@ Geometric properties
 </div>
 <p>A visualization for the setup we have so far:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="301" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 300;"><span id="cb5-301"><a href="#cb5-301" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board1"</span><span class="op">,</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="301" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 300;"><span id="cb5-301"><a href="#cb5-301" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board1"</span><span class="op">,</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="expression">
 
@@ -541,7 +544,7 @@ Geometric properties
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="307" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 306;"><span id="cb6-307"><a href="#cb6-307" aria-hidden="true" tabindex="-1"></a>board1 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board1"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">false</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">30</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="307" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 306;"><span id="cb6-307"><a href="#cb6-307" aria-hidden="true" tabindex="-1"></a>board1 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board1"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">false</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">30</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -557,7 +560,7 @@ Geometric properties
 <p>The geometric definition implies that the dot product is <strong>invariant under rotations</strong>. So, if we rotate the both vectors <span class="math inline">\(\textbf{a}\)</span> and <span class="math inline">\(\textbf{b}\)</span> by the same angle <span class="math inline">\(\alpha\)</span>, the dot product won’t change. It is not obvious from the algebraic definition, but a detailed proof is provided in <a href="#rotational-invariance">the next section</a>. Let’s trust this property for now until the next section, and simplify our problem for the third time.</p>
 <p>We can rotate the both vectors such that <span class="math inline">\(\textbf{b}\)</span> is aligned with the x-axis. Click the button below for the illustration:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="326" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 325;"><span id="cb7-326"><a href="#cb7-326" aria-hidden="true" tabindex="-1"></a>viewof mybutton <span class="op">=</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="326" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 325;"><span id="cb7-326"><a href="#cb7-326" aria-hidden="true" tabindex="-1"></a>viewof mybutton <span class="op">=</span> {</span>
 <span id="cb7-327"><a href="#cb7-327" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> form <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Play to Rotate"</span><span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reduce</span><span class="op">:</span> () <span class="kw">=&gt;</span> {</span>
 <span id="cb7-328"><a href="#cb7-328" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> slider <span class="op">=</span> board2<span class="op">.</span><span class="at">elementsByName</span>[<span class="st">"alpha"</span>]<span class="op">;</span></span>
 <span id="cb7-329"><a href="#cb7-329" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">updateRotate</span>() {</span>
@@ -581,7 +584,7 @@ Geometric properties
 <span id="cb7-347"><a href="#cb7-347" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/style&gt;</span></span>
 <span id="cb7-348"><a href="#cb7-348" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span>)<span class="op">;</span></span>
 <span id="cb7-349"><a href="#cb7-349" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> form<span class="op">;</span></span>
-<span id="cb7-350"><a href="#cb7-350" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-350"><a href="#cb7-350" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -589,7 +592,7 @@ Geometric properties
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="356" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 355;"><span id="cb8-356"><a href="#cb8-356" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board2"</span><span class="op">,</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="356" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 355;"><span id="cb8-356"><a href="#cb8-356" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board2"</span><span class="op">,</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="expression">
 
@@ -597,7 +600,7 @@ Geometric properties
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="362" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 361;"><span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a>board2 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board2"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">true</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">30</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="362" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 361;"><span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a>board2 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board2"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">true</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">30</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
@@ -614,7 +617,7 @@ Geometric properties
 \]</span></p>
 <p>now, we have <span class="math inline">\(\textbf{a} \cdot \textbf{b} = a_x =  \|\textbf{a}\|\cos \theta\)</span>. This is correct due to <a href="https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates">the polar coordinates</a>. Alternatively, we can easily derive from the <a href="https://en.wikipedia.org/wiki/Sine_and_cosine">cosine definition</a>. The proof is left as an exercise to the reader. You can use the visualization below to convince yourself:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="382" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 381;"><span id="cb10-382"><a href="#cb10-382" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board3"</span><span class="op">,</span> <span class="dv">400</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="382" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 381;"><span id="cb10-382"><a href="#cb10-382" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board3"</span><span class="op">,</span> <span class="dv">400</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="expression">
 
@@ -622,7 +625,7 @@ Geometric properties
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="388" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 387;"><span id="cb11-388"><a href="#cb11-388" aria-hidden="true" tabindex="-1"></a>board3 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board3"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">false</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">0</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="388" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 387;"><span id="cb11-388"><a href="#cb11-388" aria-hidden="true" tabindex="-1"></a>board3 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board3"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">false</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">0</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
@@ -660,7 +663,7 @@ Geometric properties
 <h3 class="anchored" data-anchor-id="rotational-invariance">Rotational invariance</h3>
 <p>First, let’s visualize the rotation:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="421" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 420;"><span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="421" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 420;"><span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a><span class="fu">board_div</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="dv">500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="expression">
 
@@ -668,7 +671,7 @@ Geometric properties
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="427" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 426;"><span id="cb13-427"><a href="#cb13-427" aria-hidden="true" tabindex="-1"></a>board4 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">true</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">10</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">true</span><span class="op">,</span>  <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="427" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 426;"><span id="cb13-427"><a href="#cb13-427" aria-hidden="true" tabindex="-1"></a>board4 <span class="op">=</span> <span class="fu">make_board</span>(<span class="st">"board4"</span><span class="op">,</span> <span class="co">/*showSlider=*/</span><span class="kw">true</span><span class="op">,</span> <span class="co">/*sliderValue=*/</span><span class="dv">10</span><span class="op">,</span> <span class="co">/*showP=*/</span><span class="kw">true</span><span class="op">,</span>  <span class="co">/*showP=*/</span><span class="kw">false</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
@@ -711,7 +714,7 @@ Geometric properties
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative Proof 1
+<span class="screen-reader-only">Note</span>Alternative Proof 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -738,7 +741,7 @@ Alternative Proof 1
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative Proof 2
+<span class="screen-reader-only">Note</span>Alternative Proof 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -770,7 +773,7 @@ Alternative Proof 2
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative Proof 3
+<span class="screen-reader-only">Note</span>Alternative Proof 3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -804,7 +807,7 @@ a_xp_x+a_yp_y=\textbf{a}\cdot\textbf{p}=\|\textbf{p}\|^2
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative Proof 4
+<span class="screen-reader-only">Note</span>Alternative Proof 4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -887,13 +890,14 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -9,7 +9,7 @@
 <link>https://maitbayev.github.io/</link>
 <atom:link href="https://maitbayev.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>Madiyar&#39;s Page</description>
-<generator>quarto-1.8.4</generator>
+<generator>quarto-1.8.25</generator>
 <lastBuildDate>Sun, 11 May 2025 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Why are two random vectors near orthogonal in high dimensions?</title>
@@ -33,7 +33,7 @@
 <section id="two-dimensions" class="level2">
 <h2 class="anchored" data-anchor-id="two-dimensions">Two Dimensions</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="25" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 24;"><span id="cb1-25"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="25" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 24;"><span id="cb1-25"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -521,7 +521,7 @@ background-color: null;
 font-style: inherit;">node</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-68">}</span></code></pre></div>
+<span id="cb1-68">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -530,7 +530,7 @@ font-style: inherit;">;</span></span>
 </div>
 <p>This problem is equivalent to selecting two random vectors <strong>u</strong> and <strong>v</strong> on a circle of radius 1 and computing their <a href="https://maitbayev.github.io/posts/dot-product/">dot product</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="75" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb2-75"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="75" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb2-75"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">makeCircle2D</span>([<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -566,7 +566,7 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sqrt</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span>)])</span></code></pre></div>
+font-style: inherit;">2</span>)])</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -578,7 +578,7 @@ font-style: inherit;">2</span>)])</span></code></pre></div>
 <p>The dot product is zero when <strong>u</strong> and <strong>v</strong> are orthogonal, and near zero when they are nearly orthogonal.</p>
 <p>The dot product is <a href="https://maitbayev.github.io/posts/dot-product/#rotational-invariance">invariant under rotations</a>, which means that we can rotate both vectors in the same way such that the vector <strong>u</strong> is [0, 1]:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="91" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb3-91"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="91" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb3-91"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">makeCircle2D</span>([<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -620,7 +620,7 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sqrt</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span>)])</span></code></pre></div>
+font-style: inherit;">2</span>)])</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
 
@@ -631,7 +631,7 @@ font-style: inherit;">2</span>)])</span></code></pre></div>
 <p>It turns out that the average value of <img src="https://latex.codecogs.com/png.latex?%5Ccos%5E2(%5Calpha)"> or <img src="https://latex.codecogs.com/png.latex?v_y%5E2"> is exactly <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7B2%7D">. There are numerous analytical proofs, but the simplest intuition is derived from <img src="https://latex.codecogs.com/png.latex?v_x%5E2+v_y%5E2=1">. We have a total budget of 1, which we distribute between <img src="https://latex.codecogs.com/png.latex?v_x%5E2"> and <img src="https://latex.codecogs.com/png.latex?v_y%5E2">; thus, on average, <img src="https://latex.codecogs.com/png.latex?v_y%5E2"> receives half of the budget.</p>
 <p>We only have two orthogonal vectors to <strong>u</strong>, and they are:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="102" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 101;"><span id="cb4-102"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="102" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 101;"><span id="cb4-102"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">html</span><span class="vs" style="color: #20794D;
 background-color: null;
@@ -716,7 +716,7 @@ background-color: null;
 font-style: inherit;">&lt;/div&gt;</span></span>
 <span id="cb4-111"><span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">`</span></span></code></pre></div>
+font-style: inherit;">`</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
 
@@ -727,7 +727,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 <section id="three-dimensions" class="level2">
 <h2 class="anchored" data-anchor-id="three-dimensions">Three Dimensions</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="119" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 118;"><span id="cb5-119">THREE <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="119" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 118;"><span id="cb5-119">THREE <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
 <span id="cb5-120">  <span class="kw" style="color: #003B4F;
@@ -776,7 +776,7 @@ font-weight: bold;
 font-style: inherit;">return</span> THREE<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb5-123">}</span></code></pre></div>
+<span id="cb5-123">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
@@ -784,7 +784,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="128" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb6-128"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="128" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb6-128"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -888,7 +888,7 @@ background-color: null;
 font-style: inherit;">,</span> material)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb6-137">}</span></code></pre></div>
+<span id="cb6-137">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -896,7 +896,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="142" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 141;"><span id="cb7-142"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="142" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 141;"><span id="cb7-142"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -1079,7 +1079,7 @@ background-color: null;
 font-style: inherit;">,</span> material)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-157">}</span></code></pre></div>
+<span id="cb7-157">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -1087,7 +1087,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="162" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 161;"><span id="cb8-162"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="162" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 161;"><span id="cb8-162"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -1252,7 +1252,7 @@ font-weight: bold;
 font-style: inherit;">return</span> circle<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb8-177">}</span></code></pre></div>
+<span id="cb8-177">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="declaration">
 
@@ -1260,7 +1260,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="182" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 181;"><span id="cb9-182"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="182" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 181;"><span id="cb9-182"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -1658,7 +1658,7 @@ background-color: null;
 font-style: inherit;">,</span> color)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb9-209">}</span></code></pre></div>
+<span id="cb9-209">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
@@ -1666,7 +1666,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="214" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 213;"><span id="cb10-214"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="214" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 213;"><span id="cb10-214"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -1833,7 +1833,7 @@ font-weight: bold;
 font-style: inherit;">return</span> scene<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb10-225">}</span></code></pre></div>
+<span id="cb10-225">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
@@ -1841,7 +1841,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="231" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 230;"><span id="cb11-231"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="231" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 230;"><span id="cb11-231"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -2102,7 +2102,7 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">domElement</span></span>
-<span id="cb11-258">}</span></code></pre></div>
+<span id="cb11-258">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
@@ -2111,7 +2111,7 @@ font-style: inherit;">domElement</span></span>
 </div>
 <p>In three dimensions, we take two random vectors <strong>u</strong> and <strong>v</strong> on a unit sphere and rotate them together so that the vector <strong>u</strong> becomes the north pole ([0, 0, 1]):</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="266" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 265;"><span id="cb12-266">{ </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="266" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 265;"><span id="cb12-266">{ </span>
 <span id="cb12-267">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2174,7 +2174,7 @@ background-color: null;
 font-style: inherit;">,</span> scene)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb12-269">}</span></code></pre></div>
+<span id="cb12-269">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="expression">
 
@@ -2186,7 +2186,7 @@ font-style: inherit;">;</span></span>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7Bu%7D%20%5Ccdot%20%5Cmathbf%7Bv%7D%20=%20%5Ccos%20(%5Calpha)%20=%20v_z%0A"></p>
 <p>In 2D, we only had two vectors that are orthogonal to <strong>u</strong>. In 3D, we have an entire subspace of vectors that are orthogonal to <strong>u</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="284" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 283;"><span id="cb13-284">{ </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="284" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 283;"><span id="cb13-284">{ </span>
 <span id="cb13-285">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2267,7 +2267,7 @@ background-color: null;
 font-style: inherit;">,</span> scene)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb13-289">}</span></code></pre></div>
+<span id="cb13-289">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="expression">
 
@@ -2276,7 +2276,7 @@ font-style: inherit;">;</span></span>
 </div>
 <p>In other words, any vector in the red circle above is orthogonal to <strong>u</strong>. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="296" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb14-296">{ </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="296" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb14-296">{ </span>
 <span id="cb14-297">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2363,7 +2363,7 @@ background-color: null;
 font-style: inherit;">,</span> scene)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb14-302">}</span></code></pre></div>
+<span id="cb14-302">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-14" data-nodetype="expression">
 
@@ -2372,7 +2372,7 @@ font-style: inherit;">;</span></span>
 </div>
 <p>The larger the circle from which we select the vector <strong>v</strong> is, the closer it is to being orthogonal:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="309" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 308;"><span id="cb15-309">{ </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb15" data-startfrom="309" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 308;"><span id="cb15-309">{ </span>
 <span id="cb15-310">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2469,7 +2469,7 @@ background-color: null;
 font-style: inherit;">,</span> scene)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb15-316">}</span></code></pre></div>
+<span id="cb15-316">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-15" data-nodetype="expression">
 
@@ -2491,7 +2491,7 @@ font-style: inherit;">;</span></span>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-More Formal Proof
+<span class="screen-reader-only">Note</span>More Formal Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2510,7 +2510,7 @@ More Formal Proof
 <p>I hope you enjoyed this post.</p>
 <p><a href="https://maitbayev.substack.com/subscribe">Subscribe</a> to get a notification about future posts.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="363" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 362;"><span id="cb16-363"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb16" data-startfrom="363" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 362;"><span id="cb16-363"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">html</span><span class="vs" style="color: #20794D;
 background-color: null;
@@ -2523,7 +2523,7 @@ background-color: null;
 font-style: inherit;">    &lt;/canvas&gt;</span></span>
 <span id="cb16-366"><span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">`</span></span></code></pre></div>
+font-style: inherit;">`</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-16" data-nodetype="expression">
 
@@ -2531,7 +2531,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="372" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 371;"><span id="cb17-372">pkg <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb17" data-startfrom="372" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 371;"><span id="cb17-372">pkg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
 <span id="cb17-373">  <span class="kw" style="color: #003B4F;
@@ -2591,7 +2591,7 @@ font-weight: bold;
 font-style: inherit;">return</span> module<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb17-378">}</span></code></pre></div>
+<span id="cb17-378">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-17" data-nodetype="declaration">
 
@@ -2656,7 +2656,7 @@ font-style: inherit;">;</span></span>
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
 <p>Let’s setup our environment:</p>
 <div id="efb4296c-f16a-4bbb-a08e-9a30cb0bf997" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
 background-color: null;
@@ -2679,14 +2679,14 @@ background-color: null;
 font-style: inherit;">2</span>, n)</span>
 <span id="cb1-6">predicted <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> np.random.rand(n)</span></code></pre></div>
+font-style: inherit;">=</span> np.random.rand(n)</span></code></pre></div></div>
 </div>
 <p>We randomly generated targets and predicted probability scores. Let’s check the result of <code>sklearn.metrics.roc_auc_score</code>:</p>
 <div id="03e87115-b626-451c-a9b3-ab7e57330b61" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> sklearn</span>
-<span id="cb2-2">sklearn.metrics.roc_auc_score(target, predicted)</span></code></pre></div>
+<span id="cb2-2">sklearn.metrics.roc_auc_score(target, predicted)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>np.float64(0.4277597402597403)</code></pre>
 </div>
@@ -2705,7 +2705,7 @@ font-style: inherit;">import</span> sklearn</span>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ctext%7BArea%7D&amp;=(x_1-x_0)%20%5Ctimes%20y0+%5Cfrac%7B1%7D%7B2%7D(x_1-x_0)%20%5Ctimes%20(y_1-y_0)%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7B2%7D(x_1-x_0)%20%5Ctimes%20(2y_0+y_1%20-%20y_0)%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7B2%7D(x_1-x_0)%20%5Ctimes%20(y_0%20+%20y_1)%5C%5C%0A%5Cend%7Balign%7D%0A"></p>
 <p>Let’s implement the formula in Python:</p>
 <div id="b05fd4da-7772-4c00-bc16-e4daa55e44b8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> trapezoid_area(p0, p1):</span>
@@ -2730,14 +2730,14 @@ font-style: inherit;">1</span>]) <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2.0</span></span></code></pre></div>
+font-style: inherit;">2.0</span></span></code></pre></div></div>
 </div>
 </section>
 <section id="roc-auc-score" class="level3">
 <h3 class="anchored" data-anchor-id="roc-auc-score">ROC AUC Score</h3>
 <p>Now our main implementation:</p>
 <div id="86bf73f9-97bb-4468-a13c-8a4caaf28e4a" class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-4" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> roc_auc_score(target, predicted):</span>
@@ -2884,7 +2884,7 @@ font-style: inherit;">1</span>])</span>
 <span id="annotated-cell-4-30">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> score </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+font-style: inherit;">return</span> score </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
@@ -2916,7 +2916,7 @@ font-style: inherit;">return</span> score </span><div class="code-annotation-gut
 </div>
 <p>Let’s verify the result:</p>
 <div id="361f6637-19a5-467b-96bb-6b4ae06f04ce" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">roc_auc_score(target, predicted)</span></code></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">roc_auc_score(target, predicted)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>np.float64(0.4277597402597403)</code></pre>
 </div>
@@ -3011,7 +3011,7 @@ font-style: inherit;">return</span> score </span><div class="code-annotation-gut
 <section id="visualization" class="level2">
 <h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="99" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 98;"><span id="cb1-99">stats <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="99" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 98;"><span id="cb1-99">stats <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
 <span id="cb1-100">    <span class="kw" style="color: #003B4F;
@@ -3296,7 +3296,7 @@ font-style: inherit;">fallout</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> fallout</span>
 <span id="cb1-148">    }</span>
-<span id="cb1-149">}</span></code></pre></div>
+<span id="cb1-149">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -3304,7 +3304,7 @@ font-style: inherit;">:</span> fallout</span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="155" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 154;"><span id="cb2-155"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="155" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 154;"><span id="cb2-155"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -3467,7 +3467,7 @@ font-weight: bold;
 font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb2-166">}</span></code></pre></div>
+<span id="cb2-166">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -3475,7 +3475,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="171" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 170;"><span id="cb3-171">positives <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="171" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 170;"><span id="cb3-171">positives <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="fl" style="color: #AD0000;
 background-color: null;
@@ -3509,7 +3509,7 @@ font-style: inherit;">,</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1.0</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">;</span></span></code></pre></div>
+font-style: inherit;">;</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -3517,7 +3517,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="176" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 175;"><span id="cb4-176">negatives <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="176" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 175;"><span id="cb4-176">negatives <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="fl" style="color: #AD0000;
 background-color: null;
@@ -3543,7 +3543,7 @@ font-style: inherit;">,</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1.0</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">;</span></span></code></pre></div>
+font-style: inherit;">;</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -3551,11 +3551,11 @@ font-style: inherit;">;</span></span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="181" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 180;"><span id="cb5-181">lightRed <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="181" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 180;"><span id="cb5-181">lightRed <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"#ff8886"</span></span></code></pre></div>
+font-style: inherit;">"#ff8886"</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
@@ -3563,7 +3563,7 @@ font-style: inherit;">"#ff8886"</span></span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="187" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 186;"><span id="cb6-187"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="187" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 186;"><span id="cb6-187"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -3602,7 +3602,7 @@ font-style: inherit;">;</span></span>
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> table </span>
-<span id="cb6-191">}</span></code></pre></div>
+<span id="cb6-191">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -3610,7 +3610,7 @@ font-style: inherit;">return</span> table </span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="196" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 195;"><span id="cb7-196"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="196" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 195;"><span id="cb7-196"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -4148,7 +4148,7 @@ font-style: inherit;">,</span></span>
 <span id="cb7-254">            })</span>
 <span id="cb7-255">        ]</span>
 <span id="cb7-256">    })</span>
-<span id="cb7-257">}</span></code></pre></div>
+<span id="cb7-257">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -4162,14 +4162,14 @@ font-style: inherit;">,</span></span>
 </ul>
 <p>Then, we can visualize our dataset and their probability predictions in the same visualization as below:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="270" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 269;"><span id="cb8-270"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="270" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 269;"><span id="cb8-270"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot1D</span>(<span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> thresholdSlider)</span></code></pre></div>
+font-style: inherit;">,</span> thresholdSlider)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="expression">
 
@@ -4179,14 +4179,14 @@ font-style: inherit;">,</span> thresholdSlider)</span></code></pre></div>
 <p>Positive items in the dataset are shown in green, and negative items are shown in red. The sizes of circles represent the predicted probability scores, with smaller circles representing scores close to 0 and larger circles representing scores close to 1. The items are ordered according to their probability scores, from smallest to largest.</p>
 <p>Next, we choose a threshold depending on the application of our ML model. But, for now, let’s visualize the threshold as well:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="279" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 278;"><span id="cb9-279"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="279" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 278;"><span id="cb9-279"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot1D</span>(<span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> thresholdSlider)</span></code></pre></div>
+font-style: inherit;">,</span> thresholdSlider)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-9" data-nodetype="expression">
 
@@ -4194,7 +4194,7 @@ font-style: inherit;">,</span> thresholdSlider)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="284" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 283;"><span id="cb10-284">viewof thresholdSlider <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="284" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 283;"><span id="cb10-284">viewof thresholdSlider <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -4206,7 +4206,7 @@ background-color: null;
 font-style: inherit;">&lt;input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:90%"/&gt;</span></span>
 <span id="cb10-286"><span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">`</span></span></code></pre></div>
+font-style: inherit;">`</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
@@ -4216,7 +4216,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 <p>The circles with dark green outline represent items that are accurately classified, in other words, true positives and true negatives.</p>
 <p>Why not calculate the true positive (TP), false positive (FP), false negative (FP) and true negative (TN) values from the confusion matrix:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="297" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 296;"><span id="cb11-297">{</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="297" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 296;"><span id="cb11-297">{</span>
 <span id="cb11-298">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4307,7 +4307,7 @@ background-color: null;
 font-style: inherit;">customTable</span>(data)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb11-307">}</span></code></pre></div>
+<span id="cb11-307">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="expression">
 
@@ -4317,7 +4317,7 @@ font-style: inherit;">;</span></span>
 <p><strong>Tip</strong>: You can adjust the threshold using the slider above (give it a try), and the tables above and below will update accordingly.</p>
 <p>And the metrics as defined above:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="316" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 315;"><span id="cb12-316">{</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="316" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 315;"><span id="cb12-316">{</span>
 <span id="cb12-317">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4457,7 +4457,7 @@ font-weight: bold;
 font-style: inherit;">return</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">customTable</span>(data)</span>
-<span id="cb12-327">}</span></code></pre></div>
+<span id="cb12-327">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="expression">
 
@@ -4475,7 +4475,7 @@ font-style: inherit;">customTable</span>(data)</span>
 <p>The ROC curve is the plot of the true positive rate (TPR) against the false positive rate (FPR) at each threshold values.</p>
 <p>Let’s bring back a slightly modified version of our visualization:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="349" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 348;"><span id="cb13-349"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="349" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 348;"><span id="cb13-349"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot1D</span>(<span class="kw" style="color: #003B4F;
 background-color: null;
@@ -4491,7 +4491,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">;</span></span></code></pre></div>
+font-style: inherit;">;</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="expression">
 
@@ -4500,7 +4500,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 </div>
 <p>Earlier, we have been visualizing the true negative rate. Now, we are visualizing the false positive rate, outlined with dark red.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="357" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 356;"><span id="cb14-357">viewof thresholdSlider2 <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="357" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 356;"><span id="cb14-357">viewof thresholdSlider2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -4512,7 +4512,7 @@ background-color: null;
 font-style: inherit;">&lt;input type=range min=0 max=1.1 step=0.01 value=0.5 style="width:90%"/&gt;</span></span>
 <span id="cb14-359"><span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">`</span></span></code></pre></div>
+font-style: inherit;">`</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-14" data-nodetype="declaration">
 
@@ -4521,7 +4521,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 </div>
 <p>The true positive and the false positive rates accordingly:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="366" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 365;"><span id="cb15-366">{</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb15" data-startfrom="366" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 365;"><span id="cb15-366">{</span>
 <span id="cb15-367">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4603,7 +4603,7 @@ background-color: null;
 font-style: inherit;">,</span></span>
 <span id="cb15-372">       </span>
 <span id="cb15-373">    }])</span>
-<span id="cb15-374">}</span></code></pre></div>
+<span id="cb15-374">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-15" data-nodetype="expression">
 
@@ -4612,14 +4612,14 @@ font-style: inherit;">,</span></span>
 </div>
 <p>Now, we need to plot FPR (x-axis) against TPR (y-axis).</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="382" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 381;"><span id="cb16-382"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb16" data-startfrom="382" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 381;"><span id="cb16-382"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot_roc</span>(<span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> thresholdSlider2)</span></code></pre></div>
+font-style: inherit;">,</span> thresholdSlider2)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-16" data-nodetype="expression">
 
@@ -4635,7 +4635,7 @@ font-style: inherit;">,</span> thresholdSlider2)</span></code></pre></div>
 <li>The threshold is visualized by the black circle</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="397" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 396;"><span id="cb17-397"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb17" data-startfrom="397" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 396;"><span id="cb17-397"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -5551,7 +5551,7 @@ background-color: null;
 font-style: inherit;">,</span></span>
 <span id="cb17-494">        ]</span>
 <span id="cb17-495">    })</span>
-<span id="cb17-496">}</span></code></pre></div>
+<span id="cb17-496">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-17" data-nodetype="declaration">
 
@@ -5564,7 +5564,7 @@ font-style: inherit;">,</span></span>
 <p>The area under the ROC curve is called ROC AUC score. ROC AUC stands for “Receiver Operating Characteristic Area Under the Curve”.</p>
 <p>The ROC AUC score is a single number that summarizes the ML model’s performance across all threshold values. Note that the ROC curve summarizes with a visual plot, whereas the ROC AUC score summarizes with a single number.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="510" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 509;"><span id="cb18-510"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb18" data-startfrom="510" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 509;"><span id="cb18-510"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot_roc</span>(<span class="kw" style="color: #003B4F;
 background-color: null;
@@ -5574,7 +5574,7 @@ background-color: null;
 font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">null</span>)</span></code></pre></div>
+font-style: inherit;">null</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-18" data-nodetype="expression">
 
@@ -5592,9 +5592,9 @@ font-style: inherit;">null</span>)</span></code></pre></div>
 </blockquote>
 <p>It is nicely explained with the visualization that we already have:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb19" data-startfrom="527" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 526;"><span id="cb19-527"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb19" data-startfrom="527" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 526;"><span id="cb19-527"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">plot_roc</span>(pointSelection)</span></code></pre></div>
+font-style: inherit;">plot_roc</span>(pointSelection)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-19" data-nodetype="expression">
 
@@ -5602,7 +5602,7 @@ font-style: inherit;">plot_roc</span>(pointSelection)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb20" data-startfrom="532" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 531;"><span id="cb20-532">viewof pointSelection <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb20" data-startfrom="532" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 531;"><span id="cb20-532">viewof pointSelection <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -5614,7 +5614,7 @@ background-color: null;
 font-style: inherit;">&lt;input type=range min=1 max=100 step=1 value=50 style="width:90%"/&gt;</span></span>
 <span id="cb20-534"><span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">`</span></span></code></pre></div>
+font-style: inherit;">`</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-20" data-nodetype="declaration">
 
@@ -5685,7 +5685,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 <p>Let’s start with a <strong>simpler</strong> equation of a line in the form of <img src="https://latex.codecogs.com/png.latex?ax+by=0">, where we have <img src="https://latex.codecogs.com/png.latex?c=0">. Does it remind you something ? Yes, <a href="https://maitbayev.github.io/posts/dot-product/">the dot product</a> between <img src="https://latex.codecogs.com/png.latex?(a,%20b)"> and <img src="https://latex.codecogs.com/png.latex?(x,%20y)">. The dot product <img src="https://latex.codecogs.com/png.latex?(a,%20b)%20%5Ccdot%20(x,%20y)"> is zero when the two vectors are orthogonal. Oh nice, this means that (a, b) is an orthogonal vector to our line. An orthogonal vector is also known as a <strong>normal vector</strong> of a line. Also, notice that the simpler line contains the origin since <img src="https://latex.codecogs.com/png.latex?a%5Ccdot0+b%5Ccdot0=0"> holds true.</p>
 <p>Let’s visualize our setup:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="58" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 57;"><span id="cb1-58">JXG <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="58" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 57;"><span id="cb1-58">JXG <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -5694,7 +5694,7 @@ font-style: inherit;">await</span> <span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">require</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js'</span>)</span></code></pre></div>
+font-style: inherit;">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js'</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -5702,7 +5702,7 @@ font-style: inherit;">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/js
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="63" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 62;"><span id="cb2-63"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="63" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 62;"><span id="cb2-63"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -5746,7 +5746,7 @@ font-style: inherit;">            margin-inline: auto'&gt;</span></span>
 <span id="cb2-68"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">  &lt;/div&gt;`</span> </span>
-<span id="cb2-69">}</span></code></pre></div>
+<span id="cb2-69">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -5754,7 +5754,7 @@ font-style: inherit;">  &lt;/div&gt;`</span> </span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="75" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb3-75"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="75" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb3-75"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -6009,7 +6009,7 @@ font-style: inherit;">,</span></span>
 <span id="cb3-108">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb3-109">}</span></code></pre></div>
+<span id="cb3-109">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -6017,7 +6017,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="115" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 114;"><span id="cb4-115"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="115" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 114;"><span id="cb4-115"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -6334,7 +6334,7 @@ font-weight: bold;
 font-style: inherit;">return</span> board<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-146">}</span></code></pre></div>
+<span id="cb4-146">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -6342,7 +6342,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="152" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb5-152"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="152" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb5-152"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -6352,7 +6352,7 @@ font-style: inherit;">,</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/*width=*/</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">400</span>)</span></code></pre></div>
+font-style: inherit;">400</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="expression">
 
@@ -6360,9 +6360,9 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="159" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 158;"><span id="cb6-159"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="159" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 158;"><span id="cb6-159"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">make_board1</span>()</span></code></pre></div>
+font-style: inherit;">make_board1</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-6" data-nodetype="expression">
 
@@ -6386,7 +6386,7 @@ font-style: inherit;">make_board1</span>()</span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Explanation
+<span class="screen-reader-only">Note</span>Explanation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -6399,7 +6399,7 @@ Explanation
 </div>
 <p>From now on, we assume that <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bn%7D%5C%7C=1">. Let’s check what we have:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="194" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 193;"><span id="cb7-194"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="194" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 193;"><span id="cb7-194"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -7430,7 +7430,7 @@ font-weight: bold;
 font-style: inherit;">return</span> board<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-291">}</span></code></pre></div>
+<span id="cb7-291">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -7438,7 +7438,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="297" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 296;"><span id="cb8-297"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="297" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 296;"><span id="cb8-297"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -7448,7 +7448,7 @@ font-style: inherit;">,</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/*width=*/</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">400</span>)</span></code></pre></div>
+font-style: inherit;">400</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="expression">
 
@@ -7456,11 +7456,11 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="304" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 303;"><span id="cb9-304"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="304" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 303;"><span id="cb9-304"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">make_board</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"board2"</span>)</span></code></pre></div>
+font-style: inherit;">"board2"</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-9" data-nodetype="expression">
 
@@ -7470,7 +7470,7 @@ font-style: inherit;">"board2"</span>)</span></code></pre></div>
 <p>We introduced <strong>a slider</strong> that defines the angle of the normal vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D">. We also restricted <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D"> so that <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bn%7D%5C%7C=1">. Now, our line is uniquely defined by <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D">, which was not case before.</p>
 <p>Let’s introduce a point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D=%5Bx,%20y%5D"> on the line:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="315" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 314;"><span id="cb10-315"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="315" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 314;"><span id="cb10-315"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -7480,7 +7480,7 @@ font-style: inherit;">,</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/*width=*/</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">400</span>)</span></code></pre></div>
+font-style: inherit;">400</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="expression">
 
@@ -7488,7 +7488,7 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="322" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 321;"><span id="cb11-322"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="322" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 321;"><span id="cb11-322"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">make_board</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -7505,7 +7505,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb11-324">})</span></code></pre></div>
+<span id="cb11-324">})</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-11" data-nodetype="expression">
 
@@ -7522,7 +7522,7 @@ font-style: inherit;">,</span></span>
 <p>What is the meaning of the line equation when the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is outside of the line, i.e., when <img src="https://latex.codecogs.com/png.latex?ax+by%20%5Cneq%200">? <strong>Spoiler:</strong> the value is the signed distance from the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> to our line. Let’s understand this intuitively.</p>
 <p>The dot product <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D"> is a non-zero value when the point <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> is not on the line. From <a href="https://maitbayev.github.io/posts/dot-product/">the previous</a> post we know that the dot product is the projection of the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bp%7D"> to the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D">. Imagine a 1D number line spanned by the vector <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D"> like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="341" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 340;"><span id="cb12-341"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="341" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 340;"><span id="cb12-341"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -7532,7 +7532,7 @@ font-style: inherit;">,</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/*width=*/</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">400</span>)</span></code></pre></div>
+font-style: inherit;">400</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="expression">
 
@@ -7540,7 +7540,7 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="348" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 347;"><span id="cb13-348"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="348" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 347;"><span id="cb13-348"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">make_board</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -7567,7 +7567,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb13-351">})</span></code></pre></div>
+<span id="cb13-351">})</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-13" data-nodetype="expression">
 
@@ -7581,7 +7581,7 @@ font-style: inherit;">,</span> </span>
 <p>By this point, you need to understand the line equation of the form <img src="https://latex.codecogs.com/png.latex?ax+by=0">. Now, let’s explore the line equation of the form <img src="https://latex.codecogs.com/png.latex?ax+by+c=0">!</p>
 <p>We represented <img src="https://latex.codecogs.com/png.latex?ax+by"> with the dot product <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">, similarly <img src="https://latex.codecogs.com/png.latex?ax+by+c"> can be represented with <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D+c">. First, we land on the 1D number line with <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bn%7D%20%5Ccdot%20%5Ctextbf%7Bp%7D">, then move <img src="https://latex.codecogs.com/png.latex?c"> steps forward on that 1D number line. It is easier explained with a visualization:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="371" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 370;"><span id="cb14-371"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="371" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 370;"><span id="cb14-371"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -7591,7 +7591,7 @@ font-style: inherit;">,</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/*width=*/</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">400</span>)</span></code></pre></div>
+font-style: inherit;">400</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-14" data-nodetype="expression">
 
@@ -7599,7 +7599,7 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="378" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 377;"><span id="cb15-378"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb15" data-startfrom="378" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 377;"><span id="cb15-378"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">make_board</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -7636,7 +7636,7 @@ font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb15-382">})</span></code></pre></div>
+<span id="cb15-382">})</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-15" data-nodetype="expression">
 
@@ -7651,7 +7651,7 @@ font-style: inherit;">,</span></span>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Explanation
+<span class="screen-reader-only">Note</span>Explanation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -7722,7 +7722,7 @@ Explanation
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Geometric properties
+<span class="screen-reader-only">Note</span>Geometric properties
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -7761,7 +7761,7 @@ Geometric properties
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctextbf%7Ba%7D%20%5Ccdot%20(k%20%5Ctextbf%7Bb%7D)%20=%20a_x(kb_x)+a_y(kb_y)=%5C%7C%5Ctextbf%7Ba%7D%5C%7Ck%5C%7C%5Ctextbf%7Bb%7D%5C%7C%5Ccos%20%5Ctheta%0A"></p>
 <p>With the above, we can simplify further by constraining <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bb%7D%5C%7C%20=%201">. If the equivalence holds for <img src="https://latex.codecogs.com/png.latex?%5C%7C%5Ctextbf%7Bb%7D%5C%7C%20=%201">, then it holds for any <img src="https://latex.codecogs.com/png.latex?%5C%7Ck%5Ctextbf%7Bb%7D%5C%7C">.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="91" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb1-91">JXG <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="91" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb1-91">JXG <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -7770,7 +7770,7 @@ font-style: inherit;">await</span> <span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">require</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js'</span>)</span></code></pre></div>
+font-style: inherit;">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/jsxgraphcore.js'</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -7778,7 +7778,7 @@ font-style: inherit;">'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.10.1/js
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="96" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 95;"><span id="cb2-96"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="96" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 95;"><span id="cb2-96"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -7822,7 +7822,7 @@ font-style: inherit;">            margin-inline: auto'&gt;</span></span>
 <span id="cb2-101"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">  &lt;/div&gt;`</span> </span>
-<span id="cb2-102">}</span></code></pre></div>
+<span id="cb2-102">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -7830,7 +7830,7 @@ font-style: inherit;">  &lt;/div&gt;`</span> </span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="108" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 107;"><span id="cb3-108"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="108" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 107;"><span id="cb3-108"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -8081,7 +8081,7 @@ font-style: inherit;">,</span></span>
 <span id="cb3-141">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb3-142">}</span></code></pre></div>
+<span id="cb3-142">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -8089,7 +8089,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="148" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 147;"><span id="cb4-148"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="148" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 147;"><span id="cb4-148"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -9632,7 +9632,7 @@ font-weight: bold;
 font-style: inherit;">return</span> board<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb4-293">}</span></code></pre></div>
+<span id="cb4-293">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -9641,7 +9641,7 @@ font-style: inherit;">;</span></span>
 </div>
 <p>A visualization for the setup we have so far:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="301" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 300;"><span id="cb5-301"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="301" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 300;"><span id="cb5-301"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -9649,7 +9649,7 @@ font-style: inherit;">"board1"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">300</span>)</span></code></pre></div>
+font-style: inherit;">300</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="expression">
 
@@ -9657,7 +9657,7 @@ font-style: inherit;">300</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="307" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 306;"><span id="cb6-307">board1 <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="307" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 306;"><span id="cb6-307">board1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9683,7 +9683,7 @@ background-color: null;
 font-style: inherit;">/*showP=*/</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">false</span>)</span></code></pre></div>
+font-style: inherit;">false</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -9699,7 +9699,7 @@ font-style: inherit;">false</span>)</span></code></pre></div>
 <p>The geometric definition implies that the dot product is <strong>invariant under rotations</strong>. So, if we rotate the both vectors <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> by the same angle <img src="https://latex.codecogs.com/png.latex?%5Calpha">, the dot product won’t change. It is not obvious from the algebraic definition, but a detailed proof is provided in the next section. Let’s trust this property for now until the next section, and simplify our problem for the third time.</p>
 <p>We can rotate the both vectors such that <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Bb%7D"> is aligned with the x-axis. Click the button below for the illustration:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="326" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 325;"><span id="cb7-326">viewof mybutton <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="326" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 325;"><span id="cb7-326">viewof mybutton <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
 <span id="cb7-327">  <span class="kw" style="color: #003B4F;
@@ -9916,7 +9916,7 @@ font-weight: bold;
 font-style: inherit;">return</span> form<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-350">}</span></code></pre></div>
+<span id="cb7-350">}</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -9924,7 +9924,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="356" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 355;"><span id="cb8-356"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="356" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 355;"><span id="cb8-356"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -9932,7 +9932,7 @@ font-style: inherit;">"board2"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">300</span>)</span></code></pre></div>
+font-style: inherit;">300</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="expression">
 
@@ -9940,7 +9940,7 @@ font-style: inherit;">300</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="362" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 361;"><span id="cb9-362">board2 <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="362" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 361;"><span id="cb9-362">board2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9966,7 +9966,7 @@ background-color: null;
 font-style: inherit;">/*showP=*/</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">false</span>)</span></code></pre></div>
+font-style: inherit;">false</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
@@ -9979,7 +9979,7 @@ font-style: inherit;">false</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctextbf%7Ba%7D%20%5Ccdot%20%5Ctextbf%7Bb%7D%20=%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5C%7C%5Ctextbf%7Bb%7D%5C%7C%5Ccos%20%5Ctheta%20=%20%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta%0A"></p>
 <p>now, we have <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7Ba%7D%20%5Ccdot%20%5Ctextbf%7Bb%7D%20=%20a_x%20=%20%20%5C%7C%5Ctextbf%7Ba%7D%5C%7C%5Ccos%20%5Ctheta">. This is correct due to <a href="https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates">the polar coordinates</a>. Alternatively, we can easily derive from the <a href="https://en.wikipedia.org/wiki/Sine_and_cosine">cosine definition</a>. The proof is left as an exercise to the reader. You can use the visualization below to convince yourself:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="382" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 381;"><span id="cb10-382"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="382" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 381;"><span id="cb10-382"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -9987,7 +9987,7 @@ font-style: inherit;">"board3"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">400</span>)</span></code></pre></div>
+font-style: inherit;">400</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="expression">
 
@@ -9995,7 +9995,7 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="388" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 387;"><span id="cb11-388">board3 <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="388" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 387;"><span id="cb11-388">board3 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10021,7 +10021,7 @@ background-color: null;
 font-style: inherit;">/*showP=*/</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">true</span>)</span></code></pre></div>
+font-style: inherit;">true</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
@@ -10059,7 +10059,7 @@ font-style: inherit;">true</span>)</span></code></pre></div>
 <h3 class="anchored" data-anchor-id="rotational-invariance">Rotational invariance</h3>
 <p>First, let’s visualize the rotation:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="421" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 420;"><span id="cb12-421"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="421" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 420;"><span id="cb12-421"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">board_div</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -10067,7 +10067,7 @@ font-style: inherit;">"board4"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">500</span>)</span></code></pre></div>
+font-style: inherit;">500</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="expression">
 
@@ -10075,7 +10075,7 @@ font-style: inherit;">500</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="427" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 426;"><span id="cb13-427">board4 <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="427" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 426;"><span id="cb13-427">board4 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10108,7 +10108,7 @@ background-color: null;
 font-style: inherit;">/*showP=*/</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">false</span>)</span></code></pre></div>
+font-style: inherit;">false</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
@@ -10139,7 +10139,7 @@ font-style: inherit;">false</span>)</span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative Proof 1
+<span class="screen-reader-only">Note</span>Alternative Proof 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -10160,7 +10160,7 @@ Alternative Proof 1
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative Proof 2
+<span class="screen-reader-only">Note</span>Alternative Proof 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -10180,7 +10180,7 @@ Alternative Proof 2
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative Proof 3
+<span class="screen-reader-only">Note</span>Alternative Proof 3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -10202,7 +10202,7 @@ Alternative Proof 3
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative Proof 4
+<span class="screen-reader-only">Note</span>Alternative Proof 4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -10243,6 +10243,7 @@ Alternative Proof 4
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Jensen’s inequality is fundamental in many fields, including machine learning and statistics. For example, it is useful in the <a href="https://maitbayev.github.io/posts/denoising-diffusion-probabilistic-models/">diffusion models paper</a> for understanding the variational lower bound. In this post, I will give a simple geometric intuition for Jensen’s inequality.</p>
+<p><a href="https://maitbayev.substack.com/subscribe">Subscribe</a> to get a notification about future posts.</p>
 <p>Feel free to leave feedback on my <a href="https://t.me/swemanml">telegram channel</a>.</p>
 </section>
 <section id="setup" class="level2">
@@ -10251,7 +10252,7 @@ Alternative Proof 4
 <div id="cell-4" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>code for fig_jensen_inequality</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> itertools</span>
 <span id="cb1-2"><span class="im" style="color: #00769E;
@@ -11040,13 +11041,13 @@ background-color: null;
 font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">15</span></span>
-<span id="cb1-108"></span></code></pre></div>
+<span id="cb1-108"></span></code></pre></div></div>
 </details>
 </div>
 <div id="cell-5" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>code for show_sample_jensen_inequality</summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> show_sample_jensen_inequality(x: <span class="bu" style="color: null;
@@ -11083,7 +11084,7 @@ font-style: inherit;">return</span> fig.show(renderer<span class="op" style="col
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"iframe"</span>)</span></code></pre></div>
+font-style: inherit;">"iframe"</span>)</span></code></pre></div></div>
 </details>
 </div>
 </section>
@@ -11094,7 +11095,7 @@ font-style: inherit;">"iframe"</span>)</span></code></pre></div>
 <div id="cell-7" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>display image from Wikipedia</summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
 background-color: null;
@@ -11107,7 +11108,7 @@ font-style: inherit;">'https://upload.wikimedia.org/wikipedia/commons/c/c7/Conve
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">400</span>)</span></code></pre></div>
+font-style: inherit;">400</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg" width="400">
@@ -11125,13 +11126,13 @@ font-style: inherit;">400</span>)</span></code></pre></div>
 <section id="geometric-intuition" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-intuition">Geometric Intuition</h3>
 <div id="cell-10" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">22</span>])</span></code></pre></div>
+font-style: inherit;">22</span>])</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_4.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -11162,7 +11163,7 @@ font-style: inherit;">22</span>])</span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Concave Function
+<span class="screen-reader-only">Note</span>Concave Function
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -11189,7 +11190,7 @@ Concave Function
 <h4 class="anchored" data-anchor-id="triangle">Triangle</h4>
 <p>Let’s start with a triangle, i.e., <img src="https://latex.codecogs.com/png.latex?n=3">:</p>
 <div id="cell-16" class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -11197,7 +11198,7 @@ font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">12</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">27</span>])</span></code></pre></div>
+font-style: inherit;">27</span>])</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_5.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -11221,7 +11222,7 @@ font-style: inherit;">27</span>])</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="four-points-or-more">Four Points or More</h4>
 <p>It is easy to generalize for <img src="https://latex.codecogs.com/png.latex?n%3E3">. I am adding it here for the sake of completeness:</p>
 <div id="cell-20" class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">show_sample_jensen_inequality(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -11231,7 +11232,7 @@ font-style: inherit;">13</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">22</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">25</span>])</span></code></pre></div>
+font-style: inherit;">25</span>])</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_6.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
@@ -11255,7 +11256,7 @@ font-style: inherit;">25</span>])</span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-AM–GM inequality
+<span class="screen-reader-only">Note</span>AM–GM inequality
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -11273,7 +11274,8 @@ AM–GM inequality
 </section>
 <section id="the-end" class="level2">
 <h2 class="anchored" data-anchor-id="the-end">The End</h2>
-<p>I hope you enjoyed this post. You can ask further questions on <a href="https://t.me/swemanml">my telegram channel</a></p>
+<p>I hope you enjoyed this post. You can ask further questions on <a href="https://t.me/swemanml">my telegram channel</a>.</p>
+<p><a href="https://maitbayev.substack.com/subscribe">Subscribe</a> to get a notification about future posts.</p>
 
 
 </section>
@@ -11352,7 +11354,7 @@ AM–GM inequality
 <div id="73f5c18b-2e70-4e85-a345-a0ad3ea503aa" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>code for loss setup and helper functions</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> enum <span class="im" style="color: #00769E;
 background-color: null;
@@ -11606,13 +11608,13 @@ font-style: inherit;">5</span></span>
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1000</span></span></code></pre></div>
+font-style: inherit;">1000</span></span></code></pre></div></div>
 </details>
 </div>
 <div id="f734e558-d263-4eb4-8e00-c84566b2dc92" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>code for plot3d</summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> base_fig3():</span>
@@ -11853,16 +11855,16 @@ font-style: inherit;">=-</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">106</span>)</span>
 <span id="cb2-42">    plt.tight_layout()</span>
-<span id="cb2-43">    plt.show()</span></code></pre></div>
+<span id="cb2-43">    plt.show()</span></code></pre></div></div>
 </details>
 </div>
 <p>Let’s visualize our loss <img src="https://latex.codecogs.com/png.latex?2%7B(%5Cbeta_1%20-%2015)%7D%5E2%20+%202%7B(%5Cbeta_2%20-%205)%7D%5E2%20+%20100"> with the L1 constaint <img src="https://latex.codecogs.com/png.latex?t=5">, i.e., <img src="https://latex.codecogs.com/png.latex?%7C%5Cbeta_1%7C%20+%20%7C%5Cbeta_2%7C%20%5Cle%205"> in 3D:</p>
 <div id="89759d16-a4fd-41e6-bbf2-ec803757e639" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">plot3d(Reg.L1, t<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">plot3d(Reg.L1, t<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -11874,11 +11876,11 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <p>In Lasso Regression, we’re looking for <img src="https://latex.codecogs.com/png.latex?%5Cbeta_1"> and <img src="https://latex.codecogs.com/png.latex?%5Cbeta_2"> within the diamond that has the lowest loss, which is marked with the red point in the figure above. The global minima without any constraint is marked with “x”.</p>
 <p>The same visualization but with the L2 constraint t=5, i.e., <img src="https://latex.codecogs.com/png.latex?%5Cbeta_1%5E2+%5Cbeta_2%5E2%20%5Cle%205%5E2">:</p>
 <div id="1d94122b-e005-4fb7-954c-00b424de6af7" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">plot3d(Reg.L2, t<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">plot3d(Reg.L2, t<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -11891,7 +11893,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <div id="137f4e2a-1089-4378-b1fd-6c9048145602" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>code for plot2d</summary>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> loss_contour(ax):</span>
@@ -12102,15 +12104,15 @@ font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'r'</span>)</span>
 <span id="cb5-38">    plt.tight_layout()</span>
-<span id="cb5-39">    plt.show()</span></code></pre></div>
+<span id="cb5-39">    plt.show()</span></code></pre></div></div>
 </details>
 </div>
 <div id="f86d42f0-b328-4e6d-b36d-093fbe6ee066" class="cell" data-scrolled="true" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">plot2d([Reg.L1, Reg.L2], t<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">plot2d([Reg.L1, Reg.L2], t<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -12126,7 +12128,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <div id="68b0dd14-9a66-407d-8e63-2cc159e3382a" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>code for plot_reg_and_circle</summary>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> plot_reg_and_circle(reg: Reg, t: <span class="bu" style="color: null;
@@ -12168,11 +12170,11 @@ font-style: inherit;">False</span>))</span>
 background-color: null;
 font-style: inherit;">=</span>t))</span>
 <span id="cb7-7">    plt.tight_layout()</span>
-<span id="cb7-8">    plt.show()</span></code></pre></div>
+<span id="cb7-8">    plt.show()</span></code></pre></div></div>
 </details>
 </div>
 <div id="a2d824d3-7d59-4b62-ae3d-55181c169527" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">plot_reg_and_circle(Reg.L1, t<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">plot_reg_and_circle(Reg.L1, t<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
@@ -12188,7 +12190,7 @@ font-style: inherit;">5</span>, radius<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">4</span>)</span></code></pre></div>
+font-style: inherit;">4</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -12199,7 +12201,7 @@ font-style: inherit;">4</span>)</span></code></pre></div>
 </div>
 <p>Then it is more optimal to reduce the constraint region (i.e., the diamond) until they touch in a single point as shown below. Note that a contour has the same loss along its points.</p>
 <div id="3fc2a0e8-cd8f-4373-8346-80f203ee3e2a" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">plot_reg_and_circle(Reg.L1, t<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">plot_reg_and_circle(Reg.L1, t<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>(np.sqrt(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -12223,7 +12225,7 @@ font-style: inherit;">5</span>, radius<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">4</span>)</span></code></pre></div>
+font-style: inherit;">4</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -12237,7 +12239,7 @@ font-style: inherit;">4</span>)</span></code></pre></div>
 <div id="dc8c09ed-6cea-4a39-873b-194e3079409e" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>code for html5_video_l1_tangent_circles</summary>
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> l1_tangent_circle_locations(t: <span class="bu" style="color: null;
@@ -12698,11 +12700,11 @@ font-style: inherit;">=</span> ani.to_html5_video()</span>
 <span id="cb10-78">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> html</span></code></pre></div>
+font-style: inherit;">return</span> html</span></code></pre></div></div>
 </details>
 </div>
 <div id="55ee58c2-c141-4c3d-8ff1-fc8dc46ad220" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
 background-color: null;
@@ -12715,7 +12717,7 @@ font-style: inherit;">5</span>, radius<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">6</span>))</span></code></pre></div>
+font-style: inherit;">6</span>))</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAArJdtZGF0AAACrwYF//+r
@@ -13530,7 +13532,7 @@ AAAAAAAAACxpbHN0AAAAJKl0b28AAAAcZGF0YQAAAAEAAAAATGF2ZjYxLjEuMTAw
 </div>
 <p>The animation above illustrates all tangent circle trajectories. The circle is green when it touches the diamond at the corners, and it is blue when it touches at other points. The total length of all blue (touching at other points) trajectories is given by <img src="https://latex.codecogs.com/png.latex?4%5Ctimes%20%5Csqrt%7B2%7D%5Ctimes%20t">, while the total length of all green (touching at the corners) trajectories is given by <img src="https://latex.codecogs.com/png.latex?2%5Cpi%20%5Ctimes%20r">, where <code>t</code> is the constraint and <code>r</code> is the radius of the circle. This means that it is likely to touch at the corners when <code>t</code> is sufficiently small or <code>r</code> is sufficiently high. We illustrate one of the such cases below:</p>
 <div id="6baa7f75-89c4-4604-b9b1-5484bf3e3a58" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
@@ -13538,7 +13540,7 @@ font-style: inherit;">3</span>, radius<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span>))</span></code></pre></div>
+font-style: inherit;">10</span>))</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAA11dtZGF0AAACrwYF//+r
@@ -14545,7 +14547,7 @@ cHBsAAAAAAAAAAAAAAAALGlsc3QAAAAkqXRvbwAAABxkYXRhAAAAAQAAAABMYXZmNjEuMS4xMDA=
 </div>
 <p>In Ridge (L2), we don’t have special points like corners, and all points along the disk have the same probability of touching a random tangent circle with radius <img src="https://latex.codecogs.com/png.latex?r">:</p>
 <div id="de004256" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">HTML(html5_video_tangent_circle_trajectories(Reg.L2, t<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">HTML(html5_video_tangent_circle_trajectories(Reg.L2, t<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
@@ -14553,7 +14555,7 @@ font-style: inherit;">5</span>, radius<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">6</span>))</span></code></pre></div>
+font-style: inherit;">6</span>))</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAAvjVtZGF0AAACrwYF//+r
@@ -15528,7 +15530,7 @@ dmY2MS4xLjEwMA==
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof
+<span class="screen-reader-only">Note</span>Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -15549,7 +15551,7 @@ Proof
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof
+<span class="screen-reader-only">Note</span>Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -15586,7 +15588,7 @@ Proof
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof
+<span class="screen-reader-only">Note</span>Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -15638,7 +15640,7 @@ Proof
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof
+<span class="screen-reader-only">Note</span>Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -15670,7 +15672,7 @@ Here we used the fact that <a href="https://en.wikipedia.org/wiki/Sum_of_normall
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof
+<span class="screen-reader-only">Note</span>Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -15693,7 +15695,7 @@ Proof
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof from Appendix A
+<span class="screen-reader-only">Note</span>Proof from Appendix A
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>

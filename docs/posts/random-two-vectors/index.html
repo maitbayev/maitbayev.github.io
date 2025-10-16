@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.4">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-19cd9126a9a9c64aacb03dc90954a64a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5d4dd9db148681779f63c031488aa21a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -156,6 +157,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Madiyar’s Page</span>
     </a>
@@ -264,7 +267,7 @@ window.Quarto = {
 <section id="two-dimensions" class="level2">
 <h2 class="anchored" data-anchor-id="two-dimensions">Two Dimensions</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="25" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 24;"><span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeCircle2D</span>(vecU<span class="op">,</span> vecV<span class="op">,</span> height<span class="op">=</span><span class="dv">200</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="25" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 24;"><span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeCircle2D</span>(vecU<span class="op">,</span> vecV<span class="op">,</span> height<span class="op">=</span><span class="dv">200</span>) {</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">create</span>(<span class="st">'svg'</span>)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">'viewBox'</span><span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> width<span class="op">,</span> height])<span class="op">;</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -307,7 +310,7 @@ window.Quarto = {
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">appendArrow</span>(svg<span class="op">,</span> vecU<span class="op">,</span> <span class="st">"black"</span><span class="op">,</span> <span class="st">"arrow-0"</span>)<span class="op">;</span></span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">appendArrow</span>(svg<span class="op">,</span> vecV<span class="op">,</span> <span class="st">"red"</span><span class="op">,</span> <span class="st">"arrow-1"</span>)<span class="op">;</span></span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -316,7 +319,7 @@ window.Quarto = {
 </div>
 <p>This problem is equivalent to selecting two random vectors <strong>u</strong> and <strong>v</strong> on a circle of radius 1 and computing their <a href="https://maitbayev.github.io/posts/dot-product/">dot product</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="75" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="fu">makeCircle2D</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> [<span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="75" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="fu">makeCircle2D</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> [<span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -330,7 +333,7 @@ window.Quarto = {
 <p>The dot product is zero when <strong>u</strong> and <strong>v</strong> are orthogonal, and near zero when they are nearly orthogonal.</p>
 <p>The dot product is <a href="https://maitbayev.github.io/posts/dot-product/#rotational-invariance">invariant under rotations</a>, which means that we can rotate both vectors in the same way such that the vector <strong>u</strong> is [0, 1]:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="91" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="fu">makeCircle2D</span>([<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> [<span class="op">-</span><span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="op">-</span><span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="91" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="fu">makeCircle2D</span>([<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> [<span class="op">-</span><span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="op">-</span><span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
 
@@ -341,7 +344,7 @@ window.Quarto = {
 <p>It turns out that the average value of <span class="math inline">\(\cos^2(\alpha)\)</span> or <span class="math inline">\(v_y^2\)</span> is exactly <span class="math inline">\(\frac{1}{2}\)</span>. There are numerous analytical proofs, but the simplest intuition is derived from <span class="math inline">\(v_x^2+v_y^2=1\)</span>. We have a total budget of 1, which we distribute between <span class="math inline">\(v_x^2\)</span> and <span class="math inline">\(v_y^2\)</span>; thus, on average, <span class="math inline">\(v_y^2\)</span> receives half of the budget.</p>
 <p>We only have two orthogonal vectors to <strong>u</strong>, and they are:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="102" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 101;"><span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="102" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 101;"><span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
 <span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="display: flex; justify-content: center;"&gt;</span></span>
 <span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div style="width: 50%;"&gt;</span></span>
 <span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">makeCircle2D</span>([<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> [<span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> <span class="dv">400</span>)<span class="sc">}</span></span>
@@ -350,7 +353,7 @@ window.Quarto = {
 <span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">makeCircle2D</span>([<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> <span class="dv">400</span>)<span class="sc">}</span></span>
 <span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;</span></span>
 <span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
 
@@ -361,11 +364,11 @@ window.Quarto = {
 <section id="three-dimensions" class="level2">
 <h2 class="anchored" data-anchor-id="three-dimensions">Three Dimensions</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="119" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 118;"><span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>THREE <span class="op">=</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="119" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 118;"><span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>THREE <span class="op">=</span> {</span>
 <span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> THREE <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">THREE</span> <span class="op">=</span> <span class="cf">await</span> <span class="pp">require</span>(<span class="st">"three@0.145.0/build/three.min.js"</span>)<span class="op">;</span></span>
 <span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> <span class="pp">require</span>(<span class="st">"three@0.145.0/examples/js/controls/OrbitControls.js"</span>)<span class="op">.</span><span class="fu">catch</span>(() <span class="kw">=&gt;</span> {})<span class="op">;</span></span>
 <span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> THREE<span class="op">;</span></span>
-<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
@@ -373,7 +376,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="128" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeSphere</span>(wireframe <span class="op">=</span> <span class="kw">false</span><span class="op">,</span> opacity <span class="op">=</span> <span class="dv">1</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="128" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeSphere</span>(wireframe <span class="op">=</span> <span class="kw">false</span><span class="op">,</span> opacity <span class="op">=</span> <span class="dv">1</span>) {</span>
 <span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> material <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">MeshBasicMaterial</span>({</span>
 <span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>    <span class="dt">wireframe</span><span class="op">:</span> wireframe<span class="op">,</span> </span>
 <span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>    <span class="dt">opacity</span><span class="op">:</span> opacity<span class="op">,</span> </span>
@@ -382,7 +385,7 @@ window.Quarto = {
 <span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
 <span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> geometry <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">SphereGeometry</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">32</span><span class="op">,</span> <span class="dv">32</span> )<span class="op">;</span> </span>
 <span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Mesh</span>(geometry<span class="op">,</span> material)<span class="op">;</span></span>
-<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -390,7 +393,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="142" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 141;"><span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeSphereSlice</span>(wireframe <span class="op">=</span> <span class="kw">true</span><span class="op">,</span> opacity <span class="op">=</span> <span class="dv">1</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="142" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 141;"><span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeSphereSlice</span>(wireframe <span class="op">=</span> <span class="kw">true</span><span class="op">,</span> opacity <span class="op">=</span> <span class="dv">1</span>) {</span>
 <span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> material <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">MeshBasicMaterial</span>({</span>
 <span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>    <span class="dt">wireframe</span><span class="op">:</span> wireframe<span class="op">,</span> </span>
 <span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>    <span class="dt">opacity</span><span class="op">:</span> opacity<span class="op">,</span> </span>
@@ -405,7 +408,7 @@ window.Quarto = {
 <span id="cb7-154"><a href="#cb7-154" aria-hidden="true" tabindex="-1"></a>    <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="dv">32</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="dv">16</span></span>
 <span id="cb7-155"><a href="#cb7-155" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span> </span>
 <span id="cb7-156"><a href="#cb7-156" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Mesh</span>(geometry<span class="op">,</span> material)<span class="op">;</span></span>
-<span id="cb7-157"><a href="#cb7-157" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-157"><a href="#cb7-157" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -413,7 +416,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="162" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 161;"><span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeCircle3D</span>(color<span class="op">,</span> radius<span class="op">=</span><span class="dv">1</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="162" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 161;"><span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeCircle3D</span>(color<span class="op">,</span> radius<span class="op">=</span><span class="dv">1</span>) {</span>
 <span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> geometry <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">CircleGeometry</span>(radius<span class="op">,</span> <span class="dv">32</span>)<span class="op">;</span> </span>
 <span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a>  <span class="co">// radius^2+z^2=1</span></span>
 <span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a>  <span class="co">// z=sqrt(1-radius^2)</span></span>
@@ -428,7 +431,7 @@ window.Quarto = {
 <span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a>  circle<span class="op">.</span><span class="at">position</span><span class="op">.</span><span class="at">y</span> <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="op">-</span> radius <span class="op">*</span> radius)<span class="op">;</span></span>
 <span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a>  circle<span class="op">.</span><span class="fu">lookAt</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
 <span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> circle<span class="op">;</span></span>
-<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="declaration">
 
@@ -436,7 +439,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="182" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 181;"><span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeVector</span>(vec<span class="op">,</span> color) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="182" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 181;"><span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeVector</span>(vec<span class="op">,</span> color) {</span>
 <span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">customArrow</span>( fx<span class="op">,</span> fy<span class="op">,</span> fz<span class="op">,</span> ix<span class="op">,</span> iy<span class="op">,</span> iz<span class="op">,</span> thickness<span class="op">,</span> color) {</span>
 <span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> ARROW_BODY <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">CylinderGeometry</span>( <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">12</span> )</span>
 <span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span><span class="fu">rotateX</span>( <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">/</span><span class="dv">2</span>)</span>
@@ -463,7 +466,7 @@ window.Quarto = {
 <span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arrow<span class="op">;</span></span>
 <span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">customArrow</span>(vec[<span class="dv">0</span>]<span class="op">,</span> vec[<span class="dv">1</span>]<span class="op">,</span> vec[<span class="dv">2</span>]<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="fl">0.02</span><span class="op">,</span> color)<span class="op">;</span></span>
-<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
@@ -471,7 +474,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="214" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 213;"><span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeScene</span>(vec) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="214" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 213;"><span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeScene</span>(vec) {</span>
 <span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scene <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Scene</span>()<span class="op">;</span></span>
 <span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="at">background</span> <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Color</span>(<span class="bn">0xffffff</span>)<span class="op">;</span></span>
 <span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">add</span>(<span class="kw">new</span> THREE<span class="op">.</span><span class="fu">AxesHelper</span>(<span class="fl">1.5</span>))<span class="op">;</span></span>
@@ -482,7 +485,7 @@ window.Quarto = {
 <span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">add</span>(<span class="fu">makeVector</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> <span class="bn">0x000000</span>))<span class="op">;</span></span>
 <span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">add</span>(<span class="fu">makeVector</span>(vec<span class="op">,</span> <span class="bn">0xff0000</span>))<span class="op">;</span></span>
 <span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> scene<span class="op">;</span></span>
-<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
@@ -490,7 +493,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="231" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 230;"><span id="cb11-231"><a href="#cb11-231" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeRendererElement</span>(height<span class="op">,</span> scene) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="231" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 230;"><span id="cb11-231"><a href="#cb11-231" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeRendererElement</span>(height<span class="op">,</span> scene) {</span>
 <span id="cb11-232"><a href="#cb11-232" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">makeCamera</span>() {</span>
 <span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> fov <span class="op">=</span> <span class="dv">45</span><span class="op">;</span></span>
 <span id="cb11-234"><a href="#cb11-234" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> aspect <span class="op">=</span> width <span class="op">/</span> height<span class="op">;</span></span>
@@ -517,7 +520,7 @@ window.Quarto = {
 <span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a>  renderer<span class="op">.</span><span class="fu">render</span>(scene<span class="op">,</span> camera)</span>
 <span id="cb11-256"><a href="#cb11-256" aria-hidden="true" tabindex="-1"></a>  <span class="co">// controls.addEventListener("change", () =&gt; renderer.render(scene, camera));</span></span>
 <span id="cb11-257"><a href="#cb11-257" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> renderer<span class="op">.</span><span class="at">domElement</span></span>
-<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
@@ -526,10 +529,10 @@ window.Quarto = {
 </div>
 <p>In three dimensions, we take two random vectors <strong>u</strong> and <strong>v</strong> on a unit sphere and rotate them together so that the vector <strong>u</strong> becomes the north pole ([0, 0, 1]):</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="266" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 265;"><span id="cb12-266"><a href="#cb12-266" aria-hidden="true" tabindex="-1"></a>{ </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="266" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 265;"><span id="cb12-266"><a href="#cb12-266" aria-hidden="true" tabindex="-1"></a>{ </span>
 <span id="cb12-267"><a href="#cb12-267" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scene <span class="op">=</span> <span class="fu">makeScene</span>([<span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>)])<span class="op">;</span></span>
 <span id="cb12-268"><a href="#cb12-268" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">makeRendererElement</span>(<span class="dv">300</span><span class="op">,</span> scene)<span class="op">;</span></span>
-<span id="cb12-269"><a href="#cb12-269" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-269"><a href="#cb12-269" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="expression">
 
@@ -543,12 +546,12 @@ window.Quarto = {
 \]</span></p>
 <p>In 2D, we only had two vectors that are orthogonal to <strong>u</strong>. In 3D, we have an entire subspace of vectors that are orthogonal to <strong>u</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="284" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 283;"><span id="cb13-284"><a href="#cb13-284" aria-hidden="true" tabindex="-1"></a>{ </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="284" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 283;"><span id="cb13-284"><a href="#cb13-284" aria-hidden="true" tabindex="-1"></a>{ </span>
 <span id="cb13-285"><a href="#cb13-285" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scene <span class="op">=</span> <span class="fu">makeScene</span>([<span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)])<span class="op">;</span></span>
 <span id="cb13-286"><a href="#cb13-286" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">add</span>(<span class="fu">makeCircle3D</span>(<span class="bn">0xff0000</span>))<span class="op">;</span></span>
 <span id="cb13-287"><a href="#cb13-287" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">rotateX</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="dv">10</span>)<span class="op">;</span></span>
 <span id="cb13-288"><a href="#cb13-288" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">makeRendererElement</span>(<span class="dv">300</span><span class="op">,</span> scene)<span class="op">;</span></span>
-<span id="cb13-289"><a href="#cb13-289" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-289"><a href="#cb13-289" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="expression">
 
@@ -557,13 +560,13 @@ window.Quarto = {
 </div>
 <p>In other words, any vector in the red circle above is orthogonal to <strong>u</strong>. Moreover, this circle is the largest one that can be found on the sphere. For example, compare with a smaller circle which spans non-orthogonal vectors:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="296" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb14-296"><a href="#cb14-296" aria-hidden="true" tabindex="-1"></a>{ </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="296" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb14-296"><a href="#cb14-296" aria-hidden="true" tabindex="-1"></a>{ </span>
 <span id="cb14-297"><a href="#cb14-297" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> vec <span class="op">=</span> [<span class="fl">0.7</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="op">-</span> <span class="fl">0.7</span> <span class="op">*</span> <span class="fl">0.7</span>)<span class="op">,</span> <span class="dv">0</span>]<span class="op">;</span></span>
 <span id="cb14-298"><a href="#cb14-298" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scene <span class="op">=</span> <span class="fu">makeScene</span>(vec)<span class="op">;</span></span>
 <span id="cb14-299"><a href="#cb14-299" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">add</span>(<span class="fu">makeCircle3D</span>(<span class="bn">0xff0000</span><span class="op">,</span> <span class="fl">0.7</span>))<span class="op">;</span></span>
 <span id="cb14-300"><a href="#cb14-300" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">rotateX</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="dv">8</span>)<span class="op">;</span></span>
 <span id="cb14-301"><a href="#cb14-301" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">makeRendererElement</span>(<span class="dv">300</span><span class="op">,</span> scene)<span class="op">;</span></span>
-<span id="cb14-302"><a href="#cb14-302" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-302"><a href="#cb14-302" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-14" data-nodetype="expression">
 
@@ -572,14 +575,14 @@ window.Quarto = {
 </div>
 <p>The larger the circle from which we select the vector <strong>v</strong> is, the closer it is to being orthogonal:</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="309" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 308;"><span id="cb15-309"><a href="#cb15-309" aria-hidden="true" tabindex="-1"></a>{ </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb15" data-startfrom="309" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 308;"><span id="cb15-309"><a href="#cb15-309" aria-hidden="true" tabindex="-1"></a>{ </span>
 <span id="cb15-310"><a href="#cb15-310" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> vec <span class="op">=</span> [<span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span>)]<span class="op">;</span></span>
 <span id="cb15-311"><a href="#cb15-311" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scene <span class="op">=</span> <span class="fu">makeScene</span>(vec)<span class="op">;</span></span>
 <span id="cb15-312"><a href="#cb15-312" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">add</span>(<span class="fu">makeSphereSlice</span>(<span class="kw">false</span><span class="op">,</span> <span class="fl">0.3</span>))<span class="op">;</span></span>
 <span id="cb15-313"><a href="#cb15-313" aria-hidden="true" tabindex="-1"></a>  <span class="co">// scene.add(makeCircle3D(0xff0000, 1));</span></span>
 <span id="cb15-314"><a href="#cb15-314" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">rotateX</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="dv">8</span>)<span class="op">;</span></span>
 <span id="cb15-315"><a href="#cb15-315" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">makeRendererElement</span>(<span class="dv">300</span><span class="op">,</span> scene)<span class="op">;</span></span>
-<span id="cb15-316"><a href="#cb15-316" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-316"><a href="#cb15-316" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-15" data-nodetype="expression">
 
@@ -603,7 +606,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-More Formal Proof
+<span class="screen-reader-only">Note</span>More Formal Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -628,10 +631,10 @@ More Formal Proof
 <p>I hope you enjoyed this post.</p>
 <p><a href="https://maitbayev.substack.com/subscribe">Subscribe</a> to get a notification about future posts.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="363" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 362;"><span id="cb16-363"><a href="#cb16-363" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb16" data-startfrom="363" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 362;"><span id="cb16-363"><a href="#cb16-363" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
 <span id="cb16-364"><a href="#cb16-364" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;canvas id="canvas" style="width:100%; height: 360px;"&gt;</span></span>
 <span id="cb16-365"><a href="#cb16-365" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/canvas&gt;</span></span>
-<span id="cb16-366"><a href="#cb16-366" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-366"><a href="#cb16-366" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-16" data-nodetype="expression">
 
@@ -639,13 +642,13 @@ More Formal Proof
 </div>
 </div>
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="372" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 371;"><span id="cb17-372"><a href="#cb17-372" aria-hidden="true" tabindex="-1"></a>pkg <span class="op">=</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb17" data-startfrom="372" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 371;"><span id="cb17-372"><a href="#cb17-372" aria-hidden="true" tabindex="-1"></a>pkg <span class="op">=</span> {</span>
 <span id="cb17-373"><a href="#cb17-373" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> file <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"./pkg/demo.js"</span>)<span class="op">.</span><span class="fu">url</span>()<span class="op">;</span></span>
 <span id="cb17-374"><a href="#cb17-374" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> module <span class="op">=</span> <span class="cf">await</span> <span class="im">import</span>(file)<span class="op">;</span></span>
 <span id="cb17-375"><a href="#cb17-375" aria-hidden="true" tabindex="-1"></a>  module<span class="op">.</span><span class="at">default</span> <span class="op">=</span> <span class="cf">await</span> module<span class="op">.</span><span class="fu">default</span>()<span class="op">;</span></span>
 <span id="cb17-376"><a href="#cb17-376" aria-hidden="true" tabindex="-1"></a>  <span class="co">// module.set_panic_hook();</span></span>
 <span id="cb17-377"><a href="#cb17-377" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> module<span class="op">;</span></span>
-<span id="cb17-378"><a href="#cb17-378" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-378"><a href="#cb17-378" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-17" data-nodetype="declaration">
 
@@ -720,13 +723,14 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

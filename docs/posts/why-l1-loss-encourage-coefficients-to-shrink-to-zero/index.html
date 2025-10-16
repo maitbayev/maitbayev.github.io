@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.4">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-19cd9126a9a9c64aacb03dc90954a64a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5d4dd9db148681779f63c031488aa21a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,7 +114,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XDL07RCJG6', { 'anonymize_ip': true});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -157,6 +158,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Madiyar’s Page</span>
     </a>
@@ -321,7 +324,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <div id="73f5c18b-2e70-4e85-a345-a0ad3ea503aa" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>code for loss setup and helper functions</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mpl_toolkits.mplot3d.art3d <span class="im">as</span> art3d</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -361,13 +364,13 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>beta_range <span class="op">=</span> <span class="op">-</span><span class="dv">20</span>, <span class="dv">20</span></span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>cx, cy <span class="op">=</span> <span class="dv">15</span>, <span class="dv">5</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>vmax <span class="op">=</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>vmax <span class="op">=</span> <span class="dv">1000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="f734e558-d263-4eb4-8e00-c84566b2dc92" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>code for plot3d</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> base_fig3():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> base_fig3():</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a figure and a 3D Axes</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
@@ -409,12 +412,12 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    ax.view_init(elev<span class="op">=</span><span class="dv">39</span>, azim<span class="op">=-</span><span class="dv">106</span>)</span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Let’s visualize our loss <span class="math inline">\(2{(\beta_1 - 15)}^2 + 2{(\beta_2 - 5)}^2 + 100\)</span> with the L1 constaint <span class="math inline">\(t=5\)</span>, i.e., <span class="math inline">\(|\beta_1| + |\beta_2| \le 5\)</span> in 3D:</p>
 <div id="89759d16-a4fd-41e6-bbf2-ec803757e639" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot3d(Reg.L1, t<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot3d(Reg.L1, t<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -426,7 +429,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <p>In Lasso Regression, we’re looking for <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_2\)</span> within the diamond that has the lowest loss, which is marked with the red point in the figure above. The global minima without any constraint is marked with “x”.</p>
 <p>The same visualization but with the L2 constraint t=5, i.e., <span class="math inline">\(\beta_1^2+\beta_2^2 \le 5^2\)</span>:</p>
 <div id="1d94122b-e005-4fb7-954c-00b424de6af7" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot3d(Reg.L2, t<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot3d(Reg.L2, t<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -439,7 +442,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <div id="137f4e2a-1089-4378-b1fd-6c9048145602" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>code for plot2d</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss_contour(ax):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss_contour(ax):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    beta0 <span class="op">=</span> np.linspace(<span class="op">*</span>beta_range, <span class="dv">100</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    beta1 <span class="op">=</span> np.linspace(<span class="op">*</span>beta_range, <span class="dv">100</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    B0, B1 <span class="op">=</span> np.meshgrid(beta0, beta1)</span>
@@ -477,11 +480,11 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        mx, my <span class="op">=</span> argmin_within_constraint(reg, t)</span>
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        ax.plot([mx], [my], marker<span class="op">=</span><span class="st">'.'</span>, markersize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="f86d42f0-b328-4e6d-b36d-093fbe6ee066" class="cell" data-scrolled="true" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot2d([Reg.L1, Reg.L2], t<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot2d([Reg.L1, Reg.L2], t<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -497,18 +500,18 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <div id="68b0dd14-9a66-407d-8e63-2cc159e3382a" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>code for plot_reg_and_circle</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_reg_and_circle(reg: Reg, t: <span class="bu">float</span>, cx: <span class="bu">float</span>, cy: <span class="bu">float</span>, radius: <span class="bu">float</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_reg_and_circle(reg: Reg, t: <span class="bu">float</span>, cx: <span class="bu">float</span>, cy: <span class="bu">float</span>, radius: <span class="bu">float</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot()</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    ax2d_init(ax)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(Circle(xy<span class="op">=</span>(cx, cy), radius<span class="op">=</span>radius, color<span class="op">=</span><span class="st">'b'</span>, fill<span class="op">=</span><span class="va">False</span>))</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(make_reg_shape(reg, t<span class="op">=</span>t))</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="a2d824d3-7d59-4b62-ae3d-55181c169527" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_reg_and_circle(Reg.L1, t<span class="op">=</span><span class="dv">7</span>, cx<span class="op">=</span><span class="dv">5</span>, cy<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_reg_and_circle(Reg.L1, t<span class="op">=</span><span class="dv">7</span>, cx<span class="op">=</span><span class="dv">5</span>, cy<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -519,7 +522,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 </div>
 <p>Then it is more optimal to reduce the constraint region (i.e., the diamond) until they touch in a single point as shown below. Note that a contour has the same loss along its points.</p>
 <div id="3fc2a0e8-cd8f-4373-8346-80f203ee3e2a" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_reg_and_circle(Reg.L1, t<span class="op">=</span>(np.sqrt(<span class="dv">50</span>)<span class="op">-</span><span class="dv">4</span>) <span class="op">*</span> np.sqrt(<span class="dv">2</span>), cx<span class="op">=</span><span class="dv">5</span>, cy<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_reg_and_circle(Reg.L1, t<span class="op">=</span>(np.sqrt(<span class="dv">50</span>)<span class="op">-</span><span class="dv">4</span>) <span class="op">*</span> np.sqrt(<span class="dv">2</span>), cx<span class="op">=</span><span class="dv">5</span>, cy<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -533,7 +536,7 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <div id="dc8c09ed-6cea-4a39-873b-194e3079409e" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>code for html5_video_l1_tangent_circles</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> l1_tangent_circle_locations(t: <span class="bu">float</span>, radius: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[np.array]:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> l1_tangent_circle_locations(t: <span class="bu">float</span>, radius: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[np.array]:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_corner(v):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">min</span>(<span class="bu">abs</span>(v[<span class="dv">0</span>]), <span class="bu">abs</span>(v[<span class="dv">1</span>])) <span class="op">&lt;=</span> radius <span class="op">/</span> np.sqrt(<span class="dv">2</span>) <span class="op">+</span> <span class="fl">1e-3</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -610,12 +613,12 @@ Loss(\beta_1,\beta_2 | c_x, c_y)=2{(\beta_1 - c_x)}^2 + 2{(\beta_2 - c_y)}^2 + 1
 <span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>    ani <span class="op">=</span> animate_tangent_circle_trajectories(reg, t<span class="op">=</span>t, radius<span class="op">=</span>radius)</span>
 <span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>    html <span class="op">=</span> ani.to_html5_video()</span>
 <span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>    plt.close()</span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> html</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="55ee58c2-c141-4c3d-8ff1-fc8dc46ad220" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAArJdtZGF0AAACrwYF//+r
@@ -1430,7 +1433,7 @@ AAAAAAAAACxpbHN0AAAAJKl0b28AAAAcZGF0YQAAAAEAAAAATGF2ZjYxLjEuMTAw
 </div>
 <p>The animation above illustrates all tangent circle trajectories. The circle is green when it touches the diamond at the corners, and it is blue when it touches at other points. The total length of all blue (touching at other points) trajectories is given by <span class="math inline">\(4\times \sqrt{2}\times t\)</span>, while the total length of all green (touching at the corners) trajectories is given by <span class="math inline">\(2\pi \times r\)</span>, where <code>t</code> is the constraint and <code>r</code> is the radius of the circle. This means that it is likely to touch at the corners when <code>t</code> is sufficiently small or <code>r</code> is sufficiently high. We illustrate one of the such cases below:</p>
 <div id="6baa7f75-89c4-4604-b9b1-5484bf3e3a58" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op">=</span><span class="dv">3</span>, radius<span class="op">=</span><span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_tangent_circle_trajectories(Reg.L1, t<span class="op">=</span><span class="dv">3</span>, radius<span class="op">=</span><span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAA11dtZGF0AAACrwYF//+r
@@ -2437,7 +2440,7 @@ cHBsAAAAAAAAAAAAAAAALGlsc3QAAAAkqXRvbwAAABxkYXRhAAAAAQAAAABMYXZmNjEuMS4xMDA=
 </div>
 <p>In Ridge (L2), we don’t have special points like corners, and all points along the disk have the same probability of touching a random tangent circle with radius <span class="math inline">\(r\)</span>:</p>
 <div id="de004256" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_tangent_circle_trajectories(Reg.L2, t<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>HTML(html5_video_tangent_circle_trajectories(Reg.L2, t<span class="op">=</span><span class="dv">5</span>, radius<span class="op">=</span><span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <video width="400" height="400" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAAvjVtZGF0AAACrwYF//+r
@@ -3392,13 +3395,14 @@ dmY2MS4xLjEwMA==
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
