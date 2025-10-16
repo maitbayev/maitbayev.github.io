@@ -1,0 +1,12 @@
+[project]
+name = "maitbayev-github-io"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "jupyter>=1.1.1",
+    "jupyterlab>=4.4.9",
+    "jupyterlab-vim>=4.1.4",
+    "matplotlib>=3.10.7",
+    "numpy>=2.3.4",
+    "plotly>=6.3.1",
+]
