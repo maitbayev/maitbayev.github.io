@@ -6,8 +6,8 @@
       version="2.0">
 <channel>
 <title>Madiyar&#39;s Page</title>
-<link>https://maitbayev.github.io/</link>
-<atom:link href="https://maitbayev.github.io/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://maitbayev.github.io/esl.html</link>
+<atom:link href="https://maitbayev.github.io/esl.xml" rel="self" type="application/rss+xml"/>
 <description>Madiyar&#39;s Page</description>
 <generator>quarto-1.8.27</generator>
 <lastBuildDate>Sun, 11 May 2025 23:00:00 GMT</lastBuildDate>

@@ -1,0 +1,62 @@
+---
+title: "The Elements of Statistical Learning Notebooks"
+listing:
+  - id: chapter-02
+    contents: the-elements-of-statistical-learning/chapter-02
+    sort: "title asc"
+    type: table 
+    sort-ui: false
+    filter-ui: false
+    feed: true
+    fields: [title]
+  - id: chapter-03
+    contents: the-elements-of-statistical-learning/chapter-03
+    sort: "title asc"
+    type: table 
+    sort-ui: false
+    filter-ui: false
+    feed: true
+    fields: [title]
+  - id: chapter-04
+    contents: the-elements-of-statistical-learning/chapter-04
+    sort: "title asc"
+    type: table 
+    sort-ui: false
+    filter-ui: false
+    feed: true
+    fields: [title]
+  - id: chapter-11
+    contents: the-elements-of-statistical-learning/chapter-11
+    sort: "title asc"
+    type: table 
+    sort-ui: false
+    filter-ui: false
+    feed: true
+    fields: [title]
+
+page-layout: full
+title-block-banner: true
+---
+
+This page contains Jupyter notebooks implementing the algorithms found in the "The Elements of Statistical Learning" by Trevor Hastie, Robert Tibshirani and Jerome Friedman, proofs and summary of the textbook.
+
+The main repository can be found at [github.com/maitbayev/the-elements-of-statistical-learning](https://github.com/maitbayev/the-elements-of-statistical-learning). 
+
+### Chapter 2
+
+:::{#chapter-02}
+:::
+
+### Chapter 3
+
+:::{#chapter-03}
+:::
+
+### Chapter 4
+ 
+:::{#chapter-04}
+:::
+
+### Chapter 11
+:::{#chapter-11}
+:::

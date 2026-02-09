@@ -11,6 +11,9 @@ website:
   description: "Madiyar's Page"
   google-analytics: "G-XDL07RCJG6"
   navbar:
+    left:
+      - text: "ESL"
+        href: esl
     right:
       - about.qmd
       - icon: rss

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Madiyar’s Page</title>
+<title>The Elements of Statistical Learning Notebooks – Madiyar’s Page</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,20 +73,48 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-chapter1 .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-chapter1'] = new List('listing-chapter1', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-chapter2 .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-chapter2'] = new List('listing-chapter2', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -140,7 +168,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Madiyar's Page" href="index.xml" data-external="1"></head>
+<link rel="alternate" type="application/rss+xml" title="Madiyar's Page" href="esl.xml" data-external="1"></head>
 
 <body class="nav-fixed quarto-light">
 
@@ -160,7 +188,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./esl"> 
+    <a class="nav-link active" href="./esl.html" aria-current="page"> 
 <span class="menu-text">ESL</span></a>
   </li>  
 </ul>
@@ -194,13 +222,13 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Madiyar’s Page</h1>
+    <div class="quarto-title column-page">
+      <h1 class="title">The Elements of Statistical Learning Notebooks</h1>
                       </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta column-page">
 
       
     
@@ -211,355 +239,330 @@ window.Quarto = {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="YXV0b2VuY29kZXI=">autoencoder <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmFzaWNz">basics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29udmV4JTIwZnVuY3Rpb24=">convex function <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y3Y=">cv <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGlmZnVzaW9u">diffusion <span class="quarto-category-count">(3)</span></div><div class="category" data-category="amVuc2Vu">jensen <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bDE=">l1 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bDI=">l2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGFzc28=">lasso <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bG9zcw==">loss <span class="quarto-category-count">(3)</span></div><div class="category" data-category="bWF0aA==">math <span class="quarto-category-count">(4)</span></div><div class="category" data-category="cGFwZXI=">paper <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cmFuZG9t">random <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmlkZ2U=">ridge <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhYmxl">stable <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmVjdG9y">vector <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
 
+<p>This page contains Jupyter notebooks implementing the algorithms found in the “The Elements of Statistical Learning” by Trevor Hastie, Robert Tibshirani and Jerome Friedman, proofs and summary of the textbook.</p>
+<section id="chapter-2" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-2">Chapter 2</h3>
+<div id="listing-chapter1" class="quarto-listing quarto-listing-container-table">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
 
+<th>
+Date
+</th>
 
+<th>
+Title
+</th>
 
+<th>
+Author
+</th>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bWF0aCUyQ3JhbmRvbSUyQ3ZlY3Rvcg==" data-listing-date-sort="1747004400000" data-listing-file-modified-sort="1760621002511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1913">
-<div class="thumbnail"><a href="./posts/random-two-vectors/index.html" class="no-external">
+</tr>
+</thead>
+<tbody class="list">
 
-<img loading="lazy" src="./posts/random-two-vectors/images/image.jpg" class="thumbnail-image">
+<tr data-index="0" data-categories="bWF0aCUyQ3JhbmRvbSUyQ3ZlY3Rvcg==" data-listing-date-sort="1747004400000" data-listing-file-modified-sort="1760621002511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1913" data-listing-title-sort="Why are two random vectors near orthogonal in high dimensions?" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 12, 2025</span>
+</td>
+<td>
+<a href="./posts/random-two-vectors/index.html" class="title listing-title">Why are two random vectors near orthogonal in high dimensions?</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/random-two-vectors/index.html" class="no-external">Why are two random vectors near orthogonal in high dimensions?</a>
-</h3>
-<div class="listing-categories">
+</tr>
 
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
+<tr data-index="1" data-categories="bG9zcyUyQ2NvZGU=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1760621002535" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="360" data-listing-title-sort="Implementation of ROC AUC Score" data-listing-filename-sort="index.ipynb">
+<td>
+<span class="listing-date">Feb 3, 2025</span>
+</td>
+<td>
+<a href="./posts/roc-auc-implementation/index.html" class="title listing-title">Implementation of ROC AUC Score</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-<div class="listing-category" onclick="window.quartoListingCategory('cmFuZG9t'); return false;">random</div>
+</tr>
 
-<div class="listing-category" onclick="window.quartoListingCategory('dmVjdG9y'); return false;">vector</div>
+<tr data-index="2" data-categories="bWF0aCUyQ2N2JTJDbG9zcw==" data-listing-date-sort="1738281600000" data-listing-file-modified-sort="1760626132792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3897" data-listing-title-sort="ROC and AUC Interpretation" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 31, 2025</span>
+</td>
+<td>
+<a href="./posts/roc-auc/index.html" class="title listing-title">ROC and AUC Interpretation</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
+</tr>
+
+<tr data-index="3" data-categories="bWF0aA==" data-listing-date-sort="1737331200000" data-listing-file-modified-sort="1760621002511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1949" data-listing-title-sort="Linear Equation Intuition" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 20, 2025</span>
+</td>
+<td>
+<a href="./posts/linear-equation/index.html" class="title listing-title">Linear Equation Intuition</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-categories="bWF0aA==" data-listing-date-sort="1736726400000" data-listing-file-modified-sort="1760626413842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2702" data-listing-title-sort="Dot Product Intuition" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 13, 2025</span>
+</td>
+<td>
+<a href="./posts/dot-product/index.html" class="title listing-title">Dot Product Intuition</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-categories="Y29udmV4JTIwZnVuY3Rpb24lMkNqZW5zZW4=" data-listing-date-sort="1735948800000" data-listing-file-modified-sort="1760625022262" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="971" data-listing-title-sort="Geometric Intuition for Jensen's Inequality" data-listing-filename-sort="index.ipynb">
+<td>
+<span class="listing-date">Jan 4, 2025</span>
+</td>
+<td>
+<a href="./posts/jensens-inequality/index.html" class="title listing-title">Geometric Intuition for Jensen’s Inequality</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
+
+</tr>
+
+<tr data-index="6" data-categories="YmFzaWNzJTJDbG9zcyUyQ2wxJTJDbDIlMkNsYXNzbyUyQ3JpZGdl" data-listing-date-sort="1735257600000" data-listing-file-modified-sort="1760625154798" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="977" data-listing-title-sort="Why does L1 regularization encourage coefficients to shrink to zero?" data-listing-filename-sort="index.ipynb">
+<td>
+<span class="listing-date">Dec 27, 2024</span>
+</td>
+<td>
+<a href="./posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html" class="title listing-title">Why does L1 regularization encourage coefficients to shrink to zero?</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
+
+</tr>
+
+<tr data-index="7" data-categories="c3RhYmxlJTJDZGlmZnVzaW9uJTJDcGFwZXI=" data-listing-date-sort="1721602800000" data-listing-file-modified-sort="1760621002504" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="21" data-listing-title-sort="WIP: High-Resolution Image Synthesis with Latent Diffusion Models Notes" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jul 22, 2024</span>
+</td>
+<td>
+<a href="./posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html" class="title listing-title">WIP: High-Resolution Image Synthesis with Latent Diffusion Models Notes</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
+
+</tr>
+
+<tr data-index="8" data-categories="ZGlmZnVzaW9uJTJDcGFwZXIlMkNhdXRvZW5jb2Rlcg==" data-listing-date-sort="1721516400000" data-listing-file-modified-sort="1760621002501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="652" data-listing-title-sort="Auto-Encoding Variational Bayes Notes" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jul 21, 2024</span>
+</td>
+<td>
+<a href="./posts/auto-encoding-variational-bayes/index.html" class="title listing-title">Auto-Encoding Variational Bayes Notes</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
+
+</tr>
+
+<tr data-index="9" data-categories="ZGlmZnVzaW9uJTJDcGFwZXI=" data-listing-date-sort="1720998000000" data-listing-file-modified-sort="1760621002503" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1064" data-listing-title-sort="Denoising Diffusion Probabilistic Models" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jul 15, 2024</span>
+</td>
+<td>
+<a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="title listing-title">Denoising Diffusion Probabilistic Models</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
 </div>
-<div class="delink listing-description"><a href="./posts/random-two-vectors/index.html" class="no-external">
-High-dimensional embedding vectors are fundamental building blocks in Machine Learning, particularly in transformers or word2vec. Typically, two vectors that are…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/random-two-vectors/index.html" class="no-external">
-<div class="listing-date">
-May 12, 2025
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="bG9zcyUyQ2NvZGU=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1760621002535" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="360">
-<div class="thumbnail"><a href="./posts/roc-auc-implementation/index.html" class="no-external">
 
-<img loading="lazy" src="./posts/roc-auc-implementation/images/image.jpg" class="thumbnail-image">
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/roc-auc-implementation/index.html" class="no-external">Implementation of ROC AUC Score</a>
-</h3>
-<div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('bG9zcw=='); return false;">loss</div>
+</section>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+<div class="quarto-listing quarto-listing-container-table" id="listing-chapter2">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
 
-</div>
-<div class="delink listing-description"><a href="./posts/roc-auc-implementation/index.html" class="no-external">
-This post is a continuation of the ROC and AUC Interpretation. Please make sure that you understand that post before reading this one.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/roc-auc-implementation/index.html" class="no-external">
-<div class="listing-date">
-Feb 3, 2025
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="bWF0aCUyQ2N2JTJDbG9zcw==" data-listing-date-sort="1738281600000" data-listing-file-modified-sort="1760626132792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3897">
-<div class="thumbnail"><a href="./posts/roc-auc/index.html" class="no-external">
+<th>
+Date
+</th>
 
-<img loading="lazy" src="./posts/roc-auc/images/image.jpg" class="thumbnail-image">
+<th>
+Title
+</th>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/roc-auc/index.html" class="no-external">ROC and AUC Interpretation</a>
-</h3>
-<div class="listing-categories">
+<th>
+Author
+</th>
 
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
+</tr>
+</thead>
+<tbody class="list">
 
-<div class="listing-category" onclick="window.quartoListingCategory('Y3Y='); return false;">cv</div>
+<tr data-index="0" data-categories="bWF0aCUyQ3JhbmRvbSUyQ3ZlY3Rvcg==" data-listing-date-sort="1747004400000" data-listing-file-modified-sort="1760621002511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1913" data-listing-title-sort="Why are two random vectors near orthogonal in high dimensions?" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 12, 2025</span>
+</td>
+<td>
+<a href="./posts/random-two-vectors/index.html" class="title listing-title">Why are two random vectors near orthogonal in high dimensions?</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-<div class="listing-category" onclick="window.quartoListingCategory('bG9zcw=='); return false;">loss</div>
+</tr>
 
-</div>
-<div class="delink listing-description"><a href="./posts/roc-auc/index.html" class="no-external">
-A <strong>binary classification</strong> is a machine learning model that classifies input data into two classes. We need different metrics to train or evaluate the performance of ML models.…<strong></strong><strong></strong>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/roc-auc/index.html" class="no-external">
-<div class="listing-date">
-Jan 31, 2025
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="bWF0aA==" data-listing-date-sort="1737331200000" data-listing-file-modified-sort="1760621002511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1949">
-<div class="thumbnail"><a href="./posts/linear-equation/index.html" class="no-external">
+<tr data-index="1" data-categories="bG9zcyUyQ2NvZGU=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1760621002535" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="360" data-listing-title-sort="Implementation of ROC AUC Score" data-listing-filename-sort="index.ipynb">
+<td>
+<span class="listing-date">Feb 3, 2025</span>
+</td>
+<td>
+<a href="./posts/roc-auc-implementation/index.html" class="title listing-title">Implementation of ROC AUC Score</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-<img loading="lazy" src="./posts/linear-equation/images/image.jpg" class="thumbnail-image">
+</tr>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/linear-equation/index.html" class="no-external">Linear Equation Intuition</a>
-</h3>
-<div class="listing-categories">
+<tr data-index="2" data-categories="bWF0aCUyQ2N2JTJDbG9zcw==" data-listing-date-sort="1738281600000" data-listing-file-modified-sort="1760626132792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3897" data-listing-title-sort="ROC and AUC Interpretation" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 31, 2025</span>
+</td>
+<td>
+<a href="./posts/roc-auc/index.html" class="title listing-title">ROC and AUC Interpretation</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
+</tr>
 
-</div>
-<div class="delink listing-description"><a href="./posts/linear-equation/index.html" class="no-external">
-A <strong>linear equation</strong> is an equation in the form <span class="math inline">\(a_1x_1+\cdots+a_nx_n+b=0\)</span>. In two dimensions, it’s an <strong>equation of a line</strong> <span class="math inline">\(ax+by+c=0\)</span>, while in three dimensions, it’s an <strong>equ…</strong><span class="math inline"></span>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/linear-equation/index.html" class="no-external">
-<div class="listing-date">
-Jan 20, 2025
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="bWF0aA==" data-listing-date-sort="1736726400000" data-listing-file-modified-sort="1760626413842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2702">
-<div class="thumbnail"><a href="./posts/dot-product/index.html" class="no-external">
+<tr data-index="3" data-categories="bWF0aA==" data-listing-date-sort="1737331200000" data-listing-file-modified-sort="1760621002511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1949" data-listing-title-sort="Linear Equation Intuition" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 20, 2025</span>
+</td>
+<td>
+<a href="./posts/linear-equation/index.html" class="title listing-title">Linear Equation Intuition</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-<img loading="lazy" src="./posts/dot-product/images/image.jpg" class="thumbnail-image">
+</tr>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/dot-product/index.html" class="no-external">Dot Product Intuition</a>
-</h3>
-<div class="listing-categories">
+<tr data-index="4" data-categories="bWF0aA==" data-listing-date-sort="1736726400000" data-listing-file-modified-sort="1760626413842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2702" data-listing-title-sort="Dot Product Intuition" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 13, 2025</span>
+</td>
+<td>
+<a href="./posts/dot-product/index.html" class="title listing-title">Dot Product Intuition</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
+</tr>
 
-</div>
-<div class="delink listing-description"><a href="./posts/dot-product/index.html" class="no-external">
-The <strong>dot product</strong> (or <strong>scalar product</strong>) is a simple yet powerful operation that is used in many places in Machine Learning and other fields. In this post, I will explain the…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/dot-product/index.html" class="no-external">
-<div class="listing-date">
-Jan 13, 2025
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Y29udmV4JTIwZnVuY3Rpb24lMkNqZW5zZW4=" data-listing-date-sort="1735948800000" data-listing-file-modified-sort="1760625022262" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="971">
-<div class="thumbnail"><a href="./posts/jensens-inequality/index.html" class="no-external">
+<tr data-index="5" data-categories="Y29udmV4JTIwZnVuY3Rpb24lMkNqZW5zZW4=" data-listing-date-sort="1735948800000" data-listing-file-modified-sort="1760625022262" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="971" data-listing-title-sort="Geometric Intuition for Jensen's Inequality" data-listing-filename-sort="index.ipynb">
+<td>
+<span class="listing-date">Jan 4, 2025</span>
+</td>
+<td>
+<a href="./posts/jensens-inequality/index.html" class="title listing-title">Geometric Intuition for Jensen’s Inequality</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-<img loading="lazy" src="./posts/jensens-inequality/images/image.jpg" class="thumbnail-image">
+</tr>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/jensens-inequality/index.html" class="no-external">Geometric Intuition for Jensen’s Inequality</a>
-</h3>
-<div class="listing-categories">
+<tr data-index="6" data-categories="YmFzaWNzJTJDbG9zcyUyQ2wxJTJDbDIlMkNsYXNzbyUyQ3JpZGdl" data-listing-date-sort="1735257600000" data-listing-file-modified-sort="1760625154798" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="977" data-listing-title-sort="Why does L1 regularization encourage coefficients to shrink to zero?" data-listing-filename-sort="index.ipynb">
+<td>
+<span class="listing-date">Dec 27, 2024</span>
+</td>
+<td>
+<a href="./posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html" class="title listing-title">Why does L1 regularization encourage coefficients to shrink to zero?</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Y29udmV4JTIwZnVuY3Rpb24='); return false;">convex function</div>
+</tr>
 
-<div class="listing-category" onclick="window.quartoListingCategory('amVuc2Vu'); return false;">jensen</div>
+<tr data-index="7" data-categories="c3RhYmxlJTJDZGlmZnVzaW9uJTJDcGFwZXI=" data-listing-date-sort="1721602800000" data-listing-file-modified-sort="1760621002504" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="21" data-listing-title-sort="WIP: High-Resolution Image Synthesis with Latent Diffusion Models Notes" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jul 22, 2024</span>
+</td>
+<td>
+<a href="./posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html" class="title listing-title">WIP: High-Resolution Image Synthesis with Latent Diffusion Models Notes</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-</div>
-<div class="delink listing-description"><a href="./posts/jensens-inequality/index.html" class="no-external">
-Jensen’s inequality is fundamental in many fields, including machine learning and statistics. For example, it is useful in the diffusion models paper for understanding the…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/jensens-inequality/index.html" class="no-external">
-<div class="listing-date">
-Jan 4, 2025
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="YmFzaWNzJTJDbG9zcyUyQ2wxJTJDbDIlMkNsYXNzbyUyQ3JpZGdl" data-listing-date-sort="1735257600000" data-listing-file-modified-sort="1760625154798" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="977">
-<div class="thumbnail"><a href="./posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html" class="no-external">
+</tr>
 
-<img loading="lazy" src="./posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/images/image.jpg" class="thumbnail-image">
+<tr data-index="8" data-categories="ZGlmZnVzaW9uJTJDcGFwZXIlMkNhdXRvZW5jb2Rlcg==" data-listing-date-sort="1721516400000" data-listing-file-modified-sort="1760621002501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="652" data-listing-title-sort="Auto-Encoding Variational Bayes Notes" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jul 21, 2024</span>
+</td>
+<td>
+<a href="./posts/auto-encoding-variational-bayes/index.html" class="title listing-title">Auto-Encoding Variational Bayes Notes</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html" class="no-external">Why does L1 regularization encourage coefficients to shrink to zero?</a>
-</h3>
-<div class="listing-categories">
+</tr>
 
-<div class="listing-category" onclick="window.quartoListingCategory('YmFzaWNz'); return false;">basics</div>
+<tr data-index="9" data-categories="ZGlmZnVzaW9uJTJDcGFwZXI=" data-listing-date-sort="1720998000000" data-listing-file-modified-sort="1760621002503" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1064" data-listing-title-sort="Denoising Diffusion Probabilistic Models" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jul 15, 2024</span>
+</td>
+<td>
+<a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="title listing-title">Denoising Diffusion Probabilistic Models</a>
+</td>
+<td>
+<span class="listing-author">Madiyar Aitbayev</span>
+</td>
 
-<div class="listing-category" onclick="window.quartoListingCategory('bG9zcw=='); return false;">loss</div>
+</tr>
 
-<div class="listing-category" onclick="window.quartoListingCategory('bDE='); return false;">l1</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bDI='); return false;">l2</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bGFzc28='); return false;">lasso</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmlkZ2U='); return false;">ridge</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html" class="no-external">
-Regularization is a common method for dealing with overfitting in Machine Learning (ML). The simplest and most widely used methods are L1 (Lasso) and L2 (Ridge). The L1 and…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html" class="no-external">
-<div class="listing-date">
-Dec 27, 2024
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="c3RhYmxlJTJDZGlmZnVzaW9uJTJDcGFwZXI=" data-listing-date-sort="1721602800000" data-listing-file-modified-sort="1760621002504" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
-<div class="thumbnail"><a href="./posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/high-resolution-image-synthesis-with-latent-diffusion-models/images/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html" class="no-external">WIP: High-Resolution Image Synthesis with Latent Diffusion Models Notes</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('c3RhYmxl'); return false;">stable</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGlmZnVzaW9u'); return false;">diffusion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGFwZXI='); return false;">paper</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html" class="no-external">
-My notes for the “High-Resolution Image Synthesis with Latent Diffusion Models” paper. Feel free to ask questions on my telegram channel
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html" class="no-external">
-<div class="listing-date">
-Jul 22, 2024
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="ZGlmZnVzaW9uJTJDcGFwZXIlMkNhdXRvZW5jb2Rlcg==" data-listing-date-sort="1721516400000" data-listing-file-modified-sort="1760621002501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="652">
-<div class="thumbnail"><a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/auto-encoding-variational-bayes/images/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external">Auto-Encoding Variational Bayes Notes</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGlmZnVzaW9u'); return false;">diffusion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGFwZXI='); return false;">paper</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YXV0b2VuY29kZXI='); return false;">autoencoder</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external">
-My notes for the “Auto-Encoding Variational Bayes” paper. Feel free to ask questions on my telegram channel
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/auto-encoding-variational-bayes/index.html" class="no-external">
-<div class="listing-date">
-Jul 21, 2024
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="ZGlmZnVzaW9uJTJDcGFwZXI=" data-listing-date-sort="1720998000000" data-listing-file-modified-sort="1760621002503" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1064">
-<div class="thumbnail"><a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/denoising-diffusion-probabilistic-models/images/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external">Denoising Diffusion Probabilistic Models</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGlmZnVzaW9u'); return false;">diffusion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGFwZXI='); return false;">paper</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external">
-My notes for the “Denoising Diffusion Probabilistic Models” paper. Feel free to ask questions on my telegram channel
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/denoising-diffusion-probabilistic-models/index.html" class="no-external">
-<div class="listing-date">
-Jul 15, 2024
-</div>
-<div class="listing-author">
-Madiyar Aitbayev
-</div>
-</a>
-</div>
-</div>
-</div>
+</tbody>
+</table>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

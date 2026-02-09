@@ -1,0 +1,3 @@
+[submodule "esl/the-elements-of-statistical-learning"]
+	path = esl/the-elements-of-statistical-learning
+	url = https://github.com/maitbayev/the-elements-of-statistical-learning.git
