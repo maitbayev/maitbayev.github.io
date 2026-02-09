@@ -5,88 +5,8 @@
     <lastmod>2025-10-16T13:23:22.466Z</lastmod>
   </url>
   <url>
-    <loc>https://maitbayev.github.io/posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html</loc>
-    <lastmod>2025-10-16T13:23:22.504Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/posts/denoising-diffusion-probabilistic-models/index.html</loc>
-    <lastmod>2025-10-16T13:23:22.503Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/posts/linear-equation/index.html</loc>
-    <lastmod>2025-10-16T13:23:22.511Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/posts/random-two-vectors/index.html</loc>
-    <lastmod>2025-10-16T13:23:22.511Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/posts/jensens-inequality/index.html</loc>
-    <lastmod>2025-10-16T14:30:22.262Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/posts/roc-auc-implementation/index.html</loc>
-    <lastmod>2025-10-16T13:23:22.535Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html</loc>
-    <lastmod>2025-10-16T14:32:34.798Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/posts/dot-product/index.html</loc>
-    <lastmod>2025-10-16T14:53:33.842Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/posts/auto-encoding-variational-bayes/index.html</loc>
-    <lastmod>2025-10-16T13:23:22.501Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/posts/roc-auc/index.html</loc>
-    <lastmod>2025-10-16T13:23:22.535Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/index.html</loc>
-    <lastmod>2025-10-16T13:23:22.500Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/esl.html</loc>
-    <lastmod>2026-02-09T23:18:56.427Z</lastmod>
-  </url>
-  <url>
     <loc>https://maitbayev.github.io/esl/index.html</loc>
     <lastmod>2026-02-09T23:44:03.050Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/esl/chapter-02/2.5-local-methods-in-high-dimensions.html</loc>
-    <lastmod>2026-02-09T23:21:32.747Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/esl/chapter-02/2.6-statistical-models-supervised-learning-and-function-approximation.html</loc>
-    <lastmod>2026-02-09T23:21:32.745Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/esl/chapter-02/2.3-least-squares-and-nearest-neighbors.html</loc>
-    <lastmod>2026-02-09T23:21:32.744Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/esl/chapter-02/exercise-solutions.html</loc>
-    <lastmod>2026-02-09T23:21:32.743Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/esl/chapter-02/2.7-structured-regression-models.html</loc>
-    <lastmod>2026-02-09T23:21:32.743Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/esl/chapter-02/2.4-statistical-decision-theory.html</loc>
-    <lastmod>2026-02-09T23:21:32.745Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/esl/chapter-02/2.9-model-selection-and-the-bias-variance-tradeoff.html</loc>
-    <lastmod>2026-02-09T23:21:32.746Z</lastmod>
-  </url>
-  <url>
-    <loc>https://maitbayev.github.io/esl/chapter-02/2.8-classes-of-restricted-estimators.html</loc>
-    <lastmod>2026-02-09T23:21:32.747Z</lastmod>
   </url>
   <url>
     <loc>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.5-local-methods-in-high-dimensions.html</loc>
@@ -151,6 +71,46 @@
   <url>
     <loc>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-04/4.3.3-reduced-rank-linear-discriminant-analysis.html</loc>
     <lastmod>2026-02-09T23:32:22.763Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html</loc>
+    <lastmod>2025-10-16T13:23:22.504Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/denoising-diffusion-probabilistic-models/index.html</loc>
+    <lastmod>2025-10-16T13:23:22.503Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/linear-equation/index.html</loc>
+    <lastmod>2025-10-16T13:23:22.511Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/random-two-vectors/index.html</loc>
+    <lastmod>2025-10-16T13:23:22.511Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/jensens-inequality/index.html</loc>
+    <lastmod>2025-10-16T14:30:22.262Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/roc-auc-implementation/index.html</loc>
+    <lastmod>2025-10-16T13:23:22.535Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html</loc>
+    <lastmod>2025-10-16T14:32:34.798Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/dot-product/index.html</loc>
+    <lastmod>2025-10-16T14:53:33.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/auto-encoding-variational-bayes/index.html</loc>
+    <lastmod>2025-10-16T13:23:22.501Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/posts/roc-auc/index.html</loc>
+    <lastmod>2025-10-16T14:48:52.792Z</lastmod>
   </url>
   <url>
     <loc>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-11/11.7-example-zip-code-data.html</loc>
@@ -219,5 +179,9 @@
   <url>
     <loc>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.8-classes-of-restricted-estimators.html</loc>
     <lastmod>2026-02-09T23:32:22.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://maitbayev.github.io/index.html</loc>
+    <lastmod>2025-10-16T13:23:22.500Z</lastmod>
   </url>
 </urlset>

@@ -10,7 +10,7 @@
 <atom:link href="https://maitbayev.github.io/esl/index.xml" rel="self" type="application/rss+xml"/>
 <description>Madiyar&#39;s Page</description>
 <generator>quarto-1.8.27</generator>
-<lastBuildDate>Mon, 09 Feb 2026 23:44:52 GMT</lastBuildDate>
+<lastBuildDate>Mon, 09 Feb 2026 23:48:44 GMT</lastBuildDate>
 <item>
   <title>2.3 Least Squares and Nearest Neighbors</title>
   <link>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.3-least-squares-and-nearest-neighbors.html</link>
@@ -589,7 +589,7 @@ font-style: inherit;">15</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.3-least-squares-and-nearest-neighbors.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>2.4 Statistical Decision Theory</title>
@@ -930,7 +930,7 @@ font-style: inherit;">&lt;</span> blue_pdf])</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.4-statistical-decision-theory.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>2.5 Local Methods in High Dimensions</title>
@@ -1291,7 +1291,7 @@ font-style: inherit;">"EPE Ration"</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.5-local-methods-in-high-dimensions.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>2.6 Statistical Models, Supervised Learning and Function Approximation</title>
@@ -1341,7 +1341,7 @@ font-style: inherit;">"EPE Ration"</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.6-statistical-models-supervised-learning-and-function-approximation.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>2.7 Structured Regression Models</title>
@@ -1365,7 +1365,7 @@ font-style: inherit;">"EPE Ration"</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.7-structured-regression-models.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>2.8 Classes of Restricted Estimators</title>
@@ -1422,7 +1422,7 @@ font-style: inherit;">"EPE Ration"</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.8-classes-of-restricted-estimators.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>2.9 Model Selection and the Bias-Variance Tradeoff</title>
@@ -1455,7 +1455,7 @@ font-style: inherit;">"EPE Ration"</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/2.9-model-selection-and-the-bias-variance-tradeoff.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>Ex. 2.8</title>
@@ -1810,7 +1810,7 @@ font-style: inherit;">"Error"</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-02/exercise-solutions.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.1 Introduction</title>
@@ -1827,7 +1827,7 @@ font-style: inherit;">"Error"</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.1-introduction.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.2 Linear Regression Models and Least Squares</title>
@@ -2101,7 +2101,7 @@ font-style: inherit;">'Tail Probabilities'</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.2-linear-regression-models-and-least-squares.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.2.2 The Gauss–Markov Theorem</title>
@@ -2135,7 +2135,7 @@ font-style: inherit;">'Tail Probabilities'</span>)</span>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.2.2-the-gauss-markov-theorem.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.2.3 Multiple Regression From Simple Univariate Regression</title>
@@ -2365,7 +2365,7 @@ font-style: inherit;">"Coefficient: "</span>, beta)</span></code></pre></div></d
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.2.3-multiple-regression-from-simple-multivariate-regression.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.2.4 Multiple Outputs</title>
@@ -2391,7 +2391,7 @@ font-style: inherit;">"Coefficient: "</span>, beta)</span></code></pre></div></d
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.2.4-multiple-outputs.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.3 Subset Selection</title>
@@ -2436,7 +2436,7 @@ font-style: inherit;">"Coefficient: "</span>, beta)</span></code></pre></div></d
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.3-subset-selection.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.4 Shrinkage Methods</title>
@@ -2453,7 +2453,7 @@ font-style: inherit;">"Coefficient: "</span>, beta)</span></code></pre></div></d
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.4-shrinkage-methods.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.4.1 Ridge Regression</title>
@@ -2503,7 +2503,7 @@ font-style: inherit;">"Coefficient: "</span>, beta)</span></code></pre></div></d
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.4.1-ridge-regression.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.4.2 The Lasso</title>
@@ -2524,7 +2524,7 @@ font-style: inherit;">"Coefficient: "</span>, beta)</span></code></pre></div></d
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.4.2-the-lasso.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.4.3 Discussion: Subset Selection, Ridge Regression and the Lasso</title>
@@ -2541,7 +2541,7 @@ font-style: inherit;">"Coefficient: "</span>, beta)</span></code></pre></div></d
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.4.4-discussion-subset-selection-ridge-regression-and-the-lasso.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.4.4 Least Angle Regression</title>
@@ -2875,7 +2875,7 @@ train error:  0.43919976805833433</code></pre>
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.4.4-least-angle-regression.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 <item>
   <title>3.5 Methods Using Derived Input Directions</title>
@@ -3110,7 +3110,7 @@ font-style: inherit;">'Train error: '</span>, train_error)</span></code></pre></
 
  ]]></description>
   <guid>https://maitbayev.github.io/esl/the-elements-of-statistical-learning/chapter-03/3.5-methods-using-derived-input-directions.html</guid>
-  <pubDate>Mon, 09 Feb 2026 23:44:52 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 23:48:44 GMT</pubDate>
 </item>
 </channel>
 </rss>

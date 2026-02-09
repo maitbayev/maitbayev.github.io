@@ -1,35 +1,5 @@
 [
   {
-    "listing": "/index.html",
-    "items": [
-      "/posts/random-two-vectors/index.html",
-      "/posts/roc-auc-implementation/index.html",
-      "/posts/roc-auc/index.html",
-      "/posts/linear-equation/index.html",
-      "/posts/dot-product/index.html",
-      "/posts/jensens-inequality/index.html",
-      "/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html",
-      "/posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html",
-      "/posts/auto-encoding-variational-bayes/index.html",
-      "/posts/denoising-diffusion-probabilistic-models/index.html"
-    ]
-  },
-  {
-    "listing": "/esl.html",
-    "items": [
-      "/posts/random-two-vectors/index.html",
-      "/posts/roc-auc-implementation/index.html",
-      "/posts/roc-auc/index.html",
-      "/posts/linear-equation/index.html",
-      "/posts/dot-product/index.html",
-      "/posts/jensens-inequality/index.html",
-      "/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html",
-      "/posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html",
-      "/posts/auto-encoding-variational-bayes/index.html",
-      "/posts/denoising-diffusion-probabilistic-models/index.html"
-    ]
-  },
-  {
     "listing": "/esl/index.html",
     "items": [
       "/esl/the-elements-of-statistical-learning/chapter-02/2.3-least-squares-and-nearest-neighbors.html",
@@ -65,6 +35,21 @@
       "/esl/the-elements-of-statistical-learning/chapter-04/4.4.3-quadratic-approximations-and-inference.html",
       "/esl/the-elements-of-statistical-learning/chapter-04/4.4.4-L-1-regularized-logistic-regression.html",
       "/esl/the-elements-of-statistical-learning/chapter-11/11.7-example-zip-code-data.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/random-two-vectors/index.html",
+      "/posts/roc-auc-implementation/index.html",
+      "/posts/roc-auc/index.html",
+      "/posts/linear-equation/index.html",
+      "/posts/dot-product/index.html",
+      "/posts/jensens-inequality/index.html",
+      "/posts/why-l1-loss-encourage-coefficients-to-shrink-to-zero/index.html",
+      "/posts/high-resolution-image-synthesis-with-latent-diffusion-models/index.html",
+      "/posts/auto-encoding-variational-bayes/index.html",
+      "/posts/denoising-diffusion-probabilistic-models/index.html"
     ]
   }
 ]
